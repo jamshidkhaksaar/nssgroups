@@ -9,10 +9,14 @@ import { EMAIL_1, PHONE_1 } from '@/data/content'
 
 const LINKS: { to: string; key: TranslationKey }[] = [
   { to: '/', key: 'nav.home' },
-  { to: '/about', key: 'nav.about' },
+  { to: '/trading', key: 'nav.trading' },
+  { to: '/booking', key: 'nav.booking' },
+  { to: '/tracking', key: 'nav.tracking' },
   { to: '/services', key: 'nav.services' },
   { to: '/fleet', key: 'nav.fleet' },
   { to: '/network', key: 'nav.network' },
+  { to: '/projects', key: 'nav.projects' },
+  { to: '/about', key: 'nav.about' },
   { to: '/contact', key: 'nav.contact' },
 ]
 
@@ -84,13 +88,13 @@ export default function Navbar() {
         }`}
       >
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 md:px-12">
-          <Link to="/" className="group flex items-center gap-3">
-            <span className="nss-logo-badge p-1.5" style={{ height: 52, width: 52 }}>
-              <img src="./logo.png" alt="NSS" className="h-10 w-10 object-contain" />
+          <Link to="/" className="group flex items-center gap-3.5">
+            <span className="nss-logo-badge p-2" style={{ height: 76, width: 76 }}>
+              <img src="./logo.png" alt="NSS" className="object-contain" style={{ height: 58, width: 58 }} />
             </span>
             <span className="leading-tight">
-              <span className="nss-display block text-lg tracking-wide text-[rgb(var(--text-rgb))]">
-                NSS <span className="text-[rgb(var(--gold-rgb))]">GROUPS</span>
+              <span className="nss-display block text-xl tracking-wide text-[rgb(var(--text-rgb))]">
+                NSS <span className="text-[rgb(var(--gold-rgb))]">GROUP</span>
               </span>
               <span className="nss-mono block text-[10px] tracking-[0.28em] text-[rgba(var(--text-rgb),0.50)]">
                 {t('nav.brandSub')}
@@ -98,14 +102,14 @@ export default function Navbar() {
             </span>
           </Link>
 
-          <nav className="hidden items-center gap-8 lg:flex">
+          <nav className="hidden items-center gap-6 xl:flex">
             {LINKS.map((l) => (
               <NavLink
                 key={l.to}
                 to={l.to}
                 end={l.to === '/'}
                 className={({ isActive }) =>
-                  `nss-mono relative pb-1 text-[14px] uppercase tracking-[0.16em] transition-colors after:absolute after:bottom-0 after:start-0 after:h-px after:w-full after:origin-left after:bg-[#e8c268] after:transition-transform after:duration-300 ${
+                  `nss-mono relative pb-1 text-[12.5px] uppercase tracking-[0.14em] transition-colors after:absolute after:bottom-0 after:start-0 after:h-px after:w-full after:origin-left after:bg-[#e8c268] after:transition-transform after:duration-300 ${
                     isActive
                       ? 'text-[rgb(var(--gold-rgb))] after:scale-x-100'
                       : 'text-[rgba(var(--text-rgb),0.60)] after:scale-x-0 hover:text-[rgb(var(--text-rgb))] hover:after:scale-x-100'
@@ -117,7 +121,7 @@ export default function Navbar() {
             ))}
           </nav>
 
-          <div className="hidden items-center gap-4 lg:flex">
+          <div className="hidden items-center gap-4 xl:flex">
             <LanguageSwitcher />
             <button
               onClick={toggle}
@@ -129,14 +133,14 @@ export default function Navbar() {
               </span>
             </button>
             <Link
-              to="/contact"
+              to="/portal"
               className="nss-btn-primary rounded-sm px-5 py-2.5 text-[14px] font-bold"
             >
-              {t('nav.quote')}
+              {t('nav.portal')}
             </Link>
           </div>
 
-          <div className="flex items-center gap-3 lg:hidden">
+          <div className="flex items-center gap-3 xl:hidden">
             <LanguageSwitcher />
             <button
               onClick={toggle}
@@ -157,7 +161,7 @@ export default function Navbar() {
 
         {/* mobile menu */}
         {open && (
-          <nav className="border-t border-[rgba(var(--gold-rgb),0.10)] bg-[rgba(var(--bg-rgb),0.95)] px-6 pb-8 pt-4 backdrop-blur-md lg:hidden">
+          <nav className="border-t border-[rgba(var(--gold-rgb),0.10)] bg-[rgba(var(--bg-rgb),0.95)] px-6 pb-8 pt-4 backdrop-blur-md xl:hidden">
             <div className="flex flex-col gap-4">
               {LINKS.map((l, i) => (
                 <NavLink
@@ -174,11 +178,11 @@ export default function Navbar() {
                 </NavLink>
               ))}
               <Link
-                to="/contact"
+                to="/portal"
                 onClick={closeMenu}
                 className="nss-btn-primary mt-3 inline-block w-fit rounded-sm px-6 py-3 text-sm font-bold"
               >
-                {t('nav.quote')}
+                {t('nav.portal')}
               </Link>
               <div className="mt-4 border-t border-[rgba(var(--gold-rgb),0.10)] pt-4">
                 <a

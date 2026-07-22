@@ -1,0 +1,31 @@
+import type { TranslationKey } from './en'
+
+/** Simplified Chinese launch copy. Unspecified operational content falls back to English. */
+export const zh: Partial<Record<TranslationKey, string>> = {
+  'nav.home': '首页',
+  'nav.trading': '市场',
+  'nav.booking': '运输申请',
+  'nav.tracking': '货运追踪',
+  'nav.projects': '项目',
+  'nav.about': '关于我们',
+  'nav.contact': '联系我们',
+  'nav.portal': '客户门户',
+  'nav.quote': '询价',
+  'hero.h1a': '您的货物，',
+  'hero.h1b': '我们的责任。',
+  'hero.ctaPrimary': '询价',
+  'hero.ctaSecondary': '采购商品',
+  'trading.tag': 'NSS 贸易与采购',
+  'trading.heading': '全球商品。一个采购伙伴。送货上门。',
+  'trading.catalogHeading': '我们为您采购的商品。',
+  'trading.buy': '申请采购',
+  'booking.tag': '运输申请',
+  'booking.heading': '提交货运申请。',
+  'booking.submit': '申请运输',
+  'tracking.tag': '货运追踪',
+  'tracking.heading': '了解您的货物位置。',
+  'tracking.lookup': '追踪货运',
+  'tracking.inTransit': '运输中',
+  'portal.tag': '客户门户',
+  'portal.heading': '集中管理您的 NSS 业务。',
+}

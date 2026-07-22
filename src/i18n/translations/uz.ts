@@ -1,0 +1,31 @@
+import type { TranslationKey } from './en'
+
+/** Uzbek (Latin) launch copy. Unspecified operational content falls back to English. */
+export const uz: Partial<Record<TranslationKey, string>> = {
+  'nav.home': 'Bosh sahifa',
+  'nav.trading': 'Bozor',
+  'nav.booking': 'Transport so‘rovi',
+  'nav.tracking': 'Kuzatuv',
+  'nav.projects': 'Loyihalar',
+  'nav.about': 'Kompaniya',
+  'nav.contact': 'Aloqa',
+  'nav.portal': 'Mijoz portali',
+  'nav.quote': 'Narx so‘rash',
+  'hero.h1a': 'YUKINGIZ,',
+  'hero.h1b': 'BIZNING MAS’ULIYATIMIZ.',
+  'hero.ctaPrimary': 'Narx so‘rash',
+  'hero.ctaSecondary': 'Mahsulot topish',
+  'trading.tag': 'NSS SAVDO VA TA’MINOT',
+  'trading.heading': 'Global mahsulotlar. Bitta ta’minot hamkori. Eshigingizgacha yetkazib berish.',
+  'trading.catalogHeading': 'Siz uchun topadigan mahsulotlar.',
+  'trading.buy': 'Xarid so‘rovi',
+  'booking.tag': 'BUYURTMA',
+  'booking.heading': 'Yuk tashish uchun so‘rov yuboring.',
+  'booking.submit': 'Transport so‘rovi',
+  'tracking.tag': 'YUKNI KUZATISH',
+  'tracking.heading': 'Yukingiz qayerdaligini biling.',
+  'tracking.lookup': 'Yukni kuzatish',
+  'tracking.inTransit': 'Yo‘lda',
+  'portal.tag': 'MIJOZ PORTALI',
+  'portal.heading': 'Barcha NSS jarayonlaringiz bir joyda.',
+}

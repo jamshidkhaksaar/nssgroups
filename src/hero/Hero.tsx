@@ -7,13 +7,14 @@ import type { TranslationKey } from '@/i18n/translations/en'
 import './hero.css'
 
 const CHIPS: TranslationKey[] = ['trust.1', 'trust.2', 'trust.3', 'trust.4']
+const MODE_KEYS: TranslationKey[] = ['hero.mode.0', 'hero.mode.1', 'hero.mode.2', 'hero.mode.3']
 
 export default function Hero() {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const engineRef = useRef<HeroEngine | null>(null)
   const progressRef = useRef<HTMLDivElement>(null)
   const [chapter, setChapter] = useState(0)
-  const { t } = useI18n()
+  const { t, dir } = useI18n()
   const { theme } = useTheme()
 
   useEffect(() => {
@@ -47,6 +48,18 @@ export default function Hero() {
       {/* readability scrim over the canvas (below text, above canvas) */}
       <div className="pointer-events-none absolute inset-0 z-[6] bg-gradient-to-r from-[rgba(var(--bg-rgb),var(--scrim-strong))] via-[rgba(var(--bg-rgb),var(--scrim-soft))] to-transparent" />
       <div className="pointer-events-none absolute inset-x-0 top-0 z-[6] h-40 bg-gradient-to-b from-[rgba(var(--bg-rgb),var(--scrim-top))] to-transparent" />
+
+      {/* ── chapter-synced ghost word (above canvas, below copy) ── */}
+      <div
+        aria-hidden
+        className={`pointer-events-none absolute top-1/2 z-[7] hidden -translate-y-1/2 select-none lg:block ${
+          dir === 'rtl' ? '-start-[1%]' : '-end-[1%]'
+        }`}
+      >
+        <span key={chapter} className="nss-ghost nss-swap inline-block">
+          {t(MODE_KEYS[chapter])}
+        </span>
+      </div>
 
       {/* ── corridor readout (below global nav) ── */}
       <div
@@ -108,7 +121,7 @@ export default function Hero() {
               <Link to="/contact" className="nss-btn-primary rounded-sm px-8 py-4 text-base">
                 {t('hero.ctaPrimary')}
               </Link>
-              <Link to="/network" className="nss-btn-ghost rounded-sm px-8 py-4 text-base">
+              <Link to="/trading" className="nss-btn-ghost rounded-sm px-8 py-4 text-base">
                 {t('hero.ctaSecondary')}
               </Link>
             </div>

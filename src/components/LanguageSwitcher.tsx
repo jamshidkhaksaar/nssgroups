@@ -1,10 +1,11 @@
 import { LANGS, useI18n } from '@/i18n/i18n'
 
-/** Compact mono language switcher: EN · RU · دری · پښتو */
+/** Compact switcher with a mobile selector for all seven launch locales. */
 export default function LanguageSwitcher({ className = '' }: { className?: string }) {
   const { lang, setLang } = useI18n()
   return (
-    <div className={`flex items-center gap-1 ${className}`} role="group" aria-label="Language">
+    <div className={className}>
+      <div className="hidden items-center gap-1 xl:flex" role="group" aria-label="Language">
       {LANGS.map((l) => (
         <button
           key={l.code}
@@ -19,6 +20,15 @@ export default function LanguageSwitcher({ className = '' }: { className?: strin
           {l.label}
         </button>
       ))}
+      </div>
+      <select
+        value={lang}
+        onChange={(event) => setLang(event.target.value as typeof lang)}
+        aria-label="Language"
+        className="nss-mono h-8 max-w-20 border border-[rgba(var(--gold-rgb),0.3)] bg-[var(--bg)] px-2 text-[11px] tracking-wider text-[rgb(var(--text-rgb))] xl:hidden"
+      >
+        {LANGS.map((l) => <option key={l.code} value={l.code}>{l.label}</option>)}
+      </select>
     </div>
   )
 }

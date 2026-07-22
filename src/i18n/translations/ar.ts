@@ -1,0 +1,31 @@
+import type { TranslationKey } from './en'
+
+/** Arabic launch copy. Unspecified operational content falls back to English. */
+export const ar: Partial<Record<TranslationKey, string>> = {
+  'nav.home': 'الرئيسية',
+  'nav.trading': 'السوق',
+  'nav.booking': 'طلب النقل',
+  'nav.tracking': 'التتبع',
+  'nav.projects': 'المشاريع',
+  'nav.about': 'عن الشركة',
+  'nav.contact': 'اتصل بنا',
+  'nav.portal': 'بوابة العميل',
+  'nav.quote': 'طلب عرض سعر',
+  'hero.h1a': 'بضاعتكم،',
+  'hero.h1b': 'مسؤوليتنا.',
+  'hero.ctaPrimary': 'طلب عرض سعر',
+  'hero.ctaSecondary': 'تأمين السلع',
+  'trading.tag': 'تجارة وتوريد NSS',
+  'trading.heading': 'سلع عالمية. شريك توريد واحد. تسليم إلى بابكم.',
+  'trading.catalogHeading': 'ما نؤمّنه لكم.',
+  'trading.buy': 'طلب شراء',
+  'booking.tag': 'الحجز',
+  'booking.heading': 'أرسل طلب نقل البضائع.',
+  'booking.submit': 'طلب نقل',
+  'tracking.tag': 'تتبع الشحنة',
+  'tracking.heading': 'اعرف أين توجد بضاعتك.',
+  'tracking.lookup': 'تتبع الشحنة',
+  'tracking.inTransit': 'قيد النقل',
+  'portal.tag': 'بوابة العميل',
+  'portal.heading': 'عمليات NSS الخاصة بكم في مكان واحد.',
+}

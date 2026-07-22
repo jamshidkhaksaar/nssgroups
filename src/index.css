@@ -128,6 +128,12 @@ html[lang='fa'] body {
 html[lang='ps'] body {
   font-family: 'Noto Naskh Arabic', 'Vazirmatn', 'Noto Sans Arabic', ui-sans-serif, sans-serif;
 }
+html[lang='ar'] body {
+  font-family: 'Noto Sans Arabic', 'Vazirmatn', ui-sans-serif, sans-serif;
+}
+html[lang='zh'] body {
+  font-family: 'Noto Sans SC', 'Manrope', ui-sans-serif, sans-serif;
+}
 ::selection {
   background: rgba(var(--gold-rgb), 0.3);
   color: #fff7e0;
@@ -159,6 +165,13 @@ html[lang='fa'] .nss-h2 {
 html[lang='ps'] .nss-h2 {
   font-family: 'Noto Naskh Arabic', 'Vazirmatn', 'Sora', ui-sans-serif, sans-serif;
   letter-spacing: 0;
+}
+html[lang='ar'] .nss-h2 {
+  font-family: 'Noto Sans Arabic', 'Vazirmatn', 'Sora', ui-sans-serif, sans-serif;
+  letter-spacing: 0;
+}
+html[lang='zh'] .nss-h2 {
+  font-family: 'Noto Sans SC', 'Sora', ui-sans-serif, sans-serif;
 }
 
 /* card */
