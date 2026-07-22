@@ -1,34 +1,24 @@
 import { LANGS, useI18n } from '@/i18n/i18n'
+import { ChevronDown } from 'lucide-react'
 
-/** Compact switcher with a mobile selector for all seven launch locales. */
+/** One compact selector keeps the full seven-language set out of the navbar flow. */
 export default function LanguageSwitcher({ className = '' }: { className?: string }) {
   const { lang, setLang } = useI18n()
   return (
-    <div className={className}>
-      <div className="hidden items-center gap-1 xl:flex" role="group" aria-label="Language">
-      {LANGS.map((l) => (
-        <button
-          key={l.code}
-          onClick={() => setLang(l.code)}
-          aria-pressed={lang === l.code}
-          className={`nss-mono px-2 py-1 text-[12px] tracking-widest transition-colors ${
-            lang === l.code
-              ? 'bg-[#e8c268] text-[#1d1233]'
-              : 'text-[rgba(var(--text-rgb),0.55)] hover:text-[rgb(var(--gold-rgb))]'
-          }`}
-        >
-          {l.label}
-        </button>
-      ))}
-      </div>
+    <div className={`relative ${className}`}>
       <select
         value={lang}
         onChange={(event) => setLang(event.target.value as typeof lang)}
         aria-label="Language"
-        className="nss-mono h-8 max-w-20 border border-[rgba(var(--gold-rgb),0.3)] bg-[var(--bg)] px-2 text-[11px] tracking-wider text-[rgb(var(--text-rgb))] xl:hidden"
+        className="nss-mono h-8 w-[5.25rem] appearance-none border border-[rgba(var(--gold-rgb),0.3)] bg-[var(--bg)] ps-2 pe-6 text-[11px] tracking-wider text-[rgb(var(--text-rgb))] transition-colors hover:border-[rgba(var(--gold-rgb),0.65)] focus:outline-none focus:ring-1 focus:ring-[#e8c268]"
       >
         {LANGS.map((l) => <option key={l.code} value={l.code}>{l.label}</option>)}
       </select>
+      <ChevronDown
+        aria-hidden="true"
+        size={13}
+        className="pointer-events-none absolute end-2 top-1/2 -translate-y-1/2 text-[rgba(var(--text-rgb),0.6)]"
+      />
     </div>
   )
 }
