@@ -1,0 +1,353 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 240 5.9% 10%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 240 5.9% 10%;
+    --radius: 0.625rem;
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 240 5.9% 10%;
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 240 4.9% 83.9%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+/* ── NSS theme variables ───────────────────────────────────── */
+:root {
+  --bg: #171231;
+  --bg-rgb: 23, 18, 49;
+  --bg-deep: #100b24;
+  --panel: #1c1540;
+  --panel-2: #221a4e;
+  --text-rgb: 247, 241, 227;
+  --gold-rgb: 232, 194, 104;
+  --gold-hi-rgb: 240, 212, 137;
+  --gold-deep-rgb: 201, 162, 75;
+  --gold: #e8c268;
+  --card-fill-a: rgba(247, 241, 227, 0.05);
+  --card-fill-b: rgba(247, 241, 227, 0.015);
+  --shadow: rgba(0, 0, 0, 0.6);
+  --scrim-strong: 0.75;
+  --scrim-soft: 0.3;
+  --scrim-top: 0.6;
+}
+html[data-theme='light'] {
+  --bg: #f4efe4;
+  --bg-rgb: 244, 239, 228;
+  --bg-deep: #e9e0cb;
+  --panel: #fbf8f1;
+  --panel-2: #ede4cf;
+  --text-rgb: 36, 26, 62;
+  --gold-rgb: 154, 113, 24;
+  --gold-hi-rgb: 201, 162, 75;
+  --gold-deep-rgb: 120, 88, 18;
+  --gold: #9a7118;
+  --card-fill-a: rgba(255, 255, 255, 0.65);
+  --card-fill-b: rgba(255, 255, 255, 0.3);
+  --shadow: rgba(60, 45, 15, 0.28);
+  --scrim-strong: 0.48;
+  --scrim-soft: 0.15;
+  --scrim-top: 0.32;
+}
+
+/* NSS base */
+body {
+  background: var(--bg);
+  color: rgb(var(--text-rgb));
+  font-family: 'Manrope', ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.5s ease, color 0.5s ease;
+}
+html[dir='rtl'] body {
+  font-size: 17px;
+}
+html[lang='fa'] body {
+  font-family: 'Vazirmatn', 'Noto Sans Arabic', 'Manrope', ui-sans-serif, sans-serif;
+}
+html[lang='ps'] body {
+  font-family: 'Noto Naskh Arabic', 'Vazirmatn', 'Noto Sans Arabic', ui-sans-serif, sans-serif;
+}
+::selection {
+  background: rgba(var(--gold-rgb), 0.3);
+  color: #fff7e0;
+}
+
+/* ── NSS shared section primitives ─────────────────────────── */
+
+/* mono kicker above section headings */
+.nss-section-tag {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 13px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgb(var(--gold-rgb));
+}
+
+/* display heading for sections */
+.nss-h2 {
+  font-family: 'Sora', 'Manrope', ui-sans-serif, sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+  color: rgb(var(--text-rgb));
+}
+html[lang='fa'] .nss-h2 {
+  font-family: 'Vazirmatn', 'Noto Sans Arabic', 'Sora', ui-sans-serif, sans-serif;
+  letter-spacing: 0;
+}
+html[lang='ps'] .nss-h2 {
+  font-family: 'Noto Naskh Arabic', 'Vazirmatn', 'Sora', ui-sans-serif, sans-serif;
+  letter-spacing: 0;
+}
+
+/* card */
+.nss-card {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(160deg, var(--card-fill-a), var(--card-fill-b));
+  border: 1px solid rgba(var(--gold-rgb), 0.16);
+  transition:
+    border-color 0.35s,
+    box-shadow 0.45s,
+    transform 0.45s cubic-bezier(0.165, 0.84, 0.44, 1),
+    background-color 0.5s ease;
+}
+.nss-card::after {
+  content: '';
+  position: absolute;
+  inset-inline: 0;
+  top: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(var(--gold-rgb), 0.7), transparent);
+  opacity: 0;
+  transition: opacity 0.45s;
+}
+.nss-card:hover {
+  border-color: rgba(var(--gold-rgb), 0.5);
+  transform: translateY(-6px);
+  box-shadow:
+    0 20px 50px -14px var(--shadow),
+    0 10px 34px -10px rgba(var(--gold-rgb), 0.22);
+}
+.nss-card:hover::after {
+  opacity: 1;
+}
+
+/* glowing gold logo badge (navbar + footer) */
+.nss-logo-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  background: radial-gradient(
+    circle at 35% 30%,
+    rgba(var(--gold-rgb), 0.38),
+    rgba(var(--gold-rgb), 0.14) 60%,
+    rgba(var(--gold-rgb), 0.06)
+  );
+  border: 1px solid rgba(var(--gold-rgb), 0.45);
+  box-shadow:
+    0 0 18px rgba(var(--gold-rgb), 0.35),
+    0 0 44px rgba(var(--gold-rgb), 0.14);
+  transition:
+    box-shadow 0.4s,
+    border-color 0.4s;
+}
+.nss-logo-badge:hover {
+  border-color: rgba(var(--gold-rgb), 0.75);
+  box-shadow:
+    0 0 26px rgba(var(--gold-rgb), 0.5),
+    0 0 64px rgba(var(--gold-rgb), 0.22);
+}
+
+html[data-theme='light'] .nss-card {
+  border-color: rgba(154, 113, 24, 0.22);
+  box-shadow:
+    0 1px 2px rgba(60, 45, 15, 0.05),
+    0 10px 30px -14px rgba(60, 45, 15, 0.14);
+}
+
+/* gold index number (01 / 02 / …) */
+.nss-index {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  color: rgba(var(--gold-rgb), 0.65);
+}
+
+/* scroll reveal — applied via useReveal hook (.nss-reveal-io → .is-visible) */
+.nss-reveal-io {
+  opacity: 0;
+  transform: translateY(26px);
+  transition:
+    opacity 0.9s cubic-bezier(0.165, 0.84, 0.44, 1),
+    transform 0.9s cubic-bezier(0.165, 0.84, 0.44, 1);
+  will-change: opacity, transform;
+}
+.nss-reveal-io.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+@media (prefers-reduced-motion: reduce) {
+  .nss-reveal-io {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* poster imagery treatment */
+.nss-poster {
+  border: 1px solid rgba(var(--gold-rgb), 0.18);
+  filter: saturate(0.92);
+  transition:
+    filter 0.5s,
+    border-color 0.4s,
+    transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+.nss-poster:hover {
+  filter: saturate(1.05);
+  border-color: rgba(var(--gold-rgb), 0.4);
+}
+
+/* ── Afghanistan operations map ────────────────────────────── */
+
+.nss-map-country {
+  fill: rgba(var(--gold-rgb), 0.05);
+  stroke: rgba(var(--gold-rgb), 0.55);
+  stroke-width: 1.4;
+}
+.nss-map-route {
+  fill: none;
+  stroke: rgb(var(--gold-rgb));
+  stroke-width: 1.6;
+  stroke-dasharray: 7 7;
+  opacity: 0.75;
+  animation: nss-map-dash 1.4s linear infinite;
+}
+@keyframes nss-map-dash {
+  to { stroke-dashoffset: -14; }
+}
+.nss-map-dot {
+  fill: rgb(var(--gold-rgb));
+}
+.nss-map-ping {
+  fill: none;
+  stroke: rgb(var(--gold-rgb));
+  stroke-width: 1.5;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: nss-map-ping 2.4s cubic-bezier(0.165, 0.84, 0.44, 1) infinite;
+}
+@keyframes nss-map-ping {
+  0% { transform: scale(0.4); opacity: 0.9; }
+  80%, 100% { transform: scale(2.6); opacity: 0; }
+}
+.nss-map-label {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 20px;
+  letter-spacing: 0.14em;
+  fill: rgba(var(--text-rgb), 0.85);
+  text-transform: uppercase;
+}
+.nss-map-label-hq {
+  fill: rgb(var(--gold-rgb));
+  font-size: 24px;
+  font-weight: 500;
+}
+.nss-map-neighbor {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 24px;
+  letter-spacing: 0.3em;
+  fill: rgba(var(--text-rgb), 0.22);
+  text-transform: uppercase;
+}
+@media (prefers-reduced-motion: reduce) {
+  .nss-map-route, .nss-map-ping {
+    animation: none;
+  }
+}
+.nss-route-line {
+  position: relative;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(var(--gold-rgb), 0.7), rgba(var(--gold-rgb), 0.12));
+}
+.nss-route-line::before,
+.nss-route-line::after {
+  content: '';
+  position: absolute;
+  top: -2.5px;
+  width: 6px;
+  height: 6px;
+  border-radius: 9999px;
+  background: rgb(var(--gold-rgb));
+}
+.nss-route-line::before {
+  inset-inline-start: 0;
+}
+.nss-route-line::after {
+  inset-inline-end: 0;
+  background: transparent;
+  border: 1px solid rgba(var(--gold-rgb), 0.7);
+}
