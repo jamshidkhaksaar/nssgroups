@@ -66,26 +66,49 @@ export const OFFICES: Office[] = [
 
 export interface ClientGroup {
   titleKey: TranslationKey
-  names: string[]
+  names: { name: string; domain?: string }[]
 }
 
 export const CLIENTS: ClientGroup[] = [
   {
     titleKey: 'clients.un',
-    names: ['WFP', 'UNICEF', 'WHO', 'UNDP', 'FAO', 'IOM', 'UNHCR', 'ICRC', 'ISAF'],
+    names: [
+      { name: 'WFP', domain: 'wfp.org' },
+      { name: 'UNICEF', domain: 'unicef.org' },
+      { name: 'WHO', domain: 'who.int' },
+      { name: 'UNDP', domain: 'undp.org' },
+      { name: 'FAO', domain: 'fao.org' },
+      { name: 'IOM', domain: 'iom.int' },
+      { name: 'UNHCR', domain: 'unhcr.org' },
+      { name: 'ICRC', domain: 'icrc.org' },
+      { name: 'ISAF', domain: 'nato.int' },
+    ],
   },
   {
     titleKey: 'clients.ngo',
-    names: ['ACTED', 'Save the Children', 'DACAAR', 'CARE International', 'DRC'],
+    names: [
+      { name: 'ACTED', domain: 'acted.org' },
+      { name: 'Save the Children', domain: 'savethechildren.net' },
+      { name: 'DACAAR', domain: 'dacaar.org' },
+      { name: 'CARE International', domain: 'care.org' },
+      { name: 'DRC', domain: 'drc.ngo' },
+    ],
   },
-  { titleKey: 'clients.private', names: ['Afghan Wireless (AWCC)', 'Roshan', 'Etisalat'] },
+  { 
+    titleKey: 'clients.private', 
+    names: [
+      { name: 'Afghan Wireless (AWCC)', domain: 'afghan-wireless.com' },
+      { name: 'Roshan', domain: 'roshan.af' },
+      { name: 'Etisalat', domain: 'etisalat.ae' }
+    ] 
+  },
   {
     titleKey: 'clients.gov',
     names: [
-      'Ministry of Education',
-      'Ministry of Agriculture',
-      'Ministry of Public Works',
-      'Disaster Management Authority',
+      { name: 'Ministry of Education', domain: 'moe.gov.af' },
+      { name: 'Ministry of Agriculture', domain: 'mail.gov.af' },
+      { name: 'Ministry of Public Works', domain: 'mopw.gov.af' },
+      { name: 'Disaster Management Authority', domain: 'andma.gov.af' },
     ],
   },
 ]
@@ -107,16 +130,17 @@ export const CORRIDORS: Corridor[] = [
 export interface CoreService {
   nameKey: TranslationKey
   descKey: TranslationKey
+  poster: string
 }
 
 export const CORE_SERVICES: CoreService[] = [
-  { nameKey: 'services.s1.name', descKey: 'services.s1.desc' },
-  { nameKey: 'services.s2.name', descKey: 'services.s2.desc' },
-  { nameKey: 'services.s3.name', descKey: 'services.s3.desc' },
-  { nameKey: 'services.s4.name', descKey: 'services.s4.desc' },
-  { nameKey: 'services.s5.name', descKey: 'services.s5.desc' },
-  { nameKey: 'services.s6.name', descKey: 'services.s6.desc' },
-  { nameKey: 'services.s7.name', descKey: 'services.s7.desc' },
+  { nameKey: 'services.s1.name', descKey: 'services.s1.desc', poster: './services/s1.jpg' },
+  { nameKey: 'services.s2.name', descKey: 'services.s2.desc', poster: './services/s2.jpg' },
+  { nameKey: 'services.s3.name', descKey: 'services.s3.desc', poster: './services/s3.jpg' },
+  { nameKey: 'services.s4.name', descKey: 'services.s4.desc', poster: './services/s4.jpg' },
+  { nameKey: 'services.s5.name', descKey: 'services.s5.desc', poster: './services/s5.jpg' },
+  { nameKey: 'services.s6.name', descKey: 'services.s6.desc', poster: './services/s6.jpg' },
+  { nameKey: 'services.s7.name', descKey: 'services.s7.desc', poster: './services/s7.jpg' },
 ]
 
 export const PHONE_1 = '+93 78 452 5666'

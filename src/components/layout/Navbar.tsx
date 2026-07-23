@@ -7,16 +7,31 @@ import type { TranslationKey } from '@/i18n/translations/en'
 import LanguageSwitcher from '@/components/LanguageSwitcher'
 import { EMAIL_1, PHONE_1 } from '@/data/content'
 
-const LINKS: { to: string; key: TranslationKey }[] = [
+interface NavItem {
+  to: string
+  key: TranslationKey
+}
+
+const PRIMARY_LINKS: NavItem[] = [
   { to: '/', key: 'nav.home' },
-  { to: '/trading', key: 'nav.trading' },
-  { to: '/booking', key: 'nav.booking' },
-  { to: '/tracking', key: 'nav.tracking' },
+  { to: '/trading', key: 'nav.marketplace' },
   { to: '/services', key: 'nav.services' },
-  { to: '/fleet', key: 'nav.fleet' },
-  { to: '/network', key: 'nav.network' },
+  { to: '/booking', key: 'nav.booking' },
+  { to: '/projects', key: 'nav.projects' },
+  { to: '/about', key: 'nav.company' },
+  { to: '/contact', key: 'nav.contact' },
+]
+
+const ALL_MOBILE_LINKS: NavItem[] = [
+  { to: '/', key: 'nav.home' },
+  { to: '/trading', key: 'nav.marketplace' },
+  { to: '/services', key: 'nav.services' },
+  { to: '/booking', key: 'nav.booking' },
   { to: '/projects', key: 'nav.projects' },
   { to: '/about', key: 'nav.about' },
+  { to: '/fleet', key: 'nav.fleet' },
+  { to: '/network', key: 'nav.network' },
+  { to: '/tracking', key: 'nav.tracking' },
   { to: '/contact', key: 'nav.contact' },
 ]
 
@@ -41,12 +56,35 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    if (open) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = ''
+    }
+    return () => {
+      document.body.style.overflow = ''
+    }
+  }, [open])
+
+  // ESC key handler to close mobile menu
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && open) {
+        setOpen(false)
+      }
+    }
+    window.addEventListener('keydown', handleKeyDown)
+    return () => window.removeEventListener('keydown', handleKeyDown)
+  }, [open])
+
   const closeMenu = () => setOpen(false)
 
   return (
     <header className="fixed inset-x-0 top-0 z-50">
-      {/* scroll progress */}
-      <div className="h-[2px] w-full bg-[rgba(var(--text-rgb),0.05)]">
+      {/* scroll progress bar */}
+      <div dir="ltr" className="h-[2px] w-full bg-[rgba(var(--text-rgb),0.05)]">
         <div
           ref={progressRef}
           className="h-full w-full origin-left bg-gradient-to-r from-[#c9a24b] to-[#e8c268]"
@@ -54,153 +92,204 @@ export default function Navbar() {
         />
       </div>
 
-      {/* utility bar — collapses on scroll */}
+      {/* main navbar bar */}
       <div
-        className={`hidden overflow-hidden transition-all duration-500 md:block ${
-          scrolled ? 'max-h-0 opacity-0' : 'max-h-10 opacity-100'
-        }`}
-      >
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 pt-2.5 md:px-12">
-          <p className="nss-mono text-[11px] tracking-[0.22em] text-[rgba(var(--text-rgb),0.50)] uppercase">
-            {t('footer.tagline')} · {t('hero.est')}
-          </p>
-          <div className="flex items-center gap-6">
-            <span className="nss-mono text-[11px] tracking-[0.22em] text-[rgba(var(--gold-rgb),0.70)] uppercase">
-              {t('contact.available')}
-            </span>
-            <a
-              href={`tel:${PHONE_1.replace(/\s/g, '')}`}
-              className="nss-mono flex items-center gap-1.5 text-[11px] tracking-[0.14em] text-[rgba(var(--text-rgb),0.50)] transition-colors hover:text-[rgb(var(--gold-rgb))]"
-            >
-              <Phone size={10} />
-              <span dir="ltr">{PHONE_1}</span>
-            </a>
-          </div>
-        </div>
-      </div>
-
-      {/* main bar */}
-      <div
-        className={`transition-colors duration-500 ${
+        className={`transition-all duration-300 ${
           scrolled || open
-            ? 'border-b border-[rgba(var(--gold-rgb),0.15)] bg-[rgba(var(--bg-rgb),0.85)] backdrop-blur-md'
-            : 'border-b border-transparent bg-transparent'
+            ? 'border-b border-[rgba(var(--gold-rgb),0.15)] bg-[rgba(var(--bg-rgb),0.95)] backdrop-blur-md shadow-lg shadow-black/10'
+            : 'border-b border-[rgba(var(--gold-rgb),0.10)] bg-[rgba(var(--bg-rgb),0.85)] backdrop-blur-sm'
         }`}
       >
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 md:px-12">
-          <Link to="/" className="group flex items-center gap-3.5">
-            <span className="nss-logo-badge p-2" style={{ height: 76, width: 76 }}>
-              <img src="./logo.png" alt="NSS" className="object-contain" style={{ height: 58, width: 58 }} />
-            </span>
-            <span className="leading-tight">
-              <span className="nss-display block text-xl tracking-wide text-[rgb(var(--text-rgb))]">
-                NSS <span className="text-[rgb(var(--gold-rgb))]">GROUP</span>
+        <div
+          className={`flex w-full items-center justify-between px-4 transition-all duration-300 md:px-6 xl:px-8 ${
+            scrolled ? 'py-2' : 'py-2.5'
+          }`}
+        >
+          {/* Left side: Logo + Navigation */}
+          <div className="flex items-center gap-8 xl:gap-16">
+            {/* Logo */}
+            <Link
+              to="/"
+              onClick={closeMenu}
+              className="group flex shrink-0 items-center gap-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#e8c268] rounded-sm"
+            >
+              <span
+                className={`flex items-center justify-center transition-all duration-300 ${
+                  scrolled ? 'h-[60px] w-[60px]' : 'h-[80px] w-[80px]'
+                }`}
+              >
+                <img
+                  src="./logo.png"
+                  alt="NSS"
+                  className={`object-contain transition-all duration-300 ${
+                    scrolled ? 'h-[52px] w-[52px]' : 'h-[68px] w-[68px]'
+                  }`}
+                />
               </span>
-              <span className="nss-mono block text-[10px] tracking-[0.28em] text-[rgba(var(--text-rgb),0.50)]">
-                {t('nav.brandSub')}
+              <span className="leading-tight flex flex-col justify-center">
+                <span className="nss-display block text-base tracking-wide text-[rgb(var(--text-rgb))] group-hover:text-[rgb(var(--gold-rgb))] transition-colors">
+                  NSS <span className="text-[rgb(var(--gold-rgb))]">GROUP</span>
+                </span>
+                <span className="nss-mono block text-[9px] tracking-[0.22em] text-[rgba(var(--text-rgb),0.45)] uppercase">
+                  OF COMPANIES
+                </span>
+                <span className="nss-mono block text-[9px] font-bold tracking-[0.22em] text-[rgb(var(--gold-rgb))] uppercase mt-0.5">
+                  NEW SAMIM SAMIR
+                </span>
               </span>
-            </span>
-          </Link>
+            </Link>
 
-          <nav className="hidden items-center gap-6 xl:flex">
-            {LINKS.map((l) => (
+            {/* Desktop Navigation — elegant links with animated underline */}
+            <nav className="hidden items-center gap-2 lg:flex">
+            {PRIMARY_LINKS.map((item) => (
               <NavLink
-                key={l.to}
-                to={l.to}
-                end={l.to === '/'}
+                key={item.to}
+                to={item.to}
+                end={item.to === '/'}
                 className={({ isActive }) =>
-                  `nss-mono relative pb-1 text-[12.5px] uppercase tracking-[0.14em] transition-colors after:absolute after:bottom-0 after:start-0 after:h-px after:w-full after:origin-left after:bg-[#e8c268] after:transition-transform after:duration-300 ${
+                  `group relative nss-mono px-3 py-2 text-[12.5px] uppercase tracking-[0.12em] rounded-sm transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#e8c268] ${
                     isActive
-                      ? 'text-[rgb(var(--gold-rgb))] after:scale-x-100'
-                      : 'text-[rgba(var(--text-rgb),0.60)] after:scale-x-0 hover:text-[rgb(var(--text-rgb))] hover:after:scale-x-100'
+                      ? 'text-[rgb(var(--gold-rgb))] font-semibold'
+                      : 'text-[rgba(var(--text-rgb),0.75)] hover:text-[rgb(var(--gold-rgb))]'
                   }`
                 }
               >
-                {t(l.key)}
+                {({ isActive }) => (
+                  <>
+                    {t(item.key)}
+                    <span
+                      className={`absolute -bottom-1 left-0 h-[2px] bg-[rgb(var(--gold-rgb))] transition-all duration-300 ease-out ${
+                        isActive ? 'w-full' : 'w-0 group-hover:w-full'
+                      }`}
+                    />
+                  </>
+                )}
               </NavLink>
             ))}
-          </nav>
+            </nav>
+          </div>
 
-          <div className="hidden items-center gap-4 xl:flex">
-            <LanguageSwitcher />
+          {/* Desktop Right Actions */}
+          <div className="hidden items-center gap-2 lg:flex">
+            {/* Dark Mode toggle — compact icon only */}
             <button
+              id="navbar-theme-toggle"
               onClick={toggle}
               aria-label={t('theme.toggle')}
-              className="text-[rgba(var(--text-rgb),0.70)] transition-colors hover:text-[rgb(var(--gold-rgb))]"
+              className="flex h-8 w-8 items-center justify-center rounded-full border border-[rgba(var(--gold-rgb),0.25)] bg-[rgba(var(--gold-rgb),0.06)] text-[rgba(var(--text-rgb),0.75)] transition-all hover:border-[rgba(var(--gold-rgb),0.50)] hover:text-[rgb(var(--gold-rgb))] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#e8c268]"
             >
               <span key={theme} className="nss-swap block">
-                {theme === 'dark' ? <Sun size={17} /> : <Moon size={17} />}
+                {theme === 'dark' ? <Sun size={14} /> : <Moon size={14} />}
               </span>
             </button>
+
+            {/* Language Switcher — flag + code compact pill */}
+            <LanguageSwitcher />
+
+            {/* Login — text link */}
             <Link
-              to="/portal"
-              className="nss-btn-primary rounded-sm px-5 py-2.5 text-[14px] font-bold"
+              to="/login"
+              className="nss-mono px-3 py-2 text-[12px] uppercase tracking-[0.12em] text-[rgba(var(--text-rgb),0.75)] transition-colors hover:text-[rgb(var(--text-rgb))] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#e8c268] rounded-sm"
             >
-              {t('nav.portal')}
+              {t('nav.login')}
+            </Link>
+
+            {/* Register — gold outlined button */}
+            <Link
+              to="/register"
+              className="nss-mono rounded-md border border-[rgb(var(--gold-rgb))] px-4 py-2 text-[12px] uppercase tracking-[0.12em] font-semibold text-[rgb(var(--gold-rgb))] transition-all hover:bg-[rgba(var(--gold-rgb),0.12)] hover:shadow-md hover:shadow-[rgba(var(--gold-rgb),0.2)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#e8c268]"
+            >
+              {t('nav.register')}
             </Link>
           </div>
 
-          <div className="flex items-center gap-3 xl:hidden">
+          {/* Mobile Right Controls */}
+          <div className="flex items-center gap-2 lg:hidden">
             <LanguageSwitcher />
             <button
               onClick={toggle}
               aria-label={t('theme.toggle')}
-              className="text-[rgba(var(--text-rgb),0.70)]"
+              className="p-1.5 text-[rgba(var(--text-rgb),0.70)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#e8c268] rounded-sm"
             >
               {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
             </button>
             <button
+              id="navbar-mobile-menu-toggle"
               onClick={() => setOpen((v) => !v)}
               aria-label={open ? t('nav.close') : t('nav.menu')}
-              className="text-[rgb(var(--text-rgb))]"
+              aria-expanded={open}
+              className="p-1.5 text-[rgb(var(--text-rgb))] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#e8c268] rounded-sm"
             >
               {open ? <X size={22} /> : <Menu size={22} />}
             </button>
           </div>
         </div>
 
-        {/* mobile menu */}
+        {/* Mobile Full Menu Overlay */}
         {open && (
-          <nav className="border-t border-[rgba(var(--gold-rgb),0.10)] bg-[rgba(var(--bg-rgb),0.95)] px-6 pb-8 pt-4 backdrop-blur-md xl:hidden">
-            <div className="flex flex-col gap-4">
-              {LINKS.map((l, i) => (
+          <div className="fixed inset-x-0 top-[100%] z-40 max-h-[calc(100vh-100%)] overflow-y-auto border-t border-[rgba(var(--gold-rgb),0.15)] bg-[rgba(var(--bg-rgb),0.97)] px-6 pb-10 pt-6 backdrop-blur-xl shadow-2xl lg:hidden">
+            <div className="mx-auto max-w-md flex flex-col gap-1">
+              {ALL_MOBILE_LINKS.map((l, i) => (
                 <NavLink
                   key={l.to}
                   to={l.to}
                   end={l.to === '/'}
                   onClick={closeMenu}
                   className={({ isActive }) =>
-                    `flex items-baseline gap-3 ${isActive ? 'text-[rgb(var(--gold-rgb))]' : 'text-[rgba(var(--text-rgb),0.80)]'}`
+                    `group flex items-center justify-between rounded-lg px-3 py-3 transition-colors ${
+                      isActive
+                        ? 'bg-[rgba(var(--gold-rgb),0.12)] text-[rgb(var(--gold-rgb))]'
+                        : 'text-[rgba(var(--text-rgb),0.85)] hover:bg-[rgba(var(--gold-rgb),0.06)] hover:text-[rgb(var(--text-rgb))]'
+                    }`
                   }
                 >
-                  <span className="nss-index">0{i + 1}</span>
-                  <span className="nss-display text-2xl">{t(l.key)}</span>
+                  <div className="flex items-baseline gap-3">
+                    <span className="nss-index text-xs opacity-50">
+                      {String(i + 1).padStart(2, '0')}
+                    </span>
+                    <span className="nss-display text-xl tracking-wide">{t(l.key)}</span>
+                  </div>
+                  <span className="nss-mono text-[10px] uppercase opacity-30 group-hover:opacity-90 transition-opacity">
+                    →
+                  </span>
                 </NavLink>
               ))}
-              <Link
-                to="/portal"
-                onClick={closeMenu}
-                className="nss-btn-primary mt-3 inline-block w-fit rounded-sm px-6 py-3 text-sm font-bold"
-              >
-                {t('nav.portal')}
-              </Link>
-              <div className="mt-4 border-t border-[rgba(var(--gold-rgb),0.10)] pt-4">
-                <a
-                  href={`tel:${PHONE_1.replace(/\s/g, '')}`}
-                  dir="ltr"
-                  className="nss-mono block text-[12px] text-[rgba(var(--text-rgb),0.55)]"
+
+              <div className="mt-4 border-t border-[rgba(var(--gold-rgb),0.12)] pt-5 flex flex-col gap-3">
+                <Link
+                  to="/register"
+                  onClick={closeMenu}
+                  className="nss-btn-primary block w-full rounded-md py-3 text-center text-sm font-bold tracking-wide"
                 >
-                  {PHONE_1}
-                </a>
-                <a
-                  href={`mailto:${EMAIL_1}`}
-                  className="nss-mono mt-2 block text-[12px] text-[rgba(var(--text-rgb),0.55)]"
+                  {t('nav.register')}
+                </Link>
+                <Link
+                  to="/login"
+                  onClick={closeMenu}
+                  className="nss-mono block w-full rounded-md border border-[rgba(var(--gold-rgb),0.30)] py-3 text-center text-sm text-[rgba(var(--text-rgb),0.80)] hover:text-[rgb(var(--gold-rgb))] transition-colors"
                 >
-                  {EMAIL_1}
-                </a>
+                  {t('nav.login')}
+                </Link>
+
+                <div className="mt-2 flex flex-col gap-2 rounded-lg bg-[rgba(var(--text-rgb),0.03)] p-4 border border-[rgba(var(--gold-rgb),0.10)]">
+                  <a
+                    href={`tel:${PHONE_1.replace(/\s/g, '')}`}
+                    dir="ltr"
+                    className="nss-mono flex items-center gap-2 text-[12px] text-[rgba(var(--text-rgb),0.70)] hover:text-[rgb(var(--gold-rgb))] transition-colors"
+                  >
+                    <Phone size={12} />
+                    <span>{PHONE_1}</span>
+                  </a>
+                  <a
+                    href={`mailto:${EMAIL_1}`}
+                    className="nss-mono text-[12px] text-[rgba(var(--text-rgb),0.70)] hover:text-[rgb(var(--gold-rgb))] transition-colors"
+                  >
+                    {EMAIL_1}
+                  </a>
+                </div>
               </div>
             </div>
-          </nav>
+          </div>
         )}
       </div>
     </header>

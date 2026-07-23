@@ -11,6 +11,8 @@ import Booking from './pages/Booking'
 import Projects from './pages/Projects'
 import Tracking from './pages/Tracking'
 import Portal from './pages/Portal'
+import Login from './pages/Login'
+import Register from './pages/Register'
 
 export default function App() {
   return (
@@ -29,6 +31,8 @@ export default function App() {
         <Route path="/tracking" element={<Tracking />} />
         <Route path="/portal" element={<Portal />} />
       </Route>
+      <Route path="/login" element={<Login />} />
+      <Route path="/register" element={<Register />} />
     </Routes>
   )
 }

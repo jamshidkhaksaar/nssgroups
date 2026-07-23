@@ -87,28 +87,38 @@
   --gold: #e8c268;
   --card-fill-a: rgba(247, 241, 227, 0.05);
   --card-fill-b: rgba(247, 241, 227, 0.015);
+  --card-border: rgba(var(--gold-rgb), 0.16);
   --shadow: rgba(0, 0, 0, 0.6);
+  --card-label: rgba(12, 8, 32, 0.85);
   --scrim-strong: 0.75;
   --scrim-soft: 0.3;
   --scrim-top: 0.6;
+  --hero-blend: screen;
+  --hero-opacity: 0.9;
+  --hero-text-rgb: var(--gold-rgb);
 }
 html[data-theme='light'] {
-  --bg: #f4efe4;
-  --bg-rgb: 244, 239, 228;
-  --bg-deep: #e9e0cb;
-  --panel: #fbf8f1;
-  --panel-2: #ede4cf;
-  --text-rgb: 36, 26, 62;
+  --bg: #FCFAFD;
+  --bg-rgb: 252, 250, 253;
+  --bg-deep: #E9E0F0;
+  --panel: #FCFAFD;
+  --panel-2: #E9E0F0;
+  --text-rgb: 75, 36, 95;
   --gold-rgb: 154, 113, 24;
   --gold-hi-rgb: 201, 162, 75;
   --gold-deep-rgb: 120, 88, 18;
   --gold: #9a7118;
-  --card-fill-a: rgba(255, 255, 255, 0.65);
-  --card-fill-b: rgba(255, 255, 255, 0.3);
-  --shadow: rgba(60, 45, 15, 0.28);
+  --card-fill-a: rgba(75, 36, 95, 0.06);
+  --card-fill-b: rgba(75, 36, 95, 0.01);
+  --card-border: rgba(75, 36, 95, 0.18);
+  --shadow: rgba(75, 36, 95, 0.15);
+  --card-label: rgba(252, 250, 253, 0.96);
   --scrim-strong: 0.48;
   --scrim-soft: 0.15;
-  --scrim-top: 0.32;
+  --scrim-top: 0.35;
+  --hero-blend: multiply;
+  --hero-opacity: 0.35;
+  --hero-text-rgb: var(--text-rgb);
 }
 
 /* NSS base */
@@ -179,7 +189,7 @@ html[lang='zh'] .nss-h2 {
   position: relative;
   overflow: hidden;
   background: linear-gradient(160deg, var(--card-fill-a), var(--card-fill-b));
-  border: 1px solid rgba(var(--gold-rgb), 0.16);
+  border: 1px solid var(--card-border);
   transition:
     border-color 0.35s,
     box-shadow 0.45s,
@@ -363,4 +373,47 @@ html[data-theme='light'] .nss-card {
   inset-inline-end: 0;
   background: transparent;
   border: 1px solid rgba(var(--gold-rgb), 0.7);
+}
+
+/* ── NSS themed scrollbar ───────────────────────────────────── */
+/* Gold-on-dark scrollbar for horizontal card strips            */
+.nss-scroll-gold {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(232,194,104,0.55) rgba(14,10,30,0.70);
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+.nss-scroll-gold::-webkit-scrollbar {
+  height: 5px;
+}
+.nss-scroll-gold::-webkit-scrollbar-track {
+  background: rgba(14,10,30,0.70);
+  border-radius: 9999px;
+  margin-inline: 24px;
+}
+.nss-scroll-gold::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    90deg,
+    rgba(201,162,75,0.40) 0%,
+    rgba(232,194,104,0.80) 50%,
+    rgba(201,162,75,0.40) 100%
+  );
+  border-radius: 9999px;
+  border: 1px solid rgba(232,194,104,0.15);
+}
+.nss-scroll-gold::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(
+    90deg,
+    rgba(232,194,104,0.65) 0%,
+    rgba(240,212,137,1.00) 50%,
+    rgba(232,194,104,0.65) 100%
+  );
+}
+
+/* Scroll-snap for mobile touch swiping */
+.nss-scroll-snap {
+  scroll-snap-type: x mandatory;
+}
+.nss-scroll-snap > * {
+  scroll-snap-align: start;
 }

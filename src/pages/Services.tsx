@@ -18,17 +18,29 @@ export default function Services() {
         <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
           {CORE_SERVICES.map((s, i) => (
             <Reveal key={s.nameKey} delay={(i % 3) * 90}>
-              <div className="nss-card flex h-full flex-col p-7">
-                <span className="nss-index">0{i + 1}</span>
-                <h3 className="nss-display mt-5 text-xl leading-snug">{t(s.nameKey)}</h3>
-                <div className="nss-hairline my-4 w-12" />
-                <p className="text-sm leading-relaxed text-[rgba(var(--text-rgb),0.55)]">{t(s.descKey)}</p>
-                <Link
-                  to="/contact"
-                  className="nss-mono mt-auto pt-6 text-[12px] tracking-[0.18em] text-[rgba(var(--gold-rgb),0.70)] uppercase transition-colors hover:text-[rgb(var(--gold-rgb))]"
-                >
-                  {t('services.quoteFor')} →
-                </Link>
+              <div className="nss-card group flex h-full flex-col overflow-hidden">
+                <div className="relative h-48 w-full overflow-hidden">
+                  <img
+                    src={s.poster}
+                    alt={t(s.nameKey)}
+                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[rgba(var(--bg-rgb),0.5)] to-transparent" />
+                </div>
+                <div className="flex flex-1 flex-col p-7 pt-5">
+                  <div className="flex items-center justify-between">
+                    <span className="nss-index">0{i + 1}</span>
+                  </div>
+                  <h3 className="nss-display mt-4 text-xl leading-snug text-[rgb(var(--text-rgb))]">{t(s.nameKey)}</h3>
+                  <div className="nss-hairline my-4 w-12" />
+                  <p className="text-sm leading-relaxed text-[rgba(var(--text-rgb),0.55)]">{t(s.descKey)}</p>
+                  <Link
+                    to="/contact"
+                    className="nss-mono mt-auto pt-6 text-[12px] tracking-[0.18em] text-[rgba(var(--gold-rgb),0.70)] uppercase transition-colors hover:text-[rgb(var(--gold-rgb))]"
+                  >
+                    {t('services.quoteFor')} →
+                  </Link>
+                </div>
               </div>
             </Reveal>
           ))}
@@ -78,7 +90,7 @@ export default function Services() {
                 </Link>
               </div>
               <img
-                src="./posters/7.jpg"
+                src="./services/trading_vi.jpg"
                 alt={t('services.vi.title')}
                 loading="lazy"
                 className="nss-poster aspect-square w-full object-cover"
@@ -90,7 +102,7 @@ export default function Services() {
           <Reveal className="mt-20">
             <div className="grid items-center gap-10 lg:grid-cols-2">
               <img
-                src="./posters/6.jpg"
+                src="./services/trading_lpg.jpg"
                 alt={t('services.lpg.title')}
                 loading="lazy"
                 className="nss-poster aspect-square w-full object-cover lg:order-1 order-2"
@@ -128,7 +140,7 @@ export default function Services() {
                 </Link>
               </div>
               <img
-                src="./posters/1.jpg"
+                src="./services/trading_pvc.jpg"
                 alt={t('services.pvc.title')}
                 loading="lazy"
                 className="nss-poster aspect-square w-full object-cover"

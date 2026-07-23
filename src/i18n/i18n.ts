@@ -19,7 +19,7 @@ export const LANGS: { code: Lang; label: string; dir: 'ltr' | 'rtl' }[] = [
   { code: 'zh', label: '中文', dir: 'ltr' },
 ]
 
-export const dictionaries: Record<Lang, Partial<Record<TranslationKey, string>>> = { en, ru, fa, ps, uz, ar, zh }
+export const dictionaries: Record<Lang, Record<TranslationKey, string>> = { en, ru, fa, ps, uz, ar, zh }
 
 export const STORAGE_KEY = 'nss-lang'
 

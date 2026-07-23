@@ -14,7 +14,7 @@ export default function ClientsStrip() {
       </Reveal>
 
       <Reveal className="mt-14">
-        <div className="grid gap-px overflow-hidden rounded-sm border border-[rgba(var(--gold-rgb),0.16)] bg-[rgba(var(--gold-rgb),0.16)] md:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-px overflow-hidden rounded-sm border border-[var(--card-border)] bg-[var(--card-border)] md:grid-cols-2 lg:grid-cols-4">
           {CLIENTS.map((g) => (
             <div key={g.titleKey} className="bg-[var(--panel)] p-7">
               <h3 className="flex items-center gap-3">
@@ -26,12 +26,26 @@ export default function ClientsStrip() {
               <ul className="mt-5">
                 {g.names.map((n) => (
                   <li
-                    key={n}
-                    className="group flex items-baseline justify-between border-t border-[rgba(var(--gold-rgb),0.10)] py-2.5 first:border-t-0"
+                    key={n.name}
+                    className="group flex items-center justify-between border-t border-[rgba(var(--gold-rgb),0.10)] py-2.5 first:border-t-0"
                   >
-                    <span className="text-[15px] font-medium text-[rgba(var(--text-rgb),0.62)] transition-colors duration-300 group-hover:text-[rgb(var(--gold-rgb))]">
-                      {n}
-                    </span>
+                    <div className="flex items-center gap-3">
+                      {n.domain && (
+                        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-[4px] bg-white p-1.5 shadow-sm overflow-hidden transition-transform duration-300 group-hover:scale-110">
+                          <img
+                            src={`./logos/${n.domain}.png`}
+                            alt={n.name}
+                            className="h-full w-full object-contain"
+                            onError={(e) => {
+                              ;(e.currentTarget.parentNode as HTMLDivElement).style.display = 'none'
+                            }}
+                          />
+                        </div>
+                      )}
+                      <span className="text-[15px] font-medium text-[rgba(var(--text-rgb),0.62)] transition-colors duration-300 group-hover:text-[rgb(var(--gold-rgb))]">
+                        {n.name}
+                      </span>
+                    </div>
                     <span className="h-1 w-1 shrink-0 rounded-full bg-[rgba(var(--gold-rgb),0.35)] transition-colors duration-300 group-hover:bg-[rgb(var(--gold-rgb))]" />
                   </li>
                 ))}

@@ -1,7 +1,9 @@
-import Hero from '../hero/Hero'
-import TrustBar from '@/sections/home/TrustBar'
+import TopHero from '@/sections/home/TopHero'
+import TrustBenefitsStrip from '@/sections/home/TrustBenefitsStrip'
+import ProductCategoryGrid from '@/sections/home/ProductCategoryGrid'
+import LogisticsServiceGrid from '@/sections/home/LogisticsServiceGrid'
+import TopStatsStrip from '@/sections/home/TopStatsStrip'
 import GroupDivisions from '@/sections/home/GroupDivisions'
-import ImpactStats from '@/sections/home/ImpactStats'
 import ServicesPreview from '@/sections/home/ServicesPreview'
 import CorridorTeaser from '@/sections/home/CorridorTeaser'
 import ClientsStrip from '@/sections/home/ClientsStrip'
@@ -9,10 +11,15 @@ import ClientsStrip from '@/sections/home/ClientsStrip'
 export default function Home() {
   return (
     <main className="bg-[var(--bg)]">
-      <Hero />
-      <TrustBar />
+      {/* Redesigned Landing Page Top Section */}
+      <TopHero />
+      <TrustBenefitsStrip />
+      <ProductCategoryGrid />
+      <LogisticsServiceGrid />
+      <TopStatsStrip />
+
+      {/* Remaining Landing Page Sections */}
       <GroupDivisions />
-      <ImpactStats />
       <ServicesPreview />
       <CorridorTeaser />
       <ClientsStrip />

@@ -23,21 +23,41 @@ type CatalogProduct = {
 }
 
 const CATEGORIES: CatalogCategory[] = [
-  { key: 'trading.cat.food', poster: './posters/3.jpg' },
-  { key: 'trading.cat.fuel', poster: './posters/6.jpg' },
-  { key: 'trading.cat.construction', poster: './posters/4.jpg' },
-  { key: 'trading.cat.plastics', poster: './posters/1.jpg' },
-  { key: 'trading.cat.consumer', poster: './posters/8.jpg' },
-  { key: 'trading.cat.machinery', poster: './posters/12.jpg' },
+  { key: 'categories.c2.title', poster: './card_images/row1/industrial low materials.png' },
+  { key: 'categories.c3.title', poster: './card_images/row1/Machinery.png' },
+  { key: 'categories.c4.title', poster: './card_images/row1/Food Products.png' },
+  { key: 'categories.c5.title', poster: './card_images/row1/Textile and clothing.png' },
+  { key: 'categories.c6.title', poster: './card_images/row1/cleaning and hygen.png' },
+  { key: 'categories.c7.title', poster: './card_images/row1/home applinces.png' },
+  { key: 'categories.c8.title', poster: './card_images/row1/beauty and perfums.png' },
+  { key: 'categories.c9.title', poster: './card_images/row1/baby and children.png' },
+  { key: 'categories.c10.title', poster: './card_images/row1/packaging and printing.png' },
+  // Original Categories
+  { key: 'trading.cat.food', poster: './card_images/extra/Industrial Wheat Flour.png' },
+  { key: 'trading.cat.fuel', poster: './card_images/extra/LPG Supply.png' },
+  { key: 'trading.cat.construction', poster: './card_images/extra/Construction Material.png' },
+  { key: 'trading.cat.plastics', poster: './card_images/extra/PVC Resin SG5.png' },
+  { key: 'trading.cat.consumer', poster: './card_images/extra/Textiles & Consumer Goods.png' },
+  { key: 'trading.cat.machinery', poster: './card_images/extra/Industrial Equipment.png' },
 ]
 
 const PRODUCTS: CatalogProduct[] = [
-  { category: 'trading.cat.plastics', name: 'PVC Resin SG5', origin: 'China', factory: 'Xinjiang Yihua Chemical', moq: '50 t', leadTime: '10–18 days', packing: '25 kg bags', poster: './posters/1.jpg' },
-  { category: 'trading.cat.construction', name: 'Portland Cement', origin: 'Uzbekistan', factory: 'Verified manufacturer', moq: '1 truckload', leadTime: '7–14 days', packing: '50 kg bags', poster: './posters/4.jpg' },
-  { category: 'trading.cat.food', name: 'Industrial Wheat Flour', origin: 'Kazakhstan', factory: 'Regional milling partner', moq: '22 t', leadTime: '8–16 days', packing: '25 / 50 kg bags', poster: './posters/3.jpg' },
-  { category: 'trading.cat.fuel', name: 'LPG Supply', origin: 'Turkmenistan', factory: 'Licensed energy supplier', moq: '1 tanker', leadTime: 'Route dependent', packing: 'Bulk tanker', poster: './posters/6.jpg' },
-  { category: 'trading.cat.consumer', name: 'Textiles & Consumer Goods', origin: 'Turkey', factory: 'Supplier network', moq: 'By specification', leadTime: '15–30 days', packing: 'Export cartons', poster: './posters/8.jpg' },
-  { category: 'trading.cat.machinery', name: 'Industrial Equipment', origin: 'China', factory: 'Factory-direct sourcing', moq: 'By specification', leadTime: '20–45 days', packing: 'Export crate', poster: './posters/12.jpg' },
+  { category: 'categories.c2.title', name: 'Industrial Raw Materials', origin: 'Global', factory: 'Direct Sourcing', moq: 'By specification', leadTime: '15-30 days', packing: 'Bulk / Containers', poster: './card_images/row1/industrial low materials.png' },
+  { category: 'categories.c3.title', name: 'Machinery & Equipment', origin: 'Global', factory: 'Verified Manufacturers', moq: '1 unit', leadTime: '30-45 days', packing: 'Export crates', poster: './card_images/row1/Machinery.png' },
+  { category: 'categories.c4.title', name: 'Food Products', origin: 'Global', factory: 'Certified Producers', moq: '1 container', leadTime: '10-25 days', packing: 'Retail / Bulk', poster: './card_images/row1/Food Products.png' },
+  { category: 'categories.c5.title', name: 'Textiles & Clothing', origin: 'Global', factory: 'Textile Mills', moq: 'By specification', leadTime: '15-30 days', packing: 'Export cartons', poster: './card_images/row1/Textile and clothing.png' },
+  { category: 'categories.c6.title', name: 'Cleaning & Hygiene', origin: 'Global', factory: 'Chemical Plants', moq: '1 container', leadTime: '10-20 days', packing: 'Bottles / Drums', poster: './card_images/row1/cleaning and hygen.png' },
+  { category: 'categories.c7.title', name: 'Home & Appliances', origin: 'Global', factory: 'Appliance Brands', moq: '1 container', leadTime: '20-40 days', packing: 'Retail packaging', poster: './card_images/row1/home applinces.png' },
+  { category: 'categories.c8.title', name: 'Beauty & Perfumes', origin: 'Global', factory: 'Cosmetic Labs', moq: 'By specification', leadTime: '15-25 days', packing: 'Retail packaging', poster: './card_images/row1/beauty and perfums.png' },
+  { category: 'categories.c9.title', name: 'Baby & Children', origin: 'Global', factory: 'Certified Producers', moq: '1 container', leadTime: '15-30 days', packing: 'Retail packaging', poster: './card_images/row1/baby and children.png' },
+  { category: 'categories.c10.title', name: 'Packaging & Printing', origin: 'Global', factory: 'Printing Facilities', moq: 'By specification', leadTime: '10-20 days', packing: 'Palletized', poster: './card_images/row1/packaging and printing.png' },
+  // Original Products
+  { category: 'trading.cat.plastics', name: 'PVC Resin SG5', origin: 'China', factory: 'Xinjiang Yihua Chemical', moq: '50 t', leadTime: '10–18 days', packing: '25 kg bags', poster: './card_images/extra/PVC Resin SG5.png' },
+  { category: 'trading.cat.construction', name: 'Portland Cement', origin: 'Uzbekistan', factory: 'Verified manufacturer', moq: '1 truckload', leadTime: '7–14 days', packing: '50 kg bags', poster: './card_images/extra/Portland Cement.png' },
+  { category: 'trading.cat.food', name: 'Industrial Wheat Flour', origin: 'Kazakhstan', factory: 'Regional milling partner', moq: '22 t', leadTime: '8–16 days', packing: '25 / 50 kg bags', poster: './card_images/extra/Industrial Wheat Flour.png' },
+  { category: 'trading.cat.fuel', name: 'LPG Supply', origin: 'Turkmenistan', factory: 'Licensed energy supplier', moq: '1 tanker', leadTime: 'Route dependent', packing: 'Bulk tanker', poster: './card_images/extra/LPG Supply.png' },
+  { category: 'trading.cat.consumer', name: 'Textiles & Consumer Goods', origin: 'Turkey', factory: 'Supplier network', moq: 'By specification', leadTime: '15–30 days', packing: 'Export cartons', poster: './card_images/extra/Textiles & Consumer Goods.png' },
+  { category: 'trading.cat.machinery', name: 'Industrial Equipment', origin: 'China', factory: 'Factory-direct sourcing', moq: 'By specification', leadTime: '20–45 days', packing: 'Export crate', poster: './card_images/extra/Industrial Equipment.png' },
 ]
 
 export default function Trading() {
