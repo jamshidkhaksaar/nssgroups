@@ -10,7 +10,7 @@ interface CategoryItem {
 }
 
 const CATEGORIES: CategoryItem[] = [
-  { titleKey: 'categories.c1.title', poster: './posters/1.jpg',  to: '/trading' },
+  { titleKey: 'categories.c1.title', poster: './card_images/extra/Construction Material.png',  to: '/trading' },
   { titleKey: 'categories.c2.title', poster: './card_images/row1/industrial low materials.png', to: '/trading' },
   { titleKey: 'categories.c3.title', poster: './card_images/row1/Machinery.png', to: '/trading' },
   { titleKey: 'categories.c4.title', poster: './card_images/row1/Food Products.png', to: '/trading' },
@@ -38,7 +38,7 @@ export default function ProductCategoryGrid() {
 
         {/* 3D perspective container — cards centered */}
         <div
-          className="nss-scroll-gold nss-scroll-snap flex items-center justify-start xl:justify-center gap-4 overflow-x-auto pb-3 pt-1"
+          className="nss-scroll-gold nss-scroll-snap flex items-center justify-start gap-4 overflow-x-auto pb-3 pt-1"
           style={{ perspective: '1000px' }}
         >
           {CATEGORIES.map((c) => (

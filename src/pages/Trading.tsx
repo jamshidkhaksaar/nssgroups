@@ -23,6 +23,7 @@ type CatalogProduct = {
 }
 
 const CATEGORIES: CatalogCategory[] = [
+  { key: 'categories.c1.title', poster: './card_images/extra/Construction Material.png' },
   { key: 'categories.c2.title', poster: './card_images/row1/industrial low materials.png' },
   { key: 'categories.c3.title', poster: './card_images/row1/Machinery.png' },
   { key: 'categories.c4.title', poster: './card_images/row1/Food Products.png' },
@@ -52,8 +53,8 @@ const PRODUCTS: CatalogProduct[] = [
   { category: 'categories.c9.title', name: 'Baby & Children', origin: 'Global', factory: 'Certified Producers', moq: '1 container', leadTime: '15-30 days', packing: 'Retail packaging', poster: './card_images/row1/baby and children.png' },
   { category: 'categories.c10.title', name: 'Packaging & Printing', origin: 'Global', factory: 'Printing Facilities', moq: 'By specification', leadTime: '10-20 days', packing: 'Palletized', poster: './card_images/row1/packaging and printing.png' },
   // Original Products
+  { category: 'categories.c1.title', name: 'Portland Cement', origin: 'Uzbekistan', factory: 'Verified manufacturer', moq: '1 truckload', leadTime: '7–14 days', packing: '50 kg bags', poster: './card_images/extra/Portland Cement.png' },
   { category: 'trading.cat.plastics', name: 'PVC Resin SG5', origin: 'China', factory: 'Xinjiang Yihua Chemical', moq: '50 t', leadTime: '10–18 days', packing: '25 kg bags', poster: './card_images/extra/PVC Resin SG5.png' },
-  { category: 'trading.cat.construction', name: 'Portland Cement', origin: 'Uzbekistan', factory: 'Verified manufacturer', moq: '1 truckload', leadTime: '7–14 days', packing: '50 kg bags', poster: './card_images/extra/Portland Cement.png' },
   { category: 'trading.cat.food', name: 'Industrial Wheat Flour', origin: 'Kazakhstan', factory: 'Regional milling partner', moq: '22 t', leadTime: '8–16 days', packing: '25 / 50 kg bags', poster: './card_images/extra/Industrial Wheat Flour.png' },
   { category: 'trading.cat.fuel', name: 'LPG Supply', origin: 'Turkmenistan', factory: 'Licensed energy supplier', moq: '1 tanker', leadTime: 'Route dependent', packing: 'Bulk tanker', poster: './card_images/extra/LPG Supply.png' },
   { category: 'trading.cat.consumer', name: 'Textiles & Consumer Goods', origin: 'Turkey', factory: 'Supplier network', moq: 'By specification', leadTime: '15–30 days', packing: 'Export cartons', poster: './card_images/extra/Textiles & Consumer Goods.png' },
