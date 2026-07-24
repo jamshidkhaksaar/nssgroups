@@ -11,6 +11,9 @@ import Booking from './pages/Booking'
 import Projects from './pages/Projects'
 import Tracking from './pages/Tracking'
 import Portal from './pages/Portal'
+import AdminPortal from './pages/AdminPortal'
+import ClientPortal from './pages/ClientPortal'
+import PartnerPortal from './pages/PartnerPortal'
 import Login from './pages/Login'
 import Register from './pages/Register'
 
@@ -30,6 +33,9 @@ export default function App() {
         <Route path="/projects" element={<Projects />} />
         <Route path="/tracking" element={<Tracking />} />
         <Route path="/portal" element={<Portal />} />
+        <Route path="/admin" element={<AdminPortal />} />
+        <Route path="/client-portal" element={<ClientPortal />} />
+        <Route path="/partner-portal" element={<PartnerPortal />} />
       </Route>
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />

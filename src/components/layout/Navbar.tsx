@@ -3,7 +3,7 @@ import { Link, NavLink } from 'react-router'
 import { Menu, Moon, Phone, Sun, X, Volume2, VolumeX } from 'lucide-react'
 import { useI18n } from '@/i18n/i18n'
 import { useTheme } from '@/theme/theme'
-import { useMusic } from '@/audio/MusicContext'
+import { useMusic } from '@/audio/useMusic'
 import type { TranslationKey } from '@/i18n/translations/en'
 import LanguageSwitcher from '@/components/LanguageSwitcher'
 import { EMAIL_1, PHONE_1 } from '@/data/content'
@@ -17,14 +17,18 @@ const PRIMARY_LINKS: NavItem[] = [
   { to: '/', key: 'nav.home' },
   { to: '/trading', key: 'nav.marketplace' },
   { to: '/services', key: 'nav.services' },
-  { to: '/booking', key: 'nav.booking' },
-  { to: '/projects', key: 'nav.projects' },
+  { to: '/client-portal', key: 'nav.clientPortal' },
+  { to: '/partner-portal', key: 'nav.partnerPortal' },
+  { to: '/admin', key: 'nav.adminPortal' },
   { to: '/about', key: 'nav.company' },
   { to: '/contact', key: 'nav.contact' },
 ]
 
 const ALL_MOBILE_LINKS: NavItem[] = [
   { to: '/', key: 'nav.home' },
+  { to: '/client-portal', key: 'nav.clientPortal' },
+  { to: '/partner-portal', key: 'nav.partnerPortal' },
+  { to: '/admin', key: 'nav.adminPortal' },
   { to: '/trading', key: 'nav.marketplace' },
   { to: '/services', key: 'nav.services' },
   { to: '/booking', key: 'nav.booking' },

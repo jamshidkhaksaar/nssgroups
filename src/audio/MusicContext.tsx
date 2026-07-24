@@ -1,11 +1,5 @@
-import React, { createContext, useContext, useEffect, useRef, useState } from 'react'
-
-interface MusicContextType {
-  isPlaying: boolean
-  toggleMusic: () => void
-}
-
-const MusicContext = createContext<MusicContextType | null>(null)
+import React, { useEffect, useRef, useState } from 'react'
+import { MusicContext } from './useMusic'
 
 export function MusicProvider({ children }: { children: React.ReactNode }) {
   const [isPlaying, setIsPlaying] = useState(false)
@@ -47,10 +41,4 @@ export function MusicProvider({ children }: { children: React.ReactNode }) {
       {children}
     </MusicContext.Provider>
   )
-}
-
-export function useMusic() {
-  const ctx = useContext(MusicContext)
-  if (!ctx) throw new Error('useMusic must be used within MusicProvider')
-  return ctx
 }
