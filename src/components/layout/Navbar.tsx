@@ -17,18 +17,18 @@ const PRIMARY_LINKS: NavItem[] = [
   { to: '/', key: 'nav.home' },
   { to: '/trading', key: 'nav.marketplace' },
   { to: '/services', key: 'nav.services' },
-  { to: '/client-portal', key: 'nav.clientPortal' },
-  { to: '/partner-portal', key: 'nav.partnerPortal' },
-  { to: '/admin', key: 'nav.adminPortal' },
+  { to: '/login/client', key: 'nav.clientPortal' },
+  { to: '/login/partner', key: 'nav.partnerPortal' },
+  { to: '/login/admin', key: 'nav.adminPortal' },
   { to: '/about', key: 'nav.company' },
   { to: '/contact', key: 'nav.contact' },
 ]
 
 const ALL_MOBILE_LINKS: NavItem[] = [
   { to: '/', key: 'nav.home' },
-  { to: '/client-portal', key: 'nav.clientPortal' },
-  { to: '/partner-portal', key: 'nav.partnerPortal' },
-  { to: '/admin', key: 'nav.adminPortal' },
+  { to: '/login/client', key: 'nav.clientPortal' },
+  { to: '/login/partner', key: 'nav.partnerPortal' },
+  { to: '/login/admin', key: 'nav.adminPortal' },
   { to: '/trading', key: 'nav.marketplace' },
   { to: '/services', key: 'nav.services' },
   { to: '/booking', key: 'nav.booking' },
@@ -39,6 +39,7 @@ const ALL_MOBILE_LINKS: NavItem[] = [
   { to: '/tracking', key: 'nav.tracking' },
   { to: '/contact', key: 'nav.contact' },
 ]
+
 
 export default function Navbar() {
   const { t } = useI18n()

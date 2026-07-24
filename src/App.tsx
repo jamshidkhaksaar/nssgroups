@@ -16,6 +16,9 @@ import ClientPortal from './pages/ClientPortal'
 import PartnerPortal from './pages/PartnerPortal'
 import Login from './pages/Login'
 import Register from './pages/Register'
+import AdminLogin from './pages/AdminLogin'
+import ClientLogin from './pages/ClientLogin'
+import PartnerLogin from './pages/PartnerLogin'
 
 export default function App() {
   return (
@@ -37,8 +40,13 @@ export default function App() {
         <Route path="/client-portal" element={<ClientPortal />} />
         <Route path="/partner-portal" element={<PartnerPortal />} />
       </Route>
+      {/* Auth pages — outside Layout (no navbar/footer) */}
       <Route path="/login" element={<Login />} />
+      <Route path="/login/admin" element={<AdminLogin />} />
+      <Route path="/login/client" element={<ClientLogin />} />
+      <Route path="/login/partner" element={<PartnerLogin />} />
       <Route path="/register" element={<Register />} />
     </Routes>
   )
 }
+

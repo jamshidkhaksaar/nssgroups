@@ -530,6 +530,35 @@ export const en = {
   'auth.loginLink': 'Sign in',
   'auth.registerLink': 'Sign up',
 
+  // ── portal login pages ──
+  'auth.admin.title': 'NSS Administration Login',
+  'auth.admin.sub': 'Restricted access — authorized NSS staff only.',
+  'auth.admin.badge': 'ADMIN CONTROL ROOM',
+  'auth.admin.submitBtn': 'Sign In to Admin Portal',
+  'auth.admin.sideHeadline': 'CENTRALIZED CONTROL.\nEVERY OPERATION.',
+  'auth.admin.sideSub': 'The NSS administrative backbone — moderate partners, clients, orders, and logistics in real time.',
+
+  'auth.client.title': 'Corporate Client Sign In',
+  'auth.client.sub': 'Access your cargo shipments, invoices, and logistics workspace.',
+  'auth.client.badge': 'CLIENT PORTAL',
+  'auth.client.submitBtn': 'Sign In to Client Portal',
+  'auth.client.registerPrompt': "Don't have an account?",
+  'auth.client.registerLink': 'Register your organization',
+  'auth.client.sideHeadline': 'YOUR CARGO,\nOUR RESPONSIBILITY.',
+  'auth.client.sideSub': 'Track shipments, place cargo orders, and manage your logistics documentation — all in one place.',
+  'auth.client.socialPrompt': 'Or sign in with',
+
+  'auth.partner.title': 'Logistics Partner Sign In',
+  'auth.partner.sub': 'Access your marketplace listings, bids, and gamified partner profile.',
+  'auth.partner.badge': 'PARTNER PORTAL',
+  'auth.partner.submitBtn': 'Sign In to Partner Portal',
+  'auth.partner.registerPrompt': 'Want to become an NSS partner?',
+  'auth.partner.registerLink': 'Apply for partnership',
+  'auth.partner.sideHeadline': 'GROW YOUR\nLOGISTICS BUSINESS.',
+  'auth.partner.sideSub': 'List freight wagons, trucks, warehouses and services. Earn XP, level up, and win cargo contracts.',
+  'auth.partner.xpBadge': 'Earn XP & Level Up',
+  'auth.partner.xpDesc': 'Every successful delivery increases your Partner Level and unlocks better platform benefits.',
+
   // ── nav additions ──
   'nav.adminPortal': 'Admin Portal',
   'nav.clientPortal': 'Client Portal',
