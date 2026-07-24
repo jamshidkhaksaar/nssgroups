@@ -1,8 +1,9 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link, NavLink } from 'react-router'
-import { Menu, Moon, Phone, Sun, X } from 'lucide-react'
+import { Menu, Moon, Phone, Sun, X, Volume2, VolumeX } from 'lucide-react'
 import { useI18n } from '@/i18n/i18n'
 import { useTheme } from '@/theme/theme'
+import { useMusic } from '@/audio/MusicContext'
 import type { TranslationKey } from '@/i18n/translations/en'
 import LanguageSwitcher from '@/components/LanguageSwitcher'
 import { EMAIL_1, PHONE_1 } from '@/data/content'
@@ -38,6 +39,7 @@ const ALL_MOBILE_LINKS: NavItem[] = [
 export default function Navbar() {
   const { t } = useI18n()
   const { theme, toggle } = useTheme()
+  const { isPlaying, toggleMusic } = useMusic()
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
   const progressRef = useRef<HTMLDivElement>(null)
@@ -183,6 +185,17 @@ export default function Navbar() {
               </span>
             </button>
 
+            {/* Music toggle — compact icon only */}
+            <button
+              onClick={toggleMusic}
+              aria-label="Toggle Background Music"
+              className="flex h-8 w-8 items-center justify-center rounded-full border border-[rgba(var(--gold-rgb),0.25)] bg-[rgba(var(--gold-rgb),0.06)] text-[rgba(var(--text-rgb),0.75)] transition-all hover:border-[rgba(var(--gold-rgb),0.50)] hover:text-[rgb(var(--gold-rgb))] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#e8c268]"
+            >
+              <span key={isPlaying ? 'playing' : 'paused'} className="nss-swap block">
+                {isPlaying ? <Volume2 size={14} /> : <VolumeX size={14} />}
+              </span>
+            </button>
+
             {/* Language Switcher — flag + code compact pill */}
             <LanguageSwitcher />
 
@@ -212,6 +225,13 @@ export default function Navbar() {
               className="p-1.5 text-[rgba(var(--text-rgb),0.70)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#e8c268] rounded-sm"
             >
               {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
+            </button>
+            <button
+              onClick={toggleMusic}
+              aria-label="Toggle Background Music"
+              className="p-1.5 text-[rgba(var(--text-rgb),0.70)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#e8c268] rounded-sm"
+            >
+              {isPlaying ? <Volume2 size={18} /> : <VolumeX size={18} />}
             </button>
             <button
               id="navbar-mobile-menu-toggle"
