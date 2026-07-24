@@ -7,6 +7,7 @@ import { ClientDashboard } from '@/components/portals/ClientDashboard';
 import { StatusBadge } from '@/components/portals/StatusBadge';
 import type { ClientCategory } from '@/types/portal';
 import { Building2 } from 'lucide-react';
+import DashboardShell from '@/components/layout/DashboardShell';
 
 export default function ClientPortal() {
   const { t } = useI18n();
@@ -30,7 +31,8 @@ export default function ClientPortal() {
   };
 
   return (
-    <div className="min-h-screen bg-[var(--bg)] text-[rgb(var(--text-rgb))] pt-24 pb-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto space-y-8">
+    <DashboardShell accentColor="sky" portalLabel="Client Portal">
+    <div className="bg-[var(--bg)] text-[rgb(var(--text-rgb))] pb-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto space-y-8 pt-8">
       {/* Header Banner */}
       <div className="relative p-6 sm:p-8 rounded-2xl bg-gradient-to-r from-slate-950 via-slate-900 to-purple-950/50 border border-slate-800 shadow-2xl overflow-hidden">
         <div className="absolute top-0 end-0 -mt-8 -me-8 w-64 h-64 rounded-full bg-amber-500/10 blur-3xl pointer-events-none" />
@@ -91,5 +93,6 @@ export default function ClientPortal() {
         />
       )}
     </div>
+    </DashboardShell>
   );
 }

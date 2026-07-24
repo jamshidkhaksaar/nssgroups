@@ -7,6 +7,7 @@ import { PartnerBids } from '@/components/portals/PartnerBids';
 import { StatusBadge } from '@/components/portals/StatusBadge';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import { Award, Store, Gavel, Users } from 'lucide-react';
+import DashboardShell from '@/components/layout/DashboardShell';
 
 export default function PartnerPortal() {
   const { t } = useI18n();
@@ -18,7 +19,8 @@ export default function PartnerPortal() {
   const currentPartner = store.partners.find((p) => p.id === activePartnerId) || store.partners[0];
 
   return (
-    <div className="min-h-screen bg-[var(--bg)] text-[rgb(var(--text-rgb))] pt-24 pb-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto space-y-8">
+    <DashboardShell accentColor="emerald" portalLabel="Partner Portal">
+    <div className="bg-[var(--bg)] text-[rgb(var(--text-rgb))] pb-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto space-y-8 pt-8">
       {/* Header Banner */}
       <div className="relative p-6 sm:p-8 rounded-2xl bg-gradient-to-r from-amber-950/50 via-slate-900 to-purple-950/60 border border-slate-800 shadow-2xl overflow-hidden">
         <div className="absolute top-0 end-0 -mt-8 -me-8 w-64 h-64 rounded-full bg-amber-500/10 blur-3xl pointer-events-none" />
@@ -116,5 +118,6 @@ export default function PartnerPortal() {
         </Tabs>
       )}
     </div>
+    </DashboardShell>
   );
 }

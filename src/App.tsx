@@ -23,6 +23,7 @@ import PartnerLogin from './pages/PartnerLogin'
 export default function App() {
   return (
     <Routes>
+      {/* Public marketing pages — inside Layout (navbar + footer) */}
       <Route element={<Layout />}>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
@@ -36,11 +37,12 @@ export default function App() {
         <Route path="/projects" element={<Projects />} />
         <Route path="/tracking" element={<Tracking />} />
         <Route path="/portal" element={<Portal />} />
-        <Route path="/admin" element={<AdminPortal />} />
-        <Route path="/client-portal" element={<ClientPortal />} />
-        <Route path="/partner-portal" element={<PartnerPortal />} />
       </Route>
-      {/* Auth pages — outside Layout (no navbar/footer) */}
+      {/* Dedicated portal dashboards — NO navbar/footer */}
+      <Route path="/admin" element={<AdminPortal />} />
+      <Route path="/client-portal" element={<ClientPortal />} />
+      <Route path="/partner-portal" element={<PartnerPortal />} />
+      {/* Auth login pages — NO navbar/footer */}
       <Route path="/login" element={<Login />} />
       <Route path="/login/admin" element={<AdminLogin />} />
       <Route path="/login/client" element={<ClientLogin />} />
