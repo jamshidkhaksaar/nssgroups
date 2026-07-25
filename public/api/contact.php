@@ -67,9 +67,12 @@ $adminBody = '
       <td align="center">
         <table width="600" border="0" cellspacing="0" cellpadding="0" style="background-color:#16102b; border: 1px solid rgba(232, 194, 104, 0.3); border-radius: 16px; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.5);">
           
-          <!-- Header Banner -->
+          <!-- Header Banner with Brand Logo -->
           <tr>
-            <td style="background: linear-gradient(135deg, #1d1233 0%, #0e0a1e 100%); padding: 30px; text-align: center; border-bottom: 2px solid #e8c268;">
+            <td style="background: linear-gradient(135deg, #1d1233 0%, #0e0a1e 100%); padding: 32px 30px; text-align: center; border-bottom: 2px solid #e8c268;">
+              <a href="https://www.nssgroupint.com" target="_blank" style="text-decoration: none; display: inline-block;">
+                <img src="https://www.nssgroupint.com/logo.png" alt="NSS Group Logo" width="70" height="70" style="display: block; margin: 0 auto 12px auto; width: 70px; height: 70px; object-fit: contain; border: 0;" />
+              </a>
               <h1 style="margin: 0; color: #e8c268; font-size: 24px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;">
                 NSS INTERNATIONAL GROUP
               </h1>
@@ -157,9 +160,12 @@ $clientBody = '
       <td align="center">
         <table width="600" border="0" cellspacing="0" cellpadding="0" style="background-color:#16102b; border: 1px solid rgba(232, 194, 104, 0.3); border-radius: 16px; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.5);">
           
-          <!-- Header Banner -->
+          <!-- Header Banner with Brand Logo -->
           <tr>
             <td style="background: linear-gradient(135deg, #1d1233 0%, #0e0a1e 100%); padding: 35px 30px; text-align: center; border-bottom: 2px solid #e8c268;">
+              <a href="https://www.nssgroupint.com" target="_blank" style="text-decoration: none; display: inline-block;">
+                <img src="https://www.nssgroupint.com/logo.png" alt="NSS Group Logo" width="75" height="75" style="display: block; margin: 0 auto 14px auto; width: 75px; height: 75px; object-fit: contain; border: 0;" />
+              </a>
               <h1 style="margin: 0; color: #e8c268; font-size: 26px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;">
                 NSS GROUP
               </h1>
