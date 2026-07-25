@@ -1,6 +1,7 @@
 import type { TranslationKey } from './en'
+import { portfolioZh } from './portfolioLocales'
 
-export const zh: Record<TranslationKey, string> = {
+const zhBase = {
   'projects.video.1': "NSS 集团项目运营与区域物流总览",
   'projects.video.2': "港口装载报告：小麦粉、葵花籽油与水泥物资",
   'projects.video.3': "1号港口运营：小麦粉、白糖与化肥物资装载",
@@ -1025,4 +1026,6 @@ export const zh: Record<TranslationKey, string> = {
   'auth.partner.sideSub': '发布货运车厢、卡车、仓库和服务。赚取XP、升级并赢得货运合同。',
   'auth.partner.xpBadge': '赚取XP并升级',
   'auth.partner.xpDesc': '每次成功交付都会提升您的合作伙伴级别，并解锁更好的平台福利。',
-}
+}
+
+export const zh: Record<TranslationKey, string> = { ...zhBase, ...portfolioZh }

@@ -1,6 +1,7 @@
 import type { TranslationKey } from './en'
+import { portfolioRu } from './portfolioLocales'
 
-export const ru: Record<TranslationKey, string> = {
+const ruBase = {
   // ── nav ──
   'projects.video.1': "Обзор логистических операций и проектов группы NSS",
   'projects.video.2': "Отчет по погрузке в порту: пшеничная мука, подсолнечное масло и цемент",
@@ -1096,4 +1097,6 @@ export const ru: Record<TranslationKey, string> = {
   'auth.partner.xpBadge': 'Зарабатывайте XP и повышайте уровень',
   'auth.partner.xpDesc': 'Каждая успешная доставка повышает ваш уровень партнера и открывает лучшие преимущества платформы.',
 }
+
+export const ru: Record<TranslationKey, string> = { ...ruBase, ...portfolioRu }
 

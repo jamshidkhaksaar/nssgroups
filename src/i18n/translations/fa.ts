@@ -1,6 +1,7 @@
 import type { TranslationKey } from './en'
+import { portfolioFa } from './portfolioLocales'
 
-export const fa: Record<TranslationKey, string> = {
+const faBase = {
   // ── nav ──
   'projects.video.1': "گزارش عمومی عملیات و خدمات لوجستیکی گروپ NSS",
   'projects.video.2': "گزارش بارگیری پورت: آرد گندم، روغن گل آفتاب‌پرست و سمنت",
@@ -1106,4 +1107,6 @@ export const fa: Record<TranslationKey, string> = {
   'auth.partner.xpBadge': 'XP کسب کنید و سطح بگیرید',
   'auth.partner.xpDesc': 'هر تحویل موفق، سطح شریک شما را بالا می‌برد و مزایای بهتر پلتفرم را باز می‌کند.',
 }
+
+export const fa: Record<TranslationKey, string> = { ...faBase, ...portfolioFa }
 

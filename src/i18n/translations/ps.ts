@@ -1,6 +1,7 @@
 import type { TranslationKey } from './en'
+import { portfolioPs } from './portfolioLocales'
 
-export const ps: Record<TranslationKey, string> = {
+const psBase = {
   // ── nav ──
   'projects.video.1': "د NSS ګروپ د عملیاتو او لوجستیکي خدماتو عمومي راپور",
   'projects.video.2': "د بندر د بارګیرۍ راپور: د غنمو اوړه، د لمرګلي غوړي او سمنټ",
@@ -1106,4 +1107,6 @@ export const ps: Record<TranslationKey, string> = {
   'auth.partner.xpBadge': 'XP وګټئ او کچه لوړه کړئ',
   'auth.partner.xpDesc': 'هره بریالۍ سپارنه ستاسو د شریک کچه لوړوي او د پلتفرم غوره ګټې پرانیزي.',
 }
+
+export const ps: Record<TranslationKey, string> = { ...psBase, ...portfolioPs }
 

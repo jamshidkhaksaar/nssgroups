@@ -19,6 +19,7 @@ import Register from './pages/Register'
 import AdminLogin from './pages/AdminLogin'
 import ClientLogin from './pages/ClientLogin'
 import PartnerLogin from './pages/PartnerLogin'
+import CompanyPortfolio from './pages/CompanyPortfolio'
 
 export default function App() {
   return (
@@ -27,6 +28,7 @@ export default function App() {
       <Route element={<Layout />}>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
+        <Route path="/company-portfolio" element={<CompanyPortfolio />} />
         <Route path="/services" element={<Services />} />
         <Route path="/fleet" element={<Fleet />} />
         <Route path="/network" element={<Network />} />

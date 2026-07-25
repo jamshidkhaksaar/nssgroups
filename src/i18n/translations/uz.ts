@@ -1,6 +1,7 @@
 import type { TranslationKey } from './en'
+import { portfolioUz } from './portfolioLocales'
 
-export const uz: Record<TranslationKey, string> = {
+const uzBase = {
   'projects.video.1': "NSS Group logistika operatsiyalari va loyihalar umumiy sharhi",
   'projects.video.2': "Port yuklash hisoboti: bug'doy uni, kungaboqar yog'i va sement",
   'projects.video.3': "1-sonli port operatsiyalari: bug'doy uni, shakar va o'g'itlar",
@@ -1025,4 +1026,6 @@ export const uz: Record<TranslationKey, string> = {
   'auth.partner.sideSub': 'Vagonlar, yuk mashinalari, omborlar va xizmatlarni joylashtiring. XP yig\'ing, darajangizni oshiring va yuk shartnomalari yuting.',
   'auth.partner.xpBadge': 'XP yig\'ing va darajangizni oshiring',
   'auth.partner.xpDesc': 'Har bir muvaffaqiyatli yetkazib berish hamkor darajangizni oshiradi va yaxshiroq platforma imtiyozlarini ochadi.',
-}
+}
+
+export const uz: Record<TranslationKey, string> = { ...uzBase, ...portfolioUz }

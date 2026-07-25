@@ -118,12 +118,13 @@ export const en = {
 
   // ── about page ──
   'about.tag': 'ABOUT NSS',
-  'about.heading': 'Built on the corridor since 2007.',
+  'about.heading': 'A documented logistics heritage, coordinated for what comes next.',
   'about.sub':
-    'Nawi Samim Samir International Transit and Freight Forwarding Ltd — a family-led Afghan company that grew from border-crossing trucking into one of the region’s largest private rail fleets.',
-  'about.storyTag': 'OUR STORY',
-  'about.storyHeading': 'From border crossings to continental corridors.',
-  'about.storySub': 'Eighteen years of owned assets, border offices and hard-won corridor expertise.',
+    'NSS brings together freight-union roots dating to 2000, formally registered companies, and practical experience across transport, logistics, procurement, construction, and regional trade.',
+  'about.storyTag': '2000–2026',
+  'about.storyHeading': 'Built through service, formalized through experience.',
+  'about.storySub':
+    'The supplied corporate record traces NSS from organized freight and driver coordination to a six-company group and an international B2B platform under development.',
   'about.tl1.year': '2007',
   'about.tl1.title': 'Founded in Kabul',
   'about.tl1.desc': 'Road transport between Afghan provinces and the first border crossings.',
@@ -145,16 +146,20 @@ export const en = {
   'about.mvvTag': 'MISSION · VISION · VALUES',
   'about.missionTitle': 'Mission',
   'about.mission':
-    'To deliver safe, timely, and cost-effective transportation and logistics services by leveraging our 18 years of experience and a vast nationwide network.',
+    'To coordinate responsible, transparent movement of goods from requirement to destination through disciplined sourcing, transport planning, human-reviewed compliance, and accountable communication.',
   'about.visionTitle': 'Vision',
   'about.vision':
-    'To be the most reliable and innovative logistics gateway in the region, connecting Afghanistan to the global economy with integrity and excellence.',
+    'To develop a trusted regional gateway where businesses can request products, procurement, and multimodal logistics through one professionally governed NSS relationship.',
   'about.val1Title': 'Integrity',
-  'about.val1': 'We build trust through transparency.',
-  'about.val2Title': 'Safety',
-  'about.val2': 'Protecting your cargo is our top priority.',
-  'about.val3Title': 'Reliability',
-  'about.val3': 'We deliver results, especially in challenging environments.',
+  'about.val1': 'We state what is documented, disclose the commercial process, and avoid promises before review and confirmation.',
+  'about.val2Title': 'Responsibility',
+  'about.val2': 'We protect cargo, documents, relationships, and decisions through clear ownership and human oversight.',
+  'about.val3Title': 'Coordination',
+  'about.val3': 'We connect requirements, suppliers, modes, borders, and delivery teams into one accountable workflow.',
+  'about.groupTag': 'GROUP COMPANIES',
+  'about.groupHeading': 'Six entities, one coordinated direction.',
+  'about.groupSub':
+    'The group structure reflects distinct stages and specialist capabilities in the documented NSS history.',
   'about.teamTag': 'LEADERSHIP',
   'about.teamHeading': 'The family behind the fleet.',
   'about.tm1.name': 'H. Abdul Ghafar Alemyar',
@@ -166,7 +171,14 @@ export const en = {
   'about.tm4.name': 'Said Rahman Waizi',
   'about.tm4.role': 'Transport Supervisor',
   'about.credTag': 'CREDENTIALS',
-  'about.credHeading': 'Licensed, registered, verified.',
+  'about.credHeading': 'A public record with clear boundaries.',
+  'about.credSub':
+    'The portfolio presents registration and institutional references from the supplied record. Transaction values, bank evidence, and purchase-order identifiers remain private.',
+  'about.portfolioTag': 'COMPANY PORTFOLIO',
+  'about.portfolioHeading': 'Explore the complete NSS corporate profile.',
+  'about.portfolioSub':
+    'Review the group history, company structure, capabilities, regional service model, documented relationships, governance approach, and digital roadmap.',
+  'about.portfolioCta': 'View Full Company Portfolio',
 
   // ── credentials (shared) ──
   'cred.license': 'MoIC Business License #752',
@@ -314,7 +326,7 @@ export const en = {
   'footer.tagline': 'Your Cargo, Our Responsibility.',
   'footer.taglineFa': 'از شما، برای شما',
   'footer.blurb':
-    'NSS International Group of Companies — transport, logistics and construction across Central Asia and Europe since 2007.',
+    'NSS International Group of Companies — coordinating transport, logistics, sourcing and construction with documented freight heritage dating to 2000.',
   'footer.pages': 'Pages',
   'footer.contact': 'Contact',
   'footer.creds': 'Credentials',
@@ -1113,6 +1125,226 @@ export const en = {
   'portal.status.unregistered': 'Unregistered',
   'portal.status.draft': 'Draft',
   'portal.status.paused': 'Paused',
+
+  // ── company portfolio ──
+  'portfolio.tag': 'NSS COMPANY PORTFOLIO · 2000–2026',
+  'portfolio.heading': 'A regional enterprise built from the movement of real goods.',
+  'portfolio.lead':
+    'This profile brings together the documented evolution, operating companies, service capabilities, institutional work, and responsible digital direction of NSS Group of Companies.',
+  'portfolio.statusNote':
+    'Corporate history and references are based on the supplied company record. Current availability, rates, capacity, licences, and relationship status are confirmed case by case.',
+  'portfolio.nav.label': 'Company portfolio sections',
+  'portfolio.nav.overview': 'Overview',
+  'portfolio.nav.history': 'History',
+  'portfolio.nav.group': 'Group companies',
+  'portfolio.nav.capabilities': 'Capabilities',
+  'portfolio.nav.record': 'Corporate record',
+  'portfolio.nav.roadmap': 'Roadmap',
+  'portfolio.fact.heritage': 'Freight-coordination heritage',
+  'portfolio.fact.entities': 'Companies in the documented group structure',
+  'portfolio.fact.relationships': 'Selected organizations in the historical record',
+  'portfolio.fact.languages': 'Languages supported by the platform',
+  'portfolio.cta.explore': 'Explore the portfolio',
+  'portfolio.overview.tag': 'CORPORATE OVERVIEW',
+  'portfolio.overview.title': 'From freight coordination to an integrated B2B group.',
+  'portfolio.overview.body1':
+    'NSS Group of Companies traces its operating heritage to the Tamim Sahib Ansar Freight Union in 2000. The group developed through formal freight forwarding, specialist logistics, construction and road-building companies, and later regional trade and transit coordination.',
+  'portfolio.overview.body2':
+    'Today, NSS is organizing that experience into a multilingual, RFQ-led platform for verified products, procurement requests, multimodal transport, shipment records, documents, and managed business relationships.',
+  'portfolio.overview.principle':
+    'One accountable path from requirement review to confirmed sourcing, movement, and delivery.',
+  'portfolio.image.operationsAlt':
+    'Industrial cargo staged for coordinated transport operations',
+  'portfolio.image.warehouseAlt':
+    'Bagged cargo stored inside a logistics warehouse',
+  'portfolio.image.caption':
+    'Operational imagery is used to illustrate the group’s cargo-coordination context; service scope is confirmed for each request.',
+  'portfolio.timeline.tag': 'GROUP EVOLUTION',
+  'portfolio.timeline.title': 'A documented operating history across more than two decades.',
+  'portfolio.timeline.lead':
+    'The milestones below summarize the supplied corporate record without publishing private transaction evidence or unsupported performance claims.',
+  'portfolio.timeline.2000.title': 'Freight-union heritage',
+  'portfolio.timeline.2000.desc':
+    'Tamim Sahib Ansar Freight Union organized freight and driver coordination inside Afghanistan, establishing the service roots later carried into the NSS group.',
+  'portfolio.timeline.2010.title': 'Formal freight-forwarding company',
+  'portfolio.timeline.2010.desc':
+    'Nawi Samim Samir International Transit and Freight Forwarding Limited was formally established, creating a registered base for domestic and international logistics work.',
+  'portfolio.timeline.2013.title': 'Construction capability added',
+  'portfolio.timeline.2013.desc':
+    'Jabbar Peyman Construction and Road Building Company expanded the group record into construction, roadwork, equipment, and supporting logistics.',
+  'portfolio.timeline.2015.title': 'Specialist logistics expansion',
+  'portfolio.timeline.2015.desc':
+    'Roshangaran Haqiq Logistics Services joined the documented structure, strengthening specialist logistics and operational coordination.',
+  'portfolio.timeline.2016.title': 'Institutional and telecom logistics',
+  'portfolio.timeline.2016.desc':
+    'The record documents continued cargo work and later telecommunications logistics, including antennas, site equipment, vehicles, personnel, and technical support.',
+  'portfolio.timeline.2024.title': 'Regional trade and transit',
+  'portfolio.timeline.2024.desc':
+    'The group broadened sourcing and corridor coordination across Afghanistan, Central Asia, South Asia, Iran, the UAE, and wider regional markets.',
+  'portfolio.timeline.2026.title': 'Coordinated NSS platform',
+  'portfolio.timeline.2026.desc':
+    'NSS is consolidating group capabilities and developing a multilingual B2B platform for marketplace discovery, RFQs, transport requests, documents, and shipment visibility.',
+  'portfolio.companies.tag': 'GROUP STRUCTURE',
+  'portfolio.companies.title': 'Six companies shaped by different operating needs.',
+  'portfolio.companies.lead':
+    'Each name below is part of the supplied corporate history. Legal status, active scope, and contracting entity are confirmed during onboarding and quotation.',
+  'portfolio.company.1.name': 'Tamim Sahib Ansar Freight Union',
+  'portfolio.company.1.desc':
+    'The group’s documented 2000 heritage in organized freight and driver coordination within Afghanistan.',
+  'portfolio.company.2.name': 'Tamim Sahib Transport',
+  'portfolio.company.2.desc':
+    'A transport-focused entity associated with road movement and practical freight operations.',
+  'portfolio.company.3.name':
+    'Nawi Samim Samir International Transit and Freight Forwarding Limited',
+  'portfolio.company.3.desc':
+    'The formally established freight-forwarding company at the center of documented domestic and international logistics work.',
+  'portfolio.company.4.name': 'Jabbar Peyman Construction and Road Building Company',
+  'portfolio.company.4.desc':
+    'A specialist company for construction, road-building, equipment, and related operational support.',
+  'portfolio.company.5.name': 'Roshangaran Haqiq Logistics Services',
+  'portfolio.company.5.desc':
+    'A logistics-services company recorded as part of the group’s specialist expansion.',
+  'portfolio.company.6.name': 'NSS International Group of Companies',
+  'portfolio.company.6.desc':
+    'The coordinating group identity connecting transport, logistics, sourcing, trade, construction, and the digital roadmap.',
+  'portfolio.capabilities.tag': 'CORE CAPABILITIES',
+  'portfolio.capabilities.title': 'Practical coordination across cargo, corridors, and commercial stages.',
+  'portfolio.capabilities.lead':
+    'NSS reviews each assignment for route, equipment, regulatory, supplier, schedule, and capacity fit before a commercial commitment is made.',
+  'portfolio.capability.1.title': 'Multimodal transport',
+  'portfolio.capability.1.desc':
+    'Road, rail, air, and sea requests coordinated by mode, equipment, route, cargo profile, and confirmed provider capacity.',
+  'portfolio.capability.2.title': 'Procurement and sourcing',
+  'portfolio.capability.2.desc':
+    'Requirement clarification, supplier outreach, offer comparison, and documented quote revisions without public checkout or invented stock.',
+  'portfolio.capability.3.title': 'Customs coordination',
+  'portfolio.capability.3.desc':
+    'Document and border-process coordination with qualified parties; decisions, duties, licences, and clearance remain subject to authorities.',
+  'portfolio.capability.4.title': 'Warehousing and handling',
+  'portfolio.capability.4.desc':
+    'Storage and handling requests planned around location, cargo condition, volume, duration, and operational requirements.',
+  'portfolio.capability.5.title': 'Construction support',
+  'portfolio.capability.5.desc':
+    'Documented group capability in road-building, equipment, construction materials, and related project logistics.',
+  'portfolio.regional.tag': 'REGIONAL SERVICE MODEL',
+  'portfolio.regional.title': 'Afghanistan-centered, corridor-aware, partner enabled.',
+  'portfolio.regional.lead':
+    'The group record describes work and commercial connections across nearby sourcing and transit markets. Every live corridor is revalidated before quotation.',
+  'portfolio.regional.1.title': 'Afghanistan operations',
+  'portfolio.regional.1.desc':
+    'Domestic freight coordination, provincial delivery, institutional cargo, construction support, and border-facing logistics.',
+  'portfolio.regional.2.title': 'Regional sourcing and transit',
+  'portfolio.regional.2.desc':
+    'Commercial coordination involving Uzbekistan, Tajikistan, Turkmenistan, Kazakhstan, Pakistan, India, Iran, the UAE, and Russia.',
+  'portfolio.regional.3.title': 'Source-to-destination control',
+  'portfolio.regional.3.desc':
+    'Requirements, handoffs, transport legs, documents, exceptions, and delivery evidence are managed as one traceable case.',
+  'portfolio.model.tag': 'HOW NSS WORKS',
+  'portfolio.model.title': 'An RFQ-led process with confirmation before commitment.',
+  'portfolio.model.lead':
+    'Submitting a request starts review; it does not reserve capacity, create an order, or guarantee a rate.',
+  'portfolio.model.1.title': '1. Requirement review',
+  'portfolio.model.1.desc':
+    'NSS records the product, cargo, origin, destination, timing, specifications, and documents needed to understand the request.',
+  'portfolio.model.2.title': '2. Clarification and compliance',
+  'portfolio.model.2.desc':
+    'Staff identify missing information, regulated-goods requirements, destination restrictions, and required human approvals.',
+  'portfolio.model.3.title': '3. Sourcing and planning',
+  'portfolio.model.3.desc':
+    'Qualified suppliers, routes, modes, equipment, handlers, and operational assumptions are compared for the case.',
+  'portfolio.model.4.title': '4. Versioned quotation',
+  'portfolio.model.4.desc':
+    'NSS issues a time-limited quote showing scope, currency, Incoterms where relevant, assumptions, exclusions, and revisions.',
+  'portfolio.model.5.title': '5. Capacity confirmation',
+  'portfolio.model.5.desc':
+    'Only authorized staff confirm supplier, carrier, schedule, equipment, and capacity after quote acceptance and required approvals.',
+  'portfolio.model.6.title': '6. Order and delivery record',
+  'portfolio.model.6.desc':
+    'A confirmed case becomes an order and, when applicable, one or more shipment legs with events, documents, and delivery evidence.',
+  'portfolio.model.note':
+    'NSS does not present inquiry forms as binding orders. There is no public online checkout, escrow, autonomous customs clearance, or guaranteed real-time tracking.',
+  'portfolio.relationships.tag': 'DOCUMENTED RELATIONSHIPS',
+  'portfolio.relationships.title': 'Selected organizations appearing in the supplied historical record.',
+  'portfolio.relationships.lead':
+    'The public profile summarizes categories of documented logistics work while withholding transaction values, bank records, and purchase-order identifiers.',
+  'portfolio.relationships.disclaimer':
+    'Logos identify organizations named in historical company records. Their display does not imply a current contract, endorsement, partnership, certification, or affiliation. Current relationship status must be confirmed independently.',
+  'portfolio.logoAltSuffix': 'organization logo',
+  'portfolio.relationship.unicef.period': 'DOCUMENTED · 2010–2012',
+  'portfolio.relationship.unicef.desc':
+    'Records include transport of educational materials and a later vehicle-related logistics proposal.',
+  'portfolio.relationship.wfp.period': 'DOCUMENTED · 2011–2020',
+  'portfolio.relationship.wfp.desc':
+    'Records describe participation in and acceptance of food and humanitarian transport work across several periods.',
+  'portfolio.relationship.icrc.period': 'DOCUMENTED · 2010',
+  'portfolio.relationship.icrc.desc':
+    'Records describe provincial movement of pipes and hygiene-related humanitarian cargo.',
+  'portfolio.relationship.fao.period': 'DOCUMENTED · 2012–2016',
+  'portfolio.relationship.fao.desc':
+    'Records describe agricultural logistics and related cargo movement.',
+  'portfolio.relationship.acted.period': 'DOCUMENTED · 2010',
+  'portfolio.relationship.acted.desc':
+    'Records describe repeated movements of humanitarian cargo.',
+  'portfolio.relationship.dacaar.period': 'DOCUMENTED · 2020',
+  'portfolio.relationship.dacaar.desc':
+    'Records describe PE-pipe transport from Kabul to Kunduz.',
+  'portfolio.relationship.awcc.period': 'DOCUMENTED · 2016–2023',
+  'portfolio.relationship.awcc.desc':
+    'Records describe logistics and later telecommunications-equipment support.',
+  'portfolio.relationship.roshan.period': 'DOCUMENTED · 2021–2023',
+  'portfolio.relationship.roshan.desc':
+    'Records describe telecommunications logistics, equipment, and operational support.',
+  'portfolio.records.tag': 'CORPORATE REFERENCES',
+  'portfolio.records.title': 'Identifiers preserved from the supplied company record.',
+  'portfolio.records.lead':
+    'These references support corporate due diligence but should be independently revalidated before contracting.',
+  'portfolio.record.1': 'Company registration reference: 15420',
+  'portfolio.record.2': 'Freight-forwarding licence reference: 752',
+  'portfolio.record.3': 'National procurement vendor reference: NPA57063936',
+  'portfolio.record.4': 'United Nations Global Marketplace reference: 891952',
+  'portfolio.record.5':
+    'Roshangaran Haqiq Logistics Services licence reference: D-77254',
+  'portfolio.record.6':
+    'Historical logistics-company and institutional work records retained for controlled review',
+  'portfolio.roadmap.tag': 'WHAT NSS IS BUILDING',
+  'portfolio.roadmap.title': 'A governed digital layer for regional B2B coordination.',
+  'portfolio.roadmap.lead':
+    'The roadmap converts manual relationships and records into structured workflows. It describes development direction, not an active service guarantee.',
+  'portfolio.roadmap.1.title': 'Curated multilingual marketplace',
+  'portfolio.roadmap.1.desc':
+    'Verified product discovery with translated information, manufacturer and sourcing fields, compliance review, and RFQ actions instead of checkout.',
+  'portfolio.roadmap.2.title': 'Procurement and transport workflows',
+  'portfolio.roadmap.2.desc':
+    'Structured requests for sourcing, road, rail, air, sea, customs, and warehousing with quote revisions and staff confirmation.',
+  'portfolio.roadmap.3.title': 'Shipment and document visibility',
+  'portfolio.roadmap.3.desc':
+    'Safe milestone tracking, modal-leg identifiers, source timestamps, and authorized access to versioned private documents.',
+  'portfolio.roadmap.4.title': 'Organization portals and governance',
+  'portfolio.roadmap.4.desc':
+    'Separate customer, supplier, operations, finance, content, and administration workspaces with membership, KYC, and audit controls.',
+  'portfolio.roadmap.note':
+    'Platform functions will be released through staged acceptance. Tracking detail, provider coverage, rates, inventory, and capacity depend on verified data and integrations.',
+  'portfolio.governance.tag': 'RESPONSIBLE OPERATING BOUNDARIES',
+  'portfolio.governance.title': 'Clear disclosures are part of the service.',
+  'portfolio.governance.lead':
+    'The public platform is designed to distinguish verified facts, historical records, estimates, and confirmed commercial commitments.',
+  'portfolio.governance.1':
+    'Regulated and restricted goods remain unpublished or unquotable until relevant compliance requirements are configured and reviewed.',
+  'portfolio.governance.2':
+    'Sanctions, licence, debarment, customs, and restricted-party decisions require qualified human review.',
+  'portfolio.governance.3':
+    'Public tracking shows safe milestones only; sensitive cargo, party, position, document, and exception data require authorized access.',
+  'portfolio.governance.4':
+    'NSS’s commercial role is stated for accepted work so customers know the contracting party, invoice issuer, and applicable responsibility.',
+  'portfolio.values.tag': 'MISSION · VISION · VALUES',
+  'portfolio.values.title': 'The standards guiding the next chapter.',
+  'portfolio.cta.tag': 'WORK WITH NSS',
+  'portfolio.cta.title': 'Start with a requirement. Build the right route together.',
+  'portfolio.cta.lead':
+    'Share what you need sourced or moved. NSS will review the case, request clarification where needed, and respond with the appropriate next step.',
+  'portfolio.cta.contact': 'Discuss Your Requirement',
+  'portfolio.cta.marketplace': 'Explore Marketplace',
+  'portfolio.cta.transport': 'Request Transport',
 } as const
 
 export type TranslationKey = keyof typeof en

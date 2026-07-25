@@ -1,6 +1,7 @@
 import type { TranslationKey } from './en'
+import { portfolioAr } from './portfolioLocales'
 
-export const ar: Record<TranslationKey, string> = {
+const arBase = {
   'projects.video.1': "نظرة عامة على العمليات والخدمات اللوجستية لمجموعة NSS",
   'projects.video.2': "تقرير تحميل الميناء: دقيق القمح، زيت زهرة الشمس والأسمنت",
   'projects.video.3': "عمليات الميناء رقم ١: تحميل دقيق القمح، السكر والأسمدة الكيماوية",
@@ -1025,4 +1026,6 @@ export const ar: Record<TranslationKey, string> = {
   'auth.partner.sideSub': 'أدرج العربات والشاحنات والمستودعات والخدمات. اكسب XP وارتقِ بالمستويات واربح عقود الشحن.',
   'auth.partner.xpBadge': 'اكسب XP وارتقِ بالمستوى',
   'auth.partner.xpDesc': 'كل تسليم ناجح يرفع مستوى شريكك ويتيح مزايا أفضل للمنصة.',
-}
+}
+
+export const ar: Record<TranslationKey, string> = { ...arBase, ...portfolioAr }
