@@ -31,7 +31,7 @@ export const uz: Record<TranslationKey, string> = {
   'trust.2': '11 mamlakat bo‘ylab tranzit koridor',
   'trust.3': 'Bojxona rasmiylashtiruvi va imtiyoz sertifikatlari',
   'trust.4': 'Afg‘onistonda joyida amaliy ko‘mak',
-  'group.tag': 'NSS GROUPS OF COMPANIES',
+  'group.tag': 'NSS INTERNATIONAL GROUP OF COMPANIES',
   'group.heading': 'One group. Three divisions. Every corridor.',
   'group.sub': 'From rail transit to commodity trading to construction — NSS moves, trades and builds across Central Asia and beyond.',
   'group.d1.name': 'NSS Transit',

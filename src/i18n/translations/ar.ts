@@ -31,7 +31,7 @@ export const ar: Record<TranslationKey, string> = {
   'trust.2': '11 دولة تغطية الممر اللوجستي',
   'trust.3': 'تخليص جمركي شامل وشهادات إعفاء',
   'trust.4': 'دعم عملي على الأرض في أفغانستان',
-  'group.tag': 'NSS GROUPS OF COMPANIES',
+  'group.tag': 'NSS INTERNATIONAL GROUP OF COMPANIES',
   'group.heading': 'One group. Three divisions. Every corridor.',
   'group.sub': 'From rail transit to commodity trading to construction — NSS moves, trades and builds across Central Asia and beyond.',
   'group.d1.name': 'NSS Transit',

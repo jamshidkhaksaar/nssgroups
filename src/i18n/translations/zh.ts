@@ -31,7 +31,7 @@ export const zh: Record<TranslationKey, string> = {
   'trust.2': '覆盖 11 国的跨国物流走廊',
   'trust.3': '全程双清关与免税清关证书协助',
   'trust.4': '阿富汗本地实地地面保障团队',
-  'group.tag': 'NSS GROUPS OF COMPANIES',
+  'group.tag': 'NSS INTERNATIONAL GROUP OF COMPANIES',
   'group.heading': 'One group. Three divisions. Every corridor.',
   'group.sub': 'From rail transit to commodity trading to construction — NSS moves, trades and builds across Central Asia and beyond.',
   'group.d1.name': 'NSS Transit',

@@ -8,7 +8,7 @@ export const en = {
   'nav.contact': 'Contact',
   'nav.quote': 'Request a Quote',
   'nav.brand': 'NSS GROUP',
-  'nav.brandSub': 'OF COMPANIES',
+  'nav.brandSub': 'INTERNATIONAL GROUP OF COMPANIES',
   'nav.menu': 'Menu',
   'nav.close': 'Close',
   'nav.operations': 'Operations',
@@ -37,7 +37,7 @@ export const en = {
   'trust.4': 'UN, NGO & GOVERNMENT APPROVED',
 
   // ── home: group divisions ──
-  'group.tag': 'NSS GROUPS OF COMPANIES',
+  'group.tag': 'NSS INTERNATIONAL GROUP OF COMPANIES',
   'group.heading': 'One group. Three divisions. Every corridor.',
   'group.sub':
     'From rail transit to commodity trading to construction — NSS moves, trades and builds across Central Asia and beyond.',
@@ -115,7 +115,7 @@ export const en = {
   'about.tl5.title': 'Fleet passes 4,600 wagons',
   'about.tl5.desc': 'One of the largest privately owned rail fleets in the region.',
   'about.tl6.year': 'Today',
-  'about.tl6.title': 'NSS Groups of Companies',
+  'about.tl6.title': 'NSS International Group of Companies',
   'about.tl6.desc': 'Transport, logistics and construction under one roof — 11 countries, 34 provinces.',
   'about.mvvTag': 'MISSION · VISION · VALUES',
   'about.missionTitle': 'Mission',
@@ -288,7 +288,7 @@ export const en = {
   'footer.tagline': 'Your Cargo, Our Responsibility.',
   'footer.taglineFa': 'از شما، برای شما',
   'footer.blurb':
-    'NSS Groups of Companies — transport, logistics and construction across Central Asia and Europe since 2007.',
+    'NSS International Group of Companies — transport, logistics and construction across Central Asia and Europe since 2007.',
   'footer.pages': 'Pages',
   'footer.contact': 'Contact',
   'footer.creds': 'Credentials',

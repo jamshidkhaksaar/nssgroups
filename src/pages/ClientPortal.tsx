@@ -31,7 +31,7 @@ export default function ClientPortal() {
   };
 
   return (
-    <DashboardShell accentColor="sky" portalLabel="Client Portal">
+    <DashboardShell accentColor="amber" portalLabel="Client Portal">
     <div className="bg-[var(--bg)] text-[rgb(var(--text-rgb))] pb-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto space-y-8 pt-8">
       {/* Header Banner */}
       <div className="relative p-6 sm:p-8 rounded-2xl bg-gradient-to-r from-slate-950 via-slate-900 to-purple-950/50 border border-slate-800 shadow-2xl overflow-hidden">

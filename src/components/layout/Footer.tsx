@@ -169,7 +169,7 @@ export default function Footer() {
       <div className="border-t border-[rgba(var(--gold-rgb),0.10)]">
         <div className="mx-auto flex max-w-7xl flex-col items-start gap-4 px-6 py-6 md:flex-row md:items-center md:justify-between md:px-12">
           <p className="nss-mono text-[12px] text-[rgba(var(--text-rgb),0.55)]">
-            © {new Date().getFullYear()} NSS GROUPS OF COMPANIES — {t('footer.rights')}
+            © {new Date().getFullYear()} NSS INTERNATIONAL GROUP OF COMPANIES — {t('footer.rights')}
           </p>
           <p className="nss-mono text-[12px] text-[rgba(var(--gold-rgb),0.65)]">{t('shared.divisions')}</p>
           <button

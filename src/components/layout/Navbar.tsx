@@ -180,11 +180,11 @@ export default function Navbar() {
                 <span className="nss-display block text-base tracking-wide text-[rgb(var(--text-rgb))] group-hover:text-[rgb(var(--gold-rgb))] transition-colors">
                   NSS <span className="text-[rgb(var(--gold-rgb))]">GROUP</span>
                 </span>
-                <span className="nss-mono block text-[9px] tracking-[0.22em] text-[rgba(var(--text-rgb),0.45)] uppercase">
-                  OF COMPANIES
+                <span className="nss-mono block text-[9px] tracking-[0.14em] text-[rgba(var(--text-rgb),0.45)] uppercase">
+                  INTERNATIONAL GROUP OF COMPANIES
                 </span>
                 <span className="nss-mono block text-[9px] font-bold tracking-[0.22em] text-[rgb(var(--gold-rgb))] uppercase mt-0.5">
-                  NEW SAMIM SAMIR
+                  NAWI SAMIM SAMIR
                 </span>
               </span>
             </Link>
