@@ -7,11 +7,14 @@ export interface Track {
 }
 
 export const PLAYLIST: Track[] = [
-  { id: 't1', title: 'Welcome to NSS Group (Theme)', url: './background musics/Welcome to NSS Group.mp3' },
-  { id: 't2', title: 'Welcome to NSS Group Part 1', url: './background musics/Welcome to NSS Group (1).mp3' },
-  { id: 't3', title: 'Welcome to NSS Group Part 2', url: './background musics/Welcome to NSS Group (2).mp3' },
-  { id: 't4', title: 'Welcome to NSS Group Part 3', url: './background musics/Welcome to NSS Group (3).mp3' },
-  { id: 't5', title: 'Velvet Ledger', url: './background musics/Velvet Ledger.mp3' },
+  { id: 't1', title: 'Welcome to NSS Group', url: './background musics/Welcome to NSS Group.mp3' },
+  { id: 't2', title: 'Güneşin Altında', url: `./background musics/${encodeURIComponent('Gunesin Altunda.mp3')}` },
+  { id: 't3', title: 'Güneşin Altında II', url: `./background musics/${encodeURIComponent('Güneşin Altında2.mp3')}` },
+  { id: 't4', title: 'Kırmızı Kedi', url: `./background musics/${encodeURIComponent('Kırmızı Kedi.mp3')}` },
+  { id: 't5', title: 'Kırmızı Kedi II', url: `./background musics/${encodeURIComponent('Kırmızı Kedi2.mp3')}` },
+  { id: 't6', title: 'Kırmızı Kedi III', url: `./background musics/${encodeURIComponent('Kırmızı Kedi3.mp3')}` },
+  { id: 't7', title: 'Kırmızı Kedi IV', url: `./background musics/${encodeURIComponent('Kırmızı Kedi4.mp3')}` },
+  { id: 't8', title: 'Velvet Ledger', url: `./background musics/${encodeURIComponent('Velvet Ledger.mp3')}` },
 ]
 
 export interface MusicContextType {
