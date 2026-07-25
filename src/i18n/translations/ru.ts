@@ -176,6 +176,7 @@ export const ru: Record<TranslationKey, string> = {
   'cred.tin': 'ИНН 7008066016',
   'cred.vpin': 'ID поставщика NPA NPA57063936',
   'cred.ungm': 'UNGM ID 891952 — Basic & Level 1',
+    'cred.acci': 'Серебряное членство ACCI № KCCI-S-4038',
   'cred.members': 'Железнодорожная сеть СНГ · ACCI · AFFCO',
 
   // ── services page ──

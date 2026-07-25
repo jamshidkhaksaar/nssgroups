@@ -174,6 +174,7 @@ export const en = {
   'cred.tin': 'TIN 7008066016',
   'cred.vpin': 'NPA Vendor ID NPA57063936',
   'cred.ungm': 'UNGM ID 891952 — Basic & Level 1',
+    'cred.acci': 'ACCI Silver Membership #KCCI-S-4038',
   'cred.members': 'CIS Railway Network · ACCI · AFFCO',
 
   // ── services page ──

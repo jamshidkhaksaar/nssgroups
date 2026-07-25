@@ -27,6 +27,7 @@ const CREDS: TranslationKey[] = [
   'cred.tin',
   'cred.vpin',
   'cred.ungm',
+  'cred.acci',
   'cred.members',
 ]
 

@@ -176,6 +176,7 @@ export const ps: Record<TranslationKey, string> = {
   'cred.tin': 'TIN 7008066016',
   'cred.vpin': 'د NPA پلورونکي آیډي: NPA57063936',
   'cred.ungm': 'UNGM ID 891952 — بنسټیز او لومړۍ کچه',
+    'cred.acci': 'د ACCI د سوداګرۍ او پانګونې خونې سلور غړیتوب #KCCI-S-4038',
   'cred.members': 'د CIS د اورګاډي شبکه · ACCI · AFFCO',
 
   // ── services page ──

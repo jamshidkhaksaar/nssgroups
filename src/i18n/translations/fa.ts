@@ -176,6 +176,7 @@ export const fa: Record<TranslationKey, string> = {
   'cred.tin': 'TIN 7008066016',
   'cred.vpin': 'آیدی فروشندگی NPA: NPA57063936',
   'cred.ungm': 'UNGM ID 891952 — بنیادی و سطح 1',
+    'cred.acci': 'عضویت نقره‌ای اتاق تجارت و سرمایه‌گذاری (ACCI) #KCCI-S-4038',
   'cred.members': 'شبکه راه‌آهن CIS · ACCI · AFFCO',
 
   // ── services page ──
