@@ -13,6 +13,8 @@ import {
   CORE_SERVICES,
   EMAIL_1,
   EMAIL_2,
+  FACEBOOK,
+  INSTAGRAM,
   OFFICES,
   PHONE_1,
   PHONE_2,
@@ -229,9 +231,19 @@ export default function Contact() {
                     <a href={`tel:${PHONE_2.replace(/\s/g, '')}`} dir="ltr" className="mt-1 block text-sm hover:text-[rgb(var(--gold-rgb))]">
                       {PHONE_2}
                     </a>
-                    <a href={WHATSAPP} target="_blank" rel="noreferrer" className="mt-1 block text-sm text-[rgba(var(--gold-rgb),0.80)] hover:text-[rgb(var(--gold-rgb))]">
-                      WhatsApp →
-                    </a>
+                    <div className="mt-2.5 flex flex-wrap items-center gap-3">
+                      <a href={WHATSAPP} target="_blank" rel="noreferrer" className="text-xs text-[rgba(var(--gold-rgb),0.85)] hover:text-[rgb(var(--gold-rgb))]">
+                        WhatsApp →
+                      </a>
+                      <span className="text-xs text-[rgba(var(--text-rgb),0.3)]">·</span>
+                      <a href={FACEBOOK} target="_blank" rel="noreferrer" className="text-xs text-[rgba(var(--gold-rgb),0.85)] hover:text-[rgb(var(--gold-rgb))]">
+                        Facebook →
+                      </a>
+                      <span className="text-xs text-[rgba(var(--text-rgb),0.3)]">·</span>
+                      <a href={INSTAGRAM} target="_blank" rel="noreferrer" className="text-xs text-[rgba(var(--gold-rgb),0.85)] hover:text-[rgb(var(--gold-rgb))]">
+                        Instagram →
+                      </a>
+                    </div>
                   </div>
                 </li>
                 <li className="flex items-start gap-4">
