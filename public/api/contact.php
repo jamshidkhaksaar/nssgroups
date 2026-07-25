@@ -23,12 +23,13 @@ if (!$data) {
     $data = $_POST;
 }
 
-$name = isset($data['name']) ? trim(filter_var($data['name'], FILTER_SANITIZE_FULL_SPECIAL_CHARS)) : '';
+// Clean raw strings (no double-escaping)
+$name = isset($data['name']) ? strip_tags(trim($data['name'])) : '';
 $email = isset($data['email']) ? trim(filter_var($data['email'], FILTER_SANITIZE_EMAIL)) : '';
-$phone = isset($data['phone']) ? trim(filter_var($data['phone'], FILTER_SANITIZE_FULL_SPECIAL_CHARS)) : 'N/A';
-$company = isset($data['company']) ? trim(filter_var($data['company'], FILTER_SANITIZE_FULL_SPECIAL_CHARS)) : 'N/A';
-$subject = isset($data['subject']) ? trim(filter_var($data['subject'], FILTER_SANITIZE_FULL_SPECIAL_CHARS)) : 'General Logistics Inquiry';
-$message = isset($data['message']) ? trim(filter_var($data['message'], FILTER_SANITIZE_FULL_SPECIAL_CHARS)) : '';
+$phone = isset($data['phone']) ? strip_tags(trim($data['phone'])) : 'N/A';
+$company = isset($data['company']) ? strip_tags(trim($data['company'])) : 'N/A';
+$subject = isset($data['subject']) ? strip_tags(trim($data['subject'])) : 'General Logistics Inquiry';
+$message = isset($data['message']) ? strip_tags(trim($data['message'])) : '';
 
 if (empty($name) || empty($email) || empty($message) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
     echo json_encode(['success' => false, 'error' => 'Please provide a valid name, email address, and message.']);
@@ -38,6 +39,11 @@ if (empty($name) || empty($email) || empty($message) || !filter_var($email, FILT
 $ip = $_SERVER['REMOTE_ADDR'] ?? 'Unknown';
 $date = date('F j, Y, g:i a T');
 
+// Helper function for single HTML escaping
+function e($str) {
+    return htmlspecialchars($str, ENT_QUOTES, 'UTF-8');
+}
+
 // Sender & Recipient addresses
 $fromEmail = 'contact@nssgroupint.com';
 $fromName = 'NSS Group Contact Portal';
@@ -46,7 +52,7 @@ $adminRecipient = 'info@nssgroupint.com';
 // -------------------------------------------------------------
 // 1. BUILD ADMIN NOTIFICATION HTML EMAIL
 // -------------------------------------------------------------
-$adminSubject = "[NSS Website Inquiry] {$subject} - {$name}";
+$adminSubject = "[NSS Inquiry] {$subject} - {$name}";
 
 $adminBody = '
 <!DOCTYPE html>
@@ -78,7 +84,7 @@ $adminBody = '
             <td style="padding: 35px 30px;">
               <div style="background-color: rgba(232, 194, 104, 0.08); border-left: 4px solid #e8c268; padding: 15px 20px; margin-bottom: 25px; border-radius: 4px;">
                 <p style="margin: 0; color: #e8c268; font-weight: 600; font-size: 14px;">
-                  New Inquiry Received from: <span style="color: #ffffff;">' . htmlspecialchars($name) . '</span>
+                  New Inquiry Received from: <span style="color: #ffffff;">' . e($name) . '</span>
                 </p>
               </div>
 
@@ -86,39 +92,39 @@ $adminBody = '
               <table width="100%" border="0" cellspacing="0" cellpadding="10" style="margin-bottom: 25px; border-collapse: collapse;">
                 <tr style="border-bottom: 1px solid rgba(247, 241, 227, 0.1);">
                   <td width="35%" style="color: rgba(247, 241, 227, 0.6); font-size: 13px; font-weight: 600;">Sender Name:</td>
-                  <td width="65%" style="color: #f7f1e3; font-size: 14px; font-weight: 700;">' . htmlspecialchars($name) . '</td>
+                  <td width="65%" style="color: #f7f1e3; font-size: 14px; font-weight: 700;">' . e($name) . '</td>
                 </tr>
                 <tr style="border-bottom: 1px solid rgba(247, 241, 227, 0.1);">
                   <td style="color: rgba(247, 241, 227, 0.6); font-size: 13px; font-weight: 600;">Email Address:</td>
-                  <td style="color: #e8c268; font-size: 14px; font-weight: 700;"><a href="mailto:' . htmlspecialchars($email) . '" style="color: #e8c268; text-decoration: none;">' . htmlspecialchars($email) . '</a></td>
+                  <td style="color: #e8c268; font-size: 14px; font-weight: 700;"><a href="mailto:' . e($email) . '" style="color: #e8c268; text-decoration: none;">' . e($email) . '</a></td>
                 </tr>
                 <tr style="border-bottom: 1px solid rgba(247, 241, 227, 0.1);">
                   <td style="color: rgba(247, 241, 227, 0.6); font-size: 13px; font-weight: 600;">Phone Number:</td>
-                  <td style="color: #f7f1e3; font-size: 14px;">' . htmlspecialchars($phone) . '</td>
+                  <td style="color: #f7f1e3; font-size: 14px;">' . e($phone) . '</td>
                 </tr>
                 <tr style="border-bottom: 1px solid rgba(247, 241, 227, 0.1);">
                   <td style="color: rgba(247, 241, 227, 0.6); font-size: 13px; font-weight: 600;">Company / Organization:</td>
-                  <td style="color: #f7f1e3; font-size: 14px;">' . htmlspecialchars($company) . '</td>
+                  <td style="color: #f7f1e3; font-size: 14px;">' . e($company) . '</td>
                 </tr>
                 <tr style="border-bottom: 1px solid rgba(247, 241, 227, 0.1);">
                   <td style="color: rgba(247, 241, 227, 0.6); font-size: 13px; font-weight: 600;">Subject / Service:</td>
-                  <td style="color: #e8c268; font-size: 14px; font-weight: 600;">' . htmlspecialchars($subject) . '</td>
+                  <td style="color: #e8c268; font-size: 14px; font-weight: 600;">' . e($subject) . '</td>
                 </tr>
                 <tr style="border-bottom: 1px solid rgba(247, 241, 227, 0.1);">
                   <td style="color: rgba(247, 241, 227, 0.6); font-size: 13px; font-weight: 600;">Submission Date:</td>
-                  <td style="color: rgba(247, 241, 227, 0.8); font-size: 12px;">' . htmlspecialchars($date) . ' (IP: ' . htmlspecialchars($ip) . ')</td>
+                  <td style="color: rgba(247, 241, 227, 0.8); font-size: 12px;">' . e($date) . ' (IP: ' . e($ip) . ')</td>
                 </tr>
               </table>
 
               <!-- Message Block -->
               <h3 style="color: #e8c268; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px;">Message Content:</h3>
-              <div style="background-color: #0e0a1e; border: 1px solid rgba(232, 194, 104, 0.2); padding: 20px; border-radius: 8px; font-size: 14px; line-height: 1.6; color: #ffffff; white-space: pre-wrap;">' . nl2br(htmlspecialchars($message)) . '</div>
+              <div style="background-color: #0e0a1e; border: 1px solid rgba(232, 194, 104, 0.2); padding: 20px; border-radius: 8px; font-size: 14px; line-height: 1.6; color: #ffffff; white-space: pre-wrap;">' . nl2br(e($message)) . '</div>
             </td>
           </tr>
 
           <!-- Footer -->
           <tr>
-            <td style="background-color: #0e0a1e; padding: 20px; text-align: center; border-t: 1px solid rgba(232, 194, 104, 0.2);">
+            <td style="background-color: #0e0a1e; padding: 20px; text-align: center; border-top: 1px solid rgba(232, 194, 104, 0.2);">
               <p style="margin: 0; color: rgba(247, 241, 227, 0.5); font-size: 11px; letter-spacing: 1px;">
                 NSS Group Automated Contact System &bull; <a href="https://www.nssgroupint.com" style="color: #e8c268; text-decoration: none;">nssgroupint.com</a>
               </p>
@@ -167,11 +173,11 @@ $clientBody = '
           <tr>
             <td style="padding: 35px 30px;">
               <h2 style="margin-top: 0; color: #ffffff; font-size: 20px; font-weight: 600;">
-                Dear ' . htmlspecialchars($name) . ',
+                Dear ' . e($name) . ',
               </h2>
               
               <p style="font-size: 14px; line-height: 1.7; color: rgba(247, 241, 227, 0.85); margin-bottom: 20px;">
-                Thank you for contacting <strong style="color: #e8c268;">NSS International Group of Companies</strong>. We have successfully received your inquiry regarding <strong style="color: #ffffff;">' . htmlspecialchars($subject) . '</strong>.
+                Thank you for contacting <strong style="color: #e8c268;">NSS International Group of Companies</strong>. We have successfully received your inquiry regarding <strong style="color: #ffffff;">' . e($subject) . '</strong>.
               </p>
 
               <p style="font-size: 14px; line-height: 1.7; color: rgba(247, 241, 227, 0.85); margin-bottom: 25px;">
@@ -183,17 +189,17 @@ $clientBody = '
                 <h3 style="margin-top: 0; color: #e8c268; font-size: 13px; text-transform: uppercase; letter-spacing: 1px;">
                   Summary of Your Message:
                 </h3>
-                <p style="margin: 5px 0; font-size: 13px; color: rgba(247, 241, 227, 0.7);"><strong>Subject:</strong> ' . htmlspecialchars($subject) . '</p>
-                <p style="margin: 5px 0 15px 0; font-size: 13px; color: rgba(247, 241, 227, 0.7);"><strong>Date:</strong> ' . htmlspecialchars($date) . '</p>
+                <p style="margin: 5px 0; font-size: 13px; color: rgba(247, 241, 227, 0.7);"><strong>Subject:</strong> ' . e($subject) . '</p>
+                <p style="margin: 5px 0 15px 0; font-size: 13px; color: rgba(247, 241, 227, 0.7);"><strong>Date:</strong> ' . e($date) . '</p>
                 <div style="background-color: rgba(255,255,255,0.03); padding: 12px; border-radius: 6px; font-size: 13px; color: #ffffff; line-height: 1.5; font-style: italic;">
-                  "' . nl2br(htmlspecialchars($message)) . '"
+                  "' . nl2br(e($message)) . '"
                 </div>
               </div>
 
               <!-- Direct Contact Box -->
-              <div style="border-top: 1px solid rgba(232, 194, 104, 0.2); pt-20; margin-top: 25px; padding-top: 20px;">
+              <div style="border-top: 1px solid rgba(232, 194, 104, 0.2); margin-top: 25px; padding-top: 20px;">
                 <p style="margin: 0 0 10px 0; font-size: 13px; font-weight: 600; color: #e8c268;">Need Urgent Assistance?</p>
-                <p style="margin: 3px 0; font-size: 13px; color: rgba(247, 241, 227, 0.8);"><strong>Phone:</strong> +93 78 888 8881 | +93 70 000 0000</p>
+                <p style="margin: 3px 0; font-size: 13px; color: rgba(247, 241, 227, 0.8);"><strong>Phone:</strong> +93 78 452 5666 | +93 706 420 050</p>
                 <p style="margin: 3px 0; font-size: 13px; color: rgba(247, 241, 227, 0.8);"><strong>Email:</strong> info@nssgroupint.com</p>
                 <p style="margin: 3px 0; font-size: 13px; color: rgba(247, 241, 227, 0.8);"><strong>Website:</strong> <a href="https://www.nssgroupint.com" style="color: #e8c268; text-decoration: none;">www.nssgroupint.com</a></p>
               </div>
