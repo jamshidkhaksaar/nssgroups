@@ -318,6 +318,8 @@ export const en = {
   'contact.messagePh': 'Cargo type, weight/volume, ready date…',
   'contact.infoTag': 'TALK TO US',
   'contact.hq': 'Head Office — Kabul, Afghanistan',
+  'contact.uzbekOfficeTitle': 'Uzbekistan Regional Office',
+  'contact.uzbekOfficeAddr': 'Fadakar Street, House No. 29, Termez City, Surxondaryo Region, Uzbekistan',
   'contact.available': 'Operations desk — 24/7',
   'contact.officesTag': 'OFFICES',
   'contact.required': 'Required fields are marked.',

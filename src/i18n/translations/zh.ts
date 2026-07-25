@@ -255,6 +255,8 @@ const zhBase = {
   'contact.messagePh': 'Cargo type, weight/volume, ready date…',
   'contact.infoTag': 'TALK TO US',
   'contact.hq': 'Head Office — Kabul, Afghanistan',
+  'contact.uzbekOfficeTitle': '乌兹别克斯坦区域办事处',
+  'contact.uzbekOfficeAddr': '乌兹别克斯坦，苏尔汉河州，泰尔梅兹市，法达卡街 29 号',
   'contact.available': '24/7 现场作业支持',
   'contact.officesTag': 'OFFICES',
   'contact.required': 'Required fields are marked.',

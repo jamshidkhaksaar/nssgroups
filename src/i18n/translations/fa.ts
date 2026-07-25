@@ -308,6 +308,8 @@ const faBase = {
   'contact.messagePh': 'نوع بار، وزن/حجم، تاریخ آمادگی…',
   'contact.infoTag': 'با ما صحبت کنید',
   'contact.hq': 'دفتر مرکزی — کابل، افغانستان',
+  'contact.uzbekOfficeTitle': 'دفتر منطقه‌ای ازبکستان',
+  'contact.uzbekOfficeAddr': 'ولایت سرخان‌دریا، شهر ترمز، کوچه فداکار، خانه شماره ۲۹، ازبکستان',
   'contact.available': 'میز عملیات — 24/7',
   'contact.officesTag': 'دفاتر',
   'contact.required': 'خان‌های ضروری علامت‌گذاری شده‌اند.',

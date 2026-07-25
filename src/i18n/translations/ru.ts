@@ -309,6 +309,8 @@ const ruBase = {
   'contact.messagePh': 'Тип груза, вес/объём, дата готовности…',
   'contact.infoTag': 'СВЯЖИТЕСЬ С НАМИ',
   'contact.hq': 'Головной офис — Кабул, Афганистан',
+  'contact.uzbekOfficeTitle': 'Региональный офис в Узбекистане',
+  'contact.uzbekOfficeAddr': 'Республика Узбекистан, Сурхандарьинская область, г. Термез, ул. Фадакар, дом 29',
   'contact.available': 'Оперативный центр — 24/7',
   'contact.officesTag': 'ОФИСЫ',
   'contact.required': 'Обязательные поля отмечены.',

@@ -243,7 +243,16 @@ export default function Contact() {
                 </li>
                 <li className="flex items-start gap-4">
                   <MapPin size={16} className="mt-1 shrink-0 text-[rgb(var(--gold-rgb))]" />
-                  <p className="text-sm text-[rgba(var(--text-rgb),0.70)]">{t('contact.hq')}</p>
+                  <div>
+                    <p className="text-sm font-semibold text-[rgb(var(--text-rgb))]">{t('contact.hq')}</p>
+                  </div>
+                </li>
+                <li className="flex items-start gap-4">
+                  <MapPin size={16} className="mt-1 shrink-0 text-[rgb(var(--gold-rgb))]" />
+                  <div>
+                    <p className="text-sm font-semibold text-[rgb(var(--gold-rgb))]">{t('contact.uzbekOfficeTitle')}</p>
+                    <p className="mt-0.5 text-xs leading-relaxed text-[rgba(var(--text-rgb),0.75)]">{t('contact.uzbekOfficeAddr')}</p>
+                  </div>
                 </li>
                 <li className="flex items-start gap-4">
                   <Clock size={16} className="mt-1 shrink-0 text-[rgb(var(--gold-rgb))]" />

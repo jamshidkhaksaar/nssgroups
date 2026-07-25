@@ -142,9 +142,14 @@ export default function Footer() {
                   {EMAIL_2}
                 </a>
               </li>
-              <li className="flex items-center gap-3">
-                <MapPin size={14} className="shrink-0 text-[rgb(var(--gold-rgb))]" />
-                <span className="text-[rgba(var(--text-rgb),0.55)]">{t('contact.hq')}</span>
+              <li className="flex items-start gap-3">
+                <MapPin size={14} className="mt-1 shrink-0 text-[rgb(var(--gold-rgb))]" />
+                <div className="flex flex-col">
+                  <span className="text-[rgba(var(--text-rgb),0.75)] font-medium">{t('contact.hq')}</span>
+                  <span className="mt-1 text-[12px] leading-snug text-[rgba(var(--text-rgb),0.55)]">
+                    <strong className="text-[rgb(var(--gold-rgb))]">{t('contact.uzbekOfficeTitle')}:</strong> {t('contact.uzbekOfficeAddr')}
+                  </span>
+                </div>
               </li>
             </ul>
           </div>

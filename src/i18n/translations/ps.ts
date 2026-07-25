@@ -308,6 +308,8 @@ const psBase = {
   'contact.messagePh': 'د بار ډول، وزن/حجم، د چمتووالي نېټه…',
   'contact.infoTag': 'له موږ سره خبرې وکړئ',
   'contact.hq': 'مرکزي دفتر — کابل، افغانستان',
+  'contact.uzbekOfficeTitle': 'په ازبکستان کې سیمه‌ییز دفتر',
+  'contact.uzbekOfficeAddr': 'د سرخان‌دریا ولایت، ترمز ښار، فداکار کوڅه، ۲۹ مه شمېره کور، ازبکستان',
   'contact.available': 'عملیاتي میز — 24/7',
   'contact.officesTag': 'دفترونه',
   'contact.required': 'اړین خانې نښه شوې دي.',

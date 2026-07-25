@@ -255,6 +255,8 @@ const arBase = {
   'contact.messagePh': 'Cargo type, weight/volume, ready date…',
   'contact.infoTag': 'TALK TO US',
   'contact.hq': 'Head Office — Kabul, Afghanistan',
+  'contact.uzbekOfficeTitle': 'المكتب الإقليمي في أوزبكستان',
+  'contact.uzbekOfficeAddr': 'جمهورية أوزبكستان، ولاية سرخانداريا، مدينة ترمذ، شارع فداكار، منزل رقم ٢٩',
   'contact.available': 'دعم العمليات على مدار 24/7',
   'contact.officesTag': 'OFFICES',
   'contact.required': 'Required fields are marked.',

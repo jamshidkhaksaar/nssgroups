@@ -255,6 +255,8 @@ const uzBase = {
   'contact.messagePh': 'Cargo type, weight/volume, ready date…',
   'contact.infoTag': 'TALK TO US',
   'contact.hq': 'Head Office — Kabul, Afghanistan',
+  'contact.uzbekOfficeTitle': 'Oʻzbekistondagi mintaqaviy idora',
+  'contact.uzbekOfficeAddr': 'Oʻzbekiston Respublikasi, Surxondaryo viloyati, Termiz shahri, Fadakar koʻchasi, 29-uy',
   'contact.available': '24/7 amaliy qo‘llab-quvvatlash',
   'contact.officesTag': 'OFFICES',
   'contact.required': 'Required fields are marked.',
