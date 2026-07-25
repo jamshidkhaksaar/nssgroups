@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link, NavLink, useNavigate } from 'react-router'
-import { Menu, Moon, Phone, Sun, X, Volume2, VolumeX, LogIn, ChevronDown, ShieldCheck, Building2, Handshake, SkipForward, Music, Truck, Globe, PackageCheck, Radar, FolderKanban } from 'lucide-react'
+import { Menu, Moon, Phone, Sun, X, Volume2, VolumeX, LogIn, ChevronDown, ShieldCheck, Building2, Handshake, SkipForward, Music, PackageCheck, Radar } from 'lucide-react'
 import { useI18n } from '@/i18n/i18n'
 import { useTheme } from '@/theme/theme'
 import { useMusic } from '@/audio/useMusic'
@@ -13,6 +13,7 @@ interface NavItem {
   key: TranslationKey
 }
 
+// Primary Top Bar Desktop Links (No Duplicates)
 const PRIMARY_LINKS: NavItem[] = [
   { to: '/', key: 'nav.home' },
   { to: '/trading', key: 'nav.marketplace' },
@@ -24,6 +25,7 @@ const PRIMARY_LINKS: NavItem[] = [
   { to: '/contact', key: 'nav.contact' },
 ]
 
+// Operations Dropdown (Sub-services only - No Duplicates)
 const OPERATIONS_SUBMENU = [
   {
     to: '/booking',
@@ -37,36 +39,19 @@ const OPERATIONS_SUBMENU = [
     icon: Radar,
     desc: 'Real-time cargo shipment tracking',
   },
-  {
-    to: '/projects',
-    labelKey: 'nav.projects' as TranslationKey,
-    icon: FolderKanban,
-    desc: 'Project activity & field video reports',
-  },
-  {
-    to: '/fleet',
-    labelKey: 'nav.fleet' as TranslationKey,
-    icon: Truck,
-    desc: 'Transport fleet & heavy machinery',
-  },
-  {
-    to: '/network',
-    labelKey: 'nav.network' as TranslationKey,
-    icon: Globe,
-    desc: 'Trade corridors & regional hubs',
-  },
 ]
 
+// All Mobile Drawer Links (Complete & Unique)
 const ALL_MOBILE_LINKS: NavItem[] = [
   { to: '/', key: 'nav.home' },
   { to: '/trading', key: 'nav.marketplace' },
   { to: '/services', key: 'nav.services' },
-  { to: '/booking', key: 'nav.booking' },
   { to: '/projects', key: 'nav.projects' },
-  { to: '/about', key: 'nav.about' },
   { to: '/fleet', key: 'nav.fleet' },
   { to: '/network', key: 'nav.network' },
+  { to: '/booking', key: 'nav.booking' },
   { to: '/tracking', key: 'nav.tracking' },
+  { to: '/about', key: 'nav.about' },
   { to: '/contact', key: 'nav.contact' },
 ]
 
@@ -211,7 +196,7 @@ export default function Navbar() {
           }`}
         >
           {/* Left side: Logo + Navigation */}
-          <div className="flex items-center gap-6 xl:gap-10">
+          <div className="flex items-center gap-6 xl:gap-8">
             {/* Logo */}
             <Link
               to="/"
@@ -220,14 +205,14 @@ export default function Navbar() {
             >
               <span
                 className={`flex items-center justify-center transition-all duration-300 ${
-                  scrolled ? 'h-[50px] w-[50px]' : 'h-[65px] w-[65px]'
+                  scrolled ? 'h-[48px] w-[48px]' : 'h-[62px] w-[62px]'
                 }`}
               >
                 <img
                   src="./logo.png"
                   alt="NSS"
                   className={`object-contain transition-all duration-300 ${
-                    scrolled ? 'h-[44px] w-[44px]' : 'h-[56px] w-[56px]'
+                    scrolled ? 'h-[42px] w-[42px]' : 'h-[54px] w-[54px]'
                   }`}
                 />
               </span>
@@ -235,24 +220,24 @@ export default function Navbar() {
                 <span className="nss-display block text-base tracking-wide text-[rgb(var(--text-rgb))] group-hover:text-[rgb(var(--gold-rgb))] transition-colors">
                   NSS <span className="text-[rgb(var(--gold-rgb))]">GROUP</span>
                 </span>
-                <span className="nss-mono block text-[8.5px] tracking-[0.14em] text-[rgba(var(--text-rgb),0.45)] uppercase">
+                <span className="nss-mono block text-[8px] tracking-[0.14em] text-[rgba(var(--text-rgb),0.45)] uppercase">
                   INTERNATIONAL GROUP OF COMPANIES
                 </span>
-                <span className="nss-mono block text-[8.5px] font-bold tracking-[0.2em] text-[rgb(var(--gold-rgb))] uppercase mt-0.5">
+                <span className="nss-mono block text-[8px] font-bold tracking-[0.2em] text-[rgb(var(--gold-rgb))] uppercase mt-0.5">
                   NAWI SAMIM SAMIR
                 </span>
               </span>
             </Link>
 
             {/* Desktop Navigation Links */}
-            <nav className="hidden items-center gap-1 xl:gap-2 lg:flex">
-              {PRIMARY_LINKS.map((item) => (
+            <nav className="hidden items-center gap-1 xl:gap-1.5 lg:flex">
+              {PRIMARY_LINKS.slice(0, 3).map((item) => (
                 <NavLink
                   key={item.to}
                   to={item.to}
                   end={item.to === '/'}
                   className={({ isActive }) =>
-                    `group relative nss-mono px-2.5 py-1.5 text-[11px] xl:text-[12px] uppercase tracking-[0.1em] rounded-sm transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#e8c268] ${
+                    `group relative nss-mono px-2 py-1.5 text-[11px] xl:text-[12px] uppercase tracking-[0.1em] rounded-sm transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#e8c268] ${
                       isActive
                         ? 'text-[rgb(var(--gold-rgb))] font-semibold'
                         : 'text-[rgba(var(--text-rgb),0.75)] hover:text-[rgb(var(--gold-rgb))]'
@@ -272,11 +257,80 @@ export default function Navbar() {
                 </NavLink>
               ))}
 
-              {/* Operations & Logistics Submenu Dropdown */}
+              {/* Projects */}
+              <NavLink
+                to="/projects"
+                className={({ isActive }) =>
+                  `group relative nss-mono px-2 py-1.5 text-[11px] xl:text-[12px] uppercase tracking-[0.1em] rounded-sm transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#e8c268] ${
+                    isActive
+                      ? 'text-[rgb(var(--gold-rgb))] font-semibold'
+                      : 'text-[rgba(var(--text-rgb),0.75)] hover:text-[rgb(var(--gold-rgb))]'
+                  }`
+                }
+              >
+                {({ isActive }) => (
+                  <>
+                    {t('nav.projects')}
+                    <span
+                      className={`absolute -bottom-1 left-0 h-[2px] bg-[rgb(var(--gold-rgb))] transition-all duration-300 ease-out ${
+                        isActive ? 'w-full' : 'w-0 group-hover:w-full'
+                      }`}
+                    />
+                  </>
+                )}
+              </NavLink>
+
+              {/* Fleet */}
+              <NavLink
+                to="/fleet"
+                className={({ isActive }) =>
+                  `group relative nss-mono px-2 py-1.5 text-[11px] xl:text-[12px] uppercase tracking-[0.1em] rounded-sm transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#e8c268] ${
+                    isActive
+                      ? 'text-[rgb(var(--gold-rgb))] font-semibold'
+                      : 'text-[rgba(var(--text-rgb),0.75)] hover:text-[rgb(var(--gold-rgb))]'
+                  }`
+                }
+              >
+                {({ isActive }) => (
+                  <>
+                    {t('nav.fleet')}
+                    <span
+                      className={`absolute -bottom-1 left-0 h-[2px] bg-[rgb(var(--gold-rgb))] transition-all duration-300 ease-out ${
+                        isActive ? 'w-full' : 'w-0 group-hover:w-full'
+                      }`}
+                    />
+                  </>
+                )}
+              </NavLink>
+
+              {/* Network */}
+              <NavLink
+                to="/network"
+                className={({ isActive }) =>
+                  `group relative nss-mono px-2 py-1.5 text-[11px] xl:text-[12px] uppercase tracking-[0.1em] rounded-sm transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#e8c268] ${
+                    isActive
+                      ? 'text-[rgb(var(--gold-rgb))] font-semibold'
+                      : 'text-[rgba(var(--text-rgb),0.75)] hover:text-[rgb(var(--gold-rgb))]'
+                  }`
+                }
+              >
+                {({ isActive }) => (
+                  <>
+                    {t('nav.network')}
+                    <span
+                      className={`absolute -bottom-1 left-0 h-[2px] bg-[rgb(var(--gold-rgb))] transition-all duration-300 ease-out ${
+                        isActive ? 'w-full' : 'w-0 group-hover:w-full'
+                      }`}
+                    />
+                  </>
+                )}
+              </NavLink>
+
+              {/* Operations Submenu Dropdown (Only Booking & Tracking) */}
               <div className="relative" ref={opsDropdownRef}>
                 <button
                   onClick={() => setOpsOpen((v) => !v)}
-                  className={`group relative flex items-center gap-1 nss-mono px-2.5 py-1.5 text-[11px] xl:text-[12px] uppercase tracking-[0.1em] rounded-sm transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#e8c268] ${
+                  className={`group relative flex items-center gap-1 nss-mono px-2 py-1.5 text-[11px] xl:text-[12px] uppercase tracking-[0.1em] rounded-sm transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#e8c268] ${
                     opsOpen
                       ? 'text-[rgb(var(--gold-rgb))] font-semibold'
                       : 'text-[rgba(var(--text-rgb),0.75)] hover:text-[rgb(var(--gold-rgb))]'
@@ -288,10 +342,10 @@ export default function Navbar() {
 
                 {/* Operations Dropdown Panel */}
                 {opsOpen && (
-                  <div className="absolute start-0 top-[calc(100%+8px)] z-50 w-64 overflow-hidden rounded-xl border border-[rgba(var(--gold-rgb),0.18)] bg-[var(--bg-deep,var(--bg))] shadow-2xl shadow-black/40 animate-in fade-in slide-in-from-top-2 duration-150">
-                    <div className="border-b border-[rgba(var(--gold-rgb),0.12)] px-4 py-2.5">
-                      <p className="nss-mono text-[9.5px] uppercase tracking-[0.18em] text-[rgba(var(--text-rgb),0.5)]">
-                        Logistics & Submenus
+                  <div className="absolute start-0 top-[calc(100%+8px)] z-50 w-60 overflow-hidden rounded-xl border border-[rgba(var(--gold-rgb),0.18)] bg-[var(--bg-deep,var(--bg))] shadow-2xl shadow-black/40 animate-in fade-in slide-in-from-top-2 duration-150">
+                    <div className="border-b border-[rgba(var(--gold-rgb),0.12)] px-4 py-2">
+                      <p className="nss-mono text-[9px] uppercase tracking-[0.18em] text-[rgba(var(--text-rgb),0.5)]">
+                        Logistics Tools
                       </p>
                     </div>
                     <div className="p-1.5 space-y-0.5">
@@ -321,6 +375,32 @@ export default function Navbar() {
                   </div>
                 )}
               </div>
+
+              {/* About & Contact */}
+              {PRIMARY_LINKS.slice(6).map((item) => (
+                <NavLink
+                  key={item.to}
+                  to={item.to}
+                  className={({ isActive }) =>
+                    `group relative nss-mono px-2 py-1.5 text-[11px] xl:text-[12px] uppercase tracking-[0.1em] rounded-sm transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#e8c268] ${
+                      isActive
+                        ? 'text-[rgb(var(--gold-rgb))] font-semibold'
+                        : 'text-[rgba(var(--text-rgb),0.75)] hover:text-[rgb(var(--gold-rgb))]'
+                    }`
+                  }
+                >
+                  {({ isActive }) => (
+                    <>
+                      {t(item.key)}
+                      <span
+                        className={`absolute -bottom-1 left-0 h-[2px] bg-[rgb(var(--gold-rgb))] transition-all duration-300 ease-out ${
+                          isActive ? 'w-full' : 'w-0 group-hover:w-full'
+                        }`}
+                      />
+                    </>
+                  )}
+                </NavLink>
+              ))}
             </nav>
           </div>
 
