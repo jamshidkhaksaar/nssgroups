@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link, NavLink, useNavigate } from 'react-router'
-import { Menu, Moon, Phone, Sun, X, Volume2, VolumeX, LogIn, ChevronDown, ShieldCheck, Building2, Handshake } from 'lucide-react'
+import { Menu, Moon, Phone, Sun, X, Volume2, VolumeX, LogIn, ChevronDown, ShieldCheck, Building2, Handshake, SkipForward, Disc, Music } from 'lucide-react'
 import { useI18n } from '@/i18n/i18n'
 import { useTheme } from '@/theme/theme'
 import { useMusic } from '@/audio/useMusic'
@@ -64,13 +64,15 @@ const PORTAL_OPTIONS = [
 export default function Navbar() {
   const { t } = useI18n()
   const { theme, toggle } = useTheme()
-  const { isPlaying, toggleMusic } = useMusic()
+  const { isPlaying, toggleMusic, playlist, currentTrackIndex, currentTrack, nextTrack, selectTrack } = useMusic()
   const navigate = useNavigate()
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
   const [loginOpen, setLoginOpen] = useState(false)
+  const [musicOpen, setMusicOpen] = useState(false)
   const progressRef = useRef<HTMLDivElement>(null)
   const loginDropdownRef = useRef<HTMLDivElement>(null)
+  const musicDropdownRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     const onScroll = () => {
@@ -98,18 +100,21 @@ export default function Navbar() {
     }
   }, [open])
 
-  // Close login dropdown on outside click
+  // Close login & music dropdowns on outside click
   useEffect(() => {
     const handleClick = (e: MouseEvent) => {
       if (loginDropdownRef.current && !loginDropdownRef.current.contains(e.target as Node)) {
         setLoginOpen(false)
       }
+      if (musicDropdownRef.current && !musicDropdownRef.current.contains(e.target as Node)) {
+        setMusicOpen(false)
+      }
     }
-    if (loginOpen) {
+    if (loginOpen || musicOpen) {
       document.addEventListener('mousedown', handleClick)
     }
     return () => document.removeEventListener('mousedown', handleClick)
-  }, [loginOpen])
+  }, [loginOpen, musicOpen])
 
   // ESC key handler
   useEffect(() => {
@@ -117,11 +122,12 @@ export default function Navbar() {
       if (e.key === 'Escape') {
         if (open) setOpen(false)
         if (loginOpen) setLoginOpen(false)
+        if (musicOpen) setMusicOpen(false)
       }
     }
     window.addEventListener('keydown', handleKeyDown)
     return () => window.removeEventListener('keydown', handleKeyDown)
-  }, [open, loginOpen])
+  }, [open, loginOpen, musicOpen])
 
   const closeMenu = () => setOpen(false)
 
@@ -233,16 +239,92 @@ export default function Navbar() {
               </span>
             </button>
 
-            {/* Music toggle */}
-            <button
-              onClick={toggleMusic}
-              aria-label="Toggle Background Music"
-              className="flex h-8 w-8 items-center justify-center rounded-full border border-[rgba(var(--gold-rgb),0.25)] bg-[rgba(var(--gold-rgb),0.06)] text-[rgba(var(--text-rgb),0.75)] transition-all hover:border-[rgba(var(--gold-rgb),0.50)] hover:text-[rgb(var(--gold-rgb))] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#e8c268]"
-            >
-              <span key={isPlaying ? 'playing' : 'paused'} className="nss-swap block">
-                {isPlaying ? <Volume2 size={14} /> : <VolumeX size={14} />}
-              </span>
-            </button>
+            {/* Music Player & Playlist Control */}
+            <div className="relative" ref={musicDropdownRef}>
+              <div className="flex items-center">
+                <button
+                  onClick={toggleMusic}
+                  aria-label="Toggle Background Music"
+                  title={isPlaying ? `Playing: ${currentTrack.title}` : 'Play Background Music'}
+                  className={`flex h-8 items-center gap-1.5 rounded-l-full border px-2.5 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#e8c268] ${
+                    isPlaying
+                      ? 'border-[rgb(var(--gold-rgb))] bg-[rgba(var(--gold-rgb),0.15)] text-[rgb(var(--gold-rgb))] shadow-sm shadow-[rgba(var(--gold-rgb),0.2)]'
+                      : 'border-[rgba(var(--gold-rgb),0.25)] bg-[rgba(var(--gold-rgb),0.06)] text-[rgba(var(--text-rgb),0.75)] hover:border-[rgba(var(--gold-rgb),0.50)] hover:text-[rgb(var(--gold-rgb))]'
+                  }`}
+                >
+                  <span key={isPlaying ? 'playing' : 'paused'} className="nss-swap block">
+                    {isPlaying ? <Volume2 size={13} className="animate-pulse" /> : <VolumeX size={13} />}
+                  </span>
+                  <span className="nss-mono text-[10px] uppercase tracking-wider font-semibold max-w-[80px] truncate hidden xl:inline">
+                    {isPlaying ? currentTrack.title.replace('Welcome to NSS Group', 'NSS Theme') : 'Music'}
+                  </span>
+                </button>
+
+                <button
+                  onClick={() => setMusicOpen((v) => !v)}
+                  title="Playlist & Tracks (5 available)"
+                  aria-label="Background Music Playlist"
+                  className={`flex h-8 items-center justify-center rounded-r-full border-y border-r px-1.5 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#e8c268] ${
+                    musicOpen
+                      ? 'border-[rgb(var(--gold-rgb))] bg-[rgba(var(--gold-rgb),0.2)] text-[rgb(var(--gold-rgb))]'
+                      : 'border-[rgba(var(--gold-rgb),0.25)] bg-[rgba(var(--gold-rgb),0.06)] text-[rgba(var(--text-rgb),0.6)] hover:text-[rgb(var(--gold-rgb))]'
+                  }`}
+                >
+                  <ChevronDown size={11} className={`transition-transform duration-200 ${musicOpen ? 'rotate-180' : ''}`} />
+                </button>
+              </div>
+
+              {/* Music Playlist Dropdown */}
+              {musicOpen && (
+                <div className="absolute end-0 top-[calc(100%+8px)] z-50 w-72 overflow-hidden rounded-xl border border-[rgba(var(--gold-rgb),0.18)] bg-[var(--bg-deep,var(--bg))] shadow-2xl shadow-black/40 animate-in fade-in slide-in-from-top-2 duration-150">
+                  <div className="flex items-center justify-between border-b border-[rgba(var(--gold-rgb),0.12)] px-4 py-3">
+                    <div className="flex items-center gap-2">
+                      <Music size={14} className="text-[rgb(var(--gold-rgb))]" />
+                      <span className="nss-mono text-[11px] font-semibold uppercase tracking-[0.14em] text-[rgb(var(--text-rgb))]">
+                        Background Music (5 Tracks)
+                      </span>
+                    </div>
+                    <button
+                      onClick={nextTrack}
+                      title="Skip to Next Track"
+                      className="flex h-6 w-6 items-center justify-center rounded-md bg-[rgba(var(--gold-rgb),0.1)] text-[rgb(var(--gold-rgb))] hover:bg-[rgba(var(--gold-rgb),0.2)] transition-colors"
+                    >
+                      <SkipForward size={12} />
+                    </button>
+                  </div>
+
+                  <div className="p-2 space-y-1 max-h-64 overflow-y-auto">
+                    {playlist.map((track, idx) => {
+                      const isActive = idx === currentTrackIndex
+                      return (
+                        <button
+                          key={track.id}
+                          onClick={() => {
+                            selectTrack(idx)
+                            setMusicOpen(false)
+                          }}
+                          className={`flex w-full items-center justify-between rounded-lg px-3 py-2 text-start transition-colors ${
+                            isActive
+                              ? 'bg-[rgba(var(--gold-rgb),0.15)] text-[rgb(var(--gold-rgb))] font-medium'
+                              : 'text-[rgba(var(--text-rgb),0.8)] hover:bg-[rgba(var(--text-rgb),0.05)]'
+                          }`}
+                        >
+                          <div className="flex items-center gap-2.5 min-w-0">
+                            <Disc size={13} className={`shrink-0 ${isActive && isPlaying ? 'animate-spin text-[rgb(var(--gold-rgb))]' : 'text-[rgba(var(--text-rgb),0.4)]'}`} />
+                            <span className="text-[12px] truncate">{track.title}</span>
+                          </div>
+                          {isActive && (
+                            <span className="nss-mono text-[9px] uppercase font-bold px-1.5 py-0.5 rounded bg-[rgb(var(--gold-rgb))] text-[rgb(var(--bg-rgb))]">
+                              {isPlaying ? 'Playing' : 'Active'}
+                            </span>
+                          )}
+                        </button>
+                      )
+                    })}
+                  </div>
+                </div>
+              )}
+            </div>
 
             {/* Language Switcher */}
             <LanguageSwitcher />
