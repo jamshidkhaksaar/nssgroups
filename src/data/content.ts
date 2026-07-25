@@ -145,8 +145,8 @@ export const CORE_SERVICES: CoreService[] = [
 
 export const PHONE_1 = '+93 78 452 5666'
 export const PHONE_2 = '+93 706 420 050'
-export const EMAIL_1 = 'nawisamimsamir@gmail.com'
-export const EMAIL_2 = 'alemyar@nssitransit.com'
+export const EMAIL_1 = 'info@nssgroupint.com'
+export const EMAIL_2 = 'contact@nssgroupint.com'
 export const WHATSAPP = 'https://wa.me/93784525666'
 export const FACEBOOK = 'https://www.facebook.com/nssitransit'
 export const INSTAGRAM = 'https://www.instagram.com/nssitransit'
