@@ -12,7 +12,7 @@ const INITIAL_COUNT = 16 // 4 columns x 4 rows = 16 videos initially
 export default function ProjectVideoGallery({ videos }: ProjectVideoGalleryProps) {
   const { t } = useI18n()
   const [visibleCount, setVisibleCount] = useState(INITIAL_COUNT)
-  const [activeVideo, setActiveVideo] = useState<ProjectVideo | null>(null)
+  const [playingVideoId, setPlayingVideoId] = useState<string | null>(null)
 
   const visibleVideos = videos.slice(0, visibleCount)
   const hasMore = visibleCount < videos.length
@@ -36,51 +36,103 @@ export default function ProjectVideoGallery({ videos }: ProjectVideoGalleryProps
         </span>
       </div>
 
-      {/* 4-Column Grid */}
+      {/* 4-Column Responsive Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
         {visibleVideos.map((video, idx) => {
           const videoTitle = t(video.titleKey)
+          const isPlaying = playingVideoId === video.id
+
           return (
             <article
               key={video.id}
-              onClick={() => setActiveVideo(video)}
-              className="group relative flex flex-col overflow-hidden rounded-xl border border-[rgba(var(--gold-rgb),0.16)] bg-[var(--panel)] cursor-pointer transition-all duration-300 hover:border-[rgb(var(--gold-rgb))] hover:-translate-y-1 hover:shadow-xl hover:shadow-[rgba(var(--gold-rgb),0.1)]"
+              className={`group relative flex flex-col overflow-hidden rounded-xl border transition-all duration-300 ${
+                isPlaying
+                  ? 'border-[rgb(var(--gold-rgb))] bg-[var(--panel)] shadow-xl shadow-[rgba(var(--gold-rgb),0.15)] ring-1 ring-[rgb(var(--gold-rgb))]/30'
+                  : 'border-[rgba(var(--gold-rgb),0.16)] bg-[var(--panel)] hover:border-[rgb(var(--gold-rgb))] hover:-translate-y-1 hover:shadow-xl hover:shadow-[rgba(var(--gold-rgb),0.1)]'
+              }`}
             >
-              {/* Thumbnail Poster Container */}
-              <div className="relative aspect-[16/10] w-full overflow-hidden bg-black/80">
-                <img
-                  src={video.poster}
-                  alt={videoTitle}
-                  loading="lazy"
-                  className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-                />
+              {/* Media Area (Poster vs Inline Video) */}
+              <div className="relative aspect-[16/10] w-full overflow-hidden bg-black">
+                {isPlaying ? (
+                  <>
+                    <video
+                      src={video.src}
+                      controls
+                      autoPlay
+                      className="h-full w-full object-contain bg-black"
+                    />
+                    {/* Close / Stop Inline Video Button */}
+                    <button
+                      onClick={() => setPlayingVideoId(null)}
+                      title="Close Video"
+                      aria-label="Close Video"
+                      className="absolute top-2 right-2 z-20 flex h-7 w-7 items-center justify-center rounded-full bg-black/80 text-white/90 border border-white/20 hover:bg-[rgb(var(--gold-rgb))] hover:text-black transition-all"
+                    >
+                      <X size={14} />
+                    </button>
+                  </>
+                ) : (
+                  <div
+                    onClick={() => setPlayingVideoId(video.id)}
+                    className="relative h-full w-full cursor-pointer"
+                  >
+                    <img
+                      src={video.poster}
+                      alt={videoTitle}
+                      loading="lazy"
+                      className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                    />
 
-                {/* Dark Gradient Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-black/30 to-transparent opacity-80 group-hover:opacity-60 transition-opacity" />
+                    {/* Dark Gradient Overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-black/30 to-transparent opacity-80 group-hover:opacity-60 transition-opacity" />
 
-                {/* Play Button Badge Overlay */}
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[rgb(var(--gold-rgb))] text-[#1d1233] shadow-lg shadow-[rgb(var(--gold-rgb))]/30 transition-transform duration-300 group-hover:scale-115">
-                    <Play size={20} className="ml-0.5 fill-current" />
+                    {/* Play Button Badge Overlay */}
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[rgb(var(--gold-rgb))] text-[#1d1233] shadow-lg shadow-[rgb(var(--gold-rgb))]/30 transition-transform duration-300 group-hover:scale-115">
+                        <Play size={20} className="ml-0.5 fill-current" />
+                      </div>
+                    </div>
+
+                    {/* Video Tag */}
+                    <div className="absolute top-3 left-3">
+                      <span className="nss-mono rounded bg-black/60 backdrop-blur-md px-2 py-0.5 text-[9px] uppercase tracking-wider text-[rgb(var(--gold-rgb))] border border-white/10">
+                        Video #{idx + 1}
+                      </span>
+                    </div>
                   </div>
-                </div>
-
-                {/* Video Tag */}
-                <div className="absolute top-3 left-3">
-                  <span className="nss-mono rounded bg-black/60 backdrop-blur-md px-2 py-0.5 text-[9px] uppercase tracking-wider text-[rgb(var(--gold-rgb))] border border-white/10">
-                    Video #{idx + 1}
-                  </span>
-                </div>
+                )}
               </div>
 
               {/* Content Details */}
               <div className="flex-1 p-4 flex flex-col justify-between space-y-2">
-                <h3 className="nss-mono text-xs font-semibold text-[rgb(var(--text-rgb))] line-clamp-2 leading-relaxed group-hover:text-[rgb(var(--gold-rgb))] transition-colors">
+                <h3
+                  onClick={() => !isPlaying && setPlayingVideoId(video.id)}
+                  className={`nss-mono text-xs font-semibold leading-relaxed transition-colors ${
+                    isPlaying
+                      ? 'text-[rgb(var(--gold-rgb))]'
+                      : 'text-[rgb(var(--text-rgb))] group-hover:text-[rgb(var(--gold-rgb))] cursor-pointer'
+                  }`}
+                >
                   {videoTitle}
                 </h3>
+
                 <div className="pt-2 flex items-center justify-between text-[10px] text-[rgba(var(--text-rgb),0.45)] nss-mono border-t border-[rgba(var(--gold-rgb),0.08)]">
                   <span>NSS Logistics Report</span>
-                  <span className="text-[rgb(var(--gold-rgb))] group-hover:underline">Click to Play ▶</span>
+                  {isPlaying ? (
+                    <button
+                      onClick={() => setPlayingVideoId(null)}
+                      className="text-red-400 hover:underline flex items-center gap-1 font-semibold"
+                    >
+                      <span>Stop ▶</span>
+                    </button>
+                  ) : (
+                    <button
+                      onClick={() => setPlayingVideoId(video.id)}
+                      className="text-[rgb(var(--gold-rgb))] group-hover:underline flex items-center gap-1 font-semibold"
+                    >
+                      <span>Play Inline ▶</span>
+                    </button>
+                  )}
                 </div>
               </div>
             </article>
@@ -98,51 +150,6 @@ export default function ProjectVideoGallery({ videos }: ProjectVideoGalleryProps
             <span>Load More Project Videos ({videos.length - visibleCount} Remaining)</span>
             <ChevronDown size={16} />
           </button>
-        </div>
-      )}
-
-      {/* Video Modal Player (Plays on Click) */}
-      {activeVideo && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/95 backdrop-blur-xl p-4 sm:p-6 animate-in fade-in duration-200">
-          <div className="relative w-full max-w-4xl overflow-hidden rounded-2xl border border-[rgba(var(--gold-rgb),0.3)] bg-slate-950 shadow-2xl shadow-black/80">
-            {/* Modal Header */}
-            <div className="flex items-center justify-between border-b border-[rgba(var(--gold-rgb),0.15)] px-6 py-4 bg-slate-900/80">
-              <div className="flex items-center gap-3 min-w-0 pr-4">
-                <Video size={18} className="text-[rgb(var(--gold-rgb))] shrink-0" />
-                <h3 className="nss-mono text-sm font-bold text-white truncate">
-                  {t(activeVideo.titleKey)}
-                </h3>
-              </div>
-              <button
-                onClick={() => setActiveVideo(null)}
-                aria-label="Close Video Player"
-                className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-white/10 text-white hover:bg-white/20 transition-all"
-              >
-                <X size={18} />
-              </button>
-            </div>
-
-            {/* Video Element (Plays when modal opens) */}
-            <div className="relative aspect-video w-full bg-black">
-              <video
-                src={activeVideo.src}
-                controls
-                autoPlay
-                className="h-full w-full object-contain"
-              />
-            </div>
-
-            {/* Video Description Footer */}
-            <div className="p-4 bg-slate-950 border-t border-white/10 flex items-center justify-between text-xs text-[rgba(var(--text-rgb),0.6)]">
-              <span className="nss-mono">Official NSS Group Project Field Video</span>
-              <button
-                onClick={() => setActiveVideo(null)}
-                className="nss-mono text-[11px] text-[rgb(var(--gold-rgb))] hover:underline"
-              >
-                Close Player
-              </button>
-            </div>
-          </div>
         </div>
       )}
     </div>
