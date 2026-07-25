@@ -1,0 +1,242 @@
+- generic [ref=f1e3]:
+  - banner [ref=f1e4]:
+    - generic [ref=f1e7]:
+      - generic [ref=f1e8]:
+        - link "NSS NSS GROUP INTERNATIONAL GROUP OF COMPANIES NAWI SAMIM SAMIR" [ref=f1e9] [cursor=pointer]:
+          - /url: /
+          - img "NSS" [ref=f1e11]
+          - generic [ref=f1e12]:
+            - generic [ref=f1e13]: NSS GROUP
+            - generic [ref=f1e14]: INTERNATIONAL GROUP OF COMPANIES
+            - generic [ref=f1e15]: NAWI SAMIM SAMIR
+        - navigation [ref=f1e16]:
+          - link "Home" [ref=f1e17] [cursor=pointer]:
+            - /url: /
+          - link "Marketplace" [ref=f1e18] [cursor=pointer]:
+            - /url: /trading
+          - link "Services" [ref=f1e19] [cursor=pointer]:
+            - /url: /services
+          - link "Projects" [ref=f1e20] [cursor=pointer]:
+            - /url: /projects
+          - link "Fleet" [ref=f1e21] [cursor=pointer]:
+            - /url: /fleet
+          - link "Network" [ref=f1e22] [cursor=pointer]:
+            - /url: /network
+          - button "Operations" [ref=f1e24] [cursor=pointer]
+          - link "About" [ref=f1e28] [cursor=pointer]:
+            - /url: /about
+          - link "Contact" [ref=f1e30] [cursor=pointer]:
+            - /url: /contact
+      - generic [ref=f1e31]:
+        - button "🇬🇧" [ref=f1e33] [cursor=pointer]
+        - button "Toggle light / dark theme" [ref=f1e37] [cursor=pointer]
+        - generic [ref=f1e46]:
+          - button "Toggle Background Music" [ref=f1e47] [cursor=pointer]:
+            - generic [ref=f1e53]: Music
+          - button "Background Music Playlist" [ref=f1e54] [cursor=pointer]
+        - button "Login" [ref=f1e58] [cursor=pointer]
+  - main [ref=f1e65]:
+    - generic [ref=f1e68]:
+      - paragraph [ref=f1e69]: ABOUT NSS
+      - heading "A transport heritage, coordinated for the region." [level=1] [ref=f1e70]
+      - paragraph [ref=f1e71]: NSS International Group of Companies brings together a documented Afghan transport legacy with coordinated trade, transit, logistics and construction services.
+    - generic [ref=f1e73]:
+      - generic [ref=f1e75]:
+        - paragraph [ref=f1e76]: OUR HISTORY
+        - heading "From organised freight to a regional service model." [level=2] [ref=f1e77]
+        - paragraph [ref=f1e78]: Our record begins with organised freight operations in 2000 and develops through formal forwarding, institutional logistics, specialist companies and regional service coordination.
+      - generic [ref=f1e81]:
+        - article [ref=f1e83]:
+          - paragraph [ref=f1e85]: "2000"
+          - heading "Freight and transport heritage" [level=3] [ref=f1e86]
+          - paragraph [ref=f1e87]: Tamim Sahib Ansar Freight Union began organising carriers, drivers and domestic freight movements across Afghanistan.
+        - article [ref=f1e89]:
+          - paragraph [ref=f1e91]: "2010"
+          - heading "Formal freight-forwarding company" [level=3] [ref=f1e92]
+          - paragraph [ref=f1e93]: Nawi Samim Samir International Transit and Freight Forwarding Limited expanded the group’s domestic and international transport, transit, cargo-management and procurement work.
+        - article [ref=f1e95]:
+          - paragraph [ref=f1e97]: 2010–2020
+          - heading "Documented institutional logistics" [level=3] [ref=f1e98]
+          - paragraph [ref=f1e99]: The supplied record documents tenders, contracts and deliveries supporting humanitarian, food, agricultural, educational and project cargo movements.
+        - article [ref=f1e101]:
+          - paragraph [ref=f1e103]: 2013–2016
+          - heading "Specialist companies added" [level=3] [ref=f1e104]
+          - paragraph [ref=f1e105]: Construction, road-building and dedicated logistics services broadened the group’s operating structure.
+        - article [ref=f1e107]:
+          - paragraph [ref=f1e109]: "2024"
+          - heading "Regional trade and transit expansion" [level=3] [ref=f1e110]
+          - paragraph [ref=f1e111]: NSS expanded its regional operating focus across South Asia, Central Asia, Iran, the UAE and Russia through land and rail service coordination.
+        - article [ref=f1e113]:
+          - paragraph [ref=f1e115]: "2026"
+          - heading "A coordinated NSS platform" [level=3] [ref=f1e116]
+          - paragraph [ref=f1e117]: The group is developing a connected, request-and-quote digital service model for sourcing, transport visibility and document coordination.
+    - generic [ref=f1e119]:
+      - generic [ref=f1e120]:
+        - paragraph [ref=f1e121]: GROUP STRUCTURE
+        - heading "Specialist companies, coordinated as one group." [level=2] [ref=f1e122]
+        - paragraph [ref=f1e123]: NSS is built on complementary transport, freight-forwarding, construction and logistics operations documented in the supplied company record.
+      - generic [ref=f1e124]:
+        - article [ref=f1e126]:
+          - generic [ref=f1e127]: "01"
+          - heading "Tamim Sahib Ansar Freight Union" [level=3] [ref=f1e133]
+          - paragraph [ref=f1e134]: The 2000 freight and transport heritage that established carrier coordination and route experience.
+        - article [ref=f1e136]:
+          - generic [ref=f1e137]: "02"
+          - heading "Tamim Sahib Transport" [level=3] [ref=f1e143]
+          - paragraph [ref=f1e144]: Domestic transport, institutional-contract support, relief and equipment movements, and vehicle-hire services.
+        - article [ref=f1e146]:
+          - generic [ref=f1e147]: "03"
+          - heading "Nawi Samim Samir International Transit and Freight Forwarding Limited" [level=3] [ref=f1e153]
+          - paragraph [ref=f1e154]: Established in 2010 for transit, freight forwarding, logistics and domestic and international cargo movements.
+        - article [ref=f1e156]:
+          - generic [ref=f1e157]: "04"
+          - heading "Jabar Payman Construction and Road-Building Company" [level=3] [ref=f1e163]
+          - paragraph [ref=f1e164]: Established in 2013 for construction, road-building, infrastructure work and construction-material supply.
+        - article [ref=f1e166]:
+          - generic [ref=f1e167]: "05"
+          - heading "Roshanegan Haqiq Logistics Services" [level=3] [ref=f1e173]
+          - paragraph [ref=f1e174]: A specialist logistics, transport, procurement and project-support company recorded under licence D-77254.
+        - article [ref=f1e176]:
+          - generic [ref=f1e177]: "06"
+          - heading "NSS International Group of Companies" [level=3] [ref=f1e183]
+          - paragraph [ref=f1e184]: The coordinating group structure for transport, transit, logistics, construction, trade, rail and digital-service development.
+    - generic [ref=f1e185]:
+      - generic [ref=f1e186]:
+        - paragraph [ref=f1e187]: DOCUMENTED RELATIONSHIPS
+        - heading "Organizations named in the supplied historical record." [level=2] [ref=f1e188]
+        - paragraph [ref=f1e189]: The company record describes historical contracts, tenders, transport or procurement work involving these organizations.
+      - generic [ref=f1e190]:
+        - generic [ref=f1e192]:
+          - img "UNICEF"
+        - generic [ref=f1e194]:
+          - img "World Food Programme"
+        - generic [ref=f1e196]:
+          - img "Food and Agriculture Organization"
+        - generic [ref=f1e198]:
+          - img "International Committee of the Red Cross"
+        - generic [ref=f1e200]:
+          - img "ACTED"
+        - generic [ref=f1e202]:
+          - img "DACAAR"
+        - generic [ref=f1e204]:
+          - img "Afghan Wireless"
+        - generic [ref=f1e206]:
+          - img "Roshan"
+      - paragraph [ref=f1e208]: Logos identify organizations named in the documented record only. They do not imply current affiliation, endorsement or a continuing agreement.
+    - generic [ref=f1e210]:
+      - paragraph [ref=f1e212]: MISSION · VISION · VALUES
+      - generic [ref=f1e213]:
+        - article [ref=f1e215]:
+          - heading "Mission" [level=3] [ref=f1e222]
+          - paragraph [ref=f1e223]: To coordinate responsible, transparent and dependable services from source to destination through one accountable point of contact.
+        - article [ref=f1e225]:
+          - heading "Vision" [level=3] [ref=f1e231]
+          - paragraph [ref=f1e232]: To be a trusted Afghan and regional group connecting trade, transport and logistics services through practical experience and thoughtful digital development.
+      - generic [ref=f1e233]:
+        - article [ref=f1e235]:
+          - heading "Integrity" [level=3] [ref=f1e241]
+          - paragraph [ref=f1e242]: We value honest dealing, financial transparency and respect for the commitments we make.
+        - article [ref=f1e244]:
+          - heading "Responsibility" [level=3] [ref=f1e249]
+          - paragraph [ref=f1e250]: We treat cargo, documentation and delivery coordination as responsibilities that demand care and accountability.
+        - article [ref=f1e252]:
+          - heading "Long-term partnership" [level=3] [ref=f1e257]
+          - paragraph [ref=f1e258]: We build durable working relationships through contract discipline, practical experience and clear communication.
+    - generic [ref=f1e259]:
+      - generic [ref=f1e260]:
+        - paragraph [ref=f1e261]: DOCUMENTED CORPORATE RECORD
+        - heading "Key references in the supplied company record." [level=2] [ref=f1e262]
+        - paragraph [ref=f1e263]: These references are presented as historical corporate-record details and are not a substitute for due diligence or current regulatory verification.
+      - generic [ref=f1e264]:
+        - paragraph [ref=f1e270]: Nawi Samim Samir International Transit and Freight Forwarding Limited — established 2010
+        - paragraph [ref=f1e276]: Registration No. 15420 · Licence No. 752
+        - paragraph [ref=f1e282]: "National Procurement Authority ID: NPA57063936"
+        - paragraph [ref=f1e288]: "UN Global Marketplace registration: 891952"
+        - paragraph [ref=f1e294]: Roshanegan Haqiq Logistics Services · Licence D-77254 (1394 SH)
+  - generic [ref=f1e298]:
+    - paragraph [ref=f1e299]: TRANSPORT · LOGISTICS · CONSTRUCTION
+    - heading "Have cargo to move?" [level=2] [ref=f1e300]
+    - paragraph [ref=f1e301]: Send us the route and the load — we reply within 24 hours with a rate and a plan.
+    - generic [ref=f1e302]:
+      - link "Request a Quote" [ref=f1e303] [cursor=pointer]:
+        - /url: /contact
+      - link "Or call us directly — +93 78 452 5666" [ref=f1e308] [cursor=pointer]:
+        - /url: tel:+93784525666
+        - generic [ref=f1e311]: Or call us directly
+        - generic [ref=f1e312]: —
+        - generic [ref=f1e313]: +93 78 452 5666
+  - contentinfo [ref=f1e314]:
+    - generic [ref=f1e316]:
+      - generic [ref=f1e317]:
+        - generic [ref=f1e318]:
+          - img "NSS" [ref=f1e320]
+          - generic [ref=f1e321]:
+            - generic [ref=f1e322]: NSS GROUP
+            - generic [ref=f1e323]: INTERNATIONAL GROUP OF COMPANIES
+        - paragraph [ref=f1e324]: NSS International Group of Companies — transport, logistics and construction across Central Asia and Europe since 2007.
+        - generic [ref=f1e325]:
+          - link "WhatsApp" [ref=f1e326] [cursor=pointer]:
+            - /url: https://wa.me/93784525666
+          - link "Facebook" [ref=f1e332] [cursor=pointer]:
+            - /url: https://www.facebook.com/nssitransit
+          - link "Instagram" [ref=f1e335] [cursor=pointer]:
+            - /url: https://www.instagram.com/nssitransit
+      - generic [ref=f1e338]:
+        - heading "Pages" [level=3] [ref=f1e339]
+        - list [ref=f1e340]:
+          - listitem [ref=f1e341]:
+            - link "Home" [ref=f1e342] [cursor=pointer]:
+              - /url: /
+          - listitem [ref=f1e343]:
+            - link "About" [ref=f1e344] [cursor=pointer]:
+              - /url: /about
+          - listitem [ref=f1e345]:
+            - link "Services" [ref=f1e346] [cursor=pointer]:
+              - /url: /services
+          - listitem [ref=f1e347]:
+            - link "Fleet" [ref=f1e348] [cursor=pointer]:
+              - /url: /fleet
+          - listitem [ref=f1e349]:
+            - link "Network" [ref=f1e350] [cursor=pointer]:
+              - /url: /network
+          - listitem [ref=f1e351]:
+            - link "Contact" [ref=f1e352] [cursor=pointer]:
+              - /url: /contact
+      - generic [ref=f1e353]:
+        - heading "Contact" [level=3] [ref=f1e354]
+        - list [ref=f1e355]:
+          - listitem [ref=f1e356]:
+            - generic [ref=f1e359]:
+              - link "+93 78 452 5666" [ref=f1e360] [cursor=pointer]:
+                - /url: tel:+93784525666
+              - text: ·
+              - link "+93 706 420 050" [ref=f1e361] [cursor=pointer]:
+                - /url: tel:+93706420050
+          - listitem [ref=f1e362]:
+            - link "nawisamimsamir@gmail.com" [ref=f1e366] [cursor=pointer]:
+              - /url: mailto:nawisamimsamir@gmail.com
+          - listitem [ref=f1e367]:
+            - link "alemyar@nssitransit.com" [ref=f1e371] [cursor=pointer]:
+              - /url: mailto:alemyar@nssitransit.com
+          - listitem [ref=f1e372]:
+            - generic [ref=f1e376]: Head Office — Kabul, Afghanistan
+      - generic [ref=f1e377]:
+        - heading "Credentials" [level=3] [ref=f1e378]
+        - list [ref=f1e379]:
+          - listitem [ref=f1e380]:
+            - generic [ref=f1e384]: "MoIC Business License #752"
+          - listitem [ref=f1e385]:
+            - generic [ref=f1e389]: "Registration #1548-15420"
+          - listitem [ref=f1e390]:
+            - generic [ref=f1e394]: TIN 7008066016
+          - listitem [ref=f1e395]:
+            - generic [ref=f1e399]: NPA Vendor ID NPA57063936
+          - listitem [ref=f1e400]:
+            - generic [ref=f1e404]: UNGM ID 891952 — Basic & Level 1
+          - listitem [ref=f1e405]:
+            - generic [ref=f1e409]: CIS Railway Network · ACCI · AFFCO
+    - generic [ref=f1e411]:
+      - paragraph [ref=f1e412]: © 2026 NSS INTERNATIONAL GROUP OF COMPANIES — All rights reserved.
+      - paragraph [ref=f1e413]: TRANSPORT · LOGISTICS · CONSTRUCTION
+      - button "Back to top" [ref=f1e414] [cursor=pointer]
+  - region "Notifications alt+T"

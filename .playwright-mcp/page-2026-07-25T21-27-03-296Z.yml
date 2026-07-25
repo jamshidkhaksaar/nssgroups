@@ -1,0 +1,224 @@
+- generic [ref=f5e3]:
+  - banner [ref=f5e4]:
+    - generic [ref=f5e7]:
+      - link "NSS NSS GROUP INTERNATIONAL GROUP OF COMPANIES NAWI SAMIM SAMIR" [ref=f5e9] [cursor=pointer]:
+        - /url: /
+        - img "NSS" [ref=f5e11]
+        - generic [ref=f5e12]:
+          - generic [ref=f5e13]: NSS GROUP
+          - generic [ref=f5e14]: INTERNATIONAL GROUP OF COMPANIES
+          - generic [ref=f5e15]: NAWI SAMIM SAMIR
+      - generic [ref=f5e16]:
+        - button "🇸🇦" [ref=f5e18] [cursor=pointer]
+        - button "تبديل المظهر (داكن / فاتح)" [ref=f5e22] [cursor=pointer]
+        - button "Toggle Background Music" [ref=f5e29] [cursor=pointer]
+        - button "القائمة" [ref=f5e34] [cursor=pointer]
+  - main [ref=f5e36]:
+    - generic [ref=f5e39]:
+      - paragraph [ref=f5e40]: عن NSS
+      - heading "إرث في النقل، منسّق للمنطقة." [level=1] [ref=f5e41]
+      - paragraph [ref=f5e42]: تجمع مجموعة شركات NSS الدولية بين إرث أفغاني موثّق في النقل وخدمات منسّقة في التجارة والعبور والخدمات اللوجستية والإنشاءات.
+    - generic [ref=f5e44]:
+      - paragraph [ref=f5e45]: استكشف هيكل مجموعة NSS وتاريخها الموثق واتجاه خدماتها الإقليمية.
+      - link "عرض ملف الشركة الكامل" [ref=f5e46] [cursor=pointer]:
+        - /url: /company-portfolio
+    - generic [ref=f5e53]:
+      - generic [ref=f5e55]:
+        - paragraph [ref=f5e56]: تاريخنا
+        - heading "من نقل البضائع المنظّم إلى نموذج خدمة إقليمي." [level=2] [ref=f5e57]
+        - paragraph [ref=f5e58]: يبدأ سجلنا بعمليات نقل البضائع المنظّمة عام 2000 ويتطور عبر التخليص الرسمي والخدمات اللوجستية المؤسسية والشركات المتخصصة وتنسيق الخدمات الإقليمية.
+      - generic [ref=f5e61]:
+        - article [ref=f5e63]:
+          - paragraph [ref=f5e65]: "2000"
+          - heading "إرث نقل البضائع والمواصلات" [level=3] [ref=f5e66]
+          - paragraph [ref=f5e67]: بدأ اتحاد تميم صاحب أنصار للشحن بتنسيق الناقلين والسائقين وحركة البضائع الداخلية عبر أفغانستان.
+        - article [ref=f5e69]:
+          - paragraph [ref=f5e71]: "2010"
+          - heading "شركة شحن وتخليص رسمية" [level=3] [ref=f5e72]
+          - paragraph [ref=f5e73]: وسّعت Nawi Samim Samir International Transit and Freight Forwarding Limited أعمال المجموعة في النقل المحلي والدولي والعبور وإدارة البضائع والمشتريات.
+        - article [ref=f5e75]:
+          - paragraph [ref=f5e77]: 2010–2020
+          - heading "خدمات لوجستية مؤسسية موثقة" [level=3] [ref=f5e78]
+          - paragraph [ref=f5e79]: يوثّق السجل المقدّم مناقصات وعقوداً وعمليات تسليم للشحنات الإنسانية والغذائية والزراعية والتعليمية وشحنات المشاريع.
+        - article [ref=f5e81]:
+          - paragraph [ref=f5e83]: 2013–2016
+          - heading "إضافة شركات متخصصة" [level=3] [ref=f5e84]
+          - paragraph [ref=f5e85]: وسّعت خدمات البناء وشق الطرق والخدمات اللوجستية المتخصصة الهيكل التشغيلي للمجموعة.
+        - article [ref=f5e87]:
+          - paragraph [ref=f5e89]: "2024"
+          - heading "التوسع في التجارة والعبور الإقليمي" [level=3] [ref=f5e90]
+          - paragraph [ref=f5e91]: وسّعت NSS تركيزها الإقليمي في جنوب ووسط آسيا وإيران والإمارات وروسيا عبر تنسيق الخدمات البرية والسككية.
+        - article [ref=f5e93]:
+          - paragraph [ref=f5e95]: "2026"
+          - heading "منصة NSS المنسّقة" [level=3] [ref=f5e96]
+          - paragraph [ref=f5e97]: تطوّر المجموعة نموذجاً رقمياً قائماً على الطلب وعرض الأسعار لتوريد المنتجات ووضوح النقل وتنسيق المستندات.
+    - generic [ref=f5e99]:
+      - generic [ref=f5e100]:
+        - paragraph [ref=f5e101]: هيكل المجموعة
+        - heading "شركات متخصصة، منسقة ضمن مجموعة واحدة." [level=2] [ref=f5e102]
+        - paragraph [ref=f5e103]: تقوم NSS على عمليات متكاملة في النقل والتخليص والبناء والخدمات اللوجستية، كما وردت في السجل المؤسسي المقدّم.
+      - generic [ref=f5e104]:
+        - article [ref=f5e106]:
+          - generic [ref=f5e107]: "01"
+          - heading "اتحاد تميم صاحب أنصار للشحن" [level=3] [ref=f5e113]
+          - paragraph [ref=f5e114]: إرث الشحن والنقل منذ عام 2000 الذي أسس لتنسيق الناقلين وخبرة الطرق.
+        - article [ref=f5e116]:
+          - generic [ref=f5e117]: "02"
+          - heading "تميم صاحب للنقل" [level=3] [ref=f5e123]
+          - paragraph [ref=f5e124]: النقل الداخلي ودعم العقود المؤسسية ونقل المساعدات والمعدات وخدمات تأجير المركبات.
+        - article [ref=f5e126]:
+          - generic [ref=f5e127]: "03"
+          - heading "Nawi Samim Samir International Transit and Freight Forwarding Limited" [level=3] [ref=f5e133]
+          - paragraph [ref=f5e134]: تأسست في 2010 للعبور والتخليص والخدمات اللوجستية ونقل البضائع محلياً ودولياً.
+        - article [ref=f5e136]:
+          - generic [ref=f5e137]: "04"
+          - heading "Jabar Payman Construction and Road-Building Company" [level=3] [ref=f5e143]
+          - paragraph [ref=f5e144]: تأسست في 2013 للبناء وشق الطرق والبنية التحتية وتوريد مواد البناء.
+        - article [ref=f5e146]:
+          - generic [ref=f5e147]: "05"
+          - heading "Roshanegan Haqiq Logistics Services" [level=3] [ref=f5e153]
+          - paragraph [ref=f5e154]: شركة متخصصة في اللوجستيات والنقل والمشتريات ودعم المشاريع، مسجلة بموجب الترخيص D-77254.
+        - article [ref=f5e156]:
+          - generic [ref=f5e157]: "06"
+          - heading "NSS International Group of Companies" [level=3] [ref=f5e163]
+          - paragraph [ref=f5e164]: هيكل المجموعة المنسّق لتطوير النقل والعبور واللوجستيات والإنشاءات والتجارة والسكك الحديدية والخدمات الرقمية.
+    - generic [ref=f5e165]:
+      - generic [ref=f5e166]:
+        - paragraph [ref=f5e167]: علاقات موثقة
+        - heading "المنظمات المذكورة في السجل التاريخي المقدّم." [level=2] [ref=f5e168]
+        - paragraph [ref=f5e169]: يصف السجل المؤسسي عقوداً ومناقصات وأعمال نقل أو مشتريات تاريخية شملت هذه المنظمات.
+      - generic [ref=f5e170]:
+        - generic [ref=f5e172]:
+          - img "UNICEF"
+        - generic [ref=f5e174]:
+          - img "World Food Programme"
+        - generic [ref=f5e176]:
+          - img "Food and Agriculture Organization"
+        - generic [ref=f5e178]:
+          - img "International Committee of the Red Cross"
+        - generic [ref=f5e180]:
+          - img "ACTED"
+        - generic [ref=f5e182]:
+          - img "DACAAR"
+        - generic [ref=f5e184]:
+          - img "Afghan Wireless"
+        - generic [ref=f5e186]:
+          - img "Roshan"
+      - paragraph [ref=f5e188]: تشير الشعارات فقط إلى المنظمات المذكورة في السجل الموثّق، ولا تعني انتماءً حالياً أو تأييداً أو اتفاقاً مستمراً.
+    - generic [ref=f5e190]:
+      - paragraph [ref=f5e192]: المهمة · الرؤية · القيم
+      - generic [ref=f5e193]:
+        - article [ref=f5e195]:
+          - heading "المهمة" [level=3] [ref=f5e202]
+          - paragraph [ref=f5e203]: تنسيق خدمات مسؤولة وشفافة وموثوقة من المصدر إلى الوجهة عبر نقطة اتصال واحدة خاضعة للمساءلة.
+        - article [ref=f5e205]:
+          - heading "الرؤية" [level=3] [ref=f5e211]
+          - paragraph [ref=f5e212]: أن نكون مجموعة أفغانية وإقليمية موثوقة تربط التجارة والنقل والخدمات اللوجستية عبر الخبرة العملية والتطوير الرقمي المدروس.
+      - generic [ref=f5e213]:
+        - article [ref=f5e215]:
+          - heading "النزاهة" [level=3] [ref=f5e221]
+          - paragraph [ref=f5e222]: نقدّر التعامل الصادق والشفافية المالية واحترام الالتزامات التي نقطعها.
+        - article [ref=f5e224]:
+          - heading "المسؤولية" [level=3] [ref=f5e229]
+          - paragraph [ref=f5e230]: نتعامل مع البضائع والمستندات وتنسيق التسليم كمسؤوليات تتطلب العناية والمساءلة.
+        - article [ref=f5e232]:
+          - heading "شراكة طويلة الأمد" [level=3] [ref=f5e237]
+          - paragraph [ref=f5e238]: نبني علاقات عمل مستدامة عبر الانضباط التعاقدي والخبرة العملية والتواصل الواضح.
+    - generic [ref=f5e239]:
+      - generic [ref=f5e240]:
+        - paragraph [ref=f5e241]: سجل مؤسسي موثّق
+        - heading "مراجع رئيسية في السجل المؤسسي المقدّم." [level=2] [ref=f5e242]
+        - paragraph [ref=f5e243]: تُعرض هذه المراجع كتفاصيل تاريخية في السجل المؤسسي ولا تغني عن العناية الواجبة أو التحقق التنظيمي الحالي.
+      - generic [ref=f5e244]:
+        - paragraph [ref=f5e250]: Nawi Samim Samir International Transit and Freight Forwarding Limited — تأسست عام 2010
+        - paragraph [ref=f5e256]: رقم التسجيل 15420 · رقم الترخيص 752
+        - paragraph [ref=f5e262]: "معرّف الهيئة الوطنية للمشتريات: NPA57063936"
+        - paragraph [ref=f5e268]: "تسجيل سوق الأمم المتحدة العالمي: 891952"
+        - paragraph [ref=f5e274]: Roshanegan Haqiq Logistics Services · الترخيص D-77254 (1394 SH)
+  - generic [ref=f5e278]:
+    - paragraph [ref=f5e279]: TRANSPORT · LOGISTICS · CONSTRUCTION
+    - heading "احصل على عرض سعر وتخطيط ممر لشحنتك القادمة." [level=2] [ref=f5e280]
+    - paragraph [ref=f5e281]: يتواجد فريقنا في كابول وحيرتان ومزار شريف وطشقند لتقديم أسعار مباشرة وتخطيط الممرات الجمركية.
+    - generic [ref=f5e282]:
+      - link "Request a Quote" [ref=f5e283] [cursor=pointer]:
+        - /url: /contact
+      - link "Or call us directly — +93 78 452 5666" [ref=f5e288] [cursor=pointer]:
+        - /url: tel:+93784525666
+        - generic [ref=f5e291]: Or call us directly
+        - generic [ref=f5e292]: —
+        - generic [ref=f5e293]: +93 78 452 5666
+  - contentinfo [ref=f5e294]:
+    - generic [ref=f5e296]:
+      - generic [ref=f5e297]:
+        - generic [ref=f5e298]:
+          - img "NSS" [ref=f5e300]
+          - generic [ref=f5e301]:
+            - generic [ref=f5e302]: مجموعة NSS
+            - generic [ref=f5e303]: مجموعة شركات NSS
+        - paragraph [ref=f5e304]: NSS Groups of Companies — transport, logistics and construction across Central Asia and Europe since 2007.
+        - generic [ref=f5e305]:
+          - link "WhatsApp" [ref=f5e306] [cursor=pointer]:
+            - /url: https://wa.me/93784525666
+          - link "Facebook" [ref=f5e312] [cursor=pointer]:
+            - /url: https://www.facebook.com/nssitransit
+          - link "Instagram" [ref=f5e315] [cursor=pointer]:
+            - /url: https://www.instagram.com/nssitransit
+      - generic [ref=f5e318]:
+        - heading "Pages" [level=3] [ref=f5e319]
+        - list [ref=f5e320]:
+          - listitem [ref=f5e321]:
+            - link "الرئيسية" [ref=f5e322] [cursor=pointer]:
+              - /url: /
+          - listitem [ref=f5e323]:
+            - link "عن الشركة" [ref=f5e324] [cursor=pointer]:
+              - /url: /about
+          - listitem [ref=f5e325]:
+            - link "الخدمات" [ref=f5e326] [cursor=pointer]:
+              - /url: /services
+          - listitem [ref=f5e327]:
+            - link "الأسطول" [ref=f5e328] [cursor=pointer]:
+              - /url: /fleet
+          - listitem [ref=f5e329]:
+            - link "الشبكة" [ref=f5e330] [cursor=pointer]:
+              - /url: /network
+          - listitem [ref=f5e331]:
+            - link "اتصل بنا" [ref=f5e332] [cursor=pointer]:
+              - /url: /contact
+      - generic [ref=f5e333]:
+        - heading "Contact" [level=3] [ref=f5e334]
+        - list [ref=f5e335]:
+          - listitem [ref=f5e336]:
+            - generic [ref=f5e339]:
+              - link "+93 78 452 5666" [ref=f5e340] [cursor=pointer]:
+                - /url: tel:+93784525666
+              - text: ·
+              - link "+93 706 420 050" [ref=f5e341] [cursor=pointer]:
+                - /url: tel:+93706420050
+          - listitem [ref=f5e342]:
+            - link "info@nssgroupint.com" [ref=f5e346] [cursor=pointer]:
+              - /url: mailto:info@nssgroupint.com
+          - listitem [ref=f5e347]:
+            - link "contact@nssgroupint.com" [ref=f5e351] [cursor=pointer]:
+              - /url: mailto:contact@nssgroupint.com
+          - listitem [ref=f5e352]:
+            - generic [ref=f5e356]: Head Office — Kabul, Afghanistan
+      - generic [ref=f5e357]:
+        - heading "Credentials" [level=3] [ref=f5e358]
+        - list [ref=f5e359]:
+          - listitem [ref=f5e360]:
+            - generic [ref=f5e364]: "MoIC Business License #752"
+          - listitem [ref=f5e365]:
+            - generic [ref=f5e369]: "Registration #1548-15420"
+          - listitem [ref=f5e370]:
+            - generic [ref=f5e374]: TIN 7008066016
+          - listitem [ref=f5e375]:
+            - generic [ref=f5e379]: NPA Vendor ID NPA57063936
+          - listitem [ref=f5e380]:
+            - generic [ref=f5e384]: UNGM ID 891952 — Basic & Level 1
+          - listitem [ref=f5e385]:
+            - generic [ref=f5e389]: CIS Railway Network · ACCI · AFFCO
+    - generic [ref=f5e391]:
+      - paragraph [ref=f5e392]: © 2026 NSS INTERNATIONAL GROUP OF COMPANIES — جميع الحقوق محفوظة.
+      - paragraph [ref=f5e393]: TRANSPORT · LOGISTICS · CONSTRUCTION
+      - button "Back to top" [ref=f5e394] [cursor=pointer]
+  - region "Notifications alt+T"

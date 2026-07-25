@@ -1,0 +1,220 @@
+- generic [ref=f2e3]:
+  - banner [ref=f2e4]:
+    - generic [ref=f2e7]:
+      - link "NSS NSS GROUP INTERNATIONAL GROUP OF COMPANIES NAWI SAMIM SAMIR" [ref=f2e9] [cursor=pointer]:
+        - /url: /
+        - img "NSS" [ref=f2e11]
+        - generic [ref=f2e12]:
+          - generic [ref=f2e13]: NSS GROUP
+          - generic [ref=f2e14]: INTERNATIONAL GROUP OF COMPANIES
+          - generic [ref=f2e15]: NAWI SAMIM SAMIR
+      - generic [ref=f2e16]:
+        - button "🇦🇫" [ref=f2e18] [cursor=pointer]
+        - button "تم روشن / تاریک" [ref=f2e22] [cursor=pointer]
+        - button "Toggle Background Music" [ref=f2e29] [cursor=pointer]
+        - button "مینو" [ref=f2e34] [cursor=pointer]
+  - main [ref=f2e36]:
+    - generic [ref=f2e39]:
+      - paragraph [ref=f2e40]: درباره NSS
+      - heading "میراث ترانسپورت، هماهنگ‌شده برای منطقه." [level=1] [ref=f2e41]
+      - paragraph [ref=f2e42]: گروپ شرکت‌های بین‌المللی NSS میراث مستند ترانسپورت افغانستان را با خدمات هماهنگ تجارت، ترانزیت، لوژستیک و ساختمان یک‌جا می‌سازد.
+    - generic [ref=f2e44]:
+      - generic [ref=f2e46]:
+        - paragraph [ref=f2e47]: تاریخچه ما
+        - heading "از باربری سازمان‌یافته تا الگوی خدمات منطقه‌ای." [level=2] [ref=f2e48]
+        - paragraph [ref=f2e49]: سوابق ما از فعالیت‌های سازمان‌یافته باربری در سال ۲۰۰۰ آغاز می‌شود و با بارچالانی رسمی، لوژستیک نهادی، شرکت‌های تخصصی و هماهنگی خدمات منطقه‌ای گسترش می‌یابد.
+      - generic [ref=f2e52]:
+        - article [ref=f2e54]:
+          - paragraph [ref=f2e56]: ۲۰۰۰
+          - heading "میراث باربری و ترانسپورت" [level=3] [ref=f2e57]
+          - paragraph [ref=f2e58]: اتحادیه باربری تمیم صاحب انصار تنظیم حاملان، رانندگان و انتقالات داخلی کالا در افغانستان را آغاز کرد.
+        - article [ref=f2e60]:
+          - paragraph [ref=f2e62]: ۲۰۱۰
+          - heading "شرکت رسمی بارچالانی" [level=3] [ref=f2e63]
+          - paragraph [ref=f2e64]: شرکت نوی صمیم سمیر بین‌المللی ترانزیتی و بارچالانی لمیتد فعالیت‌های ترانسپورت داخلی و بین‌المللی، ترانزیت، مدیریت محموله و تدارکات را گسترش داد.
+        - article [ref=f2e66]:
+          - paragraph [ref=f2e68]: ۲۰۱۰–۲۰۲۰
+          - heading "لوژستیک نهادی مستند" [level=3] [ref=f2e69]
+          - paragraph [ref=f2e70]: اسناد ارائه‌شده، مناقصه‌ها، قراردادها و انتقالات مرتبط با محموله‌های بشردوستانه، غذایی، زراعتی، آموزشی و پروژه‌ای را نشان می‌دهد.
+        - article [ref=f2e72]:
+          - paragraph [ref=f2e74]: ۲۰۱۳–۲۰۱۶
+          - heading "افزودن شرکت‌های تخصصی" [level=3] [ref=f2e75]
+          - paragraph [ref=f2e76]: خدمات ساختمان، سرک‌سازی و لوژستیک تخصصی، ساختار عملیاتی گروپ را گسترش داد.
+        - article [ref=f2e78]:
+          - paragraph [ref=f2e80]: ۲۰۲۴
+          - heading "گسترش تجارت و ترانزیت منطقه‌ای" [level=3] [ref=f2e81]
+          - paragraph [ref=f2e82]: NSS تمرکز عملیاتی منطقه‌ای خود را در جنوب و مرکز آسیا، ایران، امارات متحده عربی و روسیه از طریق هماهنگی خدمات زمینی و ریلی گسترش داد.
+        - article [ref=f2e84]:
+          - paragraph [ref=f2e86]: ۲۰۲۶
+          - heading "پلتفرم هماهنگ NSS" [level=3] [ref=f2e87]
+          - paragraph [ref=f2e88]: گروپ در حال توسعه یک الگوی دیجیتالی درخواست و نرخ‌دهی برای تأمین کالا، دید انتقال و هماهنگی اسناد است.
+    - generic [ref=f2e90]:
+      - generic [ref=f2e91]:
+        - paragraph [ref=f2e92]: ساختار گروپ
+        - heading "شرکت‌های تخصصی، هماهنگ در یک گروپ." [level=2] [ref=f2e93]
+        - paragraph [ref=f2e94]: NSS بر عملیات مکمل ترانسپورت، بارچالانی، ساختمان و لوژستیک استوار است که در اسناد ارائه‌شده شرکت ثبت شده‌اند.
+      - generic [ref=f2e95]:
+        - article [ref=f2e97]:
+          - generic [ref=f2e98]: "01"
+          - heading "اتحادیه باربری تمیم صاحب انصار" [level=3] [ref=f2e104]
+          - paragraph [ref=f2e105]: میراث باربری و ترانسپورت سال ۲۰۰۰ که هماهنگی حاملان و تجربه مسیرها را پایه گذاشت.
+        - article [ref=f2e107]:
+          - generic [ref=f2e108]: "02"
+          - heading "تمیم صاحب ترانسپورت" [level=3] [ref=f2e114]
+          - paragraph [ref=f2e115]: ترانسپورت داخلی، پشتیبانی قراردادهای نهادی، انتقال مواد امدادی و تجهیزات و خدمات کرایه‌دهی وسایط.
+        - article [ref=f2e117]:
+          - generic [ref=f2e118]: "03"
+          - heading "نوی صمیم سمیر بین‌المللی ترانزیتی و بارچالانی لمیتد" [level=3] [ref=f2e124]
+          - paragraph [ref=f2e125]: تأسیس ۲۰۱۰ برای ترانزیت، بارچالانی، لوژستیک و انتقالات داخلی و بین‌المللی محموله.
+        - article [ref=f2e127]:
+          - generic [ref=f2e128]: "04"
+          - heading "شرکت ساختمانی و سرک‌سازی جبار پیمان" [level=3] [ref=f2e134]
+          - paragraph [ref=f2e135]: تأسیس ۲۰۱۳ برای ساختمان، سرک‌سازی، زیربنا و تهیه مواد ساختمانی.
+        - article [ref=f2e137]:
+          - generic [ref=f2e138]: "05"
+          - heading "شرکت خدمات لوژستیکی روشنگران حقیق" [level=3] [ref=f2e144]
+          - paragraph [ref=f2e145]: شرکت تخصصی لوژستیک، ترانسپورت، تدارکات و پشتیبانی پروژه، ثبت‌شده با جواز D-77254.
+        - article [ref=f2e147]:
+          - generic [ref=f2e148]: "06"
+          - heading "گروپ شرکت‌های بین‌المللی NSS" [level=3] [ref=f2e154]
+          - paragraph [ref=f2e155]: ساختار هماهنگ‌کننده برای توسعه ترانسپورت، ترانزیت، لوژستیک، ساختمان، تجارت، ریل و خدمات دیجیتالی.
+    - generic [ref=f2e156]:
+      - generic [ref=f2e157]:
+        - paragraph [ref=f2e158]: روابط مستند
+        - heading "نهادهای نام‌برده‌شده در سوابق تاریخی ارائه‌شده." [level=2] [ref=f2e159]
+        - paragraph [ref=f2e160]: سوابق شرکت، قراردادها، مناقصه‌ها، خدمات ترانسپورت یا تدارکات تاریخی با این نهادها را شرح می‌دهد.
+      - generic [ref=f2e161]:
+        - generic [ref=f2e163]:
+          - img "UNICEF"
+        - generic [ref=f2e165]:
+          - img "World Food Programme"
+        - generic [ref=f2e167]:
+          - img "Food and Agriculture Organization"
+        - generic [ref=f2e169]:
+          - img "International Committee of the Red Cross"
+        - generic [ref=f2e171]:
+          - img "ACTED"
+        - generic [ref=f2e173]:
+          - img "DACAAR"
+        - generic [ref=f2e175]:
+          - img "Afghan Wireless"
+        - generic [ref=f2e177]:
+          - img "Roshan"
+      - paragraph [ref=f2e179]: لوگوها فقط نهادهای نام‌برده‌شده در سوابق مستند را معرفی می‌کنند و به معنای وابستگی، تأیید یا توافق جاری نیستند.
+    - generic [ref=f2e181]:
+      - paragraph [ref=f2e183]: مأموریت · دیدگاه · ارزش‌ها
+      - generic [ref=f2e184]:
+        - article [ref=f2e186]:
+          - heading "مأموریت" [level=3] [ref=f2e193]
+          - paragraph [ref=f2e194]: هماهنگ‌سازی خدمات مسؤولانه، شفاف و قابل‌اعتماد از مبدأ تا مقصد از طریق یک مرجع پاسخ‌گو.
+        - article [ref=f2e196]:
+          - heading "دیدگاه" [level=3] [ref=f2e202]
+          - paragraph [ref=f2e203]: تبدیل‌شدن به یک گروپ مورد اعتماد افغانستانی و منطقه‌ای که با تجربه عملی و توسعه سنجیده دیجیتالی، تجارت، ترانسپورت و لوژستیک را وصل می‌کند.
+      - generic [ref=f2e204]:
+        - article [ref=f2e206]:
+          - heading "صداقت" [level=3] [ref=f2e212]
+          - paragraph [ref=f2e213]: ما به معامله صادقانه، شفافیت مالی و احترام به تعهدات خود ارزش می‌دهیم.
+        - article [ref=f2e215]:
+          - heading "مسؤولیت‌پذیری" [level=3] [ref=f2e220]
+          - paragraph [ref=f2e221]: ما بار، اسناد و هماهنگی تحویل را مسؤولیت‌هایی می‌دانیم که نیازمند دقت و پاسخ‌گویی هستند.
+        - article [ref=f2e223]:
+          - heading "همکاری بلندمدت" [level=3] [ref=f2e228]
+          - paragraph [ref=f2e229]: ما با رعایت قرارداد، تجربه عملی و ارتباط روشن، روابط کاری پایدار می‌سازیم.
+    - generic [ref=f2e230]:
+      - generic [ref=f2e231]:
+        - paragraph [ref=f2e232]: سوابق مستند شرکتی
+        - heading "مراجع کلیدی در سوابق ارائه‌شده شرکت." [level=2] [ref=f2e233]
+        - paragraph [ref=f2e234]: این مراجع به‌عنوان جزئیات تاریخی سوابق شرکتی ارائه می‌شوند و جای بررسی لازم یا تأیید مقرراتی فعلی را نمی‌گیرند.
+      - generic [ref=f2e235]:
+        - paragraph [ref=f2e241]: نوی صمیم سمیر بین‌المللی ترانزیتی و بارچالانی لمیتد — تأسیس ۲۰۱۰
+        - paragraph [ref=f2e247]: شماره ثبت 15420 · شماره جواز 752
+        - paragraph [ref=f2e253]: "شناسه اداره ملی تدارکات: NPA57063936"
+        - paragraph [ref=f2e259]: "ثبت بازار جهانی سازمان ملل: 891952"
+        - paragraph [ref=f2e265]: خدمات لوژستیکی روشنگران حقیق · جواز D-77254 (۱۳۹۴ ه‍.ش.)
+  - generic [ref=f2e269]:
+    - paragraph [ref=f2e270]: ترانسپورت · لجستیک · ساختمان
+    - heading "بار برای انتقال دارید؟" [level=2] [ref=f2e271]
+    - paragraph [ref=f2e272]: مسیر و بار را برای ما بفرستید — ظرف 24 ساعت با نرخ و پلان پاسخ می‌دهیم.
+    - generic [ref=f2e273]:
+      - link "درخواست نرخ" [ref=f2e274] [cursor=pointer]:
+        - /url: /contact
+      - link "یا مستقیماً با ما تماس بگیرید — +93 78 452 5666" [ref=f2e279] [cursor=pointer]:
+        - /url: tel:+93784525666
+        - generic [ref=f2e282]: یا مستقیماً با ما تماس بگیرید
+        - generic [ref=f2e283]: —
+        - generic [ref=f2e284]: +93 78 452 5666
+  - contentinfo [ref=f2e285]:
+    - generic [ref=f2e287]:
+      - generic [ref=f2e288]:
+        - generic [ref=f2e289]:
+          - img "NSS" [ref=f2e291]
+          - generic [ref=f2e292]:
+            - generic [ref=f2e293]: گروپ شرکت‌های
+            - generic [ref=f2e294]: گروپ شرکت‌های NSS
+        - paragraph [ref=f2e295]: گروپ شرکت‌های NSS — ترانسپورت، لجستیک و ساختمان در سراسر آسیای مرکزی و اروپا از سال 2007.
+        - generic [ref=f2e296]:
+          - link "WhatsApp" [ref=f2e297] [cursor=pointer]:
+            - /url: https://wa.me/93784525666
+          - link "Facebook" [ref=f2e303] [cursor=pointer]:
+            - /url: https://www.facebook.com/nssitransit
+          - link "Instagram" [ref=f2e306] [cursor=pointer]:
+            - /url: https://www.instagram.com/nssitransit
+      - generic [ref=f2e309]:
+        - heading "صفحات" [level=3] [ref=f2e310]
+        - list [ref=f2e311]:
+          - listitem [ref=f2e312]:
+            - link "صفحه اصلی" [ref=f2e313] [cursor=pointer]:
+              - /url: /
+          - listitem [ref=f2e314]:
+            - link "درباره ما" [ref=f2e315] [cursor=pointer]:
+              - /url: /about
+          - listitem [ref=f2e316]:
+            - link "خدمات" [ref=f2e317] [cursor=pointer]:
+              - /url: /services
+          - listitem [ref=f2e318]:
+            - link "ناوگان" [ref=f2e319] [cursor=pointer]:
+              - /url: /fleet
+          - listitem [ref=f2e320]:
+            - link "شبکه" [ref=f2e321] [cursor=pointer]:
+              - /url: /network
+          - listitem [ref=f2e322]:
+            - link "تماس" [ref=f2e323] [cursor=pointer]:
+              - /url: /contact
+      - generic [ref=f2e324]:
+        - heading "تماس" [level=3] [ref=f2e325]
+        - list [ref=f2e326]:
+          - listitem [ref=f2e327]:
+            - generic [ref=f2e330]:
+              - link "+93 78 452 5666" [ref=f2e331] [cursor=pointer]:
+                - /url: tel:+93784525666
+              - text: ·
+              - link "+93 706 420 050" [ref=f2e332] [cursor=pointer]:
+                - /url: tel:+93706420050
+          - listitem [ref=f2e333]:
+            - link "nawisamimsamir@gmail.com" [ref=f2e337] [cursor=pointer]:
+              - /url: mailto:nawisamimsamir@gmail.com
+          - listitem [ref=f2e338]:
+            - link "alemyar@nssitransit.com" [ref=f2e342] [cursor=pointer]:
+              - /url: mailto:alemyar@nssitransit.com
+          - listitem [ref=f2e343]:
+            - generic [ref=f2e347]: دفتر مرکزی — کابل، افغانستان
+      - generic [ref=f2e348]:
+        - heading "مدارک اعتبار" [level=3] [ref=f2e349]
+        - list [ref=f2e350]:
+          - listitem [ref=f2e351]:
+            - generic [ref=f2e355]: "جواز تجارتی MoIC #752"
+          - listitem [ref=f2e356]:
+            - generic [ref=f2e360]: "ثبت #1548-15420"
+          - listitem [ref=f2e361]:
+            - generic [ref=f2e365]: TIN 7008066016
+          - listitem [ref=f2e366]:
+            - generic [ref=f2e370]: "آیدی فروشندگی NPA: NPA57063936"
+          - listitem [ref=f2e371]:
+            - generic [ref=f2e375]: UNGM ID 891952 — بنیادی و سطح 1
+          - listitem [ref=f2e376]:
+            - generic [ref=f2e380]: شبکه راه‌آهن CIS · ACCI · AFFCO
+    - generic [ref=f2e382]:
+      - paragraph [ref=f2e383]: © 2026 NSS INTERNATIONAL GROUP OF COMPANIES — تمام حقوق محفوظ است.
+      - paragraph [ref=f2e384]: ترانسپورت · لجستیک · ساختمان
+      - button "Back to top" [ref=f2e385] [cursor=pointer]
+  - region "Notifications alt+T"
