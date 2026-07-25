@@ -25,3 +25,6 @@ dist-ssr
 
 dist.zip
 scripts/
+
+# Exclude heavy video files from git
+public/projects/*.mp4
