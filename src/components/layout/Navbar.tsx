@@ -55,7 +55,19 @@ const ALL_MOBILE_LINKS: NavItem[] = [
   { to: '/contact', key: 'nav.contact' },
 ]
 
-const PORTAL_OPTIONS = [
+/** Temporary toggle to hide portal login buttons while dashboards are being updated */
+const SHOW_PORTAL_LOGINS = false
+
+interface PortalOption {
+  to: string
+  labelKey: TranslationKey
+  icon: any
+  accentClass: string
+  badgeClass: string
+  desc: string
+}
+
+const PORTAL_OPTIONS: PortalOption[] = [
   {
     to: '/login/client',
     labelKey: 'nav.clientPortal' as TranslationKey,
@@ -506,58 +518,60 @@ export default function Navbar() {
             </div>
 
             {/* Portal Login Dropdown */}
-            <div className="relative" ref={loginDropdownRef}>
-              <button
-                onClick={() => setLoginOpen((v) => !v)}
-                className={`flex items-center gap-2 rounded-xl border px-3.5 py-1.5 nss-mono text-xs uppercase tracking-[0.14em] font-semibold transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#e8c268] ${
-                  loginOpen
-                    ? 'border-[rgb(var(--gold-rgb))] bg-[rgb(var(--gold-rgb))] text-[#1d1233] shadow-md shadow-[rgba(var(--gold-rgb),0.25)]'
-                    : 'border-[rgba(var(--gold-rgb),0.35)] bg-[rgba(var(--gold-rgb),0.10)] text-[rgb(var(--gold-rgb))] hover:bg-[rgb(var(--gold-rgb))] hover:text-[#1d1233]'
-                }`}
-              >
-                <LogIn size={14} />
-                <span>{t('nav.login')}</span>
-                <ChevronDown size={12} className={`transition-transform duration-200 ${loginOpen ? 'rotate-180' : ''}`} />
-              </button>
+            {SHOW_PORTAL_LOGINS && (
+              <div className="relative" ref={loginDropdownRef}>
+                <button
+                  onClick={() => setLoginOpen((v) => !v)}
+                  className={`flex items-center gap-2 rounded-xl border px-3.5 py-1.5 nss-mono text-xs uppercase tracking-[0.14em] font-semibold transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#e8c268] ${
+                    loginOpen
+                      ? 'border-[rgb(var(--gold-rgb))] bg-[rgb(var(--gold-rgb))] text-[#1d1233] shadow-md shadow-[rgba(var(--gold-rgb),0.25)]'
+                      : 'border-[rgba(var(--gold-rgb),0.35)] bg-[rgba(var(--gold-rgb),0.10)] text-[rgb(var(--gold-rgb))] hover:bg-[rgb(var(--gold-rgb))] hover:text-[#1d1233]'
+                  }`}
+                >
+                  <LogIn size={14} />
+                  <span>{t('nav.login')}</span>
+                  <ChevronDown size={12} className={`transition-transform duration-200 ${loginOpen ? 'rotate-180' : ''}`} />
+                </button>
 
-              {/* Login Dropdown Panel */}
-              {loginOpen && (
-                <div className="absolute end-0 top-[calc(100%+8px)] z-50 w-72 overflow-hidden rounded-xl border border-[rgba(var(--gold-rgb),0.18)] bg-[var(--bg-deep,var(--bg))] shadow-2xl shadow-black/40 animate-in fade-in slide-in-from-top-2 duration-150">
-                  <div className="border-b border-[rgba(var(--gold-rgb),0.12)] px-4 py-3">
-                    <p className="nss-mono text-[10px] uppercase tracking-[0.18em] text-[rgba(var(--text-rgb),0.5)]">
-                      Select your portal
-                    </p>
+                {/* Login Dropdown Panel */}
+                {loginOpen && (
+                  <div className="absolute end-0 top-[calc(100%+8px)] z-50 w-72 overflow-hidden rounded-xl border border-[rgba(var(--gold-rgb),0.18)] bg-[var(--bg-deep,var(--bg))] shadow-2xl shadow-black/40 animate-in fade-in slide-in-from-top-2 duration-150">
+                    <div className="border-b border-[rgba(var(--gold-rgb),0.12)] px-4 py-3">
+                      <p className="nss-mono text-[10px] uppercase tracking-[0.18em] text-[rgba(var(--text-rgb),0.5)]">
+                        Select your portal
+                      </p>
+                    </div>
+                    <div className="p-2">
+                      {PORTAL_OPTIONS.map((opt) => {
+                        const Icon = opt.icon
+                        return (
+                          <button
+                            key={opt.to}
+                            onClick={() => handlePortalNav(opt.to)}
+                            className="group flex w-full items-center gap-3 rounded-lg px-3 py-3 text-start transition-colors hover:bg-[rgba(var(--text-rgb),0.05)] active:bg-[rgba(var(--text-rgb),0.08)]"
+                          >
+                            <div className={`flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-lg border ${opt.badgeClass}`}>
+                              <Icon size={18} className={opt.accentClass} />
+                            </div>
+                            <div className="min-w-0 flex-1">
+                              <p className={`text-sm font-semibold ${opt.accentClass}`}>
+                                {t(opt.labelKey)}
+                              </p>
+                              <p className="mt-0.5 text-[11px] text-[rgba(var(--text-rgb),0.45)] leading-tight">
+                                {opt.desc}
+                              </p>
+                            </div>
+                            <span className="text-[rgba(var(--text-rgb),0.25)] transition-all group-hover:text-[rgba(var(--text-rgb),0.6)] group-hover:translate-x-0.5">
+                              →
+                            </span>
+                          </button>
+                        )
+                      })}
+                    </div>
                   </div>
-                  <div className="p-2">
-                    {PORTAL_OPTIONS.map((opt) => {
-                      const Icon = opt.icon
-                      return (
-                        <button
-                          key={opt.to}
-                          onClick={() => handlePortalNav(opt.to)}
-                          className="group flex w-full items-center gap-3 rounded-lg px-3 py-3 text-start transition-colors hover:bg-[rgba(var(--text-rgb),0.05)] active:bg-[rgba(var(--text-rgb),0.08)]"
-                        >
-                          <div className={`flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-lg border ${opt.badgeClass}`}>
-                            <Icon size={18} className={opt.accentClass} />
-                          </div>
-                          <div className="min-w-0 flex-1">
-                            <p className={`text-sm font-semibold ${opt.accentClass}`}>
-                              {t(opt.labelKey)}
-                            </p>
-                            <p className="mt-0.5 text-[11px] text-[rgba(var(--text-rgb),0.45)] leading-tight">
-                              {opt.desc}
-                            </p>
-                          </div>
-                          <span className="text-[rgba(var(--text-rgb),0.25)] transition-all group-hover:text-[rgba(var(--text-rgb),0.6)] group-hover:translate-x-0.5">
-                            →
-                          </span>
-                        </button>
-                      )
-                    })}
-                  </div>
-                </div>
-              )}
-            </div>
+                )}
+              </div>
+            )}
           </div>
 
           {/* Mobile Right Controls */}
@@ -620,35 +634,37 @@ export default function Navbar() {
               ))}
 
               {/* Mobile Portal Login Section */}
-              <div className="mt-4 border-t border-[rgba(var(--gold-rgb),0.12)] pt-5">
-                <p className="nss-mono mb-3 px-3 text-[10px] uppercase tracking-[0.18em] text-[rgba(var(--text-rgb),0.4)]">
-                  Portal Login
-                </p>
-                <div className="flex flex-col gap-2">
-                  {PORTAL_OPTIONS.map((opt) => {
-                    const Icon = opt.icon
-                    return (
-                      <button
-                        key={opt.to}
-                        onClick={() => handlePortalNav(opt.to)}
-                        className="flex items-center gap-3 rounded-lg px-3 py-3 text-start transition-colors hover:bg-[rgba(var(--text-rgb),0.05)]"
-                      >
-                        <div className={`flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-lg border ${opt.badgeClass}`}>
-                          <Icon size={18} className={opt.accentClass} />
-                        </div>
-                        <div>
-                          <p className={`text-sm font-semibold ${opt.accentClass}`}>
-                            {t(opt.labelKey)}
-                          </p>
-                          <p className="text-[11px] text-[rgba(var(--text-rgb),0.45)]">
-                            {opt.desc}
-                          </p>
-                        </div>
-                      </button>
-                    )
-                  })}
+              {SHOW_PORTAL_LOGINS && (
+                <div className="mt-4 border-t border-[rgba(var(--gold-rgb),0.12)] pt-5">
+                  <p className="nss-mono mb-3 px-3 text-[10px] uppercase tracking-[0.18em] text-[rgba(var(--text-rgb),0.4)]">
+                    Portal Login
+                  </p>
+                  <div className="flex flex-col gap-2">
+                    {PORTAL_OPTIONS.map((opt) => {
+                      const Icon = opt.icon
+                      return (
+                        <button
+                          key={opt.to}
+                          onClick={() => handlePortalNav(opt.to)}
+                          className="flex items-center gap-3 rounded-lg px-3 py-3 text-start transition-colors hover:bg-[rgba(var(--text-rgb),0.05)]"
+                        >
+                          <div className={`flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-lg border ${opt.badgeClass}`}>
+                            <Icon size={18} className={opt.accentClass} />
+                          </div>
+                          <div>
+                            <p className={`text-sm font-semibold ${opt.accentClass}`}>
+                              {t(opt.labelKey)}
+                            </p>
+                            <p className="text-[11px] text-[rgba(var(--text-rgb),0.45)]">
+                              {opt.desc}
+                            </p>
+                          </div>
+                        </button>
+                      )
+                    })}
+                  </div>
                 </div>
-              </div>
+              )}
 
               <div className="mt-4 border-t border-[rgba(var(--gold-rgb),0.12)] pt-5 flex flex-col gap-3">
                 <div className="mt-2 flex flex-col gap-2 rounded-lg bg-[rgba(var(--text-rgb),0.03)] p-4 border border-[rgba(var(--gold-rgb),0.10)]">
