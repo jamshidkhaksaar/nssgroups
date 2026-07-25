@@ -2,16 +2,27 @@ import { useState } from 'react'
 import { Play, Video, X, ChevronDown } from 'lucide-react'
 import { useI18n } from '@/i18n/i18n'
 import type { ProjectVideo } from '@/data/projectsData'
+import type { TranslationKey } from '@/i18n/translations/en'
 
 interface ProjectVideoGalleryProps {
   videos: ProjectVideo[]
+  headingKey?: TranslationKey
+  descriptionKey?: TranslationKey
+  featured?: boolean
+  initialCount?: number
 }
 
 const INITIAL_COUNT = 16 // 4 columns x 4 rows = 16 videos initially
 
-export default function ProjectVideoGallery({ videos }: ProjectVideoGalleryProps) {
+export default function ProjectVideoGallery({
+  videos,
+  headingKey,
+  descriptionKey,
+  featured = false,
+  initialCount = INITIAL_COUNT,
+}: ProjectVideoGalleryProps) {
   const { t } = useI18n()
-  const [visibleCount, setVisibleCount] = useState(INITIAL_COUNT)
+  const [visibleCount, setVisibleCount] = useState(() => Math.min(initialCount, videos.length))
   const [playingVideoId, setPlayingVideoId] = useState<string | null>(null)
 
   const visibleVideos = videos.slice(0, visibleCount)
@@ -22,22 +33,42 @@ export default function ProjectVideoGallery({ videos }: ProjectVideoGalleryProps
   }
 
   return (
-    <div className="space-y-6">
+    <div
+      data-featured={featured ? 'true' : undefined}
+      className={`space-y-6 ${
+        featured
+          ? 'rounded-2xl border border-[rgba(var(--gold-rgb),0.24)] bg-[linear-gradient(145deg,rgba(var(--gold-rgb),0.08),transparent_48%)] p-4 sm:p-6'
+          : ''
+      }`}
+    >
       {/* Header Badge */}
-      <div className="flex items-center justify-between">
-        <div className="flex items-center gap-2">
-          <Video className="h-5 w-5 text-[rgb(var(--gold-rgb))]" />
-          <h2 className="nss-display text-2xl tracking-wide text-[rgb(var(--text-rgb))]">
-            Project Operations & Video Reports
-          </h2>
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+        <div className="flex items-start gap-3">
+          <Video className="mt-1 h-5 w-5 shrink-0 text-[rgb(var(--gold-rgb))]" />
+          <div>
+            <h2 className="nss-display text-2xl tracking-wide text-[rgb(var(--text-rgb))]">
+              {headingKey ? t(headingKey) : 'Project Operations & Video Reports'}
+            </h2>
+            {descriptionKey && (
+              <p className="mt-2 max-w-2xl text-sm leading-relaxed text-[rgba(var(--text-rgb),0.6)]">
+                {t(descriptionKey)}
+              </p>
+            )}
+          </div>
         </div>
-        <span className="nss-mono text-xs text-[rgba(var(--text-rgb),0.5)]">
-          Showing {visibleVideos.length} of {videos.length} Videos
-        </span>
+        {!featured && (
+          <span className="nss-mono text-xs text-[rgba(var(--text-rgb),0.5)]">
+            Showing {visibleVideos.length} of {videos.length} Videos
+          </span>
+        )}
       </div>
 
       {/* 4-Column Responsive Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
+      <div
+        className={`grid grid-cols-1 gap-5 sm:grid-cols-2 ${
+          featured ? 'lg:grid-cols-3' : 'md:grid-cols-3 lg:grid-cols-4'
+        }`}
+      >
         {visibleVideos.map((video, idx) => {
           const videoTitle = t(video.titleKey)
           const isPlaying = playingVideoId === video.id

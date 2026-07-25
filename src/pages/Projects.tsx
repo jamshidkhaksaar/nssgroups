@@ -3,7 +3,7 @@ import AnimatedNumber from '@/components/AnimatedNumber'
 import Reveal from '@/components/Reveal'
 import ProjectImageSlider from '@/components/projects/ProjectImageSlider'
 import ProjectVideoGallery from '@/components/projects/ProjectVideoGallery'
-import { PROJECT_IMAGES, PROJECT_VIDEOS } from '@/data/projectsData'
+import { FEATURED_PROJECT_VIDEOS, PROJECT_IMAGES, PROJECT_VIDEOS } from '@/data/projectsData'
 
 export default function Projects() {
   return (
@@ -42,6 +42,15 @@ export default function Projects() {
             </p>
           </div>
         </Reveal>
+
+        {/* Latest field footage — kept outside Reveal because the tall mobile grid must remain visible. */}
+        <ProjectVideoGallery
+          videos={FEATURED_PROJECT_VIDEOS}
+          headingKey="projects.featured.heading"
+          descriptionKey="projects.featured.sub"
+          featured
+          initialCount={FEATURED_PROJECT_VIDEOS.length}
+        />
 
         {/* 1. Project Activity Image Slider */}
         <Reveal>

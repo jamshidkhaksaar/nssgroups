@@ -144,6 +144,44 @@ export const PROJECT_IMAGES: ProjectImage[] = [
   }
 ];
 
+export const FEATURED_PROJECT_VIDEOS: ProjectVideo[] = [
+  {
+    id: 'featured-1',
+    src: '/projects/featured/top-1.mp4',
+    rawFilename: 'top-1.mp4',
+    titleKey: 'projects.featured.video.1',
+    poster: '/projects/featured/top-1.jpg',
+  },
+  {
+    id: 'featured-2',
+    src: '/projects/featured/top-2.mp4',
+    rawFilename: 'top-2.mp4',
+    titleKey: 'projects.featured.video.2',
+    poster: '/projects/featured/top-2.jpg',
+  },
+  {
+    id: 'featured-3',
+    src: '/projects/featured/top-3.mp4',
+    rawFilename: 'top-3.mp4',
+    titleKey: 'projects.featured.video.3',
+    poster: '/projects/featured/top-3.jpg',
+  },
+  {
+    id: 'featured-4',
+    src: '/projects/featured/top-4.mp4',
+    rawFilename: 'top-4.mp4',
+    titleKey: 'projects.featured.video.4',
+    poster: '/projects/featured/top-4.jpg',
+  },
+  {
+    id: 'featured-5',
+    src: '/projects/featured/top-5.mp4',
+    rawFilename: 'top-5.mp4',
+    titleKey: 'projects.featured.video.5',
+    poster: '/projects/featured/top-5.jpg',
+  },
+];
+
 export const PROJECT_VIDEOS: ProjectVideo[] = [
   {
     "id": "vid-1",
