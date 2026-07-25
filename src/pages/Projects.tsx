@@ -49,9 +49,7 @@ export default function Projects() {
         </Reveal>
 
         {/* 2. Project Video Gallery (4 Columns, 4 Rows initially = 16, Load More button) */}
-        <Reveal>
-          <ProjectVideoGallery videos={PROJECT_VIDEOS} />
-        </Reveal>
+        <ProjectVideoGallery videos={PROJECT_VIDEOS} />
       </section>
     </main>
   )

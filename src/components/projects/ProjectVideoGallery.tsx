@@ -56,11 +56,15 @@ export default function ProjectVideoGallery({ videos }: ProjectVideoGalleryProps
                 {isPlaying ? (
                   <>
                     <video
-                      src={video.src}
                       controls
                       autoPlay
+                      playsInline
+                      preload="metadata"
+                      poster={video.poster}
                       className="h-full w-full object-contain bg-black"
-                    />
+                    >
+                      <source src={video.src} type="video/mp4" />
+                    </video>
                     {/* Close / Stop Inline Video Button */}
                     <button
                       onClick={() => setPlayingVideoId(null)}
@@ -72,9 +76,11 @@ export default function ProjectVideoGallery({ videos }: ProjectVideoGalleryProps
                     </button>
                   </>
                 ) : (
-                  <div
+                  <button
+                    type="button"
                     onClick={() => setPlayingVideoId(video.id)}
-                    className="relative h-full w-full cursor-pointer"
+                    aria-label={videoTitle}
+                    className="relative block h-full w-full cursor-pointer text-start"
                   >
                     <img
                       src={video.poster}
@@ -99,7 +105,7 @@ export default function ProjectVideoGallery({ videos }: ProjectVideoGalleryProps
                         Video #{idx + 1}
                       </span>
                     </div>
-                  </div>
+                  </button>
                 )}
               </div>
 
