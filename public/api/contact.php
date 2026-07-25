@@ -205,7 +205,7 @@ $clientBody = '
               <!-- Direct Contact Box -->
               <div style="border-top: 1px solid rgba(232, 194, 104, 0.2); margin-top: 25px; padding-top: 20px;">
                 <p style="margin: 0 0 10px 0; font-size: 13px; font-weight: 600; color: #e8c268;">Need Urgent Assistance?</p>
-                <p style="margin: 3px 0; font-size: 13px; color: rgba(247, 241, 227, 0.8);"><strong>Phone:</strong> +93 78 452 5666 | +93 706 420 050</p>
+                <p style="margin: 3px 0; font-size: 13px; color: rgba(247, 241, 227, 0.8);"><strong>Phone:</strong> +93 78 452 6666 | +93 78 453 6666</p>
                 <p style="margin: 3px 0; font-size: 13px; color: rgba(247, 241, 227, 0.8);"><strong>Email:</strong> info@nssgroupint.com</p>
                 <p style="margin: 3px 0; font-size: 13px; color: rgba(247, 241, 227, 0.8);"><strong>Website:</strong> <a href="https://www.nssgroupint.com" style="color: #e8c268; text-decoration: none;">www.nssgroupint.com</a></p>
               </div>
