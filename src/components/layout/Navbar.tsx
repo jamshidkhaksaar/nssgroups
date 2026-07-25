@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link, NavLink, useNavigate } from 'react-router'
-import { Menu, Moon, Phone, Sun, X, Volume2, VolumeX, LogIn, ChevronDown, ShieldCheck, Building2, Handshake, SkipForward, Disc, Music } from 'lucide-react'
+import { Menu, Moon, Phone, Sun, X, Volume2, VolumeX, LogIn, ChevronDown, ShieldCheck, Building2, Handshake, SkipForward, Music, Truck, Globe, PackageCheck, Radar, FolderKanban } from 'lucide-react'
 import { useI18n } from '@/i18n/i18n'
 import { useTheme } from '@/theme/theme'
 import { useMusic } from '@/audio/useMusic'
@@ -17,8 +17,44 @@ const PRIMARY_LINKS: NavItem[] = [
   { to: '/', key: 'nav.home' },
   { to: '/trading', key: 'nav.marketplace' },
   { to: '/services', key: 'nav.services' },
-  { to: '/about', key: 'nav.company' },
+  { to: '/projects', key: 'nav.projects' },
+  { to: '/fleet', key: 'nav.fleet' },
+  { to: '/network', key: 'nav.network' },
+  { to: '/about', key: 'nav.about' },
   { to: '/contact', key: 'nav.contact' },
+]
+
+const OPERATIONS_SUBMENU = [
+  {
+    to: '/booking',
+    labelKey: 'nav.booking' as TranslationKey,
+    icon: PackageCheck,
+    desc: 'Book freight & logistics transport',
+  },
+  {
+    to: '/tracking',
+    labelKey: 'nav.tracking' as TranslationKey,
+    icon: Radar,
+    desc: 'Real-time cargo shipment tracking',
+  },
+  {
+    to: '/projects',
+    labelKey: 'nav.projects' as TranslationKey,
+    icon: FolderKanban,
+    desc: 'Project activity & field video reports',
+  },
+  {
+    to: '/fleet',
+    labelKey: 'nav.fleet' as TranslationKey,
+    icon: Truck,
+    desc: 'Transport fleet & heavy machinery',
+  },
+  {
+    to: '/network',
+    labelKey: 'nav.network' as TranslationKey,
+    icon: Globe,
+    desc: 'Trade corridors & regional hubs',
+  },
 ]
 
 const ALL_MOBILE_LINKS: NavItem[] = [
@@ -70,9 +106,12 @@ export default function Navbar() {
   const [open, setOpen] = useState(false)
   const [loginOpen, setLoginOpen] = useState(false)
   const [musicOpen, setMusicOpen] = useState(false)
+  const [opsOpen, setOpsOpen] = useState(false)
+
   const progressRef = useRef<HTMLDivElement>(null)
   const loginDropdownRef = useRef<HTMLDivElement>(null)
   const musicDropdownRef = useRef<HTMLDivElement>(null)
+  const opsDropdownRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     const onScroll = () => {
@@ -100,7 +139,7 @@ export default function Navbar() {
     }
   }, [open])
 
-  // Close login & music dropdowns on outside click
+  // Close dropdowns on outside click
   useEffect(() => {
     const handleClick = (e: MouseEvent) => {
       if (loginDropdownRef.current && !loginDropdownRef.current.contains(e.target as Node)) {
@@ -109,12 +148,15 @@ export default function Navbar() {
       if (musicDropdownRef.current && !musicDropdownRef.current.contains(e.target as Node)) {
         setMusicOpen(false)
       }
+      if (opsDropdownRef.current && !opsDropdownRef.current.contains(e.target as Node)) {
+        setOpsOpen(false)
+      }
     }
-    if (loginOpen || musicOpen) {
+    if (loginOpen || musicOpen || opsOpen) {
       document.addEventListener('mousedown', handleClick)
     }
     return () => document.removeEventListener('mousedown', handleClick)
-  }, [loginOpen, musicOpen])
+  }, [loginOpen, musicOpen, opsOpen])
 
   // ESC key handler
   useEffect(() => {
@@ -123,16 +165,23 @@ export default function Navbar() {
         if (open) setOpen(false)
         if (loginOpen) setLoginOpen(false)
         if (musicOpen) setMusicOpen(false)
+        if (opsOpen) setOpsOpen(false)
       }
     }
     window.addEventListener('keydown', handleKeyDown)
     return () => window.removeEventListener('keydown', handleKeyDown)
-  }, [open, loginOpen, musicOpen])
+  }, [open, loginOpen, musicOpen, opsOpen])
 
   const closeMenu = () => setOpen(false)
 
   const handlePortalNav = (to: string) => {
     setLoginOpen(false)
+    setOpen(false)
+    navigate(to)
+  }
+
+  const handleSubmenuNav = (to: string) => {
+    setOpsOpen(false)
     setOpen(false)
     navigate(to)
   }
@@ -162,7 +211,7 @@ export default function Navbar() {
           }`}
         >
           {/* Left side: Logo + Navigation */}
-          <div className="flex items-center gap-8 xl:gap-16">
+          <div className="flex items-center gap-6 xl:gap-10">
             {/* Logo */}
             <Link
               to="/"
@@ -171,14 +220,14 @@ export default function Navbar() {
             >
               <span
                 className={`flex items-center justify-center transition-all duration-300 ${
-                  scrolled ? 'h-[60px] w-[60px]' : 'h-[80px] w-[80px]'
+                  scrolled ? 'h-[50px] w-[50px]' : 'h-[65px] w-[65px]'
                 }`}
               >
                 <img
                   src="./logo.png"
                   alt="NSS"
                   className={`object-contain transition-all duration-300 ${
-                    scrolled ? 'h-[52px] w-[52px]' : 'h-[68px] w-[68px]'
+                    scrolled ? 'h-[44px] w-[44px]' : 'h-[56px] w-[56px]'
                   }`}
                 />
               </span>
@@ -186,24 +235,24 @@ export default function Navbar() {
                 <span className="nss-display block text-base tracking-wide text-[rgb(var(--text-rgb))] group-hover:text-[rgb(var(--gold-rgb))] transition-colors">
                   NSS <span className="text-[rgb(var(--gold-rgb))]">GROUP</span>
                 </span>
-                <span className="nss-mono block text-[9px] tracking-[0.14em] text-[rgba(var(--text-rgb),0.45)] uppercase">
+                <span className="nss-mono block text-[8.5px] tracking-[0.14em] text-[rgba(var(--text-rgb),0.45)] uppercase">
                   INTERNATIONAL GROUP OF COMPANIES
                 </span>
-                <span className="nss-mono block text-[9px] font-bold tracking-[0.22em] text-[rgb(var(--gold-rgb))] uppercase mt-0.5">
+                <span className="nss-mono block text-[8.5px] font-bold tracking-[0.2em] text-[rgb(var(--gold-rgb))] uppercase mt-0.5">
                   NAWI SAMIM SAMIR
                 </span>
               </span>
             </Link>
 
-            {/* Desktop Navigation */}
-            <nav className="hidden items-center gap-2 lg:flex">
+            {/* Desktop Navigation Links */}
+            <nav className="hidden items-center gap-1 xl:gap-2 lg:flex">
               {PRIMARY_LINKS.map((item) => (
                 <NavLink
                   key={item.to}
                   to={item.to}
                   end={item.to === '/'}
                   className={({ isActive }) =>
-                    `group relative nss-mono px-3 py-2 text-[12.5px] uppercase tracking-[0.12em] rounded-sm transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#e8c268] ${
+                    `group relative nss-mono px-2.5 py-1.5 text-[11px] xl:text-[12px] uppercase tracking-[0.1em] rounded-sm transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#e8c268] ${
                       isActive
                         ? 'text-[rgb(var(--gold-rgb))] font-semibold'
                         : 'text-[rgba(var(--text-rgb),0.75)] hover:text-[rgb(var(--gold-rgb))]'
@@ -222,11 +271,64 @@ export default function Navbar() {
                   )}
                 </NavLink>
               ))}
+
+              {/* Operations & Logistics Submenu Dropdown */}
+              <div className="relative" ref={opsDropdownRef}>
+                <button
+                  onClick={() => setOpsOpen((v) => !v)}
+                  className={`group relative flex items-center gap-1 nss-mono px-2.5 py-1.5 text-[11px] xl:text-[12px] uppercase tracking-[0.1em] rounded-sm transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#e8c268] ${
+                    opsOpen
+                      ? 'text-[rgb(var(--gold-rgb))] font-semibold'
+                      : 'text-[rgba(var(--text-rgb),0.75)] hover:text-[rgb(var(--gold-rgb))]'
+                  }`}
+                >
+                  <span>{t('nav.operations')}</span>
+                  <ChevronDown size={11} className={`transition-transform duration-200 ${opsOpen ? 'rotate-180 text-[rgb(var(--gold-rgb))]' : ''}`} />
+                </button>
+
+                {/* Operations Dropdown Panel */}
+                {opsOpen && (
+                  <div className="absolute start-0 top-[calc(100%+8px)] z-50 w-64 overflow-hidden rounded-xl border border-[rgba(var(--gold-rgb),0.18)] bg-[var(--bg-deep,var(--bg))] shadow-2xl shadow-black/40 animate-in fade-in slide-in-from-top-2 duration-150">
+                    <div className="border-b border-[rgba(var(--gold-rgb),0.12)] px-4 py-2.5">
+                      <p className="nss-mono text-[9.5px] uppercase tracking-[0.18em] text-[rgba(var(--text-rgb),0.5)]">
+                        Logistics & Submenus
+                      </p>
+                    </div>
+                    <div className="p-1.5 space-y-0.5">
+                      {OPERATIONS_SUBMENU.map((item) => {
+                        const Icon = item.icon
+                        return (
+                          <button
+                            key={item.to}
+                            onClick={() => handleSubmenuNav(item.to)}
+                            className="group flex w-full items-center gap-3 rounded-lg px-3 py-2 text-start transition-colors hover:bg-[rgba(var(--gold-rgb),0.1)] active:bg-[rgba(var(--gold-rgb),0.15)]"
+                          >
+                            <div className="flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-md bg-[rgba(var(--gold-rgb),0.1)] text-[rgb(var(--gold-rgb))] group-hover:bg-[rgb(var(--gold-rgb))] group-hover:text-black transition-colors">
+                              <Icon size={14} />
+                            </div>
+                            <div className="min-w-0 flex-1">
+                              <p className="text-xs font-semibold text-[rgb(var(--text-rgb))] group-hover:text-[rgb(var(--gold-rgb))] transition-colors">
+                                {t(item.labelKey)}
+                              </p>
+                              <p className="text-[10px] text-[rgba(var(--text-rgb),0.45)] leading-tight truncate">
+                                {item.desc}
+                              </p>
+                            </div>
+                          </button>
+                        )
+                      })}
+                    </div>
+                  </div>
+                )}
+              </div>
             </nav>
           </div>
 
           {/* Desktop Right Actions */}
           <div className="hidden items-center gap-2 lg:flex">
+            {/* Language Switcher */}
+            <LanguageSwitcher />
+
             {/* Dark Mode toggle */}
             <button
               id="navbar-theme-toggle"
@@ -262,7 +364,7 @@ export default function Navbar() {
 
                 <button
                   onClick={() => setMusicOpen((v) => !v)}
-                  title="Playlist & Tracks (5 available)"
+                  title="Playlist & Tracks (8 available)"
                   aria-label="Background Music Playlist"
                   className={`flex h-8 items-center justify-center rounded-r-full border-y border-r px-1.5 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#e8c268] ${
                     musicOpen
@@ -281,7 +383,7 @@ export default function Navbar() {
                     <div className="flex items-center gap-2">
                       <Music size={14} className="text-[rgb(var(--gold-rgb))]" />
                       <span className="nss-mono text-[11px] font-semibold uppercase tracking-[0.14em] text-[rgb(var(--text-rgb))]">
-                        Background Music (5 Tracks)
+                        Background Music ({playlist.length} Tracks)
                       </span>
                     </div>
                     <button
@@ -299,24 +401,21 @@ export default function Navbar() {
                       return (
                         <button
                           key={track.id}
-                          onClick={() => {
-                            selectTrack(idx)
-                            setMusicOpen(false)
-                          }}
-                          className={`flex w-full items-center justify-between rounded-lg px-3 py-2 text-start transition-colors ${
+                          onClick={() => selectTrack(idx)}
+                          className={`flex w-full items-center justify-between rounded-lg px-3 py-2 text-start transition-all ${
                             isActive
-                              ? 'bg-[rgba(var(--gold-rgb),0.15)] text-[rgb(var(--gold-rgb))] font-medium'
-                              : 'text-[rgba(var(--text-rgb),0.8)] hover:bg-[rgba(var(--text-rgb),0.05)]'
+                              ? 'bg-[rgba(var(--gold-rgb),0.15)] text-[rgb(var(--gold-rgb))] font-semibold'
+                              : 'text-[rgba(var(--text-rgb),0.75)] hover:bg-[rgba(var(--text-rgb),0.05)] hover:text-[rgb(var(--text-rgb))]'
                           }`}
                         >
                           <div className="flex items-center gap-2.5 min-w-0">
-                            <Disc size={13} className={`shrink-0 ${isActive && isPlaying ? 'animate-spin text-[rgb(var(--gold-rgb))]' : 'text-[rgba(var(--text-rgb),0.4)]'}`} />
-                            <span className="text-[12px] truncate">{track.title}</span>
-                          </div>
-                          {isActive && (
-                            <span className="nss-mono text-[9px] uppercase font-bold px-1.5 py-0.5 rounded bg-[rgb(var(--gold-rgb))] text-[rgb(var(--bg-rgb))]">
-                              {isPlaying ? 'Playing' : 'Active'}
+                            <span className="nss-mono text-[10px] opacity-40">
+                              {String(idx + 1).padStart(2, '0')}
                             </span>
+                            <span className="nss-mono text-xs truncate">{track.title}</span>
+                          </div>
+                          {isActive && isPlaying && (
+                            <span className="flex h-2 w-2 rounded-full bg-[rgb(var(--gold-rgb))] animate-ping shrink-0" />
                           )}
                         </button>
                       )
@@ -326,39 +425,29 @@ export default function Navbar() {
               )}
             </div>
 
-            {/* Language Switcher */}
-            <LanguageSwitcher />
-
-            {/* ── Portal Login Dropdown ── */}
+            {/* Portal Login Dropdown */}
             <div className="relative" ref={loginDropdownRef}>
               <button
-                id="navbar-login-dropdown-btn"
                 onClick={() => setLoginOpen((v) => !v)}
-                className={`nss-mono flex items-center gap-1.5 rounded-md border px-4 py-2 text-[12px] uppercase tracking-[0.12em] font-semibold transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#e8c268] ${
+                className={`flex items-center gap-2 rounded-xl border px-3.5 py-1.5 nss-mono text-xs uppercase tracking-[0.14em] font-semibold transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#e8c268] ${
                   loginOpen
-                    ? 'border-[rgb(var(--gold-rgb))] bg-[rgba(var(--gold-rgb),0.12)] text-[rgb(var(--gold-rgb))]'
-                    : 'border-[rgb(var(--gold-rgb))] text-[rgb(var(--gold-rgb))] hover:bg-[rgba(var(--gold-rgb),0.10)]'
+                    ? 'border-[rgb(var(--gold-rgb))] bg-[rgb(var(--gold-rgb))] text-[#1d1233] shadow-md shadow-[rgba(var(--gold-rgb),0.25)]'
+                    : 'border-[rgba(var(--gold-rgb),0.35)] bg-[rgba(var(--gold-rgb),0.10)] text-[rgb(var(--gold-rgb))] hover:bg-[rgb(var(--gold-rgb))] hover:text-[#1d1233]'
                 }`}
               >
-                <LogIn size={13} />
-                {t('nav.login')}
-                <ChevronDown
-                  size={12}
-                  className={`transition-transform duration-200 ${loginOpen ? 'rotate-180' : ''}`}
-                />
+                <LogIn size={14} />
+                <span>{t('nav.login')}</span>
+                <ChevronDown size={12} className={`transition-transform duration-200 ${loginOpen ? 'rotate-180' : ''}`} />
               </button>
 
-              {/* Dropdown Panel */}
+              {/* Login Dropdown Panel */}
               {loginOpen && (
                 <div className="absolute end-0 top-[calc(100%+8px)] z-50 w-72 overflow-hidden rounded-xl border border-[rgba(var(--gold-rgb),0.18)] bg-[var(--bg-deep,var(--bg))] shadow-2xl shadow-black/40 animate-in fade-in slide-in-from-top-2 duration-150">
-                  {/* Header */}
                   <div className="border-b border-[rgba(var(--gold-rgb),0.12)] px-4 py-3">
                     <p className="nss-mono text-[10px] uppercase tracking-[0.18em] text-[rgba(var(--text-rgb),0.5)]">
                       Select your portal
                     </p>
                   </div>
-
-                  {/* Options */}
                   <div className="p-2">
                     {PORTAL_OPTIONS.map((opt) => {
                       const Icon = opt.icon
