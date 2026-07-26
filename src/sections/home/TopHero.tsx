@@ -1,12 +1,35 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router'
 import { Search, ShoppingCart, FileText, ArrowRight } from 'lucide-react'
 import { useI18n } from '@/i18n/i18n'
 
+const WALLPAPERS = [
+  {
+    src: './hero/nss-products-marketplace-wallpaper.jpg',
+    alt: 'NSS Global Product Catalog & Commodities',
+  },
+  {
+    src: './hero/nss-trade-corridor-wallpaper.jpg',
+    alt: 'NSS Uzbekistan Afghanistan Trade Corridor',
+  },
+] as const
+
 export default function TopHero() {
   const { t, dir } = useI18n()
   const navigate = useNavigate()
+  const [activeWallpaper, setActiveWallpaper] = useState(0)
   const [searchQuery, setSearchQuery] = useState('')
+
+  useEffect(() => {
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)')
+    if (reducedMotion.matches) return
+
+    const timer = window.setInterval(() => {
+      setActiveWallpaper((curr) => (curr + 1) % WALLPAPERS.length)
+    }, 7000)
+
+    return () => window.clearInterval(timer)
+  }, [])
 
   const handleSearchSubmit = (e: React.FormEvent) => {
     e.preventDefault()
@@ -20,18 +43,23 @@ export default function TopHero() {
   return (
     <section className="relative min-h-[85svh] flex flex-col justify-between overflow-hidden bg-[var(--bg-deep)] pb-12 pt-24 text-[rgb(var(--text-rgb))] lg:min-h-[90svh] lg:pt-28">
 
-      {/* ── Full-Color Trade Corridor Wallpaper (Maximum Wallpaper Visibility) ── */}
+      {/* ── Realistic Full-Color Wallpapers (Auto-Rotating Marketplace & Trade Corridor) ── */}
       <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
-        <img
-          src="./hero/nss-trade-corridor-wallpaper.jpg"
-          alt="NSS Uzbekistan Afghanistan Trade Corridor"
-          className={`absolute inset-0 h-full w-full object-cover object-center opacity-95 filter brightness-105 contrast-105 transition-opacity duration-700 ${dir === 'rtl' ? 'scale-x-[-1]' : ''}`}
-        />
+        {WALLPAPERS.map((wp, index) => (
+          <img
+            key={wp.src}
+            src={wp.src}
+            alt={wp.alt}
+            className={`absolute inset-0 h-full w-full object-cover object-center filter brightness-105 contrast-105 transition-opacity duration-1000 motion-reduce:transition-none ${
+              activeWallpaper === index ? 'opacity-95' : 'opacity-0'
+            } ${dir === 'rtl' ? 'scale-x-[-1]' : ''}`}
+          />
+        ))}
 
-        {/* Minimal Vignette — edges only */}
+        {/* Minimal Edge Vignette */}
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_55%,rgba(var(--bg-rgb),0.65)_100%)]" />
 
-        {/* Top/bottom edge fades */}
+        {/* Top & Bottom edge fades */}
         <div className="absolute inset-0 bg-gradient-to-b from-[rgba(var(--bg-rgb),0.75)] via-transparent to-[rgba(var(--bg-rgb),0.85)]" />
       </div>
 
@@ -40,7 +68,7 @@ export default function TopHero() {
         <div className="flex flex-col items-center justify-center">
           
           {/* Compact Top Badge */}
-          <p className="nss-mono mb-3 inline-flex items-center gap-2 border border-[rgba(var(--gold-rgb),0.4)] bg-[rgba(var(--bg-rgb),0.70)] px-3.5 py-1 text-[10px] font-bold uppercase tracking-[0.18em] text-[rgb(var(--gold-rgb))] backdrop-blur-md rounded-full shadow-md">
+          <p className="nss-mono mb-3 inline-flex items-center gap-2 border border-[rgba(var(--gold-rgb),0.4)] bg-[rgba(var(--bg-rgb),0.75)] px-3.5 py-1 text-[10px] font-bold uppercase tracking-[0.18em] text-[rgb(var(--gold-rgb))] backdrop-blur-md rounded-full shadow-md">
             <span className="h-1.5 w-1.5 rounded-full bg-[rgb(var(--gold-rgb))] animate-pulse" />
             {t('topHero.badge')}
           </p>
@@ -89,15 +117,15 @@ export default function TopHero() {
         {/* Quick Tag Shortcuts */}
         <div className="mt-3 flex flex-wrap items-center justify-center gap-2 text-[11px] font-semibold text-[rgba(var(--text-rgb),0.85)]">
           <span className="nss-mono uppercase opacity-60">Popular:</span>
-          <button onClick={() => navigate('/marketplace?q=LPG#catalog-search')} className="rounded-full border border-[rgba(var(--gold-rgb),0.3)] bg-[rgba(var(--bg-rgb),0.6)] px-2.5 py-0.5 hover:border-[rgb(var(--gold-rgb))] hover:text-[rgb(var(--gold-rgb))] backdrop-blur-sm transition-colors">LPG Gas</button>
-          <button onClick={() => navigate('/marketplace?q=PVC#catalog-search')} className="rounded-full border border-[rgba(var(--gold-rgb),0.3)] bg-[rgba(var(--bg-rgb),0.6)] px-2.5 py-0.5 hover:border-[rgb(var(--gold-rgb))] hover:text-[rgb(var(--gold-rgb))] backdrop-blur-sm transition-colors">PVC Pipes</button>
-          <button onClick={() => navigate('/marketplace?q=Machinery#catalog-search')} className="rounded-full border border-[rgba(var(--gold-rgb),0.3)] bg-[rgba(var(--bg-rgb),0.6)] px-2.5 py-0.5 hover:border-[rgb(var(--gold-rgb))] hover:text-[rgb(var(--gold-rgb))] backdrop-blur-sm transition-colors">Machinery</button>
-          <button onClick={() => navigate('/marketplace?q=Wheat#catalog-search')} className="rounded-full border border-[rgba(var(--gold-rgb),0.3)] bg-[rgba(var(--bg-rgb),0.6)] px-2.5 py-0.5 hover:border-[rgb(var(--gold-rgb))] hover:text-[rgb(var(--gold-rgb))] backdrop-blur-sm transition-colors">Agricultural Sacks</button>
+          <button onClick={() => navigate('/marketplace?q=LPG#catalog-search')} className="rounded-full border border-[rgba(var(--gold-rgb),0.3)] bg-[rgba(var(--bg-rgb),0.65)] px-2.5 py-0.5 hover:border-[rgb(var(--gold-rgb))] hover:text-[rgb(var(--gold-rgb))] backdrop-blur-sm transition-colors">LPG Gas</button>
+          <button onClick={() => navigate('/marketplace?q=PVC#catalog-search')} className="rounded-full border border-[rgba(var(--gold-rgb),0.3)] bg-[rgba(var(--bg-rgb),0.65)] px-2.5 py-0.5 hover:border-[rgb(var(--gold-rgb))] hover:text-[rgb(var(--gold-rgb))] backdrop-blur-sm transition-colors">PVC Pipes</button>
+          <button onClick={() => navigate('/marketplace?q=Machinery#catalog-search')} className="rounded-full border border-[rgba(var(--gold-rgb),0.3)] bg-[rgba(var(--bg-rgb),0.65)] px-2.5 py-0.5 hover:border-[rgb(var(--gold-rgb))] hover:text-[rgb(var(--gold-rgb))] backdrop-blur-sm transition-colors">Machinery</button>
+          <button onClick={() => navigate('/marketplace?q=Wheat#catalog-search')} className="rounded-full border border-[rgba(var(--gold-rgb),0.3)] bg-[rgba(var(--bg-rgb),0.65)] px-2.5 py-0.5 hover:border-[rgb(var(--gold-rgb))] hover:text-[rgb(var(--gold-rgb))] backdrop-blur-sm transition-colors">Agricultural Sacks</button>
         </div>
       </div>
 
-      {/* ── Bottom Section: Secondary Action Links ── */}
-      <div className="relative z-10 mx-auto w-full max-w-4xl px-4 pt-6 text-center">
+      {/* ── Bottom Section: Secondary Action Links & Wallpaper Switcher ── */}
+      <div className="relative z-10 mx-auto w-full max-w-4xl px-4 pt-6 text-center flex flex-col items-center gap-4">
         <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-5">
           <Link
             to="/marketplace"
@@ -116,6 +144,24 @@ export default function TopHero() {
             <FileText size={15} />
             <span>{t('topHero.ctaSecondary')}</span>
           </Link>
+        </div>
+
+        {/* Wallpaper Switcher Dots */}
+        <div className="flex items-center gap-2" role="group">
+          {WALLPAPERS.map((wp, index) => (
+            <button
+              key={wp.src}
+              type="button"
+              aria-label={wp.alt}
+              aria-pressed={activeWallpaper === index}
+              onClick={() => setActiveWallpaper(index)}
+              className={`h-2 rounded-full border border-[rgba(var(--gold-rgb),0.65)] transition-all focus-visible:outline-none ${
+                activeWallpaper === index
+                  ? 'w-7 bg-[#e8c268]'
+                  : 'w-2 bg-[rgba(var(--bg-rgb),0.6)] hover:bg-[rgba(var(--gold-rgb),0.5)]'
+              }`}
+            />
+          ))}
         </div>
       </div>
 
