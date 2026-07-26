@@ -10,35 +10,32 @@ export default function TopHero() {
 
       {/* ── Realistic Uzbekistan <-> Afghanistan Trade Corridor Wallpaper ── */}
       <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
-        {/* Realistic Trade Corridor Wallpaper */}
+        {/* Full-Color Realistic Trade Corridor Wallpaper (No heavy darkening overlay) */}
         <img
           src="./hero/nss-trade-corridor-wallpaper.jpg"
           alt="NSS Uzbekistan Afghanistan Trade Corridor"
-          className={`absolute inset-0 h-full w-full object-cover object-center opacity-40 mix-blend-luminosity filter brightness-90 contrast-110 transition-opacity duration-700 ${dir === 'rtl' ? 'scale-x-[-1]' : ''}`}
+          className={`absolute inset-0 h-full w-full object-cover object-center opacity-90 filter brightness-105 contrast-105 transition-opacity duration-700 ${dir === 'rtl' ? 'scale-x-[-1]' : ''}`}
         />
 
-        {/* Ambient Overlay & Theme Scrim */}
-        <div className={`absolute inset-0 bg-[radial-gradient(ellipse_70%_80%_at_50%_40%,rgba(var(--bg-rgb),0.55)_0%,rgba(var(--bg-rgb),0.92)_70%,rgba(var(--bg-rgb),1)_100%)]`} />
+        {/* Subtle Edge Vignette Only — Center under text is clear */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_40%,rgba(var(--bg-rgb),0.75)_100%)]" />
 
-        {/* Subtle geometric line pattern */}
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(var(--gold-rgb),0.04)_1px,transparent_1px),linear-gradient(to_bottom,rgba(var(--gold-rgb),0.04)_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_40%,#000_70%,transparent_100%)]" />
-
-        {/* Top & Bottom gradient fades */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-deep)] via-transparent to-[rgba(var(--bg-rgb),0.4)]" />
+        {/* Top & Bottom border fades */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[rgba(var(--bg-rgb),0.6)] via-transparent to-[var(--bg-deep)]" />
       </div>
 
-      {/* ── Content layer ── */}
+      {/* ── Content layer with crisp text legibility ── */}
       <div className="relative z-10 mx-auto max-w-4xl px-4 text-center md:px-6">
-        <div className="flex flex-col items-center justify-center">
+        <div className="flex flex-col items-center justify-center rounded-3xl border border-[rgba(var(--gold-rgb),0.20)] bg-[rgba(var(--bg-rgb),0.45)] p-6 md:p-10 backdrop-blur-md shadow-2xl shadow-black/50">
           
           {/* Badge */}
-          <p className="nss-mono mb-6 inline-flex items-center gap-2 border border-[rgba(var(--gold-rgb),0.35)] bg-[rgba(var(--gold-rgb),0.08)] px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.18em] text-[rgb(var(--gold-rgb))] backdrop-blur-md rounded-full shadow-lg shadow-black/30">
+          <p className="nss-mono mb-6 inline-flex items-center gap-2 border border-[rgba(var(--gold-rgb),0.45)] bg-[rgba(var(--bg-rgb),0.65)] px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.18em] text-[rgb(var(--gold-rgb))] backdrop-blur-lg rounded-full shadow-lg">
             <span className="h-1.5 w-1.5 rounded-full bg-[rgb(var(--gold-rgb))] animate-pulse" />
             {t('topHero.badge')}
           </p>
 
           {/* Main Headline */}
-          <h1 className="nss-display text-[clamp(2.5rem,6vw,4.5rem)] font-extrabold leading-[1.1] tracking-tight text-[rgb(var(--hero-text-rgb))] max-w-3xl drop-shadow-md">
+          <h1 className="nss-display text-[clamp(2.5rem,6vw,4.5rem)] font-extrabold leading-[1.1] tracking-tight text-[rgb(var(--hero-text-rgb))] max-w-3xl drop-shadow-[0_4px_12px_rgba(0,0,0,0.8)]">
             {t('topHero.h1a')}
             <br />
             <span className="bg-gradient-to-r from-[rgb(var(--gold-rgb))] via-[#f0d489] to-[rgb(var(--gold-rgb))] bg-clip-text text-transparent">
@@ -47,7 +44,7 @@ export default function TopHero() {
           </h1>
 
           {/* Supporting description */}
-          <p className="mt-5 max-w-2xl text-base leading-relaxed text-[rgba(var(--text-rgb),0.85)] md:text-lg drop-shadow-sm">
+          <p className="mt-5 max-w-2xl text-base leading-relaxed text-[rgba(var(--text-rgb),0.92)] md:text-lg font-medium drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
             {t('topHero.sub')}
           </p>
 
