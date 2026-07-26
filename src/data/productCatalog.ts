@@ -51,6 +51,28 @@ export const CATEGORY_IMAGES: Record<CatalogCategoryId, string> = {
 }
 
 export function getCategoryProductImage(product: CatalogProduct): string {
+  const name = (product.name.en || '').toLowerCase()
+
+  // Specific Product Image Mappings for distinct realistic visuals
+  if (name.includes('flour')) return './card_images/products/flour.jpg'
+  if (name.includes('wheat') || name.includes('grain')) return './card_images/products/wheat.jpg'
+  if (name.includes('sunflower oil') || name.includes('oil')) return './card_images/products/sunflower-oil.jpg'
+  if (name.includes('rice') || name.includes('basmati')) return './card_images/products/rice.jpg'
+  if (name.includes('chickpea') || name.includes('lentil') || name.includes('bean') || name.includes('pea')) return './card_images/products/legumes.jpg'
+  if (name.includes('grape') || name.includes('pomegranate') || name.includes('melon') || name.includes('apple') || name.includes('fruit')) return './card_images/products/grapes.jpg'
+  
+  if (name.includes('lpg') || name.includes('gas') || name.includes('petroleum')) return './card_images/extra/LPG Supply.png'
+  if (name.includes('pvc') || name.includes('resin') || name.includes('polymer')) return './card_images/extra/PVC Resin SG5.png'
+  if (name.includes('cement') || name.includes('portland')) return './card_images/extra/Portland Cement.png'
+  if (name.includes('rebar') || name.includes('pipe') || name.includes('steel') || name.includes('construction') || name.includes('building')) return './card_images/extra/Construction Material.png'
+  if (name.includes('machinery') || name.includes('equipment') || name.includes('engine') || name.includes('motor')) return './card_images/extra/Industrial Equipment.png'
+  if (name.includes('cotton') || name.includes('fabric') || name.includes('carpet') || name.includes('textile') || name.includes('yarn')) return './card_images/extra/Textiles & Consumer Goods.png'
+  if (name.includes('saffron') || name.includes('spice') || name.includes('herb') || name.includes('seed')) return './card_images/categories/spices-herbs.png'
+  if (name.includes('almond') || name.includes('walnut') || name.includes('raisin') || name.includes('pistachio') || name.includes('fig')) return './card_images/categories/dried-fruit.jpg'
+  if (name.includes('soap') || name.includes('clean') || name.includes('detergent') || name.includes('hygiene')) return './card_images/row1/cleaning and hygen.png'
+  if (name.includes('package') || name.includes('sack') || name.includes('box') || name.includes('carton') || name.includes('print')) return './card_images/row1/packaging and printing.png'
+
+  // Fallback to unified category image
   return CATEGORY_IMAGES[product.categoryId] || product.representativeImage || './card_images/categories/food-staples.jpg'
 }
 
