@@ -10,16 +10,16 @@ interface CategoryItem {
 }
 
 const CATEGORIES: CategoryItem[] = [
-  { titleKey: 'categories.c1.title', poster: './card_images/extra/Construction Material.png',  to: '/trading' },
-  { titleKey: 'categories.c2.title', poster: './card_images/row1/industrial low materials.png', to: '/trading' },
-  { titleKey: 'categories.c3.title', poster: './card_images/row1/Machinery.png', to: '/trading' },
-  { titleKey: 'categories.c4.title', poster: './card_images/row1/Food Products.png', to: '/trading' },
-  { titleKey: 'categories.c5.title', poster: './card_images/row1/Textile and clothing.png', to: '/trading' },
-  { titleKey: 'categories.c6.title', poster: './card_images/row1/cleaning and hygen.png', to: '/trading' },
-  { titleKey: 'categories.c7.title', poster: './card_images/row1/home applinces.png', to: '/trading' },
-  { titleKey: 'categories.c8.title', poster: './card_images/row1/beauty and perfums.png', to: '/trading' },
-  { titleKey: 'categories.c9.title', poster: './card_images/row1/baby and children.png', to: '/trading' },
-  { titleKey: 'categories.c10.title',poster: './card_images/row1/packaging and printing.png', to: '/trading' },
+  { titleKey: 'categories.c1.title', poster: './card_images/categories/construction-materials.jpg',  to: '/marketplace' },
+  { titleKey: 'categories.c2.title', poster: './card_images/categories/industrial-materials.jpg', to: '/marketplace' },
+  { titleKey: 'categories.c3.title', poster: './card_images/categories/food-staples.jpg', to: '/marketplace' },
+  { titleKey: 'categories.c4.title', poster: './card_images/categories/fresh-produce.jpg', to: '/marketplace' },
+  { titleKey: 'categories.c5.title', poster: './card_images/categories/textiles-handicrafts.png', to: '/marketplace' },
+  { titleKey: 'categories.c6.title', poster: './card_images/categories/dried-fruit.jpg', to: '/marketplace' },
+  { titleKey: 'categories.c7.title', poster: './card_images/categories/spices-herbs.png', to: '/marketplace' },
+  { titleKey: 'categories.c8.title', poster: './card_images/categories/agricultural-products.png', to: '/marketplace' },
+  { titleKey: 'categories.c9.title', poster: './card_images/categories/supermarket-goods.png', to: '/marketplace' },
+  { titleKey: 'categories.c10.title',poster: './card_images/categories/packaging.png', to: '/marketplace' },
 ]
 
 export default function ProductCategoryGrid() {
@@ -85,7 +85,7 @@ export default function ProductCategoryGrid() {
 
           {/* View All — gold card */}
           <Link
-            to="/trading"
+            to="/marketplace"
             id="category-view-all"
             className="group flex shrink-0 flex-col items-center justify-center gap-3 rounded-2xl border border-[rgba(var(--gold-rgb),0.40)] bg-[var(--panel)] p-4 text-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#e8c268]"
             style={{
