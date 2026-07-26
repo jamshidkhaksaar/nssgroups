@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link, NavLink, useNavigate } from 'react-router'
 import { Menu, Moon, Phone, Sun, X, Volume2, VolumeX, LogIn, ChevronDown, ShieldCheck, Building2, Handshake, SkipForward, Music, PackageCheck, Radar } from 'lucide-react'
+import type { LucideIcon } from 'lucide-react'
 import { useI18n } from '@/i18n/i18n'
 import { useTheme } from '@/theme/theme'
 import { useMusic } from '@/audio/useMusic'
@@ -31,13 +32,13 @@ const OPERATIONS_SUBMENU = [
     to: '/booking',
     labelKey: 'nav.booking' as TranslationKey,
     icon: PackageCheck,
-    desc: 'Book freight & logistics transport',
+    descKey: 'nav.operationBookingDesc' as TranslationKey,
   },
   {
     to: '/tracking',
     labelKey: 'nav.tracking' as TranslationKey,
     icon: Radar,
-    desc: 'Real-time cargo shipment tracking',
+    descKey: 'nav.operationTrackingDesc' as TranslationKey,
   },
 ]
 
@@ -61,10 +62,10 @@ const SHOW_PORTAL_LOGINS = false
 interface PortalOption {
   to: string
   labelKey: TranslationKey
-  icon: any
+  icon: LucideIcon
   accentClass: string
   badgeClass: string
-  desc: string
+  descKey: TranslationKey
 }
 
 const PORTAL_OPTIONS: PortalOption[] = [
@@ -74,7 +75,7 @@ const PORTAL_OPTIONS: PortalOption[] = [
     icon: Building2,
     accentClass: 'text-sky-400',
     badgeClass: 'bg-sky-500/10 border-sky-500/20',
-    desc: 'Track shipments & place orders',
+    descKey: 'nav.clientPortalDesc',
   },
   {
     to: '/login/partner',
@@ -82,7 +83,7 @@ const PORTAL_OPTIONS: PortalOption[] = [
     icon: Handshake,
     accentClass: 'text-emerald-400',
     badgeClass: 'bg-emerald-500/10 border-emerald-500/20',
-    desc: 'List services & earn XP rewards',
+    descKey: 'nav.partnerPortalDesc',
   },
   {
     to: '/login/admin',
@@ -90,7 +91,7 @@ const PORTAL_OPTIONS: PortalOption[] = [
     icon: ShieldCheck,
     accentClass: 'text-amber-400',
     badgeClass: 'bg-amber-500/10 border-amber-500/20',
-    desc: 'NSS staff only · Restricted',
+    descKey: 'nav.adminPortalDesc',
   },
 ]
 
@@ -222,7 +223,7 @@ export default function Navbar() {
               >
                 <img
                   src="./logo.png"
-                  alt="NSS"
+                  alt={t('shared.logoAlt')}
                   className={`object-contain transition-all duration-300 ${
                     scrolled ? 'h-[42px] w-[42px]' : 'h-[54px] w-[54px]'
                   }`}
@@ -233,7 +234,7 @@ export default function Navbar() {
                   NSS <span className="text-[rgb(var(--gold-rgb))]">GROUP</span>
                 </span>
                 <span className="nss-mono block text-[8px] tracking-[0.14em] text-[rgba(var(--text-rgb),0.45)] uppercase">
-                  INTERNATIONAL GROUP OF COMPANIES
+                  {t('nav.brandSub')}
                 </span>
                 <span className="nss-mono block text-[8px] font-bold tracking-[0.2em] text-[rgb(var(--gold-rgb))] uppercase mt-0.5">
                   NAWI SAMIM SAMIR
@@ -357,7 +358,7 @@ export default function Navbar() {
                   <div className="absolute start-0 top-[calc(100%+8px)] z-50 w-60 overflow-hidden rounded-xl border border-[rgba(var(--gold-rgb),0.18)] bg-[var(--bg-deep,var(--bg))] shadow-2xl shadow-black/40 animate-in fade-in slide-in-from-top-2 duration-150">
                     <div className="border-b border-[rgba(var(--gold-rgb),0.12)] px-4 py-2">
                       <p className="nss-mono text-[9px] uppercase tracking-[0.18em] text-[rgba(var(--text-rgb),0.5)]">
-                        Logistics Tools
+                        {t('nav.operationsTools')}
                       </p>
                     </div>
                     <div className="p-1.5 space-y-0.5">
@@ -377,7 +378,7 @@ export default function Navbar() {
                                 {t(item.labelKey)}
                               </p>
                               <p className="text-[10px] text-[rgba(var(--text-rgb),0.45)] leading-tight truncate">
-                                {item.desc}
+                                {t(item.descKey)}
                               </p>
                             </div>
                           </button>
@@ -438,8 +439,8 @@ export default function Navbar() {
               <div className="flex items-center">
                 <button
                   onClick={toggleMusic}
-                  aria-label="Toggle Background Music"
-                  title={isPlaying ? `Playing: ${currentTrack.title}` : 'Play Background Music'}
+                  aria-label={t('nav.musicToggle')}
+                  title={isPlaying ? currentTrack.title : t('nav.musicPlay')}
                   className={`flex h-8 items-center gap-1.5 rounded-l-full border px-2.5 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#e8c268] ${
                     isPlaying
                       ? 'border-[rgb(var(--gold-rgb))] bg-[rgba(var(--gold-rgb),0.15)] text-[rgb(var(--gold-rgb))] shadow-sm shadow-[rgba(var(--gold-rgb),0.2)]'
@@ -450,14 +451,14 @@ export default function Navbar() {
                     {isPlaying ? <Volume2 size={13} className="animate-pulse" /> : <VolumeX size={13} />}
                   </span>
                   <span className="nss-mono text-[10px] uppercase tracking-wider font-semibold max-w-[80px] truncate hidden xl:inline">
-                    {isPlaying ? currentTrack.title.replace('Welcome to NSS Group', 'NSS Theme') : 'Music'}
+                    {isPlaying ? currentTrack.title.replace('Welcome to NSS Group', t('nav.musicTheme')) : t('nav.musicLabel')}
                   </span>
                 </button>
 
                 <button
                   onClick={() => setMusicOpen((v) => !v)}
-                  title="Playlist & Tracks (8 available)"
-                  aria-label="Background Music Playlist"
+                  title={t('nav.musicPlaylist')}
+                  aria-label={t('nav.musicPlaylist')}
                   className={`flex h-8 items-center justify-center rounded-r-full border-y border-r px-1.5 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#e8c268] ${
                     musicOpen
                       ? 'border-[rgb(var(--gold-rgb))] bg-[rgba(var(--gold-rgb),0.2)] text-[rgb(var(--gold-rgb))]'
@@ -475,12 +476,13 @@ export default function Navbar() {
                     <div className="flex items-center gap-2">
                       <Music size={14} className="text-[rgb(var(--gold-rgb))]" />
                       <span className="nss-mono text-[11px] font-semibold uppercase tracking-[0.14em] text-[rgb(var(--text-rgb))]">
-                        Background Music ({playlist.length} Tracks)
+                        {t('nav.musicTracksTitle').replace('{count}', String(playlist.length))}
                       </span>
                     </div>
                     <button
                       onClick={nextTrack}
-                      title="Skip to Next Track"
+                      title={t('nav.musicNext')}
+                      aria-label={t('nav.musicNext')}
                       className="flex h-6 w-6 items-center justify-center rounded-md bg-[rgba(var(--gold-rgb),0.1)] text-[rgb(var(--gold-rgb))] hover:bg-[rgba(var(--gold-rgb),0.2)] transition-colors"
                     >
                       <SkipForward size={12} />
@@ -538,7 +540,7 @@ export default function Navbar() {
                   <div className="absolute end-0 top-[calc(100%+8px)] z-50 w-72 overflow-hidden rounded-xl border border-[rgba(var(--gold-rgb),0.18)] bg-[var(--bg-deep,var(--bg))] shadow-2xl shadow-black/40 animate-in fade-in slide-in-from-top-2 duration-150">
                     <div className="border-b border-[rgba(var(--gold-rgb),0.12)] px-4 py-3">
                       <p className="nss-mono text-[10px] uppercase tracking-[0.18em] text-[rgba(var(--text-rgb),0.5)]">
-                        Select your portal
+                        {t('nav.portalSelect')}
                       </p>
                     </div>
                     <div className="p-2">
@@ -558,7 +560,7 @@ export default function Navbar() {
                                 {t(opt.labelKey)}
                               </p>
                               <p className="mt-0.5 text-[11px] text-[rgba(var(--text-rgb),0.45)] leading-tight">
-                                {opt.desc}
+                                {t(opt.descKey)}
                               </p>
                             </div>
                             <span className="text-[rgba(var(--text-rgb),0.25)] transition-all group-hover:text-[rgba(var(--text-rgb),0.6)] group-hover:translate-x-0.5">
@@ -586,7 +588,7 @@ export default function Navbar() {
             </button>
             <button
               onClick={toggleMusic}
-              aria-label="Toggle Background Music"
+              aria-label={t('nav.musicToggle')}
               className="p-1.5 text-[rgba(var(--text-rgb),0.70)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#e8c268] rounded-sm"
             >
               {isPlaying ? <Volume2 size={18} /> : <VolumeX size={18} />}
@@ -637,7 +639,7 @@ export default function Navbar() {
               {SHOW_PORTAL_LOGINS && (
                 <div className="mt-4 border-t border-[rgba(var(--gold-rgb),0.12)] pt-5">
                   <p className="nss-mono mb-3 px-3 text-[10px] uppercase tracking-[0.18em] text-[rgba(var(--text-rgb),0.4)]">
-                    Portal Login
+                    {t('nav.portalLogin')}
                   </p>
                   <div className="flex flex-col gap-2">
                     {PORTAL_OPTIONS.map((opt) => {
@@ -656,7 +658,7 @@ export default function Navbar() {
                               {t(opt.labelKey)}
                             </p>
                             <p className="text-[11px] text-[rgba(var(--text-rgb),0.45)]">
-                              {opt.desc}
+                              {t(opt.descKey)}
                             </p>
                           </div>
                         </button>

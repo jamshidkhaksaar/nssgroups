@@ -1,5 +1,6 @@
 import type { TranslationKey } from './en'
 import { portfolioAr } from './portfolioLocales'
+import { translationCompletionAr } from './translationCompletion'
 
 const arBase = {
   'projects.video.1': "نظرة عامة على العمليات والخدمات اللوجستية لمجموعة NSS",
@@ -1037,4 +1038,8 @@ const arBase = {
   'auth.partner.xpDesc': 'كل تسليم ناجح يرفع مستوى شريكك ويتيح مزايا أفضل للمنصة.',
 }
 
-export const ar: Record<TranslationKey, string> = { ...arBase, ...portfolioAr }
+export const ar: Record<TranslationKey, string> = {
+  ...arBase,
+  ...portfolioAr,
+  ...translationCompletionAr,
+}

@@ -31,9 +31,8 @@ export default function AuthLayout({
   const overlayClass = accentBgMap[accentColor] ?? accentBgMap['gold'];
 
   // Default headline if none provided
-  const headline = sideHeadline ?? 'YOUR CARGO,\nOUR RESPONSIBILITY.';
-  const sub =
-    sideSub ?? "Join the region's leading transit and logistics network.";
+  const headline = sideHeadline ?? t('auth.defaultHeadline');
+  const sub = sideSub ?? t('auth.defaultSub');
 
   return (
     <div className="flex min-h-screen w-full bg-[var(--bg)] overflow-hidden">
@@ -41,7 +40,7 @@ export default function AuthLayout({
       <div className="relative hidden w-1/2 lg:block">
         <img
           src="./posters/auth_bg.jpg"
-          alt="Auth Background"
+          alt={t('shared.authBackgroundAlt')}
           className="absolute inset-0 h-full w-full object-cover"
           onError={(e) => {
             // Fallback to poster 1 if auth_bg.jpg doesn't exist
@@ -62,7 +61,7 @@ export default function AuthLayout({
 
           <div className="mt-auto">
             {sideIcon && <div>{sideIcon}</div>}
-            <img src="./logo.png" alt="NSS Logo" className="h-14 brightness-0 invert" />
+            <img src="./logo.png" alt={t('shared.logoAlt')} className="h-14 brightness-0 invert" />
             <h1 className="nss-display mt-8 text-4xl leading-tight text-white md:text-5xl lg:text-5xl whitespace-pre-line">
               {headline.split('\n').map((line, i) => (
                 <span key={i}>

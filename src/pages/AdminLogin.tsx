@@ -72,6 +72,7 @@ export default function AdminLogin() {
                 <button
                   type="button"
                   onClick={() => setShowPass((v) => !v)}
+                  aria-label={showPass ? t('auth.hidePassword') : t('auth.showPassword')}
                   className="absolute inset-y-0 end-0 px-4 flex items-center text-[rgba(var(--text-rgb),0.4)] hover:text-[rgba(var(--text-rgb),0.8)] transition-colors"
                 >
                   {showPass ? <EyeOff size={16} /> : <Eye size={16} />}
@@ -83,7 +84,7 @@ export default function AdminLogin() {
             <div className="flex items-start gap-3 p-3 rounded-lg bg-amber-500/5 border border-amber-500/15">
               <Lock size={14} className="text-amber-400 mt-0.5 flex-shrink-0" />
               <p className="text-xs text-[rgba(var(--text-rgb),0.55)] leading-relaxed">
-                This is a restricted area. Unauthorized access attempts are logged and reported.
+                {t('auth.admin.restricted')}
               </p>
             </div>
 
@@ -104,7 +105,7 @@ export default function AdminLogin() {
           </form>
 
           <p className="mt-8 text-center text-xs text-[rgba(var(--text-rgb),0.4)]">
-            For access issues contact your NSS IT administrator.
+            {t('auth.admin.accessHelp')}
           </p>
         </Reveal>
       </div>

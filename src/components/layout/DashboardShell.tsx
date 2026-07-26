@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react';
 import { Link, useNavigate } from 'react-router';
 import { ArrowLeft, LogOut } from 'lucide-react';
+import { useI18n } from '@/i18n/i18n';
 
 interface DashboardShellProps {
   children: ReactNode;
@@ -30,6 +31,7 @@ export default function DashboardShell({
   portalLabel,
 }: DashboardShellProps) {
   const navigate = useNavigate();
+  const { t } = useI18n();
   const accent = accentMap[accentColor];
 
   const handleLogout = () => {
@@ -46,7 +48,7 @@ export default function DashboardShell({
             to="/"
             className="flex items-center gap-2 text-[rgba(var(--text-rgb),0.55)] transition-colors hover:text-[rgb(var(--gold-rgb))]"
           >
-            <img src="./logo.png" alt="NSS" className="h-8 w-8 object-contain" />
+            <img src="./logo.png" alt={t('shared.logoAlt')} className="h-8 w-8 object-contain" />
             <span className="nss-display hidden text-sm tracking-wide text-[rgb(var(--text-rgb))] sm:block">
               NSS <span className="text-[rgb(var(--gold-rgb))]">GROUP</span>
             </span>
@@ -59,7 +61,7 @@ export default function DashboardShell({
             className="nss-mono flex items-center gap-1.5 text-[11px] uppercase tracking-[0.14em] text-[rgba(var(--text-rgb),0.45)] transition-colors hover:text-[rgba(var(--text-rgb),0.8)]"
           >
             <ArrowLeft size={12} />
-            <span className="hidden sm:inline">Back to site</span>
+            <span className="hidden sm:inline">{t('dashboard.backToSite')}</span>
           </Link>
         </div>
 
@@ -74,7 +76,7 @@ export default function DashboardShell({
           className={`nss-mono flex items-center gap-1.5 rounded-md border border-[rgba(var(--text-rgb),0.1)] px-3 py-1.5 text-[11px] uppercase tracking-[0.14em] text-[rgba(var(--text-rgb),0.5)] transition-colors ${accent.logoutHover} hover:border-[rgba(var(--text-rgb),0.2)]`}
         >
           <LogOut size={13} />
-          <span className="hidden sm:inline">Sign Out</span>
+          <span className="hidden sm:inline">{t('dashboard.signOut')}</span>
         </button>
       </header>
 

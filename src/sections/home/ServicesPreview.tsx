@@ -171,7 +171,7 @@ export default function ServicesPreview() {
         >
           <div>
             <p className="nss-mono text-[11px] tracking-[0.2em] text-[#1d1233]/70">
-              NSS LOGISTICS — TRADING LINES
+              {t('services.tradingTag')}
             </p>
             <h3 className="nss-display mt-3 text-2xl text-[#1d1233] md:text-3xl">
               {t('services.tradingHeading')}

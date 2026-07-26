@@ -1,5 +1,6 @@
 import type { TranslationKey } from './en'
 import { portfolioZh } from './portfolioLocales'
+import { translationCompletionZh } from './translationCompletion'
 
 const zhBase = {
   'projects.video.1': "NSS 集团项目运营与区域物流总览",
@@ -1037,4 +1038,8 @@ const zhBase = {
   'auth.partner.xpDesc': '每次成功交付都会提升您的合作伙伴级别，并解锁更好的平台福利。',
 }
 
-export const zh: Record<TranslationKey, string> = { ...zhBase, ...portfolioZh }
+export const zh: Record<TranslationKey, string> = {
+  ...zhBase,
+  ...portfolioZh,
+  ...translationCompletionZh,
+}

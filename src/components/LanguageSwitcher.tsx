@@ -14,7 +14,7 @@ const FLAGS: Record<Lang, string> = {
 }
 
 export default function LanguageSwitcher({ className = '' }: { className?: string }) {
-  const { lang, setLang } = useI18n()
+  const { lang, setLang, t } = useI18n()
   const [open, setOpen] = useState(false)
   const ref = useRef<HTMLDivElement>(null)
 
@@ -58,7 +58,7 @@ export default function LanguageSwitcher({ className = '' }: { className?: strin
       {open && (
         <div
           role="listbox"
-          aria-label="Select language"
+          aria-label={t('shared.languageSelect')}
           className="absolute end-0 top-[calc(100%+6px)] z-[60] min-w-[140px] overflow-hidden rounded-xl border border-[rgba(var(--gold-rgb),0.20)] bg-[rgba(var(--bg-rgb),0.97)] shadow-xl backdrop-blur-xl"
         >
           {LANGS.map((l) => (

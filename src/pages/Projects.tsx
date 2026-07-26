@@ -4,8 +4,11 @@ import Reveal from '@/components/Reveal'
 import ProjectImageSlider from '@/components/projects/ProjectImageSlider'
 import ProjectVideoGallery from '@/components/projects/ProjectVideoGallery'
 import { FEATURED_PROJECT_VIDEOS, PROJECT_IMAGES, PROJECT_VIDEOS } from '@/data/projectsData'
+import { useI18n } from '@/i18n/i18n'
 
 export default function Projects() {
+  const { t } = useI18n()
+
   return (
     <main className="bg-[var(--bg)] min-h-screen text-[rgb(var(--text-rgb))]">
       {/* Header */}
@@ -20,7 +23,7 @@ export default function Projects() {
               <span className="nss-display text-2xl text-[rgb(var(--gold-rgb))]">+</span>
             </div>
             <p className="nss-mono text-xs tracking-[0.14em] text-[rgba(var(--text-rgb),0.55)] uppercase">
-              Completed High-Scale Projects
+              {t('projects.statCompleted')}
             </p>
           </div>
 
@@ -29,7 +32,7 @@ export default function Projects() {
               <AnimatedNumber value={21} className="nss-display text-4xl sm:text-5xl text-[rgb(var(--gold-rgb))]" />
             </div>
             <p className="nss-mono text-xs tracking-[0.14em] text-[rgba(var(--text-rgb),0.55)] uppercase">
-              Active Project Activity Photo Galleries
+              {t('projects.statGalleries')}
             </p>
           </div>
 
@@ -38,7 +41,7 @@ export default function Projects() {
               <AnimatedNumber value={25} className="nss-display text-4xl sm:text-5xl text-[rgb(var(--gold-rgb))]" />
             </div>
             <p className="nss-mono text-xs tracking-[0.14em] text-[rgba(var(--text-rgb),0.55)] uppercase">
-              Official Project Operation Field Videos
+              {t('projects.statVideos')}
             </p>
           </div>
         </Reveal>

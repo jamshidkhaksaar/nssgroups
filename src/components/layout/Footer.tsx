@@ -175,12 +175,12 @@ export default function Footer() {
       <div className="border-t border-[rgba(var(--gold-rgb),0.10)]">
         <div className="mx-auto flex max-w-7xl flex-col items-start gap-4 px-6 py-6 md:flex-row md:items-center md:justify-between md:px-12">
           <p className="nss-mono text-[12px] text-[rgba(var(--text-rgb),0.55)]">
-            © {new Date().getFullYear()} NSS INTERNATIONAL GROUP OF COMPANIES — {t('footer.rights')}
+            © {new Date().getFullYear()} NSS {t('nav.brandSub')} — {t('footer.rights')}
           </p>
           <p className="nss-mono text-[12px] text-[rgba(var(--gold-rgb),0.65)]">{t('shared.divisions')}</p>
           <button
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            aria-label="Back to top"
+            aria-label={t('footer.backToTop')}
             className="flex h-9 w-9 items-center justify-center rounded-full border border-[rgba(var(--gold-rgb),0.3)] text-[rgb(var(--gold-rgb))] transition-all hover:-translate-y-0.5 hover:border-[rgba(var(--gold-rgb),0.7)]"
           >
             <ArrowUp size={15} />

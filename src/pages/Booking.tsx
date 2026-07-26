@@ -167,7 +167,7 @@ export default function Booking() {
                 <p className="nss-section-tag">{t('booking.tag')}</p>
                 <h2 className="nss-display mt-3 text-2xl">
                   {mode === 'sea'
-                    ? 'Sea container request'
+                    ? t('booking.seaRequest')
                     : t(MODES.find((item) => item.id === mode)?.key ?? 'booking.tab.truck')}
                 </h2>
               </div>
@@ -182,18 +182,22 @@ export default function Booking() {
                   <CheckCircle2 size={32} />
                 </div>
                 <h3 className="nss-display text-xl text-[rgb(var(--gold-rgb))] font-bold">
-                  Booking Request Submitted!
+                  {t('booking.successTitle')}
                 </h3>
                 <p className="text-sm text-[rgba(var(--text-rgb),0.85)] max-w-md mx-auto leading-relaxed">
-                  Your booking request (Ref: <strong className="text-[rgb(var(--gold-rgb))]">{submittedRef}</strong>) has been routed to{' '}
-                  <strong className="text-[rgb(var(--gold-rgb))]">info@nssgroupint.com</strong>. A confirmation email has been sent to{' '}
-                  <strong className="text-[rgb(var(--gold-rgb))]">{email}</strong>. Our operations team will confirm your rate within 24 hours.
+                  {t('booking.successPrefix')}{' '}
+                  <strong className="text-[rgb(var(--gold-rgb))]">{submittedRef}</strong>.{' '}
+                  {t('booking.successRouted')}{' '}
+                  <strong className="text-[rgb(var(--gold-rgb))]">info@nssgroupint.com</strong>.{' '}
+                  {t('booking.successEmail')}{' '}
+                  <strong className="text-[rgb(var(--gold-rgb))]">{email}</strong>.{' '}
+                  {t('booking.successRate')}
                 </p>
                 <button
                   onClick={() => setSubmittedRef(null)}
                   className="nss-btn-primary mt-2 rounded-sm px-6 py-2.5 text-xs font-bold uppercase tracking-wider"
                 >
-                  Submit Another Booking
+                  {t('booking.submitAnother')}
                 </button>
               </div>
             ) : (
@@ -268,23 +272,29 @@ export default function Booking() {
 
                   {mode === 'sea' && (
                     <SelectField
-                      label="Container type"
+                      label={t('booking.containerType')}
                       value={containerType}
                       onChange={setContainerType}
-                      options={['20FT', '40FT', 'Reefer', 'Open Top', 'Flat Rack']}
+                      options={[
+                        t('booking.container.20ft'),
+                        t('booking.container.40ft'),
+                        t('booking.container.reefer'),
+                        t('booking.container.openTop'),
+                        t('booking.container.flatRack'),
+                      ]}
                     />
                   )}
 
                   <div className="sm:col-span-2">
                     <label className="block">
                       <span className="nss-mono mb-2 block text-[11px] tracking-[0.14em] text-[rgba(var(--text-rgb),0.58)] uppercase">
-                        Additional Instructions / Notes
+                        {t('booking.notes')}
                       </span>
                       <textarea
                         rows={3}
                         value={notes}
                         onChange={(e) => setNotes(e.target.value)}
-                        placeholder="Specify special handling, customs requirements, or preferred delivery dates..."
+                        placeholder={t('booking.notesPlaceholder')}
                         className="w-full border border-[rgba(var(--gold-rgb),0.2)] bg-[rgba(var(--text-rgb),0.04)] p-3 text-sm text-[rgb(var(--text-rgb))] outline-none focus:border-[rgb(var(--gold-rgb))]"
                       />
                     </label>
@@ -300,7 +310,7 @@ export default function Booking() {
                     {isSubmitting ? (
                       <>
                         <Loader2 size={18} className="animate-spin" />
-                        <span>Submitting Booking...</span>
+                        <span>{t('booking.submitting')}</span>
                       </>
                     ) : (
                       <span>{t('booking.submit')}</span>

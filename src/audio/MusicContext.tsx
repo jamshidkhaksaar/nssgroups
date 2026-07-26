@@ -7,7 +7,9 @@ export function MusicProvider({ children }: { children: React.ReactNode }) {
   const audioRef = useRef<HTMLAudioElement | null>(null)
   const isPlayingRef = useRef(true)
 
-  isPlayingRef.current = isPlaying
+  useEffect(() => {
+    isPlayingRef.current = isPlaying
+  }, [isPlaying])
 
   const playTrackAtIndex = useCallback((index: number, shouldPlay = true) => {
     if (!audioRef.current) return

@@ -1,5 +1,6 @@
 import type { TranslationKey } from './en'
 import { portfolioPs } from './portfolioLocales'
+import { translationCompletionPs } from './translationCompletion'
 
 const psBase = {
   // ── nav ──
@@ -1117,5 +1118,9 @@ const psBase = {
   'auth.partner.xpDesc': 'هره بریالۍ سپارنه ستاسو د شریک کچه لوړوي او د پلتفرم غوره ګټې پرانیزي.',
 }
 
-export const ps: Record<TranslationKey, string> = { ...psBase, ...portfolioPs }
+export const ps: Record<TranslationKey, string> = {
+  ...psBase,
+  ...portfolioPs,
+  ...translationCompletionPs,
+}
 

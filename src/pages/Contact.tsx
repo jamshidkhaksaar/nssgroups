@@ -107,17 +107,18 @@ export default function Contact() {
                     <CheckCircle2 size={32} />
                   </div>
                   <h3 className="nss-display text-xl text-[rgb(var(--gold-rgb))] font-bold">
-                    Message Delivered Successfully!
+                    {t('contact.successTitle')}
                   </h3>
                   <p className="text-sm text-[rgba(var(--text-rgb),0.85)] max-w-md mx-auto leading-relaxed">
-                    Thank you for contacting NSS Group. Your message has been routed to{' '}
-                    <strong className="text-[rgb(var(--gold-rgb))]">info@nssgroupint.com</strong> and a confirmation email has been sent to your email address.
+                    {t('contact.successPrefix')}{' '}
+                    <strong className="text-[rgb(var(--gold-rgb))]">info@nssgroupint.com</strong>.{' '}
+                    {t('contact.successConfirmation')}
                   </p>
                   <button
                     onClick={() => setSubmitted(false)}
                     className="nss-btn-primary mt-2 rounded-sm px-6 py-2.5 text-xs font-bold uppercase tracking-wider"
                   >
-                    Send Another Message
+                    {t('contact.submitAnother')}
                   </button>
                 </div>
               ) : (
@@ -205,7 +206,7 @@ export default function Contact() {
                       {isSubmitting ? (
                         <>
                           <Loader2 size={18} className="animate-spin" />
-                          <span>Sending Message...</span>
+                          <span>{t('contact.submitting')}</span>
                         </>
                       ) : (
                         <span>{t('contact.submit')}</span>

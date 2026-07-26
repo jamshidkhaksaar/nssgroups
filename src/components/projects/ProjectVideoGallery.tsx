@@ -47,7 +47,7 @@ export default function ProjectVideoGallery({
           <Video className="mt-1 h-5 w-5 shrink-0 text-[rgb(var(--gold-rgb))]" />
           <div>
             <h2 className="nss-display text-2xl tracking-wide text-[rgb(var(--text-rgb))]">
-              {headingKey ? t(headingKey) : 'Project Operations & Video Reports'}
+              {headingKey ? t(headingKey) : t('projects.videoHeading')}
             </h2>
             {descriptionKey && (
               <p className="mt-2 max-w-2xl text-sm leading-relaxed text-[rgba(var(--text-rgb),0.6)]">
@@ -58,7 +58,8 @@ export default function ProjectVideoGallery({
         </div>
         {!featured && (
           <span className="nss-mono text-xs text-[rgba(var(--text-rgb),0.5)]">
-            Showing {visibleVideos.length} of {videos.length} Videos
+            {t('projects.videoShowing')} {visibleVideos.length} {t('projects.videoOf')} {videos.length}{' '}
+            {t('projects.videoCount')}
           </span>
         )}
       </div>
@@ -99,8 +100,8 @@ export default function ProjectVideoGallery({
                     {/* Close / Stop Inline Video Button */}
                     <button
                       onClick={() => setPlayingVideoId(null)}
-                      title="Close Video"
-                      aria-label="Close Video"
+                      title={t('projects.videoClose')}
+                      aria-label={t('projects.videoClose')}
                       className="absolute top-2 right-2 z-20 flex h-7 w-7 items-center justify-center rounded-full bg-black/80 text-white/90 border border-white/20 hover:bg-[rgb(var(--gold-rgb))] hover:text-black transition-all"
                     >
                       <X size={14} />
@@ -133,7 +134,7 @@ export default function ProjectVideoGallery({
                     {/* Video Tag */}
                     <div className="absolute top-3 left-3">
                       <span className="nss-mono rounded bg-black/60 backdrop-blur-md px-2 py-0.5 text-[9px] uppercase tracking-wider text-[rgb(var(--gold-rgb))] border border-white/10">
-                        Video #{idx + 1}
+                        {t('projects.videoLabel')} #{idx + 1}
                       </span>
                     </div>
                   </button>
@@ -154,20 +155,20 @@ export default function ProjectVideoGallery({
                 </h3>
 
                 <div className="pt-2 flex items-center justify-between text-[10px] text-[rgba(var(--text-rgb),0.45)] nss-mono border-t border-[rgba(var(--gold-rgb),0.08)]">
-                  <span>NSS Logistics Report</span>
+                  <span>{t('projects.videoReport')}</span>
                   {isPlaying ? (
                     <button
                       onClick={() => setPlayingVideoId(null)}
                       className="text-red-400 hover:underline flex items-center gap-1 font-semibold"
                     >
-                      <span>Stop ▶</span>
+                      <span>{t('projects.videoStop')} ▶</span>
                     </button>
                   ) : (
                     <button
                       onClick={() => setPlayingVideoId(video.id)}
                       className="text-[rgb(var(--gold-rgb))] group-hover:underline flex items-center gap-1 font-semibold"
                     >
-                      <span>Play Inline ▶</span>
+                      <span>{t('projects.videoPlayInline')} ▶</span>
                     </button>
                   )}
                 </div>
@@ -184,7 +185,9 @@ export default function ProjectVideoGallery({
             onClick={loadMore}
             className="nss-mono flex items-center gap-2 rounded-xl border border-[rgb(var(--gold-rgb))] bg-[rgba(var(--gold-rgb),0.08)] px-8 py-3.5 text-xs uppercase tracking-[0.16em] font-bold text-[rgb(var(--gold-rgb))] transition-all hover:bg-[rgb(var(--gold-rgb))] hover:text-[#1d1233] hover:shadow-lg hover:shadow-[rgba(var(--gold-rgb),0.25)] focus-visible:outline-none"
           >
-            <span>Load More Project Videos ({videos.length - visibleCount} Remaining)</span>
+            <span>
+              {t('projects.videoLoadMore')} ({videos.length - visibleCount} {t('projects.videoRemaining')})
+            </span>
             <ChevronDown size={16} />
           </button>
         </div>

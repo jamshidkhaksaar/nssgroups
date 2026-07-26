@@ -5,21 +5,20 @@ import type { TranslationKey } from '@/i18n/translations/en'
 
 interface ServiceCard {
   nameKey: TranslationKey
-  engName: string
   icon: typeof Truck
   to: string
   poster: string
 }
 
 const SERVICES: ServiceCard[] = [
-  { nameKey: 'servicesSection.truck',       engName: 'Truck Booking',       icon: Truck,       to: '/booking',  poster: './card_images/row2/Truck Booking.png'  },
-  { nameKey: 'servicesSection.railway',     engName: 'Railway Booking',     icon: Train,       to: '/booking',  poster: './card_images/row2/Railway Booking.png'  },
-  { nameKey: 'servicesSection.air',         engName: 'Air Cargo Booking',   icon: Plane,       to: '/booking',  poster: './card_images/row2/Air Cargo Booking.png'  },
-  { nameKey: 'servicesSection.sea',         engName: 'Sea Freight Booking', icon: Ship,        to: '/booking',  poster: './card_images/row2/Sea Freight Booking.png'  },
-  { nameKey: 'servicesSection.customs',     engName: 'Customs Clearance',   icon: ShieldCheck, to: '/services', poster: './card_images/row2/Customs Clearance.png'  },
-  { nameKey: 'servicesSection.tracking',    engName: 'Shipment Tracking',   icon: MapPin,      to: '/tracking', poster: './card_images/row2/Shipment Tracking.png'  },
-  { nameKey: 'servicesSection.warehousing', engName: 'Warehousing',         icon: Warehouse,   to: '/services', poster: './card_images/row2/Warehousing.png'  },
-  { nameKey: 'servicesSection.calculator',  engName: 'Freight Calculator',  icon: Calculator,  to: '/booking',  poster: './card_images/row2/Freight Calculator.png' },
+  { nameKey: 'servicesSection.truck',       icon: Truck,       to: '/booking',  poster: './card_images/row2/Truck Booking.png'  },
+  { nameKey: 'servicesSection.railway',     icon: Train,       to: '/booking',  poster: './card_images/row2/Railway Booking.png'  },
+  { nameKey: 'servicesSection.air',         icon: Plane,       to: '/booking',  poster: './card_images/row2/Air Cargo Booking.png'  },
+  { nameKey: 'servicesSection.sea',         icon: Ship,        to: '/booking',  poster: './card_images/row2/Sea Freight Booking.png'  },
+  { nameKey: 'servicesSection.customs',     icon: ShieldCheck, to: '/services', poster: './card_images/row2/Customs Clearance.png'  },
+  { nameKey: 'servicesSection.tracking',    icon: MapPin,      to: '/tracking', poster: './card_images/row2/Shipment Tracking.png'  },
+  { nameKey: 'servicesSection.warehousing', icon: Warehouse,   to: '/services', poster: './card_images/row2/Warehousing.png'  },
+  { nameKey: 'servicesSection.calculator',  icon: Calculator,  to: '/booking',  poster: './card_images/row2/Freight Calculator.png' },
 ]
 
 export default function LogisticsServiceGrid() {
@@ -73,7 +72,7 @@ export default function LogisticsServiceGrid() {
                 <div className="absolute inset-0 z-0">
                   <img
                     src={s.poster}
-                    alt={s.engName}
+                    alt={t(s.nameKey)}
                     className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />
                 </div>
@@ -90,9 +89,6 @@ export default function LogisticsServiceGrid() {
                   <h3 className="nss-display block text-[13px] font-bold leading-tight text-[rgb(var(--text-rgb))] transition-colors group-hover:text-[rgb(var(--gold-rgb))]">
                     {t(s.nameKey)}
                   </h3>
-                  <p className="nss-mono mt-0.5 text-[10px] uppercase tracking-wider text-[rgba(var(--text-rgb),0.65)]">
-                    {s.engName}
-                  </p>
                 </div>
               </Link>
             )

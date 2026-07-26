@@ -34,7 +34,7 @@ export default function Register() {
                 type="text" 
                 required 
                 className="h-12 w-full rounded-sm border border-[rgba(var(--gold-rgb),0.2)] bg-[var(--panel)] px-4 text-sm text-[rgb(var(--text-rgb))] outline-none transition-colors focus:border-[rgb(var(--gold-rgb))] focus:ring-1 focus:ring-[rgba(var(--gold-rgb),0.5)]" 
-                placeholder="John Doe"
+                placeholder={t('auth.namePlaceholder')}
               />
             </div>
 

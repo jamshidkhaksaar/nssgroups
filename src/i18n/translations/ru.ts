@@ -1,5 +1,6 @@
 import type { TranslationKey } from './en'
 import { portfolioRu } from './portfolioLocales'
+import { translationCompletionRu } from './translationCompletion'
 
 const ruBase = {
   // ── nav ──
@@ -1107,5 +1108,9 @@ const ruBase = {
   'auth.partner.xpDesc': 'Каждая успешная доставка повышает ваш уровень партнера и открывает лучшие преимущества платформы.',
 }
 
-export const ru: Record<TranslationKey, string> = { ...ruBase, ...portfolioRu }
+export const ru: Record<TranslationKey, string> = {
+  ...ruBase,
+  ...portfolioRu,
+  ...translationCompletionRu,
+}
 

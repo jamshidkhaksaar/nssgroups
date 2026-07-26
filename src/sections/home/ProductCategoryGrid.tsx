@@ -119,7 +119,7 @@ export default function ProductCategoryGrid() {
               {t('categories.viewAll')}
             </span>
             <span className="nss-mono text-[10px] uppercase tracking-wider text-[rgba(var(--text-rgb),0.50)]">
-              10+ Categories
+              {t('categories.countLabel')}
             </span>
           </Link>
         </div>

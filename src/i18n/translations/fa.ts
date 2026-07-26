@@ -1,5 +1,6 @@
 import type { TranslationKey } from './en'
 import { portfolioFa } from './portfolioLocales'
+import { translationCompletionFa } from './translationCompletion'
 
 const faBase = {
   // ── nav ──
@@ -1117,5 +1118,9 @@ const faBase = {
   'auth.partner.xpDesc': 'هر تحویل موفق، سطح شریک شما را بالا می‌برد و مزایای بهتر پلتفرم را باز می‌کند.',
 }
 
-export const fa: Record<TranslationKey, string> = { ...faBase, ...portfolioFa }
+export const fa: Record<TranslationKey, string> = {
+  ...faBase,
+  ...portfolioFa,
+  ...translationCompletionFa,
+}
 

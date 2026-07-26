@@ -3,8 +3,6 @@ import type { TranslationKey } from '@/i18n/translations/en'
 export interface ProjectImage {
   id: string
   src: string
-  title: string
-  caption: string
 }
 
 export interface ProjectVideo {
@@ -18,129 +16,87 @@ export interface ProjectVideo {
 export const PROJECT_IMAGES: ProjectImage[] = [
   {
     "id": "img-1",
-    "src": "./projects/1.jpg",
-    "title": "NSS Project Activity #1",
-    "caption": "Field operations & logistics execution across regional hubs (#1)"
+    "src": "./projects/1.jpg"
   },
   {
     "id": "img-2",
-    "src": "./projects/2.jpg",
-    "title": "NSS Project Activity #2",
-    "caption": "Field operations & logistics execution across regional hubs (#2)"
+    "src": "./projects/2.jpg"
   },
   {
     "id": "img-3",
-    "src": "./projects/3.jpg",
-    "title": "NSS Project Activity #3",
-    "caption": "Field operations & logistics execution across regional hubs (#3)"
+    "src": "./projects/3.jpg"
   },
   {
     "id": "img-4",
-    "src": "./projects/4.jpg",
-    "title": "NSS Project Activity #4",
-    "caption": "Field operations & logistics execution across regional hubs (#4)"
+    "src": "./projects/4.jpg"
   },
   {
     "id": "img-5",
-    "src": "./projects/5.jpg",
-    "title": "NSS Project Activity #5",
-    "caption": "Field operations & logistics execution across regional hubs (#5)"
+    "src": "./projects/5.jpg"
   },
   {
     "id": "img-6",
-    "src": "./projects/6.jpg",
-    "title": "NSS Project Activity #6",
-    "caption": "Field operations & logistics execution across regional hubs (#6)"
+    "src": "./projects/6.jpg"
   },
   {
     "id": "img-7",
-    "src": "./projects/7.jpg",
-    "title": "NSS Project Activity #7",
-    "caption": "Field operations & logistics execution across regional hubs (#7)"
+    "src": "./projects/7.jpg"
   },
   {
     "id": "img-8",
-    "src": "./projects/8.jpg",
-    "title": "NSS Project Activity #8",
-    "caption": "Field operations & logistics execution across regional hubs (#8)"
+    "src": "./projects/8.jpg"
   },
   {
     "id": "img-9",
-    "src": "./projects/9.jpg",
-    "title": "NSS Project Activity #9",
-    "caption": "Field operations & logistics execution across regional hubs (#9)"
+    "src": "./projects/9.jpg"
   },
   {
     "id": "img-10",
-    "src": "./projects/10.jpg",
-    "title": "NSS Project Activity #10",
-    "caption": "Field operations & logistics execution across regional hubs (#10)"
+    "src": "./projects/10.jpg"
   },
   {
     "id": "img-11",
-    "src": "./projects/11.jpg",
-    "title": "NSS Project Activity #11",
-    "caption": "Field operations & logistics execution across regional hubs (#11)"
+    "src": "./projects/11.jpg"
   },
   {
     "id": "img-12",
-    "src": "./projects/12.jpg",
-    "title": "NSS Project Activity #12",
-    "caption": "Field operations & logistics execution across regional hubs (#12)"
+    "src": "./projects/12.jpg"
   },
   {
     "id": "img-13",
-    "src": "./projects/13.jpg",
-    "title": "NSS Project Activity #13",
-    "caption": "Field operations & logistics execution across regional hubs (#13)"
+    "src": "./projects/13.jpg"
   },
   {
     "id": "img-14",
-    "src": "./projects/14.jpg",
-    "title": "NSS Project Activity #14",
-    "caption": "Field operations & logistics execution across regional hubs (#14)"
+    "src": "./projects/14.jpg"
   },
   {
     "id": "img-15",
-    "src": "./projects/15.jpg",
-    "title": "NSS Project Activity #15",
-    "caption": "Field operations & logistics execution across regional hubs (#15)"
+    "src": "./projects/15.jpg"
   },
   {
     "id": "img-16",
-    "src": "./projects/16.jpg",
-    "title": "NSS Project Activity #16",
-    "caption": "Field operations & logistics execution across regional hubs (#16)"
+    "src": "./projects/16.jpg"
   },
   {
     "id": "img-17",
-    "src": "./projects/17.jpg",
-    "title": "NSS Project Activity #17",
-    "caption": "Field operations & logistics execution across regional hubs (#17)"
+    "src": "./projects/17.jpg"
   },
   {
     "id": "img-18",
-    "src": "./projects/18.jpg",
-    "title": "NSS Project Activity #18",
-    "caption": "Field operations & logistics execution across regional hubs (#18)"
+    "src": "./projects/18.jpg"
   },
   {
     "id": "img-19",
-    "src": "./projects/19.jpg",
-    "title": "NSS Project Activity #19",
-    "caption": "Field operations & logistics execution across regional hubs (#19)"
+    "src": "./projects/19.jpg"
   },
   {
     "id": "img-20",
-    "src": "./projects/20.jpg",
-    "title": "NSS Project Activity #20",
-    "caption": "Field operations & logistics execution across regional hubs (#20)"
+    "src": "./projects/20.jpg"
   },
   {
     "id": "img-21",
-    "src": "./projects/21.jpg",
-    "title": "NSS Project Activity #21",
-    "caption": "Field operations & logistics execution across regional hubs (#21)"
+    "src": "./projects/21.jpg"
   }
 ];
 

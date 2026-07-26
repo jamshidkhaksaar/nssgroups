@@ -13,12 +13,12 @@ type CatalogCategory = {
 
 type CatalogProduct = {
   category: TranslationKey
-  name: string
-  origin: string
-  factory: string
-  moq: string
-  leadTime: string
-  packing: string
+  nameKey: TranslationKey
+  originKey: TranslationKey
+  factoryKey: TranslationKey
+  moqKey: TranslationKey
+  leadTimeKey: TranslationKey
+  packingKey: TranslationKey
   poster: string
 }
 
@@ -43,22 +43,22 @@ const CATEGORIES: CatalogCategory[] = [
 ]
 
 const PRODUCTS: CatalogProduct[] = [
-  { category: 'categories.c2.title', name: 'Industrial Raw Materials', origin: 'Global', factory: 'Direct Sourcing', moq: 'By specification', leadTime: '15-30 days', packing: 'Bulk / Containers', poster: './card_images/row1/industrial low materials.png' },
-  { category: 'categories.c3.title', name: 'Machinery & Equipment', origin: 'Global', factory: 'Verified Manufacturers', moq: '1 unit', leadTime: '30-45 days', packing: 'Export crates', poster: './card_images/row1/Machinery.png' },
-  { category: 'categories.c4.title', name: 'Food Products', origin: 'Global', factory: 'Certified Producers', moq: '1 container', leadTime: '10-25 days', packing: 'Retail / Bulk', poster: './card_images/row1/Food Products.png' },
-  { category: 'categories.c5.title', name: 'Textiles & Clothing', origin: 'Global', factory: 'Textile Mills', moq: 'By specification', leadTime: '15-30 days', packing: 'Export cartons', poster: './card_images/row1/Textile and clothing.png' },
-  { category: 'categories.c6.title', name: 'Cleaning & Hygiene', origin: 'Global', factory: 'Chemical Plants', moq: '1 container', leadTime: '10-20 days', packing: 'Bottles / Drums', poster: './card_images/row1/cleaning and hygen.png' },
-  { category: 'categories.c7.title', name: 'Home & Appliances', origin: 'Global', factory: 'Appliance Brands', moq: '1 container', leadTime: '20-40 days', packing: 'Retail packaging', poster: './card_images/row1/home applinces.png' },
-  { category: 'categories.c8.title', name: 'Beauty & Perfumes', origin: 'Global', factory: 'Cosmetic Labs', moq: 'By specification', leadTime: '15-25 days', packing: 'Retail packaging', poster: './card_images/row1/beauty and perfums.png' },
-  { category: 'categories.c9.title', name: 'Baby & Children', origin: 'Global', factory: 'Certified Producers', moq: '1 container', leadTime: '15-30 days', packing: 'Retail packaging', poster: './card_images/row1/baby and children.png' },
-  { category: 'categories.c10.title', name: 'Packaging & Printing', origin: 'Global', factory: 'Printing Facilities', moq: 'By specification', leadTime: '10-20 days', packing: 'Palletized', poster: './card_images/row1/packaging and printing.png' },
+  { category: 'categories.c2.title', nameKey: 'categories.c2.title', originKey: 'catalog.origin.global', factoryKey: 'catalog.factory.directSourcing', moqKey: 'catalog.moq.bySpecification', leadTimeKey: 'catalog.lead.days15to30', packingKey: 'catalog.packing.bulkContainers', poster: './card_images/row1/industrial low materials.png' },
+  { category: 'categories.c3.title', nameKey: 'categories.c3.title', originKey: 'catalog.origin.global', factoryKey: 'catalog.factory.verifiedManufacturers', moqKey: 'catalog.moq.oneUnit', leadTimeKey: 'catalog.lead.days30to45', packingKey: 'catalog.packing.exportCrates', poster: './card_images/row1/Machinery.png' },
+  { category: 'categories.c4.title', nameKey: 'categories.c4.title', originKey: 'catalog.origin.global', factoryKey: 'catalog.factory.certifiedProducers', moqKey: 'catalog.moq.oneContainer', leadTimeKey: 'catalog.lead.days10to25', packingKey: 'catalog.packing.retailBulk', poster: './card_images/row1/Food Products.png' },
+  { category: 'categories.c5.title', nameKey: 'categories.c5.title', originKey: 'catalog.origin.global', factoryKey: 'catalog.factory.textileMills', moqKey: 'catalog.moq.bySpecification', leadTimeKey: 'catalog.lead.days15to30', packingKey: 'catalog.packing.exportCartons', poster: './card_images/row1/Textile and clothing.png' },
+  { category: 'categories.c6.title', nameKey: 'categories.c6.title', originKey: 'catalog.origin.global', factoryKey: 'catalog.factory.chemicalPlants', moqKey: 'catalog.moq.oneContainer', leadTimeKey: 'catalog.lead.days10to20', packingKey: 'catalog.packing.bottlesDrums', poster: './card_images/row1/cleaning and hygen.png' },
+  { category: 'categories.c7.title', nameKey: 'categories.c7.title', originKey: 'catalog.origin.global', factoryKey: 'catalog.factory.applianceBrands', moqKey: 'catalog.moq.oneContainer', leadTimeKey: 'catalog.lead.days20to40', packingKey: 'catalog.packing.retailPackaging', poster: './card_images/row1/home applinces.png' },
+  { category: 'categories.c8.title', nameKey: 'categories.c8.title', originKey: 'catalog.origin.global', factoryKey: 'catalog.factory.cosmeticLabs', moqKey: 'catalog.moq.bySpecification', leadTimeKey: 'catalog.lead.days15to25', packingKey: 'catalog.packing.retailPackaging', poster: './card_images/row1/beauty and perfums.png' },
+  { category: 'categories.c9.title', nameKey: 'categories.c9.title', originKey: 'catalog.origin.global', factoryKey: 'catalog.factory.certifiedProducers', moqKey: 'catalog.moq.oneContainer', leadTimeKey: 'catalog.lead.days15to30', packingKey: 'catalog.packing.retailPackaging', poster: './card_images/row1/baby and children.png' },
+  { category: 'categories.c10.title', nameKey: 'categories.c10.title', originKey: 'catalog.origin.global', factoryKey: 'catalog.factory.printingFacilities', moqKey: 'catalog.moq.bySpecification', leadTimeKey: 'catalog.lead.days10to20', packingKey: 'catalog.packing.palletized', poster: './card_images/row1/packaging and printing.png' },
   // Original Products
-  { category: 'categories.c1.title', name: 'Portland Cement', origin: 'Uzbekistan', factory: 'Verified manufacturer', moq: '1 truckload', leadTime: '7–14 days', packing: '50 kg bags', poster: './card_images/extra/Portland Cement.png' },
-  { category: 'trading.cat.plastics', name: 'PVC Resin SG5', origin: 'China', factory: 'Xinjiang Yihua Chemical', moq: '50 t', leadTime: '10–18 days', packing: '25 kg bags', poster: './card_images/extra/PVC Resin SG5.png' },
-  { category: 'trading.cat.food', name: 'Industrial Wheat Flour', origin: 'Kazakhstan', factory: 'Regional milling partner', moq: '22 t', leadTime: '8–16 days', packing: '25 / 50 kg bags', poster: './card_images/extra/Industrial Wheat Flour.png' },
-  { category: 'trading.cat.fuel', name: 'LPG Supply', origin: 'Turkmenistan', factory: 'Licensed energy supplier', moq: '1 tanker', leadTime: 'Route dependent', packing: 'Bulk tanker', poster: './card_images/extra/LPG Supply.png' },
-  { category: 'trading.cat.consumer', name: 'Textiles & Consumer Goods', origin: 'Turkey', factory: 'Supplier network', moq: 'By specification', leadTime: '15–30 days', packing: 'Export cartons', poster: './card_images/extra/Textiles & Consumer Goods.png' },
-  { category: 'trading.cat.machinery', name: 'Industrial Equipment', origin: 'China', factory: 'Factory-direct sourcing', moq: 'By specification', leadTime: '20–45 days', packing: 'Export crate', poster: './card_images/extra/Industrial Equipment.png' },
+  { category: 'categories.c1.title', nameKey: 'catalog.product.portlandCement', originKey: 'catalog.origin.uzbekistan', factoryKey: 'catalog.factory.verifiedManufacturer', moqKey: 'catalog.moq.oneTruckload', leadTimeKey: 'catalog.lead.days7to14', packingKey: 'catalog.packing.bags50kg', poster: './card_images/extra/Portland Cement.png' },
+  { category: 'trading.cat.plastics', nameKey: 'catalog.product.pvcResin', originKey: 'catalog.origin.china', factoryKey: 'catalog.factory.xinjiang', moqKey: 'catalog.moq.fiftyTonnes', leadTimeKey: 'catalog.lead.days10to18', packingKey: 'catalog.packing.bags25kg', poster: './card_images/extra/PVC Resin SG5.png' },
+  { category: 'trading.cat.food', nameKey: 'catalog.product.wheatFlour', originKey: 'catalog.origin.kazakhstan', factoryKey: 'catalog.factory.regionalMilling', moqKey: 'catalog.moq.twentyTwoTonnes', leadTimeKey: 'catalog.lead.days8to16', packingKey: 'catalog.packing.bags25or50kg', poster: './card_images/extra/Industrial Wheat Flour.png' },
+  { category: 'trading.cat.fuel', nameKey: 'catalog.product.lpgSupply', originKey: 'catalog.origin.turkmenistan', factoryKey: 'catalog.factory.licensedEnergy', moqKey: 'catalog.moq.oneTanker', leadTimeKey: 'catalog.lead.routeDependent', packingKey: 'catalog.packing.bulkTanker', poster: './card_images/extra/LPG Supply.png' },
+  { category: 'trading.cat.consumer', nameKey: 'catalog.product.textiles', originKey: 'catalog.origin.turkey', factoryKey: 'catalog.factory.supplierNetwork', moqKey: 'catalog.moq.bySpecification', leadTimeKey: 'catalog.lead.days15to30', packingKey: 'catalog.packing.exportCartons', poster: './card_images/extra/Textiles & Consumer Goods.png' },
+  { category: 'trading.cat.machinery', nameKey: 'catalog.product.industrialEquipment', originKey: 'catalog.origin.china', factoryKey: 'catalog.factory.factoryDirect', moqKey: 'catalog.moq.bySpecification', leadTimeKey: 'catalog.lead.days20to45', packingKey: 'catalog.packing.exportCrate', poster: './card_images/extra/Industrial Equipment.png' },
 ]
 
 export default function Trading() {
@@ -70,10 +70,15 @@ export default function Trading() {
     const normalized = query.trim().toLocaleLowerCase()
     return PRODUCTS.filter((product) => {
       const matchesCategory = active === 'all' || product.category === active
-      const matchesQuery = !normalized || [product.name, product.origin, product.factory].join(' ').toLocaleLowerCase().includes(normalized)
+      const matchesQuery =
+        !normalized ||
+        [t(product.nameKey), t(product.originKey), t(product.factoryKey)]
+          .join(' ')
+          .toLocaleLowerCase()
+          .includes(normalized)
       return matchesCategory && matchesQuery
     })
-  }, [active, query])
+  }, [active, query, t])
 
   return (
     <main className="bg-[var(--bg)]">
@@ -122,21 +127,21 @@ export default function Trading() {
 
         <div className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
           {products.map((product, index) => (
-            <Reveal key={product.name} delay={(index % 3) * 70}>
+            <Reveal key={product.nameKey} delay={(index % 3) * 70}>
               <article className="nss-card group flex h-full flex-col overflow-hidden">
                 <div className="relative aspect-[16/9] overflow-hidden border-b border-[rgba(var(--gold-rgb),0.12)] bg-[var(--panel-2)]">
-                  <img src={product.poster} alt={product.name} loading="lazy" className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                  <img src={product.poster} alt={t(product.nameKey)} loading="lazy" className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
                   <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-[rgba(var(--bg-rgb),0.88)] to-transparent" />
                   <p className="nss-mono absolute bottom-4 start-5 text-[10px] tracking-[0.18em] text-[rgb(var(--gold-rgb))] uppercase">{t(product.category)}</p>
                 </div>
                 <div className="flex flex-1 flex-col p-6">
-                  <h3 className="nss-display text-xl leading-snug">{product.name}</h3>
+                  <h3 className="nss-display text-xl leading-snug">{t(product.nameKey)}</h3>
                   <div className="mt-5 grid grid-cols-2 gap-x-4 gap-y-3 border-y border-[rgba(var(--gold-rgb),0.12)] py-4 text-[12px] text-[rgba(var(--text-rgb),0.58)]">
-                    <span className="flex items-center gap-2"><Building2 size={13} className="text-[rgb(var(--gold-rgb))]" />{product.origin}</span>
-                    <span className="flex items-center gap-2"><Factory size={13} className="text-[rgb(var(--gold-rgb))]" />{product.factory}</span>
-                    <span>{product.moq}</span><span>{product.leadTime}</span>
+                    <span className="flex items-center gap-2"><Building2 size={13} className="text-[rgb(var(--gold-rgb))]" />{t(product.originKey)}</span>
+                    <span className="flex items-center gap-2"><Factory size={13} className="text-[rgb(var(--gold-rgb))]" />{t(product.factoryKey)}</span>
+                    <span>{t(product.moqKey)}</span><span>{t(product.leadTimeKey)}</span>
                   </div>
-                  <p className="mt-4 text-[12px] text-[rgba(var(--text-rgb),0.48)]">{product.packing}</p>
+                  <p className="mt-4 text-[12px] text-[rgba(var(--text-rgb),0.48)]">{t(product.packingKey)}</p>
                   <div className="mt-6 flex flex-wrap gap-3">
                     <Link to="/contact" className="nss-btn-primary inline-flex items-center gap-2 rounded-sm px-4 py-2.5 text-xs font-bold">{t('trading.buy')} <ArrowUpRight size={14} /></Link>
                     <Link to="/booking" className="inline-flex items-center gap-2 border border-[rgba(var(--gold-rgb),0.32)] px-4 py-2.5 text-xs font-semibold text-[rgb(var(--gold-rgb))] transition-colors hover:border-[rgb(var(--gold-rgb))]">{t('booking.submit')} <PackageCheck size={14} /></Link>
