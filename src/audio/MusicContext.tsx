@@ -2,10 +2,10 @@ import React, { useEffect, useRef, useState, useCallback } from 'react'
 import { MusicContext, PLAYLIST } from './useMusic'
 
 export function MusicProvider({ children }: { children: React.ReactNode }) {
-  const [isPlaying, setIsPlaying] = useState(false)
+  const [isPlaying, setIsPlaying] = useState(true)
   const [currentTrackIndex, setCurrentTrackIndex] = useState(0)
   const audioRef = useRef<HTMLAudioElement | null>(null)
-  const isPlayingRef = useRef(false)
+  const isPlayingRef = useRef(true)
 
   isPlayingRef.current = isPlaying
 
@@ -20,13 +20,14 @@ export function MusicProvider({ children }: { children: React.ReactNode }) {
     audioRef.current.load()
 
     if (shouldPlay) {
+      audioRef.current.muted = false
       audioRef.current
         .play()
         .then(() => {
           setIsPlaying(true)
         })
         .catch((err) => {
-          console.warn('Audio playback prevented by browser policy:', err)
+          console.warn('Audio autoplay deferred until first user interaction:', err)
           setIsPlaying(false)
         })
     }
@@ -35,10 +36,46 @@ export function MusicProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     const audio = new Audio()
     audio.volume = 0.35 // Soft background music volume
+    audio.muted = false // Ensure not muted by default
     audioRef.current = audio
 
-    // Attach initial src
+    // Attach initial track
     audio.src = PLAYLIST[0].url
+
+    // Attempt instant unmuted playback
+    audio
+      .play()
+      .then(() => {
+        setIsPlaying(true)
+      })
+      .catch(() => {
+        // Autoplay policy deferred playback; listen for first interaction
+        setIsPlaying(false)
+
+        const startPlaybackOnInteraction = () => {
+          if (audioRef.current && !isPlayingRef.current) {
+            audioRef.current.muted = false
+            audioRef.current
+              .play()
+              .then(() => {
+                setIsPlaying(true)
+              })
+              .catch((e) => console.warn('Playback error after interaction:', e))
+          }
+          // Remove event listeners after first trigger
+          window.removeEventListener('click', startPlaybackOnInteraction)
+          window.removeEventListener('keydown', startPlaybackOnInteraction)
+          window.removeEventListener('pointerdown', startPlaybackOnInteraction)
+          window.removeEventListener('touchstart', startPlaybackOnInteraction)
+          window.removeEventListener('scroll', startPlaybackOnInteraction)
+        }
+
+        window.addEventListener('click', startPlaybackOnInteraction, { once: true })
+        window.addEventListener('keydown', startPlaybackOnInteraction, { once: true })
+        window.addEventListener('pointerdown', startPlaybackOnInteraction, { once: true })
+        window.addEventListener('touchstart', startPlaybackOnInteraction, { once: true })
+        window.addEventListener('scroll', startPlaybackOnInteraction, { once: true })
+      })
 
     const handleEnded = () => {
       // Auto advance to next track when finished
@@ -66,6 +103,7 @@ export function MusicProvider({ children }: { children: React.ReactNode }) {
       audioRef.current.pause()
       setIsPlaying(false)
     } else {
+      audioRef.current.muted = false
       audioRef.current
         .play()
         .then(() => {
@@ -81,13 +119,13 @@ export function MusicProvider({ children }: { children: React.ReactNode }) {
   const nextTrack = () => {
     const next = (currentTrackIndex + 1) % PLAYLIST.length
     setCurrentTrackIndex(next)
-    playTrackAtIndex(next, isPlayingRef.current)
+    playTrackAtIndex(next, true)
   }
 
   const prevTrack = () => {
     const prev = (currentTrackIndex - 1 + PLAYLIST.length) % PLAYLIST.length
     setCurrentTrackIndex(prev)
-    playTrackAtIndex(prev, isPlayingRef.current)
+    playTrackAtIndex(prev, true)
   }
 
   const selectTrack = (index: number) => {
