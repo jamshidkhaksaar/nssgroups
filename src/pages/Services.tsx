@@ -1,6 +1,6 @@
 import { Link } from 'react-router'
 import { useI18n } from '@/i18n/i18n'
-import PageHeader from '@/components/PageHeader'
+import Hero from '@/hero/Hero'
 import Reveal from '@/components/Reveal'
 import { CORE_SERVICES, VEHICLE_RATES } from '@/data/content'
 
@@ -8,7 +8,8 @@ export default function Services() {
   const { t } = useI18n()
   return (
     <main className="bg-[var(--bg)]">
-      <PageHeader tagKey="services.tag" headingKey="services.heading" subKey="services.sub" />
+      {/* ── Cinematic Hero Canvas Animation ── */}
+      <Hero />
 
       {/* ── core services ── */}
       <section className="mx-auto max-w-7xl px-6 py-20 md:px-12 md:py-28">
