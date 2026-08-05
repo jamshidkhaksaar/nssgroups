@@ -1,4 +1,4 @@
-import { Link } from 'react-router'
+import { Link, useNavigate } from 'react-router'
 import { useI18n } from '@/i18n/i18n'
 import AuthLayout from '@/components/layout/AuthLayout'
 import Reveal from '@/components/Reveal'
@@ -6,10 +6,12 @@ import { LogIn } from 'lucide-react'
 
 export default function Login() {
   const { t } = useI18n()
+  const navigate = useNavigate()
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault()
-    // No backend yet
+    // Frontend-only demo: route to admin portal on submit.
+    navigate('/admin')
   }
 
   return (

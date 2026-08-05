@@ -1,5 +1,6 @@
 import type { TranslationKey } from './en'
 import { portfolioFa } from './portfolioLocales'
+import { marketplaceFa } from './marketplaceLocales'
 import { translationCompletionFa } from './translationCompletion'
 
 const faBase = {
@@ -481,6 +482,9 @@ const faBase = {
 
   // ── landing page top redesign keys ──
   'topHero.badge': 'دهلیز تجارتی ازبکستان و منطقه',
+  'topHero.searchMarketplace': 'جستجو در بازار',
+  'topHero.wallpaperProducts': 'نمایش تصویر محصولات تجارتی',
+  'topHero.wallpaperPromotion': 'نمایش تصویر تبلیغاتی بازار',
   'topHero.h1a': 'هر محصول، هر مقدار،',
   'topHero.h1b': 'هر مقصد.',
   'topHero.sub': 'NSS کالای مورد نیاز شما را از ازبکستان تهیه و تا آدرس شما در سراسر جهان تحویل می‌دهد.',
@@ -1121,6 +1125,7 @@ const faBase = {
 export const fa: Record<TranslationKey, string> = {
   ...faBase,
   ...portfolioFa,
+  ...marketplaceFa,
   ...translationCompletionFa,
 }
 

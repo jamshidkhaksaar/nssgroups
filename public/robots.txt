@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://nssgroupint.com/sitemap.xml

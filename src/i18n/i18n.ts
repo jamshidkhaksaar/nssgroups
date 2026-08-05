@@ -32,9 +32,19 @@ export interface I18nValue {
 
 export const I18nContext = createContext<I18nValue | null>(null)
 
+const LANG_CODES = LANGS.map((l) => l.code)
+
+function isLang(value: string | null): value is Lang {
+  return value != null && (LANG_CODES as string[]).includes(value)
+}
+
 export function detectInitialLang(): Lang {
+  // A ?lang= query param wins so hreflang alternates (…?lang=xx) and shared
+  // links open in the intended language; the choice is then persisted below.
+  const param = new URLSearchParams(window.location.search).get('lang')
+  if (isLang(param)) return param
   const stored = localStorage.getItem(STORAGE_KEY)
-  if (stored === 'en' || stored === 'ru' || stored === 'fa' || stored === 'ps' || stored === 'uz' || stored === 'ar' || stored === 'zh') return stored
+  if (isLang(stored)) return stored
   return 'en'
 }
 

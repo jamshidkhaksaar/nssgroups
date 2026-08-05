@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import { useI18n } from '@/i18n/i18n';
-import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
-import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from '@/components/ui/dialog';
@@ -26,6 +24,30 @@ interface PartnerBidsProps {
     estimatedTransitDays: number;
   }) => void;
 }
+
+const inputClass = [
+  'bg-[rgba(var(--bg-rgb),0.5)] border-[rgba(var(--gold-rgb),0.2)] text-[rgb(var(--text-rgb))]',
+  'transition-colors duration-200 focus:border-[rgba(var(--gold-rgb),0.6)]',
+  'focus-visible:ring-2 focus-visible:ring-[rgba(var(--gold-rgb),0.35)]',
+].join(' ');
+
+const labelClass = 'nss-mono text-[10px] uppercase tracking-[0.16em] text-[rgba(var(--text-rgb),0.55)]';
+
+const ghostBtnClass = [
+  'inline-flex items-center justify-center gap-2 rounded-lg border border-[rgba(var(--gold-rgb),0.35)]',
+  'px-4 py-2 text-sm font-semibold text-[rgb(var(--gold-rgb))]',
+  'transition-all duration-200 hover:border-[rgba(var(--gold-rgb),0.8)] hover:bg-[rgba(var(--gold-rgb),0.08)]',
+  'hover:-translate-y-px active:scale-[0.98]',
+  'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgba(var(--gold-rgb),0.5)]',
+].join(' ');
+
+const primaryBtnClass = [
+  'nss-btn-primary inline-flex items-center justify-center gap-1.5 rounded-lg px-4 py-2 text-sm',
+  'transition-all duration-200 active:scale-[0.98]',
+  'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgba(var(--gold-rgb),0.6)]',
+].join(' ');
+
+const emeraldText = 'text-emerald-400 [html[data-theme=light]_&]:text-emerald-700';
 
 export const PartnerBids: React.FC<PartnerBidsProps> = ({
   partner,
@@ -64,88 +86,108 @@ export const PartnerBids: React.FC<PartnerBidsProps> = ({
   return (
     <div className="space-y-6">
       {/* Open Freight Cargo Requests Board */}
-      <Card className="bg-slate-900/60 border-slate-800 backdrop-blur-md">
-        <CardHeader>
-          <CardTitle className="text-lg font-bold text-slate-100 flex items-center gap-2">
-            <Gavel className="w-5 h-5 text-amber-500" /> {t('portal.partnerBids.title')}
-          </CardTitle>
-          <p className="text-xs text-slate-400">{t('portal.partnerBids.sub')}</p>
-        </CardHeader>
+      <section className="nss-fade overflow-hidden rounded-xl border border-[var(--card-border)] bg-[var(--panel)]">
+        <header className="border-b border-[rgba(var(--gold-rgb),0.12)] px-5 py-4">
+          <h3 className="nss-mono flex items-center gap-2 text-[11px] uppercase tracking-[0.2em] text-[rgba(var(--text-rgb),0.75)]">
+            <Gavel className="h-4 w-4 text-[rgb(var(--gold-rgb))]" />
+            {t('portal.partnerBids.title')}
+          </h3>
+          <p className="mt-1 text-xs text-[rgba(var(--text-rgb),0.55)]">{t('portal.partnerBids.sub')}</p>
+        </header>
 
-        <CardContent className="space-y-4">
+        <div className="p-5">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            {freightRequests.map((req) => (
-              <div key={req.id} className="p-4 rounded-xl bg-slate-950 border border-slate-800 space-y-3 flex flex-col justify-between">
+            {freightRequests.map((req, i) => (
+              <div
+                key={req.id}
+                className="nss-card nss-fade flex flex-col justify-between space-y-3 rounded-xl p-4"
+                style={{ animationDelay: `${80 + i * 70}ms` }}
+              >
                 <div className="space-y-2">
                   <div className="flex items-center justify-between">
-                    <span className="text-[11px] font-bold text-amber-400 uppercase tracking-wider">{req.mode} {t('portal.partnerBids.freightSuffix')}</span>
-                    <span className="text-[11px] text-slate-400 flex items-center gap-1 font-mono">
-                      <Clock className="w-3 h-3 text-amber-400" /> {req.bidsCount} {t('portal.partnerBids.bidsSubmittedCount')}
+                    <span className="nss-mono text-[10px] font-bold uppercase tracking-[0.18em] text-[rgb(var(--gold-rgb))]">
+                      {req.mode} {t('portal.partnerBids.freightSuffix')}
+                    </span>
+                    <span className="nss-mono flex items-center gap-1 text-[11px] text-[rgba(var(--text-rgb),0.5)]">
+                      <Clock className="h-3 w-3 text-[rgb(var(--gold-rgb))]" /> {req.bidsCount} {t('portal.partnerBids.bidsSubmittedCount')}
                     </span>
                   </div>
-                  <h4 className="font-bold text-slate-200 text-sm">{req.clientName}</h4>
-                  <p className="text-xs text-slate-300 font-medium">{req.cargoDescription} ({req.weightTons} {t('portal.partnerBids.tonsSuffix')})</p>
-                  <div className="text-xs text-slate-400 font-mono">
-                    <div>{t('portal.partnerBids.originLabel')} <span className="text-slate-200">{req.origin}</span></div>
-                    <div>{t('portal.partnerBids.destLabel')} <span className="text-slate-200">{req.destination}</span></div>
+                  <h4 className="text-sm font-bold text-[rgb(var(--text-rgb))]">{req.clientName}</h4>
+                  <p className="text-xs font-medium text-[rgba(var(--text-rgb),0.75)]">
+                    {req.cargoDescription} ({req.weightTons} {t('portal.partnerBids.tonsSuffix')})
+                  </p>
+                  <div className="nss-mono text-xs text-[rgba(var(--text-rgb),0.5)]">
+                    <div>{t('portal.partnerBids.originLabel')} <span className="text-[rgb(var(--text-rgb))]">{req.origin}</span></div>
+                    <div>{t('portal.partnerBids.destLabel')} <span className="text-[rgb(var(--text-rgb))]">{req.destination}</span></div>
                   </div>
                 </div>
 
-                <div className="pt-2 border-t border-slate-800 flex items-center justify-between">
+                <div className="flex items-center justify-between border-t border-[rgba(var(--gold-rgb),0.12)] pt-3">
                   <div>
-                    <span className="text-[10px] text-slate-400 block">{t('portal.partnerBids.targetBudgetLabel')}</span>
-                    <span className="text-sm font-bold text-emerald-400 font-mono">${req.targetBudgetUsd.toLocaleString()}</span>
+                    <span className="nss-mono block text-[9px] uppercase tracking-[0.16em] text-[rgba(var(--text-rgb),0.45)]">
+                      {t('portal.partnerBids.targetBudgetLabel')}
+                    </span>
+                    <span className={`nss-mono text-sm font-bold ${emeraldText}`}>${req.targetBudgetUsd.toLocaleString()}</span>
                   </div>
-                  <Button
-                    size="sm"
-                    className="bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold text-xs"
+                  <button
+                    className={`${primaryBtnClass} px-3 py-1.5 text-xs`}
                     onClick={() => handleOpenBidModal(req)}
                   >
-                    {t('portal.partnerBids.submitBidBtn')} <ArrowRight className="w-3.5 h-3.5 ms-1" />
-                  </Button>
+                    {t('portal.partnerBids.submitBidBtn')} <ArrowRight className="ms-1 h-3.5 w-3.5 rtl:-scale-x-100" />
+                  </button>
                 </div>
               </div>
             ))}
           </div>
-        </CardContent>
-      </Card>
+        </div>
+      </section>
 
       {/* Submitted Active Bids Table */}
-      <Card className="bg-slate-900/60 border-slate-800 backdrop-blur-md">
-        <CardHeader>
-          <CardTitle className="text-base font-bold text-slate-100 flex items-center gap-2">
-            <Send className="w-4 h-4 text-amber-400" /> {t('portal.partnerBids.submittedBidsTitle')} ({partnerBids.length})
-          </CardTitle>
-        </CardHeader>
-        <CardContent>
-          <div className="rounded-lg border border-slate-800 overflow-x-auto">
+      <section
+        className="nss-fade overflow-hidden rounded-xl border border-[var(--card-border)] bg-[var(--panel)]"
+        style={{ animationDelay: '160ms' }}
+      >
+        <header className="flex items-center justify-between border-b border-[rgba(var(--gold-rgb),0.12)] px-5 py-4">
+          <h3 className="nss-mono flex items-center gap-2 text-[11px] uppercase tracking-[0.2em] text-[rgba(var(--text-rgb),0.75)]">
+            <Send className="h-4 w-4 text-[rgb(var(--gold-rgb))]" />
+            {t('portal.partnerBids.submittedBidsTitle')}
+          </h3>
+          {partnerBids.length > 0 && (
+            <span className="nss-mono rounded-sm border border-[rgba(var(--gold-rgb),0.3)] px-1.5 py-0.5 text-[10px] text-[rgb(var(--gold-rgb))]">
+              {partnerBids.length}
+            </span>
+          )}
+        </header>
+
+        <div className="p-5">
+          <div className="overflow-x-auto rounded-lg border border-[var(--card-border)]">
             <Table>
-              <TableHeader className="bg-slate-950">
-                <TableRow className="border-slate-800 text-slate-400">
-                  <TableHead className="font-semibold text-slate-300">{t('portal.partnerBids.thClient')}</TableHead>
-                  <TableHead className="font-semibold text-slate-300">{t('portal.partnerBids.thRouteCargo')}</TableHead>
-                  <TableHead className="font-semibold text-slate-300">{t('portal.partnerBids.thProposedRate')}</TableHead>
-                  <TableHead className="font-semibold text-slate-300">{t('portal.partnerBids.thEstDays')}</TableHead>
-                  <TableHead className="font-semibold text-slate-300">{t('portal.partnerBids.thStatus')}</TableHead>
+              <TableHeader className="bg-[rgba(var(--bg-rgb),0.5)]">
+                <TableRow className="border-[rgba(var(--gold-rgb),0.12)] hover:bg-transparent">
+                  <TableHead className="nss-mono text-[10px] uppercase tracking-[0.16em] text-[rgba(var(--text-rgb),0.55)]">{t('portal.partnerBids.thClient')}</TableHead>
+                  <TableHead className="nss-mono text-[10px] uppercase tracking-[0.16em] text-[rgba(var(--text-rgb),0.55)]">{t('portal.partnerBids.thRouteCargo')}</TableHead>
+                  <TableHead className="nss-mono text-[10px] uppercase tracking-[0.16em] text-[rgba(var(--text-rgb),0.55)]">{t('portal.partnerBids.thProposedRate')}</TableHead>
+                  <TableHead className="nss-mono text-[10px] uppercase tracking-[0.16em] text-[rgba(var(--text-rgb),0.55)]">{t('portal.partnerBids.thEstDays')}</TableHead>
+                  <TableHead className="nss-mono text-[10px] uppercase tracking-[0.16em] text-[rgba(var(--text-rgb),0.55)]">{t('portal.partnerBids.thStatus')}</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
                 {partnerBids.length === 0 ? (
-                  <TableRow>
-                    <TableCell colSpan={5} className="text-center py-6 text-slate-400 text-sm">
+                  <TableRow className="border-[rgba(var(--gold-rgb),0.08)] hover:bg-transparent">
+                    <TableCell colSpan={5} className="py-6 text-center text-sm text-[rgba(var(--text-rgb),0.5)]">
                       {t('portal.partnerBids.noBidsYet')}
                     </TableCell>
                   </TableRow>
                 ) : (
                   partnerBids.map((bid) => (
-                    <TableRow key={bid.id} className="border-slate-800 hover:bg-slate-800/30">
-                      <TableCell className="font-semibold text-amber-400 text-sm">{bid.clientName}</TableCell>
-                      <TableCell className="text-xs text-slate-300">
-                        <div className="font-medium text-slate-200">{bid.route}</div>
-                        <div className="text-slate-400">{bid.cargoDescription}</div>
+                    <TableRow key={bid.id} className="border-[rgba(var(--gold-rgb),0.08)] transition-colors duration-200 hover:bg-[rgba(var(--gold-rgb),0.04)]">
+                      <TableCell className="text-sm font-semibold text-[rgb(var(--gold-rgb))]">{bid.clientName}</TableCell>
+                      <TableCell className="text-xs">
+                        <div className="font-medium text-[rgb(var(--text-rgb))]">{bid.route}</div>
+                        <div className="text-[rgba(var(--text-rgb),0.5)]">{bid.cargoDescription}</div>
                       </TableCell>
-                      <TableCell className="font-mono text-sm font-bold text-emerald-400">${bid.proposedPriceUsd.toLocaleString()} USD</TableCell>
-                      <TableCell className="font-mono text-xs text-slate-300">{bid.estimatedTransitDays} {t('portal.partnerBids.daysSuffix')}</TableCell>
+                      <TableCell className={`nss-mono text-sm font-bold ${emeraldText}`}>${bid.proposedPriceUsd.toLocaleString()} USD</TableCell>
+                      <TableCell className="nss-mono text-xs text-[rgba(var(--text-rgb),0.75)]">{bid.estimatedTransitDays} {t('portal.partnerBids.daysSuffix')}</TableCell>
                       <TableCell><StatusBadge status={bid.status} /></TableCell>
                     </TableRow>
                   ))
@@ -153,54 +195,62 @@ export const PartnerBids: React.FC<PartnerBidsProps> = ({
               </TableBody>
             </Table>
           </div>
-        </CardContent>
-      </Card>
+        </div>
+      </section>
 
       {/* BID SUBMISSION MODAL */}
       <Dialog open={Boolean(selectedRequest)} onOpenChange={() => setSelectedRequest(null)}>
-        <DialogContent className="max-w-md bg-[var(--bg)] border-slate-700/50 text-[rgb(var(--text-rgb))]">
+        <DialogContent className="max-w-md border-[var(--card-border)] bg-[var(--panel)] text-[rgb(var(--text-rgb))]">
           <DialogHeader>
-            <DialogTitle className="text-lg font-bold text-amber-400 flex items-center gap-2">
-              <Gavel className="w-5 h-5 text-amber-500" /> {t('portal.partnerBids.modalTitle')} {selectedRequest?.clientName}
+            <DialogTitle className="nss-display flex items-center gap-2 text-lg text-[rgb(var(--text-rgb))]">
+              <Gavel className="h-5 w-5 text-[rgb(var(--gold-rgb))]" /> {t('portal.partnerBids.modalTitle')} {selectedRequest?.clientName}
             </DialogTitle>
           </DialogHeader>
 
           {selectedRequest && (
             <div className="space-y-4 py-2 text-sm">
-              <div className="p-3 rounded-lg bg-slate-950 border border-slate-800 space-y-1 text-xs">
-                <span className="text-slate-400 font-medium">{t('portal.partnerBids.cargoReqsTitle')}</span>
-                <p className="text-slate-200 font-semibold">{selectedRequest.cargoDescription} ({selectedRequest.weightTons} {t('portal.partnerBids.tonsSuffix')})</p>
-                <p className="text-slate-400">{selectedRequest.origin} → {selectedRequest.destination}</p>
-                <p className="text-amber-400 font-mono font-bold pt-1">{t('portal.partnerBids.clientBudgetLabel')} ${selectedRequest.targetBudgetUsd.toLocaleString()}</p>
+              <div className="space-y-1 rounded-lg border border-[rgba(var(--gold-rgb),0.2)] bg-[rgba(var(--bg-rgb),0.5)] p-3 text-xs">
+                <span className="nss-mono text-[10px] uppercase tracking-[0.16em] text-[rgba(var(--text-rgb),0.5)]">
+                  {t('portal.partnerBids.cargoReqsTitle')}
+                </span>
+                <p className="font-semibold text-[rgb(var(--text-rgb))]">
+                  {selectedRequest.cargoDescription} ({selectedRequest.weightTons} {t('portal.partnerBids.tonsSuffix')})
+                </p>
+                <p className="text-[rgba(var(--text-rgb),0.55)]">{selectedRequest.origin} → {selectedRequest.destination}</p>
+                <p className="nss-mono pt-1 font-bold text-[rgb(var(--gold-rgb))]">
+                  {t('portal.partnerBids.clientBudgetLabel')} ${selectedRequest.targetBudgetUsd.toLocaleString()}
+                </p>
               </div>
 
-              <div className="space-y-1">
-                <Label className="text-xs text-slate-300 font-medium">{t('portal.partnerBids.proposedRateLabel')}</Label>
+              <div className="space-y-1.5">
+                <Label className={labelClass}>{t('portal.partnerBids.proposedRateLabel')}</Label>
                 <Input
                   type="number"
                   value={proposedPriceUsd}
                   onChange={(e) => setProposedPriceUsd(Number(e.target.value))}
-                  className="bg-slate-900 border-slate-700 text-slate-200 font-mono font-bold text-base"
+                  className={`nss-mono text-base font-bold ${inputClass}`}
                 />
               </div>
 
-              <div className="space-y-1">
-                <Label className="text-xs text-slate-300 font-medium">{t('portal.partnerBids.estTransitDaysLabel')}</Label>
+              <div className="space-y-1.5">
+                <Label className={labelClass}>{t('portal.partnerBids.estTransitDaysLabel')}</Label>
                 <Input
                   type="number"
                   value={estimatedTransitDays}
                   onChange={(e) => setEstimatedTransitDays(Number(e.target.value))}
-                  className="bg-slate-900 border-slate-700 text-slate-200 font-mono"
+                  className={`nss-mono ${inputClass}`}
                 />
               </div>
             </div>
           )}
 
           <DialogFooter>
-            <Button variant="ghost" onClick={() => setSelectedRequest(null)}>{t('portal.partnerBids.cancelBtn')}</Button>
-            <Button className="bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold" onClick={handleConfirmSubmitBid}>
+            <button className={ghostBtnClass} onClick={() => setSelectedRequest(null)}>
+              {t('portal.partnerBids.cancelBtn')}
+            </button>
+            <button className={primaryBtnClass} onClick={handleConfirmSubmitBid}>
               {t('portal.partnerBids.submitProposalBtn')}
-            </Button>
+            </button>
           </DialogFooter>
         </DialogContent>
       </Dialog>

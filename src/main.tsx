@@ -4,6 +4,7 @@ import { BrowserRouter } from 'react-router'
 import { I18nProvider } from '@/i18n/I18nContext'
 import { ThemeProvider } from '@/theme/ThemeContext'
 import { MusicProvider } from '@/audio/MusicContext'
+import AnalyticsProvider from '@/analytics/AnalyticsProvider'
 import './index.css'
 import App from './App.tsx'
 
@@ -12,9 +13,11 @@ createRoot(document.getElementById('root')!).render(
     <BrowserRouter>
       <ThemeProvider>
         <I18nProvider>
-          <MusicProvider>
-            <App />
-          </MusicProvider>
+          <AnalyticsProvider>
+            <MusicProvider>
+              <App />
+            </MusicProvider>
+          </AnalyticsProvider>
         </I18nProvider>
       </ThemeProvider>
     </BrowserRouter>

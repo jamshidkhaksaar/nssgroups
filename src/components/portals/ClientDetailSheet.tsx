@@ -28,65 +28,65 @@ export const ClientDetailSheet: React.FC<ClientDetailSheetProps> = ({
 
   return (
     <Sheet open={isOpen} onOpenChange={onClose}>
-      <SheetContent className="w-full sm:max-w-lg bg-[var(--bg)] border-slate-700/50 text-[rgb(var(--text-rgb))] overflow-y-auto">
+      <SheetContent className="w-full sm:max-w-lg border-[var(--card-border)] bg-[var(--panel)] text-[rgb(var(--text-rgb))] overflow-y-auto">
         <SheetHeader>
           <div className="flex items-center justify-between gap-2">
-            <SheetTitle className="text-xl font-bold text-amber-400">{client.companyName}</SheetTitle>
+            <SheetTitle className="text-xl font-bold text-[rgb(var(--text-rgb))]">{client.companyName}</SheetTitle>
             <StatusBadge status={client.state} />
           </div>
-          <SheetDescription className="text-slate-400 text-xs">
+          <SheetDescription className="text-xs text-[rgba(var(--text-rgb),0.6)]">
             {t('portal.client.detail.registeredLabel')} {new Date(client.registeredAt).toLocaleDateString()} • {client.category.toUpperCase().replace('_', ' ')}
           </SheetDescription>
         </SheetHeader>
 
         <div className="space-y-6 py-6">
           {/* Contact Details */}
-          <div className="p-4 rounded-xl bg-slate-900/60 border border-slate-800 space-y-3 text-sm">
-            <h4 className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">{t('portal.client.detail.repInfoTitle')}</h4>
-            <div className="flex items-center gap-2 text-slate-200">
-              <Building2 className="w-4 h-4 text-amber-400" />
+          <div className="p-4 rounded-xl bg-[rgba(var(--text-rgb),0.03)] border border-[var(--card-border)] space-y-3 text-sm">
+            <h4 className="text-xs font-bold text-[rgba(var(--text-rgb),0.45)] uppercase tracking-wider mb-2">{t('portal.client.detail.repInfoTitle')}</h4>
+            <div className="flex items-center gap-2 text-[rgb(var(--text-rgb))]">
+              <Building2 className="w-4 h-4 text-[rgb(var(--gold-rgb))]" />
               <span>{client.fullName}</span>
             </div>
-            <div className="flex items-center gap-2 text-slate-300">
-              <Mail className="w-4 h-4 text-amber-400" />
+            <div className="flex items-center gap-2 text-[rgba(var(--text-rgb),0.6)]">
+              <Mail className="w-4 h-4 text-[rgb(var(--gold-rgb))]" />
               <span>{client.email}</span>
             </div>
-            <div className="flex items-center gap-2 text-slate-300">
-              <Phone className="w-4 h-4 text-amber-400" />
+            <div className="flex items-center gap-2 text-[rgba(var(--text-rgb),0.6)]">
+              <Phone className="w-4 h-4 text-[rgb(var(--gold-rgb))]" />
               <span dir="ltr">{client.phone}</span>
             </div>
-            <div className="flex items-center gap-2 text-slate-300">
-              <Globe className="w-4 h-4 text-amber-400" />
+            <div className="flex items-center gap-2 text-[rgba(var(--text-rgb),0.6)]">
+              <Globe className="w-4 h-4 text-[rgb(var(--gold-rgb))]" />
               <span>{client.country}</span>
             </div>
           </div>
 
           {/* Account Metrics */}
           <div className="grid grid-cols-2 gap-3">
-            <div className="p-3 rounded-lg bg-slate-900/60 border border-slate-800">
-              <span className="text-xs text-slate-400 block">{t('portal.client.detail.totalOrdersLabel')}</span>
-              <span className="text-lg font-bold text-slate-100 font-mono">{client.totalOrders}</span>
+            <div className="p-3 rounded-lg bg-[rgba(var(--text-rgb),0.03)] border border-[var(--card-border)]">
+              <span className="text-xs text-[rgba(var(--text-rgb),0.6)] block">{t('portal.client.detail.totalOrdersLabel')}</span>
+              <span className="text-lg font-bold text-[rgb(var(--text-rgb))] nss-mono">{client.totalOrders}</span>
             </div>
-            <div className="p-3 rounded-lg bg-slate-900/60 border border-slate-800">
-              <span className="text-xs text-slate-400 block">{t('portal.client.detail.totalSpentLabel')}</span>
-              <span className="text-lg font-bold text-emerald-400 font-mono">${client.totalSpentUsd.toLocaleString()}</span>
+            <div className="p-3 rounded-lg bg-[rgba(var(--text-rgb),0.03)] border border-[var(--card-border)]">
+              <span className="text-xs text-[rgba(var(--text-rgb),0.6)] block">{t('portal.client.detail.totalSpentLabel')}</span>
+              <span className="text-lg font-bold text-[rgb(var(--gold-rgb))] nss-mono">${client.totalSpentUsd.toLocaleString()}</span>
             </div>
           </div>
 
           {/* Documents Attached */}
-          <div className="space-y-3 p-4 rounded-xl border border-slate-800 bg-slate-900/40">
-            <h4 className="text-xs font-bold text-slate-300 uppercase tracking-wider flex items-center gap-1.5">
-              <FileText className="w-4 h-4 text-amber-400" /> {t('portal.client.detail.submittedDocsTitle')} ({client.documents.length})
+          <div className="space-y-3 p-4 rounded-xl border border-[var(--card-border)] bg-[rgba(var(--text-rgb),0.03)]">
+            <h4 className="text-xs font-bold text-[rgba(var(--text-rgb),0.6)] uppercase tracking-wider flex items-center gap-1.5">
+              <FileText className="w-4 h-4 text-[rgb(var(--gold-rgb))]" /> {t('portal.client.detail.submittedDocsTitle')} ({client.documents.length})
             </h4>
             {client.documents.length === 0 ? (
-              <p className="text-xs text-slate-400 italic">{t('portal.client.detail.noDocs')}</p>
+              <p className="text-xs text-[rgba(var(--text-rgb),0.45)] italic">{t('portal.client.detail.noDocs')}</p>
             ) : (
               <div className="space-y-2">
                 {client.documents.map((doc) => (
-                  <div key={doc.id} className="p-2.5 rounded bg-slate-950/80 border border-slate-800 flex items-center justify-between text-xs">
+                  <div key={doc.id} className="p-2.5 rounded bg-[rgba(var(--text-rgb),0.03)] border border-[var(--card-border)] flex items-center justify-between text-xs">
                     <div>
-                      <div className="font-medium text-slate-200">{doc.title}</div>
-                      <div className="text-[11px] text-slate-400">{doc.fileName}</div>
+                      <div className="font-medium text-[rgb(var(--text-rgb))]">{doc.title}</div>
+                      <div className="text-[11px] text-[rgba(var(--text-rgb),0.45)]">{doc.fileName}</div>
                     </div>
                     <StatusBadge status={doc.status} />
                   </div>
@@ -96,14 +96,14 @@ export const ClientDetailSheet: React.FC<ClientDetailSheetProps> = ({
           </div>
 
           {/* Quick Verification Override Actions */}
-          <div className="space-y-3 p-4 rounded-xl border border-slate-800 bg-slate-900/40">
-            <h4 className="text-xs font-bold text-amber-400 uppercase tracking-wider flex items-center gap-1.5">
+          <div className="space-y-3 p-4 rounded-xl border border-[var(--card-border)] bg-[rgba(var(--text-rgb),0.03)]">
+            <h4 className="text-xs font-bold text-[rgb(var(--gold-rgb))] uppercase tracking-wider flex items-center gap-1.5">
               <ShieldCheck className="w-4 h-4" /> {t('portal.client.detail.moderationActionsTitle')}
             </h4>
             <div className="flex gap-2">
               <Button
                 size="sm"
-                className="w-full bg-emerald-600 hover:bg-emerald-500 text-white"
+                className="w-full bg-[rgb(var(--gold-rgb))] text-[#1d1233] hover:bg-[rgba(var(--gold-rgb),0.88)]"
                 onClick={() => {
                   onSimulateApprove(client.id);
                   toast.success(t('portal.client.detail.verifiedToast'));
@@ -115,7 +115,7 @@ export const ClientDetailSheet: React.FC<ClientDetailSheetProps> = ({
               <Button
                 size="sm"
                 variant="outline"
-                className="w-full border-rose-500/40 text-rose-400 hover:bg-rose-500/10"
+                className="w-full bg-rose-500/15 text-rose-600 dark:text-rose-400 border-rose-500/30 hover:bg-rose-500/25 hover:text-rose-600 dark:hover:text-rose-400"
                 onClick={() => {
                   onSimulateReject(client.id, t('portal.client.detail.defaultRejectReason'));
                   toast.error(t('portal.client.detail.rejectedToast'));

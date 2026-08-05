@@ -1,5 +1,6 @@
 import type { TranslationKey } from './en'
 import { portfolioZh } from './portfolioLocales'
+import { marketplaceZh } from './marketplaceLocales'
 import { translationCompletionZh } from './translationCompletion'
 
 const zhBase = {
@@ -401,6 +402,9 @@ const zhBase = {
   'portal.teamSub': 'Customer organization owners will be able to manage colleagues and document permissions here.',
   'portal.manage': 'Manage organization',
   'topHero.badge': 'UZBEKISTAN & REGIONAL TRADE CORRIDOR',
+  'topHero.searchMarketplace': '搜索市场',
+  'topHero.wallpaperProducts': '显示贸易产品背景',
+  'topHero.wallpaperPromotion': '显示市场推广背景',
   'topHero.h1a': 'Every Product. Every Quantity.',
   'topHero.h1b': 'Every Destination.',
   'topHero.sub': 'NSS sources the products you need from Uzbekistan and delivers them to your address worldwide.',
@@ -1041,5 +1045,6 @@ const zhBase = {
 export const zh: Record<TranslationKey, string> = {
   ...zhBase,
   ...portfolioZh,
+  ...marketplaceZh,
   ...translationCompletionZh,
 }

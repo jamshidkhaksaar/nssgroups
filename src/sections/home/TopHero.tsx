@@ -5,11 +5,11 @@ import { useI18n } from '@/i18n/i18n'
 
 const WALLPAPERS = [
   {
-    src: './hero/nss-products-marketplace-wallpaper.jpg',
+    src: './hero/nss-products-marketplace-wallpaper.webp',
     alt: 'NSS Global Product Catalog & Commodities',
   },
   {
-    src: './hero/nss-trade-corridor-wallpaper.jpg',
+    src: './hero/nss-trade-corridor-wallpaper.webp',
     alt: 'NSS Uzbekistan Afghanistan Trade Corridor',
   },
 ] as const
@@ -50,6 +50,9 @@ export default function TopHero() {
             key={wp.src}
             src={wp.src}
             alt={wp.alt}
+            loading={index === 0 ? 'eager' : 'lazy'}
+            fetchPriority={index === 0 ? 'high' : 'low'}
+            decoding="async"
             className={`absolute inset-0 h-full w-full object-cover object-center filter brightness-105 contrast-105 transition-opacity duration-1000 motion-reduce:transition-none ${
               activeWallpaper === index ? 'opacity-95' : 'opacity-0'
             } ${dir === 'rtl' ? 'scale-x-[-1]' : ''}`}

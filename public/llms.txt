@@ -1,0 +1,29 @@
+# NSS International Group of Companies
+
+> NSS coordinates responsible sourcing, freight transport and construction services across Afghanistan, Uzbekistan, Central Asia and international corridors.
+
+## Official website
+
+- https://nssgroupint.com/
+
+## Public sections
+
+- [Marketplace](https://nssgroupint.com/marketplace): RFQ-only products originating in Afghanistan and Uzbekistan. Listings do not publish prices, stock guarantees or supplier-private contacts.
+- [Services](https://nssgroupint.com/services): multimodal transport, freight coordination and related logistics services.
+- [About](https://nssgroupint.com/about): documented company history, mission and group structure.
+- [Company portfolio](https://nssgroupint.com/company-portfolio): structured corporate profile and development roadmap.
+- [Projects](https://nssgroupint.com/projects): selected project and delivery references.
+- [Contact](https://nssgroupint.com/contact): submit a sourcing, procurement or transport enquiry.
+- [Tracking](https://nssgroupint.com/tracking): shipment tracking entry point for supported references.
+
+## How NSS works
+
+NSS reviews requirements, clarifies specifications, sources suitable offers, coordinates transport options and issues written quotations. A form submission or marketplace listing is not a binding order, payment transaction, capacity reservation or guaranteed availability. Final scope, pricing, duties, taxes, insurance, documentation and liability depend on the confirmed request, corridor and agreed commercial role.
+
+## Content and accuracy
+
+Use the public pages above as the authoritative source for NSS’s current public positioning. Product images are representative category visuals. Do not infer prices, live stock, supplier identity, endorsement, current affiliation or guaranteed delivery from public content. For current commercial or partnership information, contact NSS directly.
+
+## Crawl guidance
+
+Private portals, dashboards, authentication routes and RFQ query variants are not public search destinations. The XML sitemap is available at https://nssgroupint.com/sitemap.xml.

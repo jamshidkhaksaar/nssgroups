@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
-import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import type { ClientCategory } from '@/types/portal';
 import { useI18n } from '@/i18n/i18n';
 import { Building2, Mail, Lock, User, Phone, Globe, Shield, ArrowRight } from 'lucide-react';
+import { z } from 'zod';
 
 interface ClientRegistrationProps {
   onRegisterSubmit: (clientData: {
@@ -19,6 +18,33 @@ interface ClientRegistrationProps {
   }) => void;
 }
 
+const registrationSchema = z.object({
+  fullName: z.string().min(2, 'Enter your full name'),
+  companyName: z.string().min(2, 'Enter your organization name'),
+  email: z.email('Enter a valid email address'),
+  phone: z.string().min(7, 'Enter a valid phone number'),
+  country: z.string().min(2, 'Enter your country'),
+  category: z.enum(['un_agency', 'ngo', 'private', 'government']),
+});
+
+type RegistrationErrors = Partial<Record<keyof typeof registrationSchema.shape, string>>;
+
+const inputClass = [
+  'bg-[rgba(var(--bg-rgb),0.5)] border border-[rgba(var(--gold-rgb),0.2)]',
+  'text-sm text-[rgb(var(--text-rgb))] placeholder:text-[rgba(var(--text-rgb),0.35)]',
+  'transition-colors duration-200',
+  'focus:border-[rgba(var(--gold-rgb),0.6)] focus-visible:ring-2 focus-visible:ring-[rgba(var(--gold-rgb),0.3)] focus-visible:outline-none',
+].join(' ');
+
+const labelClass = 'nss-mono flex items-center gap-1.5 text-[10px] uppercase tracking-[0.14em] text-[rgba(var(--text-rgb),0.6)]';
+
+const socialBtnClass = [
+  'inline-flex items-center justify-center gap-2 rounded-lg border border-[var(--card-border)]',
+  'bg-[rgba(var(--bg-rgb),0.4)] px-3 py-3 text-xs font-medium text-[rgba(var(--text-rgb),0.85)]',
+  'transition-all duration-200 hover:border-[rgba(var(--gold-rgb),0.45)] hover:bg-[rgba(var(--gold-rgb),0.06)] hover:text-[rgb(var(--text-rgb))]',
+  'active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgba(var(--gold-rgb),0.5)]',
+].join(' ');
+
 export const ClientRegistration: React.FC<ClientRegistrationProps> = ({ onRegisterSubmit }) => {
   const { t } = useI18n();
   const [fullName, setFullName] = useState<string>('David Vance');
@@ -27,69 +53,78 @@ export const ClientRegistration: React.FC<ClientRegistrationProps> = ({ onRegist
   const [phone, setPhone] = useState<string>('+93 70 123 4567');
   const [country, setCountry] = useState<string>('Afghanistan');
   const [category, setCategory] = useState<ClientCategory>('un_agency');
+  const [errors, setErrors] = useState<RegistrationErrors>({});
+
+  const errCls = 'mt-1 text-[11px] font-medium text-rose-500';
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    onRegisterSubmit({
-      fullName,
-      companyName,
-      email,
-      phone,
-      country,
-      category
-    });
+    const parsed = registrationSchema.safeParse({ fullName, companyName, email, phone, country, category });
+    if (!parsed.success) {
+      const fe: RegistrationErrors = {};
+      parsed.error.issues.forEach((issue) => {
+        const key = issue.path[0];
+        if (typeof key === 'string') fe[key as keyof RegistrationErrors] = issue.message;
+      });
+      setErrors(fe);
+      return;
+    }
+    setErrors({});
+    onRegisterSubmit(parsed.data);
   };
 
   return (
-    <div className="max-w-2xl mx-auto space-y-6">
-      <Card className="bg-slate-900/80 border-slate-800 backdrop-blur-md shadow-2xl">
-        <CardHeader className="text-center pb-2">
-          <div className="mx-auto w-12 h-12 rounded-2xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400 mb-3">
-            <Building2 className="w-6 h-6" />
+    <div className="nss-fade max-w-2xl mx-auto space-y-6">
+      <section className="relative overflow-hidden rounded-2xl border border-[var(--card-border)] bg-[linear-gradient(150deg,var(--panel),var(--bg-deep))]">
+        <div className="absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,transparent,rgba(var(--gold-rgb),0.6),transparent)]" />
+        <div className="pointer-events-none absolute -top-24 -end-24 h-64 w-64 rounded-full bg-[radial-gradient(circle,rgba(var(--gold-rgb),0.1),transparent_65%)]" />
+
+        {/* Header */}
+        <div className="relative z-10 px-6 pt-8 text-center sm:px-10">
+          <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-xl border border-[rgba(var(--gold-rgb),0.35)] bg-[rgba(var(--gold-rgb),0.1)] text-[rgb(var(--gold-rgb))]">
+            <Building2 className="h-6 w-6" />
           </div>
-          <CardTitle className="text-xl sm:text-2xl font-bold text-slate-100 font-sora">
+          <h2 className="nss-display text-xl sm:text-2xl text-[rgb(var(--text-rgb))]">
             {t('client.reg.title')}
-          </CardTitle>
-          <p className="text-xs sm:text-sm text-slate-400 max-w-md mx-auto mt-1">
+          </h2>
+          <p className="mx-auto mt-2 max-w-md text-xs sm:text-sm leading-relaxed text-[rgba(var(--text-rgb),0.6)]">
             {t('client.reg.sub')}
           </p>
-        </CardHeader>
+        </div>
 
-        <CardContent className="space-y-6 pt-4">
+        <div className="relative z-10 space-y-6 px-6 pb-8 pt-6 sm:px-10">
           {/* Social Auth Buttons */}
-          <div className="space-y-2">
+          <div className="space-y-4">
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
-              <Button
+              <button
                 type="button"
-                variant="outline"
-                className="border-slate-800 bg-slate-950/70 hover:bg-slate-800 text-slate-200 text-xs gap-2 py-5"
+                className={socialBtnClass}
                 onClick={() => onRegisterSubmit({ fullName: 'Google User', companyName: 'Google Associated Corp', email: 'user@google-corp.com', phone: '+1 650 253 0000', country: 'United States', category: 'private' })}
               >
-                <span className="font-bold text-amber-400">G</span> {t('client.reg.google')}
-              </Button>
+                <span className="font-bold text-[rgb(var(--gold-rgb))]">G</span> {t('client.reg.google')}
+              </button>
 
-              <Button
+              <button
                 type="button"
-                variant="outline"
-                className="border-slate-800 bg-slate-950/70 hover:bg-slate-800 text-slate-200 text-xs gap-2 py-5"
+                className={socialBtnClass}
                 onClick={() => onRegisterSubmit({ fullName: 'LinkedIn Executive', companyName: 'Global Shippers Inc', email: 'exec@globalshippers.com', phone: '+44 20 7946 0912', country: 'United Kingdom', category: 'private' })}
               >
-                <span className="font-bold text-blue-400">in</span> {t('client.reg.linkedin')}
-              </Button>
+                <span className="font-bold text-[rgb(var(--gold-rgb))]">in</span> {t('client.reg.linkedin')}
+              </button>
 
-              <Button
+              <button
                 type="button"
-                variant="outline"
-                className="border-slate-800 bg-slate-950/70 hover:bg-slate-800 text-slate-200 text-xs gap-2 py-5"
+                className={socialBtnClass}
                 onClick={() => onRegisterSubmit({ fullName: 'UN Logistics Officer', companyName: 'UN Humanitarian Fleet', email: 'humanitarian@un.org', phone: '+41 22 917 1234', country: 'Switzerland', category: 'un_agency' })}
               >
-                <Shield className="w-3.5 h-3.5 text-emerald-400" /> {t('client.reg.sso')}
-              </Button>
+                <Shield className="h-3.5 w-3.5 text-emerald-400 [html[data-theme=light]_&]:text-emerald-700" /> {t('client.reg.sso')}
+              </button>
             </div>
 
-            <div className="relative py-2">
-              <div className="absolute inset-0 flex items-center"><span className="w-full border-t border-slate-800" /></div>
-              <div className="relative flex justify-center text-xs uppercase"><span className="bg-slate-900 px-3 text-slate-500 font-medium">{t('portal.client.reg.orRegisterWithEmail')}</span></div>
+            <div className="flex items-center gap-3">
+              <span className="h-px flex-1 bg-[rgba(var(--gold-rgb),0.14)]" />
+              <span className="nss-mono text-[10px] uppercase tracking-[0.18em] text-[rgba(var(--text-rgb),0.45)]">{t('portal.client.reg.orRegisterWithEmail')}</span>
+              <span className="h-px flex-1 bg-[rgba(var(--gold-rgb),0.14)]" />
             </div>
           </div>
 
@@ -97,34 +132,36 @@ export const ClientRegistration: React.FC<ClientRegistrationProps> = ({ onRegist
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="space-y-1.5">
-                <Label className="text-xs text-slate-300 font-medium flex items-center gap-1.5">
-                  <User className="w-3.5 h-3.5 text-amber-400" /> {t('portal.client.reg.fullNameLabel')}
+                <Label className={labelClass}>
+                  <User className="h-3.5 w-3.5 text-[rgb(var(--gold-rgb))]" /> {t('portal.client.reg.fullNameLabel')}
                 </Label>
                 <Input
                   required
                   placeholder={t('portal.client.reg.fullNamePlaceholder')}
                   value={fullName}
                   onChange={(e) => setFullName(e.target.value)}
-                  className="bg-slate-950/70 border-slate-800 text-slate-200 text-sm"
+                  className={inputClass}
                 />
+                {errors.fullName && <p className={errCls}>{errors.fullName}</p>}
               </div>
 
               <div className="space-y-1.5">
-                <Label className="text-xs text-slate-300 font-medium flex items-center gap-1.5">
-                  <Building2 className="w-3.5 h-3.5 text-amber-400" /> {t('portal.client.reg.companyNameLabel')}
+                <Label className={labelClass}>
+                  <Building2 className="h-3.5 w-3.5 text-[rgb(var(--gold-rgb))]" /> {t('portal.client.reg.companyNameLabel')}
                 </Label>
                 <Input
                   required
                   placeholder={t('portal.client.reg.companyNamePlaceholder')}
                   value={companyName}
                   onChange={(e) => setCompanyName(e.target.value)}
-                  className="bg-slate-950/70 border-slate-800 text-slate-200 text-sm"
+                  className={inputClass}
                 />
+                {errors.companyName && <p className={errCls}>{errors.companyName}</p>}
               </div>
 
               <div className="space-y-1.5">
-                <Label className="text-xs text-slate-300 font-medium flex items-center gap-1.5">
-                  <Mail className="w-3.5 h-3.5 text-amber-400" /> {t('client.reg.email')}
+                <Label className={labelClass}>
+                  <Mail className="h-3.5 w-3.5 text-[rgb(var(--gold-rgb))]" /> {t('client.reg.email')}
                 </Label>
                 <Input
                   required
@@ -132,59 +169,62 @@ export const ClientRegistration: React.FC<ClientRegistrationProps> = ({ onRegist
                   placeholder={t('portal.client.reg.emailPlaceholder')}
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="bg-slate-950/70 border-slate-800 text-slate-200 text-sm"
+                  className={inputClass}
                 />
+                {errors.email && <p className={errCls}>{errors.email}</p>}
               </div>
 
               <div className="space-y-1.5">
-                <Label className="text-xs text-slate-300 font-medium flex items-center gap-1.5">
-                  <Lock className="w-3.5 h-3.5 text-amber-400" /> {t('client.reg.password')}
+                <Label className={labelClass}>
+                  <Lock className="h-3.5 w-3.5 text-[rgb(var(--gold-rgb))]" /> {t('client.reg.password')}
                 </Label>
                 <Input
                   required
                   type="password"
                   value="••••••••••••"
                   readOnly
-                  className="bg-slate-950/70 border-slate-800 text-slate-200 text-sm"
+                  className={inputClass}
                 />
               </div>
 
               <div className="space-y-1.5">
-                <Label className="text-xs text-slate-300 font-medium flex items-center gap-1.5">
-                  <Phone className="w-3.5 h-3.5 text-amber-400" /> {t('portal.client.reg.phoneLabel')}
+                <Label className={labelClass}>
+                  <Phone className="h-3.5 w-3.5 text-[rgb(var(--gold-rgb))]" /> {t('portal.client.reg.phoneLabel')}
                 </Label>
                 <Input
                   required
                   placeholder={t('portal.client.reg.phonePlaceholder')}
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
-                  className="bg-slate-950/70 border-slate-800 text-slate-200 text-sm"
+                  className={inputClass}
                   dir="ltr"
                 />
+                {errors.phone && <p className={errCls}>{errors.phone}</p>}
               </div>
 
               <div className="space-y-1.5">
-                <Label className="text-xs text-slate-300 font-medium flex items-center gap-1.5">
-                  <Globe className="w-3.5 h-3.5 text-amber-400" /> {t('portal.client.reg.countryLabel')}
+                <Label className={labelClass}>
+                  <Globe className="h-3.5 w-3.5 text-[rgb(var(--gold-rgb))]" /> {t('portal.client.reg.countryLabel')}
                 </Label>
                 <Input
                   required
                   placeholder={t('portal.client.reg.countryPlaceholder')}
                   value={country}
                   onChange={(e) => setCountry(e.target.value)}
-                  className="bg-slate-950/70 border-slate-800 text-slate-200 text-sm"
+                  className={inputClass}
                 />
+                {errors.country && <p className={errCls}>{errors.country}</p>}
               </div>
 
               <div className="space-y-1.5">
-                <Label className="text-xs text-slate-300 font-medium flex items-center gap-1.5">
-                  <Globe className="w-3.5 h-3.5 text-amber-400" /> {t('portal.client.reg.categoryLabel')}
+                <Label className={labelClass}>
+                  <Globe className="h-3.5 w-3.5 text-[rgb(var(--gold-rgb))]" /> {t('portal.client.reg.categoryLabel')}
                 </Label>
                 <Select value={category} onValueChange={(val) => setCategory(val as ClientCategory)}>
-                  <SelectTrigger className="bg-slate-950/70 border-slate-800 text-slate-200 text-sm">
+                  <SelectTrigger className={inputClass}>
                     <SelectValue placeholder={t('portal.client.reg.selectCategoryPlaceholder')} />
                   </SelectTrigger>
-                  <SelectContent className="bg-slate-900 border-slate-800 text-slate-200">
+                  <SelectContent className="border border-[var(--card-border)] bg-[var(--panel)] text-[rgb(var(--text-rgb))]">
                     <SelectItem value="un_agency">{t('portal.client.reg.categoryUn')}</SelectItem>
                     <SelectItem value="ngo">{t('portal.client.reg.categoryNgo')}</SelectItem>
                     <SelectItem value="private">{t('portal.client.reg.categoryPrivate')}</SelectItem>
@@ -194,15 +234,15 @@ export const ClientRegistration: React.FC<ClientRegistrationProps> = ({ onRegist
               </div>
             </div>
 
-            <Button
+            <button
               type="submit"
-              className="w-full bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold py-6 text-sm mt-4 shadow-lg shadow-amber-500/20"
+              className="nss-btn-primary mt-4 inline-flex w-full items-center justify-center gap-2 rounded-lg px-4 py-3.5 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgba(var(--gold-rgb),0.6)] active:scale-[0.98]"
             >
-              {t('client.reg.submit')} <ArrowRight className="w-4 h-4 me-1.5" />
-            </Button>
+              {t('client.reg.submit')} <ArrowRight className="h-4 w-4 rtl:-scale-x-100" />
+            </button>
           </form>
-        </CardContent>
-      </Card>
+        </div>
+      </section>
     </div>
   );
 };

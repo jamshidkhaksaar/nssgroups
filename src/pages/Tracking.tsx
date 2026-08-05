@@ -3,6 +3,7 @@ import { CheckCircle2, Clock3, MapPin, Search, ShieldAlert } from 'lucide-react'
 import { useI18n } from '@/i18n/i18n'
 import PageHeader from '@/components/PageHeader'
 import Reveal from '@/components/Reveal'
+import { trackEvent } from '@/analytics/analytics'
 
 const MILESTONES = [
   { location: 'Hairatan, Afghanistan', time: '14 Jun · 09:40', state: 'complete' },
@@ -14,7 +15,7 @@ export default function Tracking() {
   const { t } = useI18n()
   const [code, setCode] = useState('NSS-7K4M-2026')
   const [found, setFound] = useState(false)
-  const submit = (event: FormEvent<HTMLFormElement>) => { event.preventDefault(); setFound(code.trim().length > 4) }
+  const submit = (event: FormEvent<HTMLFormElement>) => { event.preventDefault(); const matched = code.trim().length > 4; setFound(matched); trackEvent('tracking_search', { result: matched ? 'match' : 'empty' }) }
 
   return <main className="bg-[var(--bg)]">
     <PageHeader tagKey="tracking.tag" headingKey="tracking.heading" subKey="tracking.sub" />

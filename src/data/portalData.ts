@@ -631,8 +631,68 @@ let globalLogs = [...INITIAL_LOGS];
 
 const listeners = new Set<() => void>();
 
+// ── Persistence (localStorage "backend") ──
+// All portal data is serialized to localStorage on every mutation and restored
+// on boot, so state survives page refreshes — no real server required.
+const DB_KEY = 'nss-portal-db-v1';
+
+type PersistShape = {
+  clients: ClientProfile[];
+  documents: VerificationDocument[];
+  partners: PartnerVendor[];
+  orders: LogisticsOrder[];
+  listings: MarketplaceListing[];
+  bids: PartnerBid[];
+  freightRequests: OpenFreightRequest[];
+  invoices: ClientInvoice[];
+  logs: ModerationLog[];
+};
+
+function persist() {
+  if (typeof window === 'undefined') return;
+  try {
+    const data: PersistShape = {
+      clients: globalClients,
+      documents: globalDocuments,
+      partners: globalPartners,
+      orders: globalOrders,
+      listings: globalListings,
+      bids: globalBids,
+      freightRequests: globalFreightRequests,
+      invoices: globalInvoices,
+      logs: globalLogs,
+    };
+    window.localStorage.setItem(DB_KEY, JSON.stringify(data));
+  } catch {
+    /* storage unavailable — fail silently (demo only) */
+  }
+}
+
+function hydrate() {
+  if (typeof window === 'undefined') return;
+  try {
+    const raw = window.localStorage.getItem(DB_KEY);
+    if (!raw) return;
+    const data = JSON.parse(raw) as Partial<PersistShape>;
+    if (Array.isArray(data.clients)) globalClients = data.clients;
+    if (Array.isArray(data.documents)) globalDocuments = data.documents;
+    if (Array.isArray(data.partners)) globalPartners = data.partners;
+    if (Array.isArray(data.orders)) globalOrders = data.orders;
+    if (Array.isArray(data.listings)) globalListings = data.listings;
+    if (Array.isArray(data.bids)) globalBids = data.bids;
+    if (Array.isArray(data.freightRequests)) globalFreightRequests = data.freightRequests;
+    if (Array.isArray(data.invoices)) globalInvoices = data.invoices;
+    if (Array.isArray(data.logs)) globalLogs = data.logs;
+  } catch {
+    /* corrupt storage — keep seed data */
+  }
+}
+
+hydrate();
+
 function notify() {
   listeners.forEach((l) => l());
+  persist();
 }
 
 export function usePortalStore() {
@@ -1031,4 +1091,26 @@ export function usePortalStore() {
       return newBid;
     }
   };
+}
+
+// ── Demo data reset ──
+// Re-seeds the store with the original mock data and clears localStorage.
+export function resetPortalData() {
+  globalClients = [...INITIAL_CLIENTS];
+  globalDocuments = [...INITIAL_DOCUMENTS];
+  globalPartners = [...INITIAL_PARTNERS];
+  globalOrders = [...INITIAL_ORDERS];
+  globalListings = [...INITIAL_LISTINGS];
+  globalBids = [...INITIAL_BIDS];
+  globalFreightRequests = [...INITIAL_FREIGHT_REQUESTS];
+  globalInvoices = [...INITIAL_INVOICES];
+  globalLogs = [...INITIAL_LOGS];
+  if (typeof window !== 'undefined') {
+    try {
+      window.localStorage.removeItem(DB_KEY);
+    } catch {
+      /* ignore */
+    }
+  }
+  notify();
 }

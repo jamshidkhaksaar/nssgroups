@@ -1,6 +1,4 @@
 import React, { useState } from 'react';
-import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
 import { StatusBadge } from './StatusBadge';
 import type { ClientProfile, DocumentType } from '@/types/portal';
@@ -14,6 +12,15 @@ interface ClientVerificationProps {
   onSimulateApprove: (clientId: string) => void;
   onSimulateReject: (clientId: string, reason: string) => void;
 }
+
+/* theme-aware semantic chips (dual dark/light via data-theme arbitrary variant) */
+const chipRose =
+  'border-rose-500/30 bg-rose-500/10 text-rose-400 [html[data-theme=light]_&]:border-rose-600/30 [html[data-theme=light]_&]:text-rose-700';
+const chipEmerald =
+  'border-emerald-500/30 bg-emerald-500/10 text-emerald-400 [html[data-theme=light]_&]:border-emerald-600/30 [html[data-theme=light]_&]:text-emerald-700';
+
+const actionBtnBase =
+  'inline-flex w-1/2 items-center justify-center gap-1 rounded-lg border px-3 py-2 text-xs font-bold transition-all duration-200 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgba(var(--gold-rgb),0.5)]';
 
 export const ClientVerification: React.FC<ClientVerificationProps> = ({
   client,
@@ -47,24 +54,31 @@ export const ClientVerification: React.FC<ClientVerificationProps> = ({
   const isRejected = client.state === 'rejected';
 
   return (
-    <div className="max-w-3xl mx-auto space-y-6">
+    <div className="nss-fade max-w-3xl mx-auto space-y-6">
       {/* Warning Banner */}
-      <div className={`p-5 rounded-2xl border flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 ${
+      <div className={`relative overflow-hidden rounded-xl border p-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 ${
         isRejected
-          ? 'bg-rose-950/40 border-rose-500/40 text-rose-200'
-          : 'bg-gradient-to-r from-amber-950/50 via-slate-900 to-slate-950 border-amber-500/40 text-amber-200'
+          ? chipRose
+          : 'border-[rgba(var(--gold-rgb),0.35)] bg-[linear-gradient(105deg,rgba(var(--gold-rgb),0.12),rgba(var(--gold-rgb),0.03)_55%,transparent)]'
       }`}>
-        <div className="flex items-center gap-3">
-          <div className={`w-10 h-10 rounded-xl border flex items-center justify-center font-bold text-lg shrink-0 ${
-            isRejected ? 'bg-rose-500/20 border-rose-500/30 text-rose-400' : 'bg-amber-500/20 border-amber-500/30 text-amber-400'
+        {!isRejected && (
+          <div className="absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,transparent,rgba(var(--gold-rgb),0.7),transparent)]" />
+        )}
+        <div className="flex items-center gap-4">
+          <div className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-lg border ${
+            isRejected
+              ? chipRose
+              : 'border-[rgba(var(--gold-rgb),0.4)] bg-[rgba(var(--gold-rgb),0.12)] text-[rgb(var(--gold-rgb))]'
           }`}>
-            {isRejected ? <XCircle className="w-6 h-6" /> : <ShieldAlert className="w-6 h-6" />}
+            {isRejected ? <XCircle className="h-6 w-6" /> : <ShieldAlert className="h-6 w-6" />}
           </div>
           <div>
-            <h3 className="font-bold text-base flex items-center gap-2">
+            <h3 className={`flex items-center gap-2 text-sm sm:text-base font-bold ${
+              isRejected ? '' : 'text-[rgb(var(--text-rgb))]'
+            }`}>
               {isRejected ? t('portal.client.verif.rejectedTitle') : t('client.verif.title')}
             </h3>
-            <p className="text-xs text-slate-300 mt-0.5">
+            <p className={`mt-0.5 text-xs ${isRejected ? 'opacity-80' : 'text-[rgba(var(--text-rgb),0.6)]'}`}>
               {isRejected
                 ? (client.rejectionReason || t('portal.client.verif.defaultRejectionReason'))
                 : t('client.verif.sub')}
@@ -75,19 +89,21 @@ export const ClientVerification: React.FC<ClientVerificationProps> = ({
         <StatusBadge status={client.state} className="shrink-0" />
       </div>
 
-      {/* Upload Card */}
-      <Card className="bg-slate-900/80 border-slate-800 backdrop-blur-md shadow-2xl">
-        <CardHeader>
-          <CardTitle className="text-lg font-bold text-slate-100 flex items-center gap-2">
-            <UploadCloud className="w-5 h-5 text-amber-500" />
+      {/* Upload Panel */}
+      <section className="overflow-hidden rounded-xl border border-[var(--card-border)] bg-[var(--panel)]">
+        <header className="flex items-center justify-between border-b border-[rgba(var(--gold-rgb),0.12)] px-5 py-4">
+          <h3 className="nss-mono flex items-center gap-2 text-[11px] uppercase tracking-[0.2em] text-[rgba(var(--text-rgb),0.75)]">
+            <UploadCloud className="h-4 w-4 text-[rgb(var(--gold-rgb))]" />
             {t('portal.client.verif.uploadCardTitle')}
-          </CardTitle>
-        </CardHeader>
+          </h3>
+        </header>
 
-        <CardContent className="space-y-6">
+        <div className="space-y-6 p-5">
           {/* Document Type Selector */}
           <div className="space-y-2">
-            <label className="text-xs font-semibold text-slate-300">{t('portal.client.verif.selectTypeLabel')}</label>
+            <label className="nss-mono block text-[10px] uppercase tracking-[0.16em] text-[rgba(var(--text-rgb),0.55)]">
+              {t('portal.client.verif.selectTypeLabel')}
+            </label>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
               {[
                 { type: 'corporate_license' as const, title: t('portal.client.verif.typeLicenseTitle'), desc: t('portal.client.verif.typeLicenseDesc') },
@@ -98,64 +114,67 @@ export const ClientVerification: React.FC<ClientVerificationProps> = ({
                   key={item.type}
                   type="button"
                   onClick={() => setSelectedType(item.type)}
-                  className={`p-3 rounded-xl text-start border transition-all ${
+                  className={`rounded-xl border p-3 text-start transition-all duration-200 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgba(var(--gold-rgb),0.5)] ${
                     selectedType === item.type
-                      ? 'bg-amber-500/10 border-amber-500 text-amber-400 font-semibold'
-                      : 'bg-slate-950/60 border-slate-800 text-slate-400 hover:text-slate-200'
+                      ? 'border-[rgba(var(--gold-rgb),0.7)] bg-[rgba(var(--gold-rgb),0.1)]'
+                      : 'border-[var(--card-border)] bg-[rgba(var(--bg-rgb),0.4)] hover:border-[rgba(var(--gold-rgb),0.4)] hover:bg-[rgba(var(--gold-rgb),0.04)]'
                   }`}
                 >
-                  <div className="text-xs font-bold text-slate-200">{item.title}</div>
-                  <div className="text-[11px] text-slate-400 mt-0.5">{item.desc}</div>
+                  <div className="text-xs font-bold text-[rgb(var(--text-rgb))]">{item.title}</div>
+                  <div className="mt-0.5 text-[11px] text-[rgba(var(--text-rgb),0.5)]">{item.desc}</div>
                 </button>
               ))}
             </div>
           </div>
 
           {/* Dropzone Box */}
-          <div className="border-2 border-dashed border-amber-500/30 hover:border-amber-500/60 bg-slate-950/80 rounded-2xl p-8 text-center flex flex-col items-center justify-center space-y-3 transition-colors">
-            <div className="w-14 h-14 rounded-full bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400">
-              <UploadCloud className="w-7 h-7" />
+          <div className="flex flex-col items-center justify-center space-y-3 rounded-2xl border-2 border-dashed border-[rgba(var(--gold-rgb),0.3)] bg-[rgba(var(--bg-rgb),0.4)] p-8 text-center transition-colors duration-200 hover:border-[rgba(var(--gold-rgb),0.6)] hover:bg-[rgba(var(--gold-rgb),0.04)]">
+            <div className="flex h-14 w-14 items-center justify-center rounded-full border border-[rgba(var(--gold-rgb),0.3)] bg-[rgba(var(--gold-rgb),0.1)] text-[rgb(var(--gold-rgb))]">
+              <UploadCloud className="h-7 w-7" />
             </div>
             <div>
-              <h4 className="font-semibold text-slate-200 text-sm">{t('portal.client.verif.dragDropTitle')}</h4>
-              <p className="text-xs text-slate-400 mt-1">{t('portal.client.verif.dragDropSub')}</p>
+              <h4 className="text-sm font-semibold text-[rgb(var(--text-rgb))]">{t('portal.client.verif.dragDropTitle')}</h4>
+              <p className="mt-1 text-xs text-[rgba(var(--text-rgb),0.55)]">{t('portal.client.verif.dragDropSub')}</p>
             </div>
 
             {isUploading ? (
               <div className="w-full max-w-xs space-y-2 pt-2">
-                <Progress value={65} className="h-2 bg-slate-800" />
-                <span className="text-xs text-amber-400 font-mono animate-pulse">{t('portal.client.verif.uploadingStatus')}</span>
+                <Progress value={65} className="h-1.5 bg-[rgba(var(--gold-rgb),0.15)]" />
+                <span className="nss-mono block text-xs text-[rgb(var(--gold-rgb))] animate-pulse">{t('portal.client.verif.uploadingStatus')}</span>
               </div>
             ) : (
-              <Button
+              <button
                 type="button"
-                className="bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold text-xs px-6 py-2 rounded-lg"
+                className="nss-btn-primary inline-flex items-center justify-center gap-2 rounded-lg px-6 py-2 text-xs focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgba(var(--gold-rgb),0.6)] active:scale-[0.98]"
                 onClick={handleSimulatedFileUpload}
               >
                 {t('portal.client.verif.uploadBtn')}
-              </Button>
+              </button>
             )}
           </div>
 
           {/* Submitted Documents List */}
           <div className="space-y-3 pt-2">
-            <h4 className="text-xs font-bold text-slate-400 uppercase tracking-wider flex items-center gap-1.5">
-              <FileText className="w-4 h-4 text-amber-400" /> {t('portal.client.verif.submittedDocsTitle')} ({client.documents.length})
+            <h4 className="nss-mono flex items-center gap-1.5 text-[10px] uppercase tracking-[0.18em] text-[rgba(var(--text-rgb),0.55)]">
+              <FileText className="h-4 w-4 text-[rgb(var(--gold-rgb))]" /> {t('portal.client.verif.submittedDocsTitle')} ({client.documents.length})
             </h4>
 
             {client.documents.length === 0 ? (
-              <p className="text-xs text-slate-400 italic">{t('portal.client.verif.noDocsYet')}</p>
+              <p className="text-xs italic text-[rgba(var(--text-rgb),0.45)]">{t('portal.client.verif.noDocsYet')}</p>
             ) : (
               <div className="space-y-2">
                 {client.documents.map((doc) => (
-                  <div key={doc.id} className="p-3 rounded-xl bg-slate-950 border border-slate-800 flex items-center justify-between">
-                    <div className="flex items-center gap-3">
-                      <div className="w-8 h-8 rounded bg-slate-900 border border-slate-800 flex items-center justify-center text-amber-400">
-                        <FileText className="w-4 h-4" />
+                  <div
+                    key={doc.id}
+                    className="flex items-center justify-between gap-3 rounded-xl border border-[var(--card-border)] bg-[rgba(var(--bg-rgb),0.4)] p-3 transition-colors duration-200 hover:border-[rgba(var(--gold-rgb),0.35)]"
+                  >
+                    <div className="flex min-w-0 items-center gap-3">
+                      <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-[rgba(var(--gold-rgb),0.25)] bg-[rgba(var(--gold-rgb),0.08)] text-[rgb(var(--gold-rgb))]">
+                        <FileText className="h-4 w-4" />
                       </div>
-                      <div>
-                        <div className="font-medium text-slate-200 text-xs">{doc.title}</div>
-                        <div className="text-[11px] text-slate-400">{doc.fileName} ({doc.fileSize})</div>
+                      <div className="min-w-0">
+                        <div className="truncate text-xs font-medium text-[rgb(var(--text-rgb))]">{doc.title}</div>
+                        <div className="nss-mono truncate text-[11px] text-[rgba(var(--text-rgb),0.5)]">{doc.fileName} ({doc.fileSize})</div>
                       </div>
                     </div>
                     <StatusBadge status={doc.status} />
@@ -166,40 +185,37 @@ export const ClientVerification: React.FC<ClientVerificationProps> = ({
           </div>
 
           {/* Demo Instant Trigger Panel */}
-          <div className="p-4 rounded-xl border border-amber-500/30 bg-amber-950/20 space-y-2">
-            <div className="flex items-center gap-2 text-xs font-bold text-amber-400 uppercase tracking-wider">
-              <Zap className="w-4 h-4 text-amber-400" /> {t('portal.client.verif.demoTriggerTitle')}
+          <div className="space-y-2 rounded-xl border border-[rgba(var(--gold-rgb),0.3)] bg-[linear-gradient(105deg,rgba(var(--gold-rgb),0.08),transparent_60%)] p-4">
+            <div className="nss-mono flex items-center gap-2 text-[10px] uppercase tracking-[0.18em] text-[rgb(var(--gold-rgb))]">
+              <Zap className="h-4 w-4" /> {t('portal.client.verif.demoTriggerTitle')}
             </div>
-            <p className="text-xs text-slate-300">
+            <p className="text-xs text-[rgba(var(--text-rgb),0.6)]">
               {t('portal.client.verif.demoTriggerSub')}
             </p>
             <div className="flex gap-2 pt-1">
-              <Button
-                size="sm"
-                className="bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold w-1/2"
+              <button
+                className={`${actionBtnBase} ${chipEmerald} hover:bg-emerald-500/20`}
                 onClick={() => {
                   onSimulateApprove(client.id);
                   toast.success(t('portal.client.verif.demoApproveToast'));
                 }}
               >
-                <CheckCircle2 className="w-3.5 h-3.5 me-1" /> {t('client.verif.demoApprove')}
-              </Button>
+                <CheckCircle2 className="h-3.5 w-3.5" /> {t('client.verif.demoApprove')}
+              </button>
 
-              <Button
-                size="sm"
-                variant="outline"
-                className="border-rose-500/40 text-rose-400 hover:bg-rose-500/10 text-xs font-bold w-1/2"
+              <button
+                className={`${actionBtnBase} ${chipRose} hover:bg-rose-500/20`}
                 onClick={() => {
                   onSimulateReject(client.id, t('portal.client.verif.demoRejectReason'));
                   toast.error(t('portal.client.verif.demoRejectToast'));
                 }}
               >
-                <XCircle className="w-3.5 h-3.5 me-1" /> {t('client.verif.demoReject')}
-              </Button>
+                <XCircle className="h-3.5 w-3.5" /> {t('client.verif.demoReject')}
+              </button>
             </div>
           </div>
-        </CardContent>
-      </Card>
+        </div>
+      </section>
     </div>
   );
 };

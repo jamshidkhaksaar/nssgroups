@@ -43,23 +43,23 @@ export const ClientsList: React.FC<ClientsListProps> = ({
 
   return (
     <div className="space-y-6">
-      <Card className="bg-slate-900/60 border-slate-800 backdrop-blur-md">
+      <Card className="border-[var(--card-border)] bg-[var(--panel)]">
         <CardHeader className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-4">
           <div>
-            <CardTitle className="text-lg font-bold text-slate-100 flex items-center gap-2">
-              <Building2 className="w-5 h-5 text-amber-500" />
+            <CardTitle className="text-lg font-semibold text-[rgb(var(--text-rgb))] flex items-center gap-2">
+              <Building2 className="w-5 h-5 text-[rgb(var(--gold-rgb))]" />
               {t('portal.clientsList.title')}
             </CardTitle>
-            <p className="text-xs text-slate-400 mt-1">{t('portal.clientsList.sub')}</p>
+            <p className="text-xs text-[rgba(var(--text-rgb),0.6)] mt-1">{t('portal.clientsList.sub')}</p>
           </div>
 
-          <div className="flex flex-wrap items-center bg-slate-950 p-1 rounded-lg border border-slate-800 text-xs">
+          <div className="flex flex-wrap items-center bg-[rgba(var(--text-rgb),0.03)] p-1 rounded-lg border border-[var(--card-border)] text-xs">
             {(['all', 'pending_verification', 'verified', 'rejected'] as const).map((state) => (
               <button
                 key={state}
                 onClick={() => setFilterState(state)}
                 className={`px-3 py-1 rounded capitalize font-medium transition-colors ${
-                  filterState === state ? 'bg-amber-500 text-slate-950 font-bold' : 'text-slate-400 hover:text-slate-200'
+                  filterState === state ? 'bg-[rgb(var(--gold-rgb))] text-[#1d1233] font-bold' : 'text-[rgba(var(--text-rgb),0.6)] hover:text-[rgb(var(--text-rgb))]'
                 }`}
               >
                 {filterLabels[state]}
@@ -70,45 +70,45 @@ export const ClientsList: React.FC<ClientsListProps> = ({
 
         <CardContent className="space-y-4">
           <div className="relative">
-            <Search className="w-4 h-4 absolute start-3 top-3 text-slate-400" />
+            <Search className="w-4 h-4 absolute start-3 top-3 text-[rgba(var(--text-rgb),0.45)]" />
             <Input
               placeholder={t('portal.clientsList.searchPlaceholder')}
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="ps-9 bg-slate-950/70 border-slate-800 text-slate-200 text-sm"
+              className="ps-9 bg-[rgba(var(--text-rgb),0.03)] border-[var(--card-border)] text-[rgb(var(--text-rgb))] placeholder:text-[rgba(var(--text-rgb),0.45)] text-sm"
             />
           </div>
 
-          <div className="rounded-lg border border-slate-800 overflow-x-auto">
+          <div className="rounded-lg border border-[var(--card-border)] overflow-x-auto">
             <Table>
-              <TableHeader className="bg-slate-950/80">
-                <TableRow className="border-slate-800 text-slate-400 hover:bg-transparent">
-                  <TableHead className="font-semibold text-slate-300">{t('portal.clientsList.thCompany')}</TableHead>
-                  <TableHead className="font-semibold text-slate-300">{t('portal.clientsList.thCategoryCountry')}</TableHead>
-                  <TableHead className="font-semibold text-slate-300">{t('portal.clientsList.thTotalSpent')}</TableHead>
-                  <TableHead className="font-semibold text-slate-300">{t('portal.clientsList.thState')}</TableHead>
-                  <TableHead className="text-end font-semibold text-slate-300">{t('portal.clientsList.thAction')}</TableHead>
+              <TableHeader className="bg-[rgba(var(--text-rgb),0.03)]">
+                <TableRow className="border-[var(--card-border)] hover:bg-transparent">
+                  <TableHead className="font-semibold text-[rgba(var(--text-rgb),0.6)]">{t('portal.clientsList.thCompany')}</TableHead>
+                  <TableHead className="font-semibold text-[rgba(var(--text-rgb),0.6)]">{t('portal.clientsList.thCategoryCountry')}</TableHead>
+                  <TableHead className="font-semibold text-[rgba(var(--text-rgb),0.6)]">{t('portal.clientsList.thTotalSpent')}</TableHead>
+                  <TableHead className="font-semibold text-[rgba(var(--text-rgb),0.6)]">{t('portal.clientsList.thState')}</TableHead>
+                  <TableHead className="text-end font-semibold text-[rgba(var(--text-rgb),0.6)]">{t('portal.clientsList.thAction')}</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
                 {filteredClients.length === 0 ? (
                   <TableRow>
-                    <TableCell colSpan={5} className="text-center py-8 text-slate-400 text-sm">
+                    <TableCell colSpan={5} className="text-center py-8 text-[rgba(var(--text-rgb),0.45)] text-sm">
                       {t('portal.clientsList.noClients')}
                     </TableCell>
                   </TableRow>
                 ) : (
                   filteredClients.map((client) => (
-                    <TableRow key={client.id} className="border-slate-800/60 hover:bg-slate-800/30 transition-colors">
+                    <TableRow key={client.id} className="border-[var(--card-border)] hover:bg-[rgba(var(--text-rgb),0.03)] transition-colors">
                       <TableCell>
-                        <div className="font-semibold text-amber-400 text-sm">{client.companyName}</div>
-                        <div className="text-xs text-slate-400">{client.fullName} ({client.email})</div>
+                        <div className="font-semibold text-[rgb(var(--gold-rgb))] text-sm">{client.companyName}</div>
+                        <div className="text-xs text-[rgba(var(--text-rgb),0.45)]">{client.fullName} ({client.email})</div>
                       </TableCell>
                       <TableCell>
-                        <span className="font-medium text-slate-200 text-xs capitalize">{client.category.replace('_', ' ')}</span>
-                        <div className="text-[11px] text-slate-400">{client.country}</div>
+                        <span className="font-medium text-[rgb(var(--text-rgb))] text-xs capitalize">{client.category.replace('_', ' ')}</span>
+                        <div className="text-[11px] text-[rgba(var(--text-rgb),0.45)]">{client.country}</div>
                       </TableCell>
-                      <TableCell className="font-mono text-sm font-semibold text-slate-200">
+                      <TableCell className="nss-mono text-sm font-semibold text-[rgb(var(--text-rgb))]">
                         ${client.totalSpentUsd.toLocaleString()}
                       </TableCell>
                       <TableCell>
@@ -118,10 +118,10 @@ export const ClientsList: React.FC<ClientsListProps> = ({
                         <Button
                           size="sm"
                           variant="ghost"
-                          className="h-8 text-xs text-slate-300 hover:text-white hover:bg-slate-800"
+                          className="h-8 text-xs text-[rgb(var(--text-rgb))] hover:text-[rgb(var(--text-rgb))] hover:bg-[rgba(var(--text-rgb),0.05)]"
                           onClick={() => setSelectedClient(client)}
                         >
-                          <SlidersHorizontal className="w-3.5 h-3.5 me-1 text-amber-400" />
+                          <SlidersHorizontal className="w-3.5 h-3.5 me-1 text-[rgb(var(--gold-rgb))]" />
                           {t('portal.clientsList.viewDetailsBtn')}
                         </Button>
                       </TableCell>

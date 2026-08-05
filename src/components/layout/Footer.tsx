@@ -11,6 +11,7 @@ import { useI18n } from '@/i18n/i18n'
 import type { TranslationKey } from '@/i18n/translations/en'
 import SocialIcon from '@/components/SocialIcon'
 import { EMAIL_1, EMAIL_2, FACEBOOK, INSTAGRAM, PHONE_1, PHONE_2, WHATSAPP } from '@/data/content'
+import { useAnalytics } from '@/analytics/useAnalytics'
 
 const NAV: { to: string; key: TranslationKey }[] = [
   { to: '/', key: 'nav.home' },
@@ -44,6 +45,7 @@ function ColumnHead({ label }: { label: string }) {
 
 export default function Footer() {
   const { t } = useI18n()
+  const { openSettings } = useAnalytics()
   return (
     <footer className="border-t border-[rgba(var(--gold-rgb),0.15)] bg-[var(--bg-deep)]">
       {/* ── main columns ── */}
@@ -178,6 +180,7 @@ export default function Footer() {
             © {new Date().getFullYear()} NSS {t('nav.brandSub')} — {t('footer.rights')}
           </p>
           <p className="nss-mono text-[12px] text-[rgba(var(--gold-rgb),0.65)]">{t('shared.divisions')}</p>
+          <button type="button" onClick={openSettings} className="text-xs text-[rgba(var(--text-rgb),0.58)] underline underline-offset-4 hover:text-[rgb(var(--gold-rgb))]">{t('analytics.settings')}</button>
           <button
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
             aria-label={t('footer.backToTop')}

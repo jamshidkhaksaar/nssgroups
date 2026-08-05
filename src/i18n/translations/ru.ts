@@ -1,5 +1,6 @@
 import type { TranslationKey } from './en'
 import { portfolioRu } from './portfolioLocales'
+import { marketplaceRu } from './marketplaceLocales'
 import { translationCompletionRu } from './translationCompletion'
 
 const ruBase = {
@@ -863,6 +864,9 @@ const ruBase = {
   'portal.teamSub': 'Владельцы организации смогут управлять коллегами и доступом к документам.',
   'portal.manage': 'Управление организацией',
   'topHero.badge': 'УЗБЕКИСТАН И РЕГИОНАЛЬНЫЙ ТОРГОВЫЙ КОРИДОР',
+  'topHero.searchMarketplace': 'Поиск в маркетплейсе',
+  'topHero.wallpaperProducts': 'Показать фон с торговыми товарами',
+  'topHero.wallpaperPromotion': 'Показать рекламный фон маркетплейса',
   'topHero.h1a': 'Любой товар. Любой объем.',
   'topHero.h1b': 'Любое направление.',
   'topHero.sub': 'NSS закупает необходимые вам товары в Узбекистане и доставляет их по вашему адресу по всему миру.',
@@ -1111,6 +1115,7 @@ const ruBase = {
 export const ru: Record<TranslationKey, string> = {
   ...ruBase,
   ...portfolioRu,
+  ...marketplaceRu,
   ...translationCompletionRu,
 }
 

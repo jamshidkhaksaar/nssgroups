@@ -94,7 +94,7 @@
   --scrim-soft: 0.3;
   --scrim-top: 0.6;
   --hero-blend: screen;
-  --hero-opacity: 0.9;
+  --hero-opacity: 0.92;
   --hero-text-rgb: var(--gold-rgb);
 }
 html[data-theme='light'] {
@@ -117,7 +117,7 @@ html[data-theme='light'] {
   --scrim-soft: 0.15;
   --scrim-top: 0.35;
   --hero-blend: multiply;
-  --hero-opacity: 0.35;
+  --hero-opacity: 0.62;
   --hero-text-rgb: var(--text-rgb);
 }
 

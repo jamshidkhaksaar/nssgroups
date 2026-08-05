@@ -6,8 +6,9 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { StatusBadge } from './StatusBadge';
 import { CheckpointEditorDialog } from './CheckpointEditorDialog';
+import { OrderDetailSheet } from './OrderDetailSheet';
 import type { LogisticsOrder, OrderStatus } from '@/types/portal';
-import { Truck, Search, MapPin, Navigation } from 'lucide-react';
+import { Truck, Search, MapPin, Navigation, Eye } from 'lucide-react';
 
 interface OrdersManagementProps {
   orders: LogisticsOrder[];
@@ -24,6 +25,7 @@ export const OrdersManagement: React.FC<OrdersManagementProps> = ({
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [filterStatus, setFilterStatus] = useState<OrderStatus | 'all'>('all');
   const [selectedOrder, setSelectedOrder] = useState<LogisticsOrder | null>(null);
+  const [detailOrder, setDetailOrder] = useState<LogisticsOrder | null>(null);
 
   const filteredOrders = orders.filter((order) => {
     const matchesStatus = filterStatus === 'all' || order.status === filterStatus;
@@ -45,23 +47,23 @@ export const OrdersManagement: React.FC<OrdersManagementProps> = ({
 
   return (
     <div className="space-y-6">
-      <Card className="bg-slate-900/60 border-slate-800 backdrop-blur-md">
+      <Card className="border-[var(--card-border)] bg-[var(--panel)]">
         <CardHeader className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-4">
           <div>
-            <CardTitle className="text-lg font-bold text-slate-100 flex items-center gap-2">
-              <Truck className="w-5 h-5 text-amber-500" />
+            <CardTitle className="text-lg font-semibold text-[rgb(var(--text-rgb))] flex items-center gap-2">
+              <Truck className="w-5 h-5 text-[rgb(var(--gold-rgb))]" />
               {t('portal.ordersMgmt.title')}
             </CardTitle>
-            <p className="text-xs text-slate-400 mt-1">{t('portal.ordersMgmt.sub')}</p>
+            <p className="text-xs text-[rgba(var(--text-rgb),0.6)] mt-1">{t('portal.ordersMgmt.sub')}</p>
           </div>
 
-          <div className="flex flex-wrap items-center bg-slate-950 p-1 rounded-lg border border-slate-800 text-xs">
+          <div className="flex flex-wrap items-center bg-[rgba(var(--text-rgb),0.03)] p-1 rounded-lg border border-[var(--card-border)] text-xs">
             {(['all', 'in_transit', 'customs_clearance', 'delayed', 'delivered'] as const).map((status) => (
               <button
                 key={status}
                 onClick={() => setFilterStatus(status)}
                 className={`px-3 py-1 rounded capitalize font-medium transition-colors ${
-                  filterStatus === status ? 'bg-amber-500 text-slate-950 font-bold' : 'text-slate-400 hover:text-slate-200'
+                  filterStatus === status ? 'bg-[rgb(var(--gold-rgb))] text-[#1d1233] font-bold' : 'text-[rgba(var(--text-rgb),0.6)] hover:text-[rgb(var(--text-rgb))]'
                 }`}
               >
                 {filterLabels[status]}
@@ -72,31 +74,31 @@ export const OrdersManagement: React.FC<OrdersManagementProps> = ({
 
         <CardContent className="space-y-4">
           <div className="relative">
-            <Search className="w-4 h-4 absolute start-3 top-3 text-slate-400" />
+            <Search className="w-4 h-4 absolute start-3 top-3 text-[rgba(var(--text-rgb),0.45)]" />
             <Input
               placeholder={t('portal.ordersMgmt.searchPlaceholder')}
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="ps-9 bg-slate-950/70 border-slate-800 text-slate-200 text-sm"
+              className="ps-9 bg-[rgba(var(--text-rgb),0.03)] border-[var(--card-border)] text-[rgb(var(--text-rgb))] placeholder:text-[rgba(var(--text-rgb),0.45)] text-sm"
             />
           </div>
 
-          <div className="rounded-lg border border-slate-800 overflow-x-auto">
+          <div className="rounded-lg border border-[var(--card-border)] overflow-x-auto">
             <Table>
-              <TableHeader className="bg-slate-950/80">
-                <TableRow className="border-slate-800 text-slate-400 hover:bg-transparent">
-                  <TableHead className="font-semibold text-slate-300">{t('portal.ordersMgmt.thTrackingMode')}</TableHead>
-                  <TableHead className="font-semibold text-slate-300">{t('portal.ordersMgmt.thClientShipper')}</TableHead>
-                  <TableHead className="font-semibold text-slate-300">{t('portal.ordersMgmt.thRoute')}</TableHead>
-                  <TableHead className="font-semibold text-slate-300">{t('portal.ordersMgmt.thLatestCheckpoint')}</TableHead>
-                  <TableHead className="font-semibold text-slate-300">{t('portal.ordersMgmt.thStatus')}</TableHead>
-                  <TableHead className="text-end font-semibold text-slate-300">{t('portal.ordersMgmt.thAction')}</TableHead>
+              <TableHeader className="bg-[rgba(var(--text-rgb),0.03)]">
+                <TableRow className="border-[var(--card-border)] hover:bg-transparent">
+                  <TableHead className="font-semibold text-[rgba(var(--text-rgb),0.6)]">{t('portal.ordersMgmt.thTrackingMode')}</TableHead>
+                  <TableHead className="font-semibold text-[rgba(var(--text-rgb),0.6)]">{t('portal.ordersMgmt.thClientShipper')}</TableHead>
+                  <TableHead className="font-semibold text-[rgba(var(--text-rgb),0.6)]">{t('portal.ordersMgmt.thRoute')}</TableHead>
+                  <TableHead className="font-semibold text-[rgba(var(--text-rgb),0.6)]">{t('portal.ordersMgmt.thLatestCheckpoint')}</TableHead>
+                  <TableHead className="font-semibold text-[rgba(var(--text-rgb),0.6)]">{t('portal.ordersMgmt.thStatus')}</TableHead>
+                  <TableHead className="text-end font-semibold text-[rgba(var(--text-rgb),0.6)]">{t('portal.ordersMgmt.thAction')}</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
                 {filteredOrders.length === 0 ? (
                   <TableRow>
-                    <TableCell colSpan={6} className="text-center py-8 text-slate-400 text-sm">
+                    <TableCell colSpan={6} className="text-center py-8 text-[rgba(var(--text-rgb),0.45)] text-sm">
                       {t('portal.ordersMgmt.noOrders')}
                     </TableCell>
                   </TableRow>
@@ -104,42 +106,53 @@ export const OrdersManagement: React.FC<OrdersManagementProps> = ({
                   filteredOrders.map((order) => {
                     const latestCheckpoint = order.checkpoints[order.checkpoints.length - 1];
                     return (
-                      <TableRow key={order.id} className="border-slate-800/60 hover:bg-slate-800/30 transition-colors">
+                      <TableRow key={order.id} className="border-[var(--card-border)] hover:bg-[rgba(var(--text-rgb),0.03)] transition-colors">
                         <TableCell>
-                          <div className="font-mono font-semibold text-amber-400 text-sm">{order.trackingNumber}</div>
-                          <span className="text-[11px] text-slate-400 font-semibold">{order.mode} • {order.weightTons} {t('portal.ordersMgmt.tonsSuffix')}</span>
+                          <div className="nss-mono font-semibold text-[rgb(var(--gold-rgb))] text-sm">{order.trackingNumber}</div>
+                          <span className="text-[11px] text-[rgba(var(--text-rgb),0.45)] font-semibold">{order.mode} • {order.weightTons} {t('portal.ordersMgmt.tonsSuffix')}</span>
                         </TableCell>
-                        <TableCell className="text-slate-200 text-sm font-medium">
+                        <TableCell className="text-[rgb(var(--text-rgb))] text-sm font-medium">
                           {order.clientName}
                         </TableCell>
-                        <TableCell className="text-xs text-slate-300">
-                          <div className="font-medium text-slate-200">{order.origin}</div>
-                          <div className="text-slate-400">→ {order.destination}</div>
+                        <TableCell className="text-xs text-[rgba(var(--text-rgb),0.6)]">
+                          <div className="font-medium text-[rgb(var(--text-rgb))]">{order.origin}</div>
+                          <div className="text-[rgba(var(--text-rgb),0.45)]">→ {order.destination}</div>
                         </TableCell>
                         <TableCell>
                           {latestCheckpoint ? (
                             <div>
-                              <div className="text-xs font-semibold text-slate-200 flex items-center gap-1">
-                                <MapPin className="w-3 h-3 text-amber-400" /> {latestCheckpoint.location}
+                              <div className="text-xs font-semibold text-[rgb(var(--text-rgb))] flex items-center gap-1">
+                                <MapPin className="w-3 h-3 text-[rgb(var(--gold-rgb))]" /> {latestCheckpoint.location}
                               </div>
-                              <div className="text-[11px] text-slate-400">{latestCheckpoint.status}</div>
+                              <div className="text-[11px] text-[rgba(var(--text-rgb),0.45)]">{latestCheckpoint.status}</div>
                             </div>
                           ) : (
-                            <span className="text-xs text-slate-500 italic">{t('portal.ordersMgmt.noCheckpoints')}</span>
+                            <span className="text-xs text-[rgba(var(--text-rgb),0.45)] italic">{t('portal.ordersMgmt.noCheckpoints')}</span>
                           )}
                         </TableCell>
                         <TableCell>
                           <StatusBadge status={order.status} />
                         </TableCell>
                         <TableCell className="text-end">
-                          <Button
-                            size="sm"
-                            className="h-8 text-xs bg-amber-500/10 hover:bg-amber-500/20 text-amber-300 border border-amber-500/30"
-                            onClick={() => setSelectedOrder(order)}
-                          >
-                            <Navigation className="w-3.5 h-3.5 me-1 text-amber-400" />
-                            {t('portal.ordersMgmt.updateStatusBtn')}
-                          </Button>
+                          <div className="flex items-center justify-end gap-1.5">
+                            <Button
+                              size="sm"
+                              variant="ghost"
+                              className="h-8 text-xs text-[rgb(var(--text-rgb))] hover:text-[rgb(var(--text-rgb))] hover:bg-[rgba(var(--text-rgb),0.05)]"
+                              onClick={() => setDetailOrder(order)}
+                            >
+                              <Eye className="w-3.5 h-3.5 me-1 text-[rgba(var(--text-rgb),0.45)]" />
+                              View
+                            </Button>
+                            <Button
+                              size="sm"
+                              className="h-8 text-xs bg-[rgba(var(--gold-rgb),0.1)] hover:bg-[rgba(var(--gold-rgb),0.18)] text-[rgb(var(--gold-rgb))] border border-[rgba(var(--gold-rgb),0.3)]"
+                              onClick={() => setSelectedOrder(order)}
+                            >
+                              <Navigation className="w-3.5 h-3.5 me-1" />
+                              {t('portal.ordersMgmt.updateStatusBtn')}
+                            </Button>
+                          </div>
                         </TableCell>
                       </TableRow>
                     );
@@ -157,6 +170,12 @@ export const OrdersManagement: React.FC<OrdersManagementProps> = ({
         onClose={() => setSelectedOrder(null)}
         onUpdateStatus={onUpdateStatus}
         onAddCheckpoint={onAddCheckpoint}
+      />
+
+      <OrderDetailSheet
+        order={detailOrder}
+        isOpen={Boolean(detailOrder)}
+        onClose={() => setDetailOrder(null)}
       />
     </div>
   );

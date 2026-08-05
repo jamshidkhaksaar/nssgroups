@@ -2,7 +2,9 @@ import { useEffect } from 'react'
 import { ArrowLeft, ArrowUpRight, FileCheck2, MapPin, PackageCheck, Scale, Tags } from 'lucide-react'
 import { Link, useParams } from 'react-router'
 import Reveal from '@/components/Reveal'
+import Seo from '@/components/Seo'
 import ProductCard from '@/components/marketplace/ProductCard'
+import { absoluteUrl, SITE_URL } from '@/lib/seo'
 import { useI18n } from '@/i18n/i18n'
 import {
   CATEGORY_KEYS,
@@ -15,6 +17,7 @@ import {
   localizedProductName,
   localizedSpecification,
 } from '@/data/productCatalog'
+import { trackEvent } from '@/analytics/analytics'
 
 export default function ProductDetail() {
   const { sku } = useParams()
@@ -22,30 +25,17 @@ export default function ProductDetail() {
   const product = findCatalogProduct(sku)
 
   useEffect(() => {
-    const previousTitle = document.title
-    document.title = product
-      ? `${localizedProductName(product, lang)} | ${t('nav.marketplace')}`
-      : `${t('marketplace.notFoundTitle')} | ${t('nav.marketplace')}`
-    let canonical = document.querySelector<HTMLLinkElement>('link[rel="canonical"]')
-    const createdCanonical = !canonical
-    if (!canonical) {
-      canonical = document.createElement('link')
-      canonical.rel = 'canonical'
-      document.head.append(canonical)
-    }
-    canonical.href = product
-      ? `${window.location.origin}/marketplace/product/${product.sku}`
-      : `${window.location.origin}/marketplace`
-
-    return () => {
-      document.title = previousTitle
-      if (createdCanonical) canonical?.remove()
-    }
-  }, [lang, product, t])
+    if (product) trackEvent('product_detail_view', { sku: product.sku, origin: product.originCountry, category: product.categoryId })
+  }, [product])
 
   if (!product) {
     return (
       <main className="bg-[var(--bg)]">
+        <Seo
+          title={`${t('marketplace.notFoundTitle')} — NSS International Group`}
+          description={t('marketplace.notFoundDescription')}
+          path="/marketplace"
+        />
         <section className="mx-auto flex min-h-[70vh] max-w-4xl flex-col items-center justify-center px-6 pb-20 pt-40 text-center md:px-12">
           <p className="nss-section-tag">{t('marketplace.productTag')}</p>
           <h1 className="nss-h2 mt-5 text-4xl md:text-6xl">{t('marketplace.notFoundTitle')}</h1>
@@ -60,12 +50,43 @@ export default function ProductDetail() {
   }
 
   const name = localizedProductName(product, lang)
+  const productPath = `/marketplace/product/${product.sku}`
+  const productImage = absoluteUrl(getCategoryProductImage(product))
   const related = PRODUCT_CATALOG.filter(
     (candidate) => candidate.sku !== product.sku && candidate.categoryId === product.categoryId,
   ).slice(0, 3)
 
+  const productJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    name,
+    sku: product.sku,
+    image: productImage,
+    description: localizedSpecification(product, lang),
+    category: t(CATEGORY_KEYS[product.categoryId]),
+    countryOfOrigin: t(ORIGIN_KEYS[product.originCountry]),
+    brand: { '@type': 'Brand', name: 'NSS International Group' },
+  }
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: t('nav.home'), item: `${SITE_URL}/` },
+      { '@type': 'ListItem', position: 2, name: t('nav.marketplace'), item: `${SITE_URL}/marketplace` },
+      { '@type': 'ListItem', position: 3, name, item: absoluteUrl(productPath) },
+    ],
+  }
+
   return (
     <main className="bg-[var(--bg)]">
+      <Seo
+        title={`${name} — NSS International Group`}
+        description={localizedSpecification(product, lang)}
+        path={productPath}
+        image={getCategoryProductImage(product)}
+        type="product"
+        jsonLd={[productJsonLd, breadcrumbJsonLd]}
+      />
       <section className="border-b border-[rgba(var(--gold-rgb),0.12)] bg-gradient-to-b from-[var(--panel-2)] to-[var(--bg)]">
         <div className="mx-auto max-w-7xl px-6 pb-12 pt-36 md:px-12 md:pb-16 md:pt-44">
           <Reveal>
@@ -132,7 +153,8 @@ export default function ProductDetail() {
                 </div>
               </dl>
               <Link
-                to={`/contact?intent=procurement&sku=${encodeURIComponent(product.sku)}`}
+                to={`/contact#intent=procurement&sku=${encodeURIComponent(product.sku)}`}
+                onClick={() => trackEvent('request_quote_click', { sku: product.sku, origin: product.originCountry, category: product.categoryId })}
                 className="nss-btn-primary mt-6 inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-sm px-6 py-3 text-sm font-bold"
               >
                 {t('marketplace.requestQuote')}

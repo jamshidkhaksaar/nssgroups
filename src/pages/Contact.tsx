@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import { useMemo, useState } from 'react'
+import { useLocation, useSearchParams } from 'react-router'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
@@ -20,6 +21,12 @@ import {
   PHONE_2,
   WHATSAPP,
 } from '@/data/content'
+import {
+  ORIGIN_KEYS,
+  findCatalogProduct,
+  localizedProductName,
+} from '@/data/productCatalog'
+import { trackEvent } from '@/analytics/analytics'
 
 const schema = z.object({
   name: z.string().min(2),
@@ -38,16 +45,46 @@ const fieldClass =
   'border-[rgba(var(--gold-rgb),0.20)] bg-[rgba(var(--text-rgb),0.05)] text-[rgb(var(--text-rgb))] placeholder:text-[rgba(var(--text-rgb),0.50)] focus-visible:border-[rgba(var(--gold-rgb),0.60)] focus-visible:ring-[rgba(var(--gold-rgb),0.20)]'
 
 export default function Contact() {
-  const { t } = useI18n()
+  const { t, lang } = useI18n()
+  const location = useLocation()
+  const [searchParams] = useSearchParams()
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitted, setSubmitted] = useState(false)
+  const requestParams = useMemo(() => {
+    const hash = location.hash.replace(/^#\??/, '')
+    return hash ? new URLSearchParams(hash) : searchParams
+  }, [location.hash, searchParams])
+  const requestedProduct =
+    requestParams.get('intent') === 'procurement'
+      ? findCatalogProduct(requestParams.get('sku') ?? undefined)
+      : undefined
+  const defaultValues = useMemo<Partial<FormValues>>(() => {
+    if (!requestedProduct) return {}
+
+    return {
+      service: t('marketplace.procurementService'),
+      from: t(ORIGIN_KEYS[requestedProduct.originCountry]),
+      message: [
+        t('marketplace.prefillIntro'),
+        '',
+        `${t('marketplace.prefillSku')}: ${requestedProduct.sku}`,
+        `${t('marketplace.prefillProduct')}: ${localizedProductName(requestedProduct, lang)}`,
+        `${t('marketplace.prefillOrigin')}: ${t(ORIGIN_KEYS[requestedProduct.originCountry])}`,
+        '',
+        t('marketplace.prefillRequest'),
+      ].join('\n'),
+    }
+  }, [lang, requestedProduct, t])
 
   const {
     register,
     handleSubmit,
     reset,
     formState: { errors },
-  } = useForm<FormValues>({ resolver: zodResolver(schema) })
+  } = useForm<FormValues>({
+    resolver: zodResolver(schema),
+    defaultValues,
+  })
 
   const onSubmit = async (v: FormValues) => {
     setIsSubmitting(true)
@@ -72,13 +109,16 @@ export default function Contact() {
       const data = await res.json()
 
       if (data.success) {
+        trackEvent('contact_form_submit', { status: 'success' })
         toast.success('Your message has been sent successfully!')
         setSubmitted(true)
         reset()
       } else {
+        trackEvent('contact_form_submit', { status: 'failure' })
         toast.error(data.error || 'Failed to send email. Please try again.')
       }
     } catch (err) {
+      trackEvent('contact_form_submit', { status: 'failure' })
       console.error('Contact submit error:', err)
       toast.error('Could not connect to contact server. Please try again.')
     } finally {
@@ -159,6 +199,11 @@ export default function Contact() {
                       className={`h-9 w-full rounded-md border px-3 text-sm ${fieldClass} bg-[var(--bg)]`}
                       {...register('service')}
                     >
+                      {requestedProduct && (
+                        <option value={t('marketplace.procurementService')}>
+                          {t('marketplace.procurementService')}
+                        </option>
+                      )}
                       {CORE_SERVICES.map((s) => (
                         <option key={s.nameKey} value={t(s.nameKey)}>
                           {t(s.nameKey)}

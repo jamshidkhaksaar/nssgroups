@@ -17,4 +17,15 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  build: {
+    rollupOptions: {
+      output: {
+        // Split heavy data-viz vendors into cacheable chunks to keep the
+        // portal dashboards lean and avoid the >500 kB chunk warning.
+        manualChunks: {
+          'vendor-charts': ['recharts'],
+        },
+      },
+    },
+  },
 });

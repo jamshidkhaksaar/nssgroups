@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from 'react'
 import { ChevronDown } from 'lucide-react'
 import { LANGS, useI18n } from '@/i18n/i18n'
 import type { Lang } from '@/i18n/i18n'
+import { trackEvent } from '@/analytics/analytics'
 
 const FLAGS: Record<Lang, string> = {
   en: '🇬🇧',
@@ -41,7 +42,6 @@ export default function LanguageSwitcher({ className = '' }: { className?: strin
     <div ref={ref} className={`relative ${className}`}>
       {/* Trigger button — compact flag + chevron */}
       <button
-        id="lang-switcher-trigger"
         onClick={() => setOpen((v) => !v)}
         aria-haspopup="listbox"
         aria-expanded={open}
@@ -66,7 +66,7 @@ export default function LanguageSwitcher({ className = '' }: { className?: strin
               key={l.code}
               role="option"
               aria-selected={lang === l.code}
-              onClick={() => { setLang(l.code); setOpen(false) }}
+              onClick={() => { setLang(l.code); setOpen(false); trackEvent('language_change', { language: l.code }) }}
               className={`flex w-full items-center gap-3 px-3.5 py-2.5 text-start transition-colors ${
                 lang === l.code
                   ? 'bg-[rgba(var(--gold-rgb),0.15)] text-[rgb(var(--gold-rgb))]'

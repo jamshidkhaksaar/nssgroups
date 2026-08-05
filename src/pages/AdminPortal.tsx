@@ -6,152 +6,181 @@ import { DocumentModeration } from '@/components/portals/DocumentModeration';
 import { ClientsList } from '@/components/portals/ClientsList';
 import { PartnersList } from '@/components/portals/PartnersList';
 import { OrdersManagement } from '@/components/portals/OrdersManagement';
-import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import { ShieldCheck, LayoutDashboard, FileCheck, Users, Building2, Truck } from 'lucide-react';
 import DashboardShell from '@/components/layout/DashboardShell';
+import type { TranslationKey } from '@/i18n/translations/en';
 
-const tabTriggerClass = [
-  'group relative flex-none rounded-none border-0 bg-transparent px-3 pb-3 pt-1 sm:px-4',
-  'nss-mono text-[11px] sm:text-xs uppercase tracking-[0.14em]',
-  'text-[rgba(var(--text-rgb),0.5)] shadow-none transition-colors duration-200',
-  'hover:text-[rgba(var(--text-rgb),0.85)]',
-  'focus-visible:ring-2 focus-visible:ring-[rgba(var(--gold-rgb),0.45)] focus-visible:outline-none',
-  'data-[state=active]:bg-transparent data-[state=active]:shadow-none data-[state=active]:text-[rgb(var(--gold-rgb))]',
-  "after:absolute after:bottom-[-1px] after:start-0 after:h-[2px] after:w-full after:scale-x-0",
-  'after:bg-[rgb(var(--gold-rgb))] after:transition-transform after:duration-300',
-  'data-[state=active]:after:scale-x-100',
-].join(' ');
+type AdminSection = 'overview' | 'documents' | 'clients' | 'partners' | 'orders';
+
+interface NavItem {
+  id: AdminSection;
+  labelKey: TranslationKey;
+  icon: typeof LayoutDashboard;
+}
+
+const NAV_ITEMS: NavItem[] = [
+  { id: 'overview', labelKey: 'admin.tab.dashboard', icon: LayoutDashboard },
+  { id: 'documents', labelKey: 'admin.tab.documents', icon: FileCheck },
+  { id: 'clients', labelKey: 'admin.tab.clients', icon: Building2 },
+  { id: 'partners', labelKey: 'admin.tab.partners', icon: Users },
+  { id: 'orders', labelKey: 'admin.tab.orders', icon: Truck },
+];
 
 export default function AdminPortal() {
   const { t } = useI18n();
   const store = usePortalStore();
-  const [activeTab, setActiveTab] = useState<string>('overview');
+  const [activeSection, setActiveSection] = useState<AdminSection>('overview');
 
   const pendingDocsCount = store.documents.filter((d) => d.status === 'pending').length;
+  const delayedOrdersCount = store.orders.filter((o) => o.status === 'delayed').length;
+  const pendingClientsCount = store.clients.filter((c) => c.state === 'pending_verification' || c.state === 'under_review').length;
 
-  return (
-    <DashboardShell accentColor="amber" portalLabel="Admin Control Room">
-    <div className="bg-[var(--bg)] text-[rgb(var(--text-rgb))] pb-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto space-y-8 pt-10">
-      {/* Header Banner */}
-      <section className="nss-fade relative overflow-hidden rounded-2xl border border-[var(--card-border)] bg-[linear-gradient(150deg,var(--panel),var(--bg-deep))] px-6 py-8 sm:px-10 sm:py-10">
-        {/* gold hairline + ambient glows */}
-        <div className="absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,transparent,rgba(var(--gold-rgb),0.6),transparent)]" />
-        <div className="pointer-events-none absolute -top-24 -end-24 h-72 w-72 rounded-full bg-[radial-gradient(circle,rgba(var(--gold-rgb),0.14),transparent_65%)]" />
-        <div className="pointer-events-none absolute -bottom-32 -start-16 h-64 w-64 rounded-full bg-[radial-gradient(circle,rgba(var(--gold-rgb),0.07),transparent_65%)]" />
+  const notifications = [
+    ...(delayedOrdersCount > 0
+      ? [{ id: 'n-delayed', title: `${delayedOrdersCount} delayed shipment${delayedOrdersCount > 1 ? 's' : ''}`, description: 'Convoy behind schedule — review in Orders.', tone: 'rose' as const }]
+      : []),
+    ...(pendingDocsCount > 0
+      ? [{ id: 'n-kyc', title: `${pendingDocsCount} document${pendingDocsCount > 1 ? 's' : ''} awaiting review`, description: 'Verification queue requires attention.', tone: 'amber' as const }]
+      : []),
+    ...(pendingClientsCount > 0
+      ? [{ id: 'n-clients', title: `${pendingClientsCount} client${pendingClientsCount > 1 ? 's' : ''} pending approval`, description: 'New registrations to verify.', tone: 'gold' as const }]
+      : []),
+    ...(store.partners.filter((p) => p.status === 'suspended').length > 0
+      ? [{ id: 'n-susp', title: `${store.partners.filter((p) => p.status === 'suspended').length} partner(s) suspended`, description: 'Operational status requires attention.', tone: 'rose' as const }]
+      : []),
+  ];
 
-        <div className="relative z-10 grid gap-8 lg:grid-cols-[1fr_auto] lg:items-end">
-          <div className="space-y-3">
-            <div className="nss-section-tag flex items-center gap-2">
-              <ShieldCheck className="h-4 w-4" />
-              <span>{t('portal.admin.headerTag')}</span>
-            </div>
-            <h1 className="nss-display text-3xl sm:text-5xl text-[rgb(var(--text-rgb))]">
-              {t('admin.title')}
-            </h1>
-            <p className="max-w-xl text-sm sm:text-base leading-relaxed text-[rgba(var(--text-rgb),0.62)]">
-              {t('admin.sub')}
-            </p>
-          </div>
-
-          {/* header stats */}
-          <div className="flex shrink-0 items-stretch">
-            <div className="pe-6">
-              <span className="nss-mono block text-[10px] uppercase tracking-[0.18em] text-[rgba(var(--text-rgb),0.5)]">
-                {t('portal.admin.pendingKyc')}
-              </span>
-              <span className="nss-mono mt-1 block text-3xl font-bold text-[rgb(var(--gold-rgb))]">
-                {pendingDocsCount}
-              </span>
-            </div>
-            <div className="border-s border-[rgba(var(--gold-rgb),0.18)] ps-6">
-              <span className="nss-mono block text-[10px] uppercase tracking-[0.18em] text-[rgba(var(--text-rgb),0.5)]">
-                {t('portal.admin.activePartners')}
-              </span>
-              <span className="nss-mono mt-1 block text-3xl font-bold text-[rgb(var(--text-rgb))]">
-                {store.stats.activePartnersCount}
-              </span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Main Tabs */}
-      <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-8">
-        <TabsList className="h-auto w-full justify-start gap-0 overflow-x-auto rounded-none border-b border-[var(--card-border)] bg-transparent p-0">
-          <TabsTrigger value="overview" className={tabTriggerClass}>
-            <LayoutDashboard className="h-3.5 w-3.5" />
-            {t('admin.tab.dashboard')}
-          </TabsTrigger>
-
-          <TabsTrigger value="documents" className={tabTriggerClass}>
-            <FileCheck className="h-3.5 w-3.5" />
-            {t('admin.tab.documents')}
-            {pendingDocsCount > 0 && (
-              <span className="ms-1 inline-flex h-4 min-w-4 items-center justify-center rounded-sm bg-[rgb(var(--gold-rgb))] px-1 text-[10px] font-bold text-[#1d1233]">
-                {pendingDocsCount}
-              </span>
-            )}
-          </TabsTrigger>
-
-          <TabsTrigger value="clients" className={tabTriggerClass}>
-            <Building2 className="h-3.5 w-3.5" />
-            {t('admin.tab.clients')}
-          </TabsTrigger>
-
-          <TabsTrigger value="partners" className={tabTriggerClass}>
-            <Users className="h-3.5 w-3.5" />
-            {t('admin.tab.partners')}
-          </TabsTrigger>
-
-          <TabsTrigger value="orders" className={tabTriggerClass}>
-            <Truck className="h-3.5 w-3.5" />
-            {t('admin.tab.orders')}
-          </TabsTrigger>
-        </TabsList>
-
-        {/* Tab Contents */}
-        <TabsContent value="overview" className="mt-0">
+  const renderSection = () => {
+    switch (activeSection) {
+      case 'overview':
+        return (
           <AdminDashboard
             stats={store.stats}
             pendingDocuments={store.documents.filter((d) => d.status === 'pending')}
             logs={store.logs}
-            onNavigateTab={setActiveTab}
+            orders={store.orders}
+            partners={store.partners}
+            onNavigateTab={(tab) => setActiveSection(tab as AdminSection)}
           />
-        </TabsContent>
-
-        <TabsContent value="documents" className="mt-0">
+        );
+      case 'documents':
+        return (
           <DocumentModeration
             documents={store.documents}
             onApprove={store.approveDocument}
             onReject={store.rejectDocument}
           />
-        </TabsContent>
-
-        <TabsContent value="clients" className="mt-0">
+        );
+      case 'clients':
+        return (
           <ClientsList
             clients={store.clients}
             onSimulateApprove={store.simulateAdminApproveClient}
             onSimulateReject={store.simulateAdminRejectClient}
           />
-        </TabsContent>
-
-        <TabsContent value="partners" className="mt-0">
+        );
+      case 'partners':
+        return (
           <PartnersList
             partners={store.partners}
             onUpdateStatus={store.updatePartnerStatus}
             onUpdateGamification={store.updatePartnerGamification}
           />
-        </TabsContent>
-
-        <TabsContent value="orders" className="mt-0">
+        );
+      case 'orders':
+        return (
           <OrdersManagement
             orders={store.orders}
             onUpdateStatus={store.updateOrderStatus}
             onAddCheckpoint={store.addOrderCheckpoint}
           />
-        </TabsContent>
-      </Tabs>
+        );
+      default:
+        return null;
+    }
+  };
+
+  const sidebarFooter = (
+    <div className="rounded-xl border border-[rgba(var(--gold-rgb),0.10)] bg-[rgba(var(--bg-rgb),0.4)] p-4">
+      <div className="flex items-center justify-between border-b border-[rgba(var(--gold-rgb),0.10)] pb-3">
+        <span className="nss-mono text-[10px] uppercase tracking-[0.16em] text-[rgba(var(--text-rgb),0.45)]">
+          {t('portal.admin.pendingKyc')}
+        </span>
+        <span className="nss-mono text-lg font-bold text-[rgb(var(--gold-rgb))]">
+          {pendingDocsCount}
+        </span>
+      </div>
+      <div className="flex items-center justify-between pt-3">
+        <span className="nss-mono text-[10px] uppercase tracking-[0.16em] text-[rgba(var(--text-rgb),0.45)]">
+          {t('portal.admin.activePartners')}
+        </span>
+        <span className="nss-mono text-lg font-bold text-[rgb(var(--text-rgb))]">
+          {store.stats.activePartnersCount}
+        </span>
+      </div>
     </div>
+  );
+
+  return (
+    <DashboardShell
+      accentColor="amber"
+      portalLabel="Admin Control Room"
+      portalIcon={<ShieldCheck className="h-3.5 w-3.5" />}
+      navItems={NAV_ITEMS.map((item) => ({
+        id: item.id,
+        label: t(item.labelKey),
+        icon: item.icon,
+        badge: item.id === 'documents' ? pendingDocsCount : undefined,
+      }))}
+      activeNavId={activeSection}
+      onNavChange={(id) => setActiveSection(id as AdminSection)}
+      sidebarFooter={sidebarFooter}
+      notificationsCount={notifications.length}
+      notifications={notifications}
+    >
+      {/* Mobile nav pills */}
+      <nav className="flex gap-2 overflow-x-auto pb-1 lg:hidden">
+        {NAV_ITEMS.map((item) => {
+          const isActive = activeSection === item.id;
+          const Icon = item.icon;
+          return (
+            <button
+              key={item.id}
+              onClick={() => setActiveSection(item.id)}
+              className={[
+                'flex flex-none items-center gap-2 rounded-full border px-3.5 py-2 text-xs font-medium transition-colors',
+                isActive
+                  ? 'border-[rgba(var(--gold-rgb),0.5)] bg-[rgba(var(--gold-rgb),0.12)] text-[rgb(var(--gold-rgb))]'
+                  : 'border-[rgba(var(--gold-rgb),0.15)] bg-[var(--panel)] text-[rgba(var(--text-rgb),0.6)]',
+              ].join(' ')}
+            >
+              <Icon className="h-3.5 w-3.5" />
+              {t(item.labelKey)}
+              {item.id === 'documents' && pendingDocsCount > 0 && (
+                <span className="inline-flex h-4 min-w-4 items-center justify-center rounded-full bg-[rgb(var(--gold-rgb))] px-1 text-[9px] font-bold text-[#1d1233]">
+                  {pendingDocsCount}
+                </span>
+              )}
+            </button>
+          );
+        })}
+      </nav>
+
+      {/* Page header */}
+      <header className="space-y-1.5 pb-2">
+        <h1 className="nss-display text-2xl text-[rgb(var(--text-rgb))] sm:text-3xl">
+          {t('admin.title')}
+        </h1>
+        <p className="max-w-2xl text-sm leading-relaxed text-[rgba(var(--text-rgb),0.6)]">
+          {t('admin.sub')}
+        </p>
+      </header>
+
+      {/* Section content */}
+      <div className="nss-fade" key={activeSection}>
+        {renderSection()}
+      </div>
     </DashboardShell>
   );
 }
+

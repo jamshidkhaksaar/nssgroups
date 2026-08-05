@@ -4,6 +4,7 @@ import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
+import { Checkbox } from '@/components/ui/checkbox';
 import { StatusBadge } from './StatusBadge';
 import { DocumentPreviewModal } from './DocumentPreviewModal';
 import type { VerificationDocument, DocumentStatus } from '@/types/portal';
@@ -25,6 +26,38 @@ export const DocumentModeration: React.FC<DocumentModerationProps> = ({
   const [filterStatus, setFilterStatus] = useState<DocumentStatus | 'all'>('all');
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [selectedDoc, setSelectedDoc] = useState<VerificationDocument | null>(null);
+  const [selectedIds, setSelectedIds] = useState<Set<string>>(new Set());
+
+  const toggleRow = (id: string) => {
+    setSelectedIds((prev) => {
+      const next = new Set(prev);
+      if (next.has(id)) next.delete(id);
+      else next.add(id);
+      return next;
+    });
+  };
+
+  const toggleAll = () => {
+    if (allSelected) {
+      setSelectedIds(new Set());
+    } else {
+      setSelectedIds(new Set(selectableDocs.map((d) => d.id)));
+    }
+  };
+
+  const handleBatchApprove = () => {
+    selectedSet.forEach((id) => onApprove(id, t('portal.docMod.quickApproveNotes')));
+    const n = selectedSet.size;
+    setSelectedIds(new Set());
+    toast.success(`${n} document${n === 1 ? '' : 's'} approved`);
+  };
+
+  const handleBatchReject = () => {
+    selectedSet.forEach((id) => onReject(id, t('portal.docMod.quickRejectReason')));
+    const n = selectedSet.size;
+    setSelectedIds(new Set());
+    toast.error(`${n} document${n === 1 ? '' : 's'} rejected`);
+  };
 
   const filteredDocs = documents.filter((doc) => {
     const matchesStatus = filterStatus === 'all' || doc.status === filterStatus;
@@ -34,6 +67,10 @@ export const DocumentModeration: React.FC<DocumentModerationProps> = ({
       doc.type.toLowerCase().includes(searchQuery.toLowerCase());
     return matchesStatus && matchesSearch;
   });
+
+  const selectableDocs = filteredDocs.filter((d) => d.status === 'pending');
+  const selectedSet = new Set(selectedIds);
+  const allSelected = selectableDocs.length > 0 && selectableDocs.every((d) => selectedSet.has(d.id));
 
   const handleQuickApprove = (doc: VerificationDocument) => {
     onApprove(doc.id, t('portal.docMod.quickApproveNotes'));
@@ -54,25 +91,25 @@ export const DocumentModeration: React.FC<DocumentModerationProps> = ({
 
   return (
     <div className="space-y-6">
-      <Card className="bg-slate-900/60 border-slate-800 backdrop-blur-md">
+      <Card className="border-[var(--card-border)] bg-[var(--panel)]">
         <CardHeader className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-4">
           <div>
-            <CardTitle className="text-lg font-bold text-slate-100 flex items-center gap-2">
-              <FileCheck className="w-5 h-5 text-amber-500" />
+            <CardTitle className="text-lg font-semibold text-[rgb(var(--text-rgb))] flex items-center gap-2">
+              <FileCheck className="w-5 h-5 text-[rgb(var(--gold-rgb))]" />
               {t('portal.docMod.title')}
             </CardTitle>
-            <p className="text-xs text-slate-400 mt-1">{t('portal.docMod.sub')}</p>
+            <p className="text-xs text-[rgba(var(--text-rgb),0.6)] mt-1">{t('portal.docMod.sub')}</p>
           </div>
 
           <div className="flex flex-wrap items-center gap-2">
             {/* Status Filters */}
-            <div className="flex items-center bg-slate-950 p-1 rounded-lg border border-slate-800 text-xs">
+            <div className="flex items-center bg-[rgba(var(--text-rgb),0.03)] p-1 rounded-lg border border-[var(--card-border)] text-xs">
               {(['all', 'pending', 'approved', 'rejected'] as const).map((status) => (
                 <button
                   key={status}
                   onClick={() => setFilterStatus(status)}
                   className={`px-2.5 py-1 rounded capitalize font-medium transition-colors ${
-                    filterStatus === status ? 'bg-amber-500 text-slate-950 font-bold' : 'text-slate-400 hover:text-slate-200'
+                    filterStatus === status ? 'bg-[rgb(var(--gold-rgb))] text-[#1d1233] font-bold' : 'text-[rgba(var(--text-rgb),0.6)] hover:text-[rgb(var(--text-rgb))]'
                   }`}
                 >
                   {filterLabels[status]}
@@ -85,46 +122,86 @@ export const DocumentModeration: React.FC<DocumentModerationProps> = ({
         <CardContent className="space-y-4">
           {/* Search bar */}
           <div className="relative">
-            <Search className="w-4 h-4 absolute start-3 top-3 text-slate-400" />
+            <Search className="w-4 h-4 absolute start-3 top-3 text-[rgba(var(--text-rgb),0.45)]" />
             <Input
               placeholder={t('portal.docMod.searchPlaceholder')}
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="ps-9 bg-slate-950/70 border-slate-800 text-slate-200 text-sm"
+              className="ps-9 bg-[rgba(var(--text-rgb),0.03)] border-[var(--card-border)] text-[rgb(var(--text-rgb))] placeholder:text-[rgba(var(--text-rgb),0.45)] text-sm"
             />
           </div>
 
+          {/* Bulk action bar */}
+          {selectedSet.size > 0 && (
+            <div className="flex flex-wrap items-center justify-between gap-3 rounded-lg border border-[rgba(var(--gold-rgb),0.3)] bg-[rgba(var(--gold-rgb),0.06)] px-4 py-2.5">
+              <span className="nss-mono text-sm font-bold text-[rgb(var(--gold-rgb))]">
+                {selectedSet.size} selected
+              </span>
+              <div className="flex flex-wrap gap-2">
+                <Button
+                  size="sm"
+                  className="bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30 hover:bg-emerald-500/25"
+                  onClick={handleBatchApprove}
+                >
+                  <CheckCircle2 className="w-3.5 h-3.5 me-1" /> Approve selected
+                </Button>
+                <Button
+                  size="sm"
+                  className="bg-rose-500/15 text-rose-600 dark:text-rose-400 border border-rose-500/30 hover:bg-rose-500/25"
+                  onClick={handleBatchReject}
+                >
+                  <XCircle className="w-3.5 h-3.5 me-1" /> Reject selected
+                </Button>
+                <Button variant="ghost" size="sm" onClick={() => setSelectedIds(new Set())}>
+                  Cancel
+                </Button>
+              </div>
+            </div>
+          )}
+
           {/* Table */}
-          <div className="rounded-lg border border-slate-800 overflow-x-auto">
+          <div className="rounded-lg border border-[var(--card-border)] overflow-x-auto">
             <Table>
-              <TableHeader className="bg-slate-950/80">
-                <TableRow className="border-slate-800 text-slate-400 hover:bg-transparent">
-                  <TableHead className="font-semibold text-slate-300">{t('portal.docMod.thClient')}</TableHead>
-                  <TableHead className="font-semibold text-slate-300">{t('portal.docMod.thTitleType')}</TableHead>
-                  <TableHead className="font-semibold text-slate-300">{t('portal.docMod.thSubmittedDate')}</TableHead>
-                  <TableHead className="font-semibold text-slate-300">{t('portal.docMod.thStatus')}</TableHead>
-                  <TableHead className="text-end font-semibold text-slate-300">{t('portal.docMod.thActions')}</TableHead>
+              <TableHeader className="bg-[rgba(var(--text-rgb),0.03)]">
+                <TableRow className="border-[var(--card-border)] hover:bg-transparent">
+                  <TableHead className="w-10">
+                    <Checkbox checked={allSelected} onCheckedChange={toggleAll} aria-label="Select all" className="border-[rgba(var(--text-rgb),0.3)]" />
+                  </TableHead>
+                  <TableHead className="font-semibold text-[rgba(var(--text-rgb),0.6)]">{t('portal.docMod.thClient')}</TableHead>
+                  <TableHead className="font-semibold text-[rgba(var(--text-rgb),0.6)]">{t('portal.docMod.thTitleType')}</TableHead>
+                  <TableHead className="font-semibold text-[rgba(var(--text-rgb),0.6)]">{t('portal.docMod.thSubmittedDate')}</TableHead>
+                  <TableHead className="font-semibold text-[rgba(var(--text-rgb),0.6)]">{t('portal.docMod.thStatus')}</TableHead>
+                  <TableHead className="text-end font-semibold text-[rgba(var(--text-rgb),0.6)]">{t('portal.docMod.thActions')}</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
                 {filteredDocs.length === 0 ? (
                   <TableRow>
-                    <TableCell colSpan={5} className="text-center py-8 text-slate-400 text-sm">
+                    <TableCell colSpan={6} className="text-center py-8 text-[rgba(var(--text-rgb),0.45)] text-sm">
                       {t('portal.docMod.noDocs')}
                     </TableCell>
                   </TableRow>
                 ) : (
                   filteredDocs.map((doc) => (
-                    <TableRow key={doc.id} className="border-slate-800/60 hover:bg-slate-800/30 transition-colors">
-                      <TableCell className="font-medium text-slate-200">
+                    <TableRow key={doc.id} className="border-[var(--card-border)] hover:bg-[rgba(var(--text-rgb),0.03)] transition-colors">
+                      <TableCell className="w-10">
+                        <Checkbox
+                          checked={selectedSet.has(doc.id)}
+                          disabled={doc.status !== 'pending'}
+                          onCheckedChange={() => toggleRow(doc.id)}
+                          aria-label={`Select ${doc.clientName}`}
+                          className="border-[rgba(var(--text-rgb),0.3)]"
+                        />
+                      </TableCell>
+                      <TableCell className="font-medium text-[rgb(var(--text-rgb))]">
                         <div>{doc.clientName}</div>
-                        <span className="text-[11px] text-slate-400 font-mono">{doc.clientId}</span>
+                        <span className="text-[11px] text-[rgba(var(--text-rgb),0.45)] nss-mono">{doc.clientId}</span>
                       </TableCell>
                       <TableCell>
-                        <div className="font-medium text-amber-400 text-sm">{doc.title}</div>
-                        <div className="text-xs text-slate-400 capitalize">{doc.type.replace('_', ' ')} • {doc.fileSize}</div>
+                        <div className="font-medium text-[rgb(var(--gold-rgb))] text-sm">{doc.title}</div>
+                        <div className="text-xs text-[rgba(var(--text-rgb),0.45)] capitalize">{doc.type.replace('_', ' ')} • {doc.fileSize}</div>
                       </TableCell>
-                      <TableCell className="text-xs text-slate-300">
+                      <TableCell className="text-xs text-[rgba(var(--text-rgb),0.6)]">
                         {new Date(doc.uploadedAt).toLocaleDateString()}
                       </TableCell>
                       <TableCell>
@@ -135,10 +212,10 @@ export const DocumentModeration: React.FC<DocumentModerationProps> = ({
                           <Button
                             size="sm"
                             variant="ghost"
-                            className="h-8 text-xs text-slate-300 hover:text-white hover:bg-slate-800"
+                            className="h-8 text-xs text-[rgb(var(--text-rgb))] hover:text-[rgb(var(--text-rgb))] hover:bg-[rgba(var(--text-rgb),0.05)]"
                             onClick={() => setSelectedDoc(doc)}
                           >
-                            <Eye className="w-3.5 h-3.5 me-1 text-slate-400" />
+                            <Eye className="w-3.5 h-3.5 me-1 text-[rgba(var(--text-rgb),0.45)]" />
                             {t('portal.docMod.reviewBtn')}
                           </Button>
                           {doc.status === 'pending' && (
@@ -146,7 +223,7 @@ export const DocumentModeration: React.FC<DocumentModerationProps> = ({
                               <Button
                                 size="sm"
                                 variant="ghost"
-                                className="h-8 text-xs text-emerald-400 hover:bg-emerald-500/10 hover:text-emerald-300"
+                                className="h-8 text-xs text-emerald-600 dark:text-emerald-400 hover:bg-emerald-500/10 hover:text-emerald-700 dark:hover:text-emerald-300"
                                 onClick={() => handleQuickApprove(doc)}
                               >
                                 <CheckCircle2 className="w-3.5 h-3.5 me-1" />
@@ -155,7 +232,7 @@ export const DocumentModeration: React.FC<DocumentModerationProps> = ({
                               <Button
                                 size="sm"
                                 variant="ghost"
-                                className="h-8 text-xs text-rose-400 hover:bg-rose-500/10 hover:text-rose-300"
+                                className="h-8 text-xs text-rose-600 dark:text-rose-400 hover:bg-rose-500/10 hover:text-rose-700 dark:hover:text-rose-300"
                                 onClick={() => handleQuickReject(doc)}
                               >
                                 <XCircle className="w-3.5 h-3.5 me-1" />

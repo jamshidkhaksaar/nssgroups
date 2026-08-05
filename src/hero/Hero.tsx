@@ -121,7 +121,7 @@ export default function Hero() {
               <Link to="/contact" className="nss-btn-primary rounded-sm px-8 py-4 text-base">
                 {t('hero.ctaPrimary')}
               </Link>
-              <Link to="/trading" className="nss-btn-ghost rounded-sm px-8 py-4 text-base">
+              <Link to="/marketplace" className="nss-btn-ghost rounded-sm px-8 py-4 text-base">
                 {t('hero.ctaSecondary')}
               </Link>
             </div>

@@ -17,7 +17,7 @@ interface NavItem {
 // Primary Top Bar Desktop Links (No Duplicates)
 const PRIMARY_LINKS: NavItem[] = [
   { to: '/', key: 'nav.home' },
-  { to: '/trading', key: 'nav.marketplace' },
+  { to: '/marketplace', key: 'nav.marketplace' },
   { to: '/services', key: 'nav.services' },
   { to: '/projects', key: 'nav.projects' },
   { to: '/fleet', key: 'nav.fleet' },
@@ -45,7 +45,7 @@ const OPERATIONS_SUBMENU = [
 // All Mobile Drawer Links (Complete & Unique)
 const ALL_MOBILE_LINKS: NavItem[] = [
   { to: '/', key: 'nav.home' },
-  { to: '/trading', key: 'nav.marketplace' },
+  { to: '/marketplace', key: 'nav.marketplace' },
   { to: '/services', key: 'nav.services' },
   { to: '/projects', key: 'nav.projects' },
   { to: '/fleet', key: 'nav.fleet' },
@@ -56,11 +56,14 @@ const ALL_MOBILE_LINKS: NavItem[] = [
   { to: '/contact', key: 'nav.contact' },
 ]
 
-/** Temporary toggle to hide portal login buttons while dashboards are being updated */
-const SHOW_PORTAL_LOGINS = false
+/** Toggle to show/hide portal login buttons in the navbar */
+const SHOW_PORTAL_LOGINS = true
 
 interface PortalOption {
+  /** Sign-in route (login page) */
   to: string
+  /** Direct dashboard route (no login) for quick preview */
+  previewTo: string
   labelKey: TranslationKey
   icon: LucideIcon
   accentClass: string
@@ -71,6 +74,7 @@ interface PortalOption {
 const PORTAL_OPTIONS: PortalOption[] = [
   {
     to: '/login/client',
+    previewTo: '/client-portal',
     labelKey: 'nav.clientPortal' as TranslationKey,
     icon: Building2,
     accentClass: 'text-sky-400',
@@ -79,6 +83,7 @@ const PORTAL_OPTIONS: PortalOption[] = [
   },
   {
     to: '/login/partner',
+    previewTo: '/partner-portal',
     labelKey: 'nav.partnerPortal' as TranslationKey,
     icon: Handshake,
     accentClass: 'text-emerald-400',
@@ -87,6 +92,7 @@ const PORTAL_OPTIONS: PortalOption[] = [
   },
   {
     to: '/login/admin',
+    previewTo: '/admin',
     labelKey: 'nav.adminPortal' as TranslationKey,
     icon: ShieldCheck,
     accentClass: 'text-amber-400',
@@ -173,6 +179,12 @@ export default function Navbar() {
   const closeMenu = () => setOpen(false)
 
   const handlePortalNav = (to: string) => {
+    setLoginOpen(false)
+    setOpen(false)
+    navigate(to)
+  }
+
+  const handlePreview = (to: string) => {
     setLoginOpen(false)
     setOpen(false)
     navigate(to)
@@ -547,26 +559,31 @@ export default function Navbar() {
                       {PORTAL_OPTIONS.map((opt) => {
                         const Icon = opt.icon
                         return (
-                          <button
-                            key={opt.to}
-                            onClick={() => handlePortalNav(opt.to)}
-                            className="group flex w-full items-center gap-3 rounded-lg px-3 py-3 text-start transition-colors hover:bg-[rgba(var(--text-rgb),0.05)] active:bg-[rgba(var(--text-rgb),0.08)]"
-                          >
-                            <div className={`flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-lg border ${opt.badgeClass}`}>
-                              <Icon size={18} className={opt.accentClass} />
-                            </div>
-                            <div className="min-w-0 flex-1">
-                              <p className={`text-sm font-semibold ${opt.accentClass}`}>
-                                {t(opt.labelKey)}
-                              </p>
-                              <p className="mt-0.5 text-[11px] text-[rgba(var(--text-rgb),0.45)] leading-tight">
-                                {t(opt.descKey)}
-                              </p>
-                            </div>
-                            <span className="text-[rgba(var(--text-rgb),0.25)] transition-all group-hover:text-[rgba(var(--text-rgb),0.6)] group-hover:translate-x-0.5">
-                              →
-                            </span>
-                          </button>
+                          <div key={opt.to} className="group flex w-full items-center gap-3 rounded-lg px-3 py-3 text-start transition-colors hover:bg-[rgba(var(--text-rgb),0.05)]">
+                            <button
+                              onClick={() => handlePortalNav(opt.to)}
+                              className="flex min-w-0 flex-1 items-center gap-3 text-start"
+                            >
+                              <div className={`flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-lg border ${opt.badgeClass}`}>
+                                <Icon size={18} className={opt.accentClass} />
+                              </div>
+                              <div className="min-w-0 flex-1">
+                                <p className={`text-sm font-semibold ${opt.accentClass}`}>
+                                  {t(opt.labelKey)}
+                                </p>
+                                <p className="mt-0.5 text-[11px] text-[rgba(var(--text-rgb),0.45)] leading-tight">
+                                  {t(opt.descKey)}
+                                </p>
+                              </div>
+                            </button>
+                            <button
+                              onClick={() => handlePreview(opt.previewTo)}
+                              title="Open dashboard directly (demo — no login)"
+                              className={`flex flex-none items-center gap-1 rounded-md border px-2 py-1 text-[10px] font-semibold nss-mono transition-colors ${opt.badgeClass} hover:opacity-100`}
+                            >
+                              Open
+                            </button>
+                          </div>
                         )
                       })}
                     </div>
@@ -645,23 +662,31 @@ export default function Navbar() {
                     {PORTAL_OPTIONS.map((opt) => {
                       const Icon = opt.icon
                       return (
-                        <button
-                          key={opt.to}
-                          onClick={() => handlePortalNav(opt.to)}
-                          className="flex items-center gap-3 rounded-lg px-3 py-3 text-start transition-colors hover:bg-[rgba(var(--text-rgb),0.05)]"
-                        >
-                          <div className={`flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-lg border ${opt.badgeClass}`}>
-                            <Icon size={18} className={opt.accentClass} />
-                          </div>
-                          <div>
-                            <p className={`text-sm font-semibold ${opt.accentClass}`}>
-                              {t(opt.labelKey)}
-                            </p>
-                            <p className="text-[11px] text-[rgba(var(--text-rgb),0.45)]">
-                              {t(opt.descKey)}
-                            </p>
-                          </div>
-                        </button>
+                        <div key={opt.to} className="flex items-center gap-2 rounded-lg px-2 py-2 text-start transition-colors hover:bg-[rgba(var(--text-rgb),0.05)]">
+                          <button
+                            onClick={() => handlePortalNav(opt.to)}
+                            className="flex min-w-0 flex-1 items-center gap-3 text-start"
+                          >
+                            <div className={`flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-lg border ${opt.badgeClass}`}>
+                              <Icon size={18} className={opt.accentClass} />
+                            </div>
+                            <div className="min-w-0 flex-1">
+                              <p className={`text-sm font-semibold ${opt.accentClass}`}>
+                                {t(opt.labelKey)}
+                              </p>
+                              <p className="text-[11px] text-[rgba(var(--text-rgb),0.45)]">
+                                {t(opt.descKey)}
+                              </p>
+                            </div>
+                          </button>
+                          <button
+                            onClick={() => handlePreview(opt.previewTo)}
+                            title="Open dashboard directly (demo — no login)"
+                            className={`flex flex-none items-center gap-1 rounded-md border px-2 py-1.5 text-[10px] font-semibold nss-mono ${opt.badgeClass}`}
+                          >
+                            Open
+                          </button>
+                        </div>
                       )
                     })}
                   </div>

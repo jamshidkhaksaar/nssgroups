@@ -1,5 +1,6 @@
 import type { TranslationKey } from './en'
 import { portfolioPs } from './portfolioLocales'
+import { marketplacePs } from './marketplaceLocales'
 import { translationCompletionPs } from './translationCompletion'
 
 const psBase = {
@@ -481,6 +482,9 @@ const psBase = {
 
   // ── landing page top redesign keys ──
   'topHero.badge': 'د ازبکستان او سیمې سوداګریز دهلیز',
+  'topHero.searchMarketplace': 'په بازار کې لټون',
+  'topHero.wallpaperProducts': 'د سوداګریزو محصولاتو انځور وښایئ',
+  'topHero.wallpaperPromotion': 'د بازار تبلیغاتي انځور وښایئ',
   'topHero.h1a': 'هر محصول، هر مقدار،',
   'topHero.h1b': 'هر منزل.',
   'topHero.sub': 'NSS ستاسو اړین توکي له ازبکستان څخه چمتو کوي او ستاسو ادرس ته یې په ټوله نړۍ کې رسوي.',
@@ -1121,6 +1125,7 @@ const psBase = {
 export const ps: Record<TranslationKey, string> = {
   ...psBase,
   ...portfolioPs,
+  ...marketplacePs,
   ...translationCompletionPs,
 }
 

@@ -3,6 +3,14 @@ import type { TranslationKey } from './en'
 type TranslationCompletion = Partial<Record<TranslationKey, string>>
 
 export const translationCompletionRu = {
+  "analytics.consentTitle": "Помогите нам улучшить NSS",
+  "analytics.consentDescription": "Разрешите анонимную аналитику, чтобы мы понимали, какие страницы полезны. Содержимое форм и контакты не собираются.",
+  "analytics.accept": "Разрешить аналитику",
+  "analytics.decline": "Отклонить",
+  "analytics.settings": "Настройки конфиденциальности",
+  "analytics.settingsTitle": "Настройки аналитики",
+  "analytics.settingsDescription": "Выберите, может ли NSS использовать анонимную аналитику сайта. Выбор сохраняется на этом устройстве.",
+  "analytics.saved": "Настройка сохранена",
   "cred.ungm": "UNGM ID 891952 — базовый и уровень 1",
   "shared.languageSelect": "Выберите язык",
   "shared.logoAlt": "Логотип Группы НСС",
@@ -160,6 +168,14 @@ export const translationCompletionRu = {
 } satisfies TranslationCompletion
 
 export const translationCompletionFa = {
+  "analytics.consentTitle": "به بهبود NSS کمک کنید",
+  "analytics.consentDescription": "با اجازهٔ تحلیل ناشناس، به ما کمک کنید صفحات مفید را بهتر بشناسیم. محتوای فورم و معلومات تماس جمع‌آوری نمی‌شود.",
+  "analytics.accept": "اجازهٔ تحلیل",
+  "analytics.decline": "رد کردن",
+  "analytics.settings": "تنظیمات محرمیت",
+  "analytics.settingsTitle": "ترجیحات تحلیل",
+  "analytics.settingsDescription": "انتخاب کنید که NSS از تحلیل ناشناس وب‌سایت استفاده کند یا نه. انتخاب شما در این دستگاه ذخیره می‌شود.",
+  "analytics.saved": "ترجیح ذخیره شد",
   "auth.login.title": "خوش آمدید",
   "auth.login.sub": "برای دسترسی به حساب کاربری خود اطلاعات کاربری خود را وارد کنید.",
   "auth.register.title": "یک حساب کاربری ایجاد کنید",
@@ -331,6 +347,14 @@ export const translationCompletionFa = {
 } satisfies TranslationCompletion
 
 export const translationCompletionPs = {
+  "analytics.consentTitle": "له NSS سره د ښه والي مرسته وکړئ",
+  "analytics.consentDescription": "بې نومه تحلیل ته اجازه ورکړئ څو پوه شو کومې پاڼې ګټورې دي. د فورمو محتوا او د اړیکې معلومات نه ساتل کېږي.",
+  "analytics.accept": "تحلیل ومنئ",
+  "analytics.decline": "رد کړئ",
+  "analytics.settings": "د محرمیت امستنې",
+  "analytics.settingsTitle": "د تحلیل غوره توبونه",
+  "analytics.settingsDescription": "وټاکئ چې NSS بې نومه ویب‌سایټ تحلیل وکاروي که نه. انتخاب مو په دې وسیله خوندي کېږي.",
+  "analytics.saved": "غوره توب خوندي شو",
   "auth.login.title": "بیرته پخیر راغلې",
   "auth.login.sub": "خپل حساب ته د لاسرسي لپاره خپل اسناد دننه کړئ.",
   "auth.register.title": "یو حساب جوړ کړئ",
@@ -502,6 +526,14 @@ export const translationCompletionPs = {
 } satisfies TranslationCompletion
 
 export const translationCompletionUz = {
+  "analytics.consentTitle": "NSSni yaxshilashga yordam bering",
+  "analytics.consentDescription": "Qaysi sahifalar foydali ekanini tushunishimiz uchun anonim tahlilga ruxsat bering. Shakl mazmuni va aloqa maʼlumotlari yig‘ilmaydi.",
+  "analytics.accept": "Tahlilga ruxsat",
+  "analytics.decline": "Rad etish",
+  "analytics.settings": "Maxfiylik sozlamalari",
+  "analytics.settingsTitle": "Tahlil sozlamalari",
+  "analytics.settingsDescription": "NSS anonim sayt tahlilidan foydalanishiga ruxsat berish-bermaslikni tanlang. Tanlov ushbu qurilmada saqlanadi.",
+  "analytics.saved": "Tanlov saqlandi",
   "group.tag": "NSS XALQARO KOMPANIYALAR GURUHI",
   "group.heading": "Bir guruh. Uch bo'linish. Har bir koridor.",
   "group.sub": "Temir yo'l tranzitidan tovar savdosiga, qurilishgacha - NSS Markaziy Osiyo va undan tashqarida harakat qiladi, savdo qiladi va quradi.",
@@ -1007,6 +1039,14 @@ export const translationCompletionUz = {
 } satisfies TranslationCompletion
 
 export const translationCompletionAr = {
+  "analytics.consentTitle": "ساعدنا على تحسين NSS",
+  "analytics.consentDescription": "اسمح بالتحليلات المجهولة لفهم الصفحات المفيدة. لا نجمع محتوى النماذج أو بيانات الاتصال.",
+  "analytics.accept": "السماح بالتحليلات",
+  "analytics.decline": "رفض",
+  "analytics.settings": "إعدادات الخصوصية",
+  "analytics.settingsTitle": "تفضيلات التحليلات",
+  "analytics.settingsDescription": "اختر ما إذا كان يمكن لـ NSS استخدام تحليلات مجهولة للموقع. يُحفظ اختيارك على هذا الجهاز.",
+  "analytics.saved": "تم حفظ التفضيل",
   "group.tag": "مجموعة شركات إن إس إس الدولية",
   "group.heading": "مجموعة واحدة. ثلاثة أقسام. كل ممر.",
   "group.sub": "من النقل بالسكك الحديدية إلى تجارة السلع إلى البناء - تقوم شركة NSS بالتحركات والتجارة والبناء عبر آسيا الوسطى وخارجها.",
@@ -1511,6 +1551,14 @@ export const translationCompletionAr = {
 } satisfies TranslationCompletion
 
 export const translationCompletionZh = {
+  "analytics.consentTitle": "帮助我们改进 NSS",
+  "analytics.consentDescription": "允许匿名分析，帮助我们了解哪些页面有用。我们不会收集表单内容或联系方式。",
+  "analytics.accept": "允许分析",
+  "analytics.decline": "拒绝",
+  "analytics.settings": "隐私设置",
+  "analytics.settingsTitle": "分析偏好",
+  "analytics.settingsDescription": "选择是否允许 NSS 使用匿名网站分析。您的选择会保存在此设备上。",
+  "analytics.saved": "偏好已保存",
   "group.tag": "NSS国际集团公司",
   "group.heading": "一组。三个部门。每个走廊。",
   "group.sub": "从轨道交通到大宗商品贸易再到建筑——NSS 在中亚及其他地区移动、贸易和建设。",

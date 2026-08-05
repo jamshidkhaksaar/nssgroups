@@ -12,6 +12,7 @@ import {
   localizedSpecification,
   type CatalogProduct,
 } from '@/data/productCatalog'
+import { trackEvent } from '@/analytics/analytics'
 
 interface ProductCardProps {
   product: CatalogProduct
@@ -80,12 +81,14 @@ export default function ProductCard({ product, index = 0 }: ProductCardProps) {
           <div className="mt-auto flex flex-wrap gap-3 pt-6">
             <Link
               to={`/marketplace/product/${product.sku}`}
+              onClick={() => trackEvent('product_detail_click', { sku: product.sku, origin: product.originCountry, category: product.categoryId })}
               className="inline-flex min-h-10 items-center gap-2 border border-[rgba(var(--gold-rgb),0.34)] px-4 py-2 text-xs font-semibold text-[rgb(var(--gold-rgb))] transition-colors hover:border-[rgb(var(--gold-rgb))] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgb(var(--gold-rgb))]"
             >
               {t('marketplace.viewProduct')}
             </Link>
             <Link
-              to={`/contact?intent=procurement&sku=${encodeURIComponent(product.sku)}`}
+              to={`/contact#intent=procurement&sku=${encodeURIComponent(product.sku)}`}
+              onClick={() => trackEvent('request_quote_click', { sku: product.sku, origin: product.originCountry, category: product.categoryId })}
               className="nss-btn-primary inline-flex min-h-10 items-center gap-2 rounded-sm px-4 py-2 text-xs font-bold"
             >
               {t('marketplace.requestQuote')}

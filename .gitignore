@@ -25,3 +25,24 @@ dist-ssr
 
 dist.zip
 scripts/
+!scripts/
+scripts/*
+!scripts/import-product-catalog.mjs
+!scripts/translate-product-catalog.mjs
+!scripts/generate-sitemap.mjs
+!scripts/inject-route-meta.mjs
+data/imports/*.xlsx
+data/catalog-translation-cache.json
+
+# Playwright MCP snapshots
+.playwright-mcp/
+
+# Deploy archives & screenshots
+deploy-dist-*.zip
+*.png
+CLAUDE.md
+data/catalog-translations.json
+
+# Large binary assets (deploy directly to host, not via git)
+public/projects/Topvideos/
+public/MOU/

@@ -1,5 +1,6 @@
 import type { TranslationKey } from './en'
 import { portfolioAr } from './portfolioLocales'
+import { marketplaceAr } from './marketplaceLocales'
 import { translationCompletionAr } from './translationCompletion'
 
 const arBase = {
@@ -401,6 +402,9 @@ const arBase = {
   'portal.teamSub': 'Customer organization owners will be able to manage colleagues and document permissions here.',
   'portal.manage': 'Manage organization',
   'topHero.badge': 'UZBEKISTAN & REGIONAL TRADE CORRIDOR',
+  'topHero.searchMarketplace': 'البحث في السوق',
+  'topHero.wallpaperProducts': 'عرض خلفية المنتجات التجارية',
+  'topHero.wallpaperPromotion': 'عرض خلفية الترويج للسوق',
   'topHero.h1a': 'Every Product. Every Quantity.',
   'topHero.h1b': 'Every Destination.',
   'topHero.sub': 'NSS sources the products you need from Uzbekistan and delivers them to your address worldwide.',
@@ -1041,5 +1045,6 @@ const arBase = {
 export const ar: Record<TranslationKey, string> = {
   ...arBase,
   ...portfolioAr,
+  ...marketplaceAr,
   ...translationCompletionAr,
 }
