@@ -227,7 +227,7 @@ export default function ClientLogin() {
 
           <p className="mt-8 text-center text-sm text-[rgba(var(--text-rgb),0.6)]">
             {t('auth.client.registerPrompt')}{' '}
-            <Link to="/client-portal" className="font-semibold text-sky-400 hover:underline">
+            <Link to="/register" className="font-semibold text-sky-400 hover:underline">
               {t('auth.client.registerLink')}
             </Link>
           </p>

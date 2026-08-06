@@ -112,15 +112,35 @@ export default function Portal() {
           <Reveal delay={120}>
             <section className="nss-card flex flex-col gap-4 p-6">
               <div className="flex items-center justify-between">
-                <p className="nss-section-tag">{t('portal.team')}</p>
+                <p className="nss-section-tag">PORTAL ACCESS DIRECTORY</p>
                 <Users size={20} className="text-[rgb(var(--gold-rgb))]" />
               </div>
-              <p className="text-sm leading-relaxed text-[rgba(var(--text-rgb),0.6)]">{t('portal.teamSub')}</p>
-              <div className="mt-auto">
-                <p className="nss-mono text-[10px] uppercase tracking-[0.18em] text-[rgba(var(--text-rgb),0.45)]">
-                  {t('portal.manage')}
-                </p>
-                <div className="mt-3 h-10 rounded-lg border border-[rgba(var(--gold-rgb),0.2)] bg-[rgba(var(--bg-rgb),0.4)]" />
+              <p className="text-sm leading-relaxed text-[rgba(var(--text-rgb),0.6)]">
+                Select a portal workspace below or create a new client account:
+              </p>
+              
+              <div className="space-y-2 mt-2">
+                <a
+                  href="/register"
+                  className="flex items-center justify-between rounded-lg border border-[rgba(var(--gold-rgb),0.3)] bg-[rgba(var(--gold-rgb),0.08)] p-3 text-xs font-bold text-[rgb(var(--gold-rgb))] hover:bg-[rgba(var(--gold-rgb),0.15)] transition-all"
+                >
+                  <span>📝 New Client Registration</span>
+                  <span>Register →</span>
+                </a>
+                <a
+                  href="/login/client"
+                  className="flex items-center justify-between rounded-lg border border-[var(--card-border)] bg-[rgba(var(--bg-rgb),0.4)] p-3 text-xs font-medium text-[rgb(var(--text-rgb))] hover:border-sky-400/40 transition-all"
+                >
+                  <span>🏢 Client Login & Verification</span>
+                  <span>Sign In →</span>
+                </a>
+                <a
+                  href="/login/admin"
+                  className="flex items-center justify-between rounded-lg border border-amber-500/30 bg-amber-500/10 p-3 text-xs font-bold text-amber-400 hover:bg-amber-500/20 transition-all"
+                >
+                  <span>🛡️ Executive Admin Portal</span>
+                  <span>Admin Login →</span>
+                </a>
               </div>
             </section>
           </Reveal>
