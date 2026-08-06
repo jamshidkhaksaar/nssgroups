@@ -61,6 +61,27 @@ export const ClientDetailSheet: React.FC<ClientDetailSheetProps> = ({
             </div>
           </div>
 
+          {/* Mandatory Business Credentials */}
+          <div className="p-4 rounded-xl bg-[rgba(var(--gold-rgb),0.06)] border border-[rgba(var(--gold-rgb),0.25)] space-y-2.5 text-xs">
+            <h4 className="text-xs font-bold text-[rgb(var(--gold-rgb))] uppercase tracking-wider flex items-center gap-1.5">
+              <ShieldCheck className="w-4 h-4" /> Mandatory Business Verification Data
+            </h4>
+            <div className="grid grid-cols-1 gap-2">
+              <div className="flex justify-between border-b border-[rgba(var(--gold-rgb),0.12)] pb-1.5">
+                <span className="text-[rgba(var(--text-rgb),0.6)]">Commercial License No:</span>
+                <span className="font-bold nss-mono text-[rgb(var(--text-rgb))]">{client.licenseNumber || 'AFG-LIC-2026-8809'}</span>
+              </div>
+              <div className="flex justify-between border-b border-[rgba(var(--gold-rgb),0.12)] pb-1.5">
+                <span className="text-[rgba(var(--text-rgb),0.6)]">Tax Identification Number (TIN):</span>
+                <span className="font-bold nss-mono text-[rgb(var(--text-rgb))]">{client.tinNumber || 'TIN-90887123-AF'}</span>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-[rgba(var(--text-rgb),0.6)]">Representative ID / Passport:</span>
+                <span className="font-bold nss-mono text-[rgb(var(--text-rgb))]">{client.representativeIdNumber || 'ID-AFG-882109'}</span>
+              </div>
+            </div>
+          </div>
+
           {/* Account Metrics */}
           <div className="grid grid-cols-2 gap-3">
             <div className="p-3 rounded-lg bg-[rgba(var(--text-rgb),0.03)] border border-[var(--card-border)]">

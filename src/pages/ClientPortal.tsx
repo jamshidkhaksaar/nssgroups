@@ -30,8 +30,8 @@ export default function ClientPortal() {
     country: string;
     category: ClientCategory;
   }) => {
-    const newClient = store.registerClient(clientData);
-    setActiveClientId(newClient.id);
+    const { client } = store.registerClient(clientData);
+    setActiveClientId(client.id);
   };
 
   return (

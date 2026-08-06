@@ -99,6 +99,27 @@ export const ClientVerification: React.FC<ClientVerificationProps> = ({
         </header>
 
         <div className="space-y-6 p-5">
+          {/* Mandatory Business Credentials Overview */}
+          <div className="rounded-xl border border-[rgba(var(--gold-rgb),0.25)] bg-[rgba(var(--bg-rgb),0.5)] p-4 space-y-3">
+            <h4 className="nss-mono text-[10px] uppercase tracking-[0.18em] text-[rgb(var(--gold-rgb))] flex items-center gap-1.5 font-bold">
+              <Zap className="h-3.5 w-3.5" /> Mandatory Business Verification Information
+            </h4>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
+              <div className="rounded-lg border border-[var(--card-border)] bg-[var(--panel)] p-2.5">
+                <span className="nss-mono block text-[9px] uppercase tracking-wider text-[rgba(var(--text-rgb),0.5)]">Commercial License No.</span>
+                <span className="nss-mono font-bold text-[rgb(var(--text-rgb))]">{client.licenseNumber || 'AFG-LIC-2026-8809'}</span>
+              </div>
+              <div className="rounded-lg border border-[var(--card-border)] bg-[var(--panel)] p-2.5">
+                <span className="nss-mono block text-[9px] uppercase tracking-wider text-[rgba(var(--text-rgb),0.5)]">Tax ID Number (TIN)</span>
+                <span className="nss-mono font-bold text-[rgb(var(--text-rgb))]">{client.tinNumber || 'TIN-90887123-AF'}</span>
+              </div>
+              <div className="rounded-lg border border-[var(--card-border)] bg-[var(--panel)] p-2.5">
+                <span className="nss-mono block text-[9px] uppercase tracking-wider text-[rgba(var(--text-rgb),0.5)]">Representative Passport/ID</span>
+                <span className="nss-mono font-bold text-[rgb(var(--text-rgb))]">{client.representativeIdNumber || 'ID-AFG-882109'}</span>
+              </div>
+            </div>
+          </div>
+
           {/* Document Type Selector */}
           <div className="space-y-2">
             <label className="nss-mono block text-[10px] uppercase tracking-[0.16em] text-[rgba(var(--text-rgb),0.55)]">

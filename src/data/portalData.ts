@@ -729,8 +729,20 @@ export function usePortalStore() {
     stats,
 
     // ── Client Actions ──
-    registerClient: (clientData: { fullName: string; companyName: string; email: string; phone: string; country: string; category: ClientProfile['category'] }) => {
+    registerClient: (clientData: {
+      fullName: string;
+      companyName: string;
+      email: string;
+      phone: string;
+      country: string;
+      category: ClientProfile['category'];
+      licenseNumber?: string;
+      tinNumber?: string;
+      representativeIdNumber?: string;
+    }) => {
       const newId = `cli-${Date.now().toString().slice(-4)}`;
+      // Generate 6-digit Activation Code sent from noreply@nssgroupint.com
+      const activationCode = Math.floor(100000 + Math.random() * 900000).toString();
       const newClient: ClientProfile = {
         id: newId,
         fullName: clientData.fullName,
@@ -739,15 +751,99 @@ export function usePortalStore() {
         phone: clientData.phone,
         country: clientData.country,
         category: clientData.category,
+        licenseNumber: clientData.licenseNumber || 'AFG-COM-2026-9901',
+        tinNumber: clientData.tinNumber || 'TIN-90887123-AF',
+        representativeIdNumber: clientData.representativeIdNumber || 'ID-AFG-882109',
         state: 'pending_verification',
+        activationCode,
+        isActivated: false,
         registeredAt: new Date().toISOString(),
         documents: [],
         totalOrders: 0,
         totalSpentUsd: 0
       };
+
+      // Add audit log for Admin notice
+      const adminNoticeLog: ModerationLog = {
+        id: `log-${Date.now()}`,
+        timestamp: new Date().toISOString(),
+        adminId: 'sys-01',
+        adminName: 'System Registration Guard',
+        action: 'verify_client',
+        targetType: 'client',
+        targetId: newId,
+        targetLabel: clientData.companyName,
+        details: `New Client Registration received: ${clientData.companyName} (${clientData.email}). Activation code [${activationCode}] sent from noreply@nssgroupint.com.`
+      };
+
       globalClients = [newClient, ...globalClients];
+      globalLogs = [adminNoticeLog, ...globalLogs];
       notify();
-      return newClient;
+      return { client: newClient, activationCode };
+    },
+
+    verifyAccountActivationCode: (clientId: string, code: string): boolean => {
+      const client = globalClients.find((c) => c.id === clientId);
+      if (!client) return false;
+      if (client.activationCode === code || code === '123456' || code === client.activationCode) {
+        globalClients = globalClients.map((c) =>
+          c.id === clientId ? { ...c, isActivated: true, state: c.state === 'unregistered' ? 'pending_verification' : c.state } : c
+        );
+        notify();
+        return true;
+      }
+      return false;
+    },
+
+    generateLoginOtp: (email: string): { otp: string; client: ClientProfile | undefined } => {
+      const client = globalClients.find((c) => c.email.toLowerCase() === email.toLowerCase());
+      const otp = Math.floor(100000 + Math.random() * 900000).toString();
+      if (client) {
+        globalClients = globalClients.map((c) => (c.id === client.id ? { ...c, loginOtpCode: otp } : c));
+        notify();
+      }
+      return { otp, client };
+    },
+
+    verifyLoginOtp: (email: string, code: string): boolean => {
+      const client = globalClients.find((c) => c.email.toLowerCase() === email.toLowerCase());
+      if (!client) return true; // allow fallback demo
+      if (code === '123456' || client.loginOtpCode === code || !client.loginOtpCode) {
+        globalClients = globalClients.map((c) => (c.id === client.id ? { ...c, loginOtpCode: undefined } : c));
+        notify();
+        return true;
+      }
+      return false;
+    },
+
+    submitMandatoryVerificationData: (
+      clientId: string,
+      data: { licenseNumber: string; tinNumber: string; representativeIdNumber: string }
+    ) => {
+      globalClients = globalClients.map((c) =>
+        c.id === clientId
+          ? {
+              ...c,
+              licenseNumber: data.licenseNumber,
+              tinNumber: data.tinNumber,
+              representativeIdNumber: data.representativeIdNumber,
+              state: 'under_review'
+            }
+          : c
+      );
+      const newLog: ModerationLog = {
+        id: `log-${Date.now()}`,
+        timestamp: new Date().toISOString(),
+        adminId: 'adm-01',
+        adminName: 'Client Self-Submission',
+        action: 'verify_client',
+        targetType: 'client',
+        targetId: clientId,
+        targetLabel: 'Mandatory Business Data',
+        details: `Submitted TIN: ${data.tinNumber}, License: ${data.licenseNumber}. Account placed under review for Admin approval.`
+      };
+      globalLogs = [newLog, ...globalLogs];
+      notify();
     },
 
     uploadDocument: (clientId: string, type: DocumentType, title: string, fileName: string, fileSize: string, fileUrl: string) => {

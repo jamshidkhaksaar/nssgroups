@@ -37,6 +37,12 @@ export interface ClientProfile {
   registeredAt: string;
   verifiedAt?: string;
   rejectionReason?: string;
+  activationCode?: string;
+  isActivated?: boolean;
+  loginOtpCode?: string;
+  licenseNumber?: string;
+  tinNumber?: string;
+  representativeIdNumber?: string;
   documents: VerificationDocument[];
   totalOrders: number;
   totalSpentUsd: number;
