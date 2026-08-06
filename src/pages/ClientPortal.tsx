@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useI18n } from '@/i18n/i18n';
 import { usePortalStore } from '@/data/portalData';
+import { getSession } from '@/lib/auth';
 import { ClientRegistration } from '@/components/portals/ClientRegistration';
 import { ClientVerification } from '@/components/portals/ClientVerification';
 import { ClientDashboard } from '@/components/portals/ClientDashboard';
@@ -13,8 +14,11 @@ export default function ClientPortal() {
   const { t } = useI18n();
   const store = usePortalStore();
 
-  // Selected client account for portal state (defaults to WFP if present, or first client)
-  const [activeClientId, setActiveClientId] = useState<string>(store.clients[0]?.id || 'cli-001');
+  // Selected client account for portal state (defaults to the logged-in
+  // client, falling back to WFP if present, or the first client).
+  const [activeClientId, setActiveClientId] = useState<string>(
+    getSession()?.clientId || store.clients[0]?.id || 'cli-001'
+  );
 
   const currentClient = store.clients.find((c) => c.id === activeClientId) || store.clients[0];
 
@@ -35,6 +39,8 @@ export default function ClientPortal() {
       accentColor="amber"
       portalLabel="Client Portal"
       portalIcon={<Building2 className="h-3.5 w-3.5" />}
+      userName={getSession()?.name ?? currentClient?.fullName ?? 'Portal Client'}
+      userRole={t('auth.client.badge')}
       sidebarFooter={
         currentClient && (
           <div className="rounded-xl border border-[rgba(var(--gold-rgb),0.10)] bg-[rgba(var(--bg-rgb),0.4)] p-4">
@@ -111,9 +117,9 @@ export default function ClientPortal() {
           const state = currentClient?.state ?? 'unregistered';
           const step = state === 'unregistered' ? 0 : state === 'verified' ? 2 : 1;
           const STEPS = [
-            { label: 'Register', done: step > 0 },
-            { label: 'Verify', done: step > 1 },
-            { label: 'Dashboard', done: step > 2 },
+            { label: t('portal.client.enrollStepRegister'), done: step > 0 },
+            { label: t('portal.client.enrollStepVerify'), done: step > 1 },
+            { label: t('portal.client.enrollStepDashboard'), done: step > 2 },
           ];
           return (
             <div className="flex items-center justify-between px-2">

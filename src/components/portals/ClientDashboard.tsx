@@ -138,7 +138,7 @@ export const ClientDashboard: React.FC<ClientDashboardProps> = ({
         <KpiCard
           label={t('portal.client.dash.activeShipmentsTab')}
           value={clientOrders.filter((o) => o.status !== 'delivered' && o.status !== 'cancelled').length}
-          sub={`${clientOrders.length} total`}
+          sub={`${clientOrders.length} ${t('portal.client.dash.kpiSubTotal')}`}
           icon={Truck}
           iconClass="bg-sky-500/10 border-sky-500/25 text-sky-500"
           valueClassName="nss-mono text-[26px] font-bold leading-none text-[rgb(var(--text-rgb))]"
@@ -146,23 +146,23 @@ export const ClientDashboard: React.FC<ClientDashboardProps> = ({
         <KpiCard
           label={t('portal.status.delivered')}
           value={clientOrders.filter((o) => o.status === 'delivered').length}
-          sub="completed"
+          sub={t('portal.client.dash.kpiSubCompleted')}
           icon={CheckCircle2}
           iconClass="bg-emerald-500/10 border-emerald-500/25 text-emerald-500"
           valueClassName="nss-mono text-[26px] font-bold leading-none text-[rgb(var(--text-rgb))]"
         />
         <KpiCard
-          label="Total spend"
+          label={t('portal.client.dash.kpiTotalLabel')}
           value={`${client.totalSpentUsd.toLocaleString()}`}
-          sub={`${client.totalOrders} orders`}
+          sub={`${client.totalOrders} ${t('portal.client.dash.kpiSubOrders')}`}
           icon={DollarSign}
           iconClass="bg-[rgba(var(--gold-rgb),0.1)] border-[rgba(var(--gold-rgb),0.25)] text-[rgb(var(--gold-rgb))]"
           valueClassName="nss-mono text-[22px] font-bold leading-none text-[rgb(var(--gold-rgb))]"
         />
         <KpiCard
-          label="Invoices open"
+          label={t('portal.client.dash.kpiInvoicesOpen')}
           value={invoices.filter((i) => i.status !== 'paid').length}
-          sub={`${invoices.filter((i) => i.status === 'paid').length} paid`}
+          sub={`${invoices.filter((i) => i.status === 'paid').length} ${t('portal.client.dash.kpiSubPaid')}`}
           icon={FileText}
           iconClass="bg-amber-500/10 border-amber-500/25 text-amber-500"
           valueClassName="nss-mono text-[26px] font-bold leading-none text-[rgb(var(--text-rgb))]"

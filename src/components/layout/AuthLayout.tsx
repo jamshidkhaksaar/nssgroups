@@ -6,7 +6,6 @@ import { useI18n } from '@/i18n/i18n';
 interface AuthLayoutProps {
   children: ReactNode;
   accentColor?: 'amber' | 'blue' | 'emerald' | 'gold';
-  badge?: string;
   sideHeadline?: string;
   sideSub?: string;
   sideIcon?: ReactNode;
@@ -47,15 +46,15 @@ export default function AuthLayout({
             (e.target as HTMLImageElement).src = './posters/1.jpg';
           }}
         />
-        {/* Glassmorphism gradient overlay */}
+        {/* Glassmorphism gradient overlay (reversed in RTL so the fade sits on the form side) */}
         <div
-          className={`absolute inset-0 bg-gradient-to-r ${overlayClass}`}
+          className={`absolute inset-0 bg-gradient-to-r rtl:bg-gradient-to-l ${overlayClass}`}
         />
 
         {/* Brand overlay */}
         <div className="absolute inset-0 flex flex-col p-12">
           <Link to="/" className="inline-flex w-fit items-center gap-2 text-white hover:opacity-80 transition-opacity">
-            <ArrowLeft size={18} />
+            <ArrowLeft size={18} className="rtl:rotate-180" />
             <span className="nss-mono text-xs tracking-[0.2em] uppercase">{t('nav.home')}</span>
           </Link>
 
@@ -86,9 +85,9 @@ export default function AuthLayout({
         {/* Mobile back button */}
         <Link
           to="/"
-          className="absolute top-8 left-6 inline-flex items-center gap-2 text-[rgba(var(--text-rgb),0.6)] lg:hidden hover:text-[rgb(var(--gold-rgb))] transition-colors"
+          className="absolute top-8 start-6 inline-flex items-center gap-2 text-[rgba(var(--text-rgb),0.6)] lg:hidden hover:text-[rgb(var(--gold-rgb))] transition-colors"
         >
-          <ArrowLeft size={18} />
+          <ArrowLeft size={18} className="rtl:rotate-180" />
           <span className="nss-mono text-xs tracking-[0.2em] uppercase">{t('nav.home')}</span>
         </Link>
         {children}

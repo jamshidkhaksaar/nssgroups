@@ -31,6 +31,7 @@ scripts/*
 !scripts/translate-product-catalog.mjs
 !scripts/generate-sitemap.mjs
 !scripts/inject-route-meta.mjs
+!scripts/convert-product-images.mjs
 data/imports/*.xlsx
 data/catalog-translation-cache.json
 
@@ -39,10 +40,18 @@ data/catalog-translation-cache.json
 
 # Deploy archives & screenshots
 deploy-dist-*.zip
-*.png
+nss-hero-*.png
+nss-second-wallpaper-*.png
+qa-device-screens-*.png
 CLAUDE.md
 data/catalog-translations.json
 
 # Large binary assets (deploy directly to host, not via git)
 public/projects/Topvideos/
 public/MOU/
+# Marketplace source photos (converted webps in public/marketplace/products/ ship instead)
+NSS Group/
+
+# Agent/tool working dirs
+.commandcode/
+.claude/

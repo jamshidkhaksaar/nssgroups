@@ -9,14 +9,21 @@ template with the full shadcn/ui component set pre-installed. There is **no
 backend**: the contact form opens a prefilled `mailto:`; all content lives in
 i18n translation files (`src/i18n/translations/`) and `src/data/content.ts`.
 
-The site has six routes (`src/App.tsx`): `/` (Home), `/about`, `/services`,
-`/fleet`, `/network`, `/contact` — all wrapped in a shared `Layout`
-(fixed `Navbar` + `Footer`, `src/components/layout/`). It is fully translated
-into **English, Russian, Dari (Farsi) and Pashto** via a hand-rolled i18n
+The site has ~20 routes (`src/App.tsx`): marketing pages wrapped in a shared
+`Layout` (fixed `Navbar` + `Footer`, `src/components/layout/`) — `/`, `/about`,
+`/services`, `/fleet`, `/network`, `/contact`, `/booking`, `/tracking`,
+`/projects`, `/company-portfolio`, `/marketplace`, `/marketplace/product/:sku`,
+`/portal` — plus guarded portal dashboards (`/admin`, `/client-portal`,
+`/partner-portal`) and auth pages (`/login`, `/login/admin`, `/login/client`,
+`/login/partner`, `/register`). It is fully translated into **English, Russian,
+Dari (Farsi), Pashto, Uzbek, Arabic and Chinese** via a hand-rolled i18n
 system (no library): `src/i18n/I18nContext.tsx` (provider, sets `<html lang>`
-and `dir` — FA/PS are RTL) and `src/i18n/i18n.ts` (`useI18n()`, `LANGS`,
+and `dir` — FA/PS/AR are RTL) and `src/i18n/i18n.ts` (`useI18n()`, `LANGS`,
 dictionaries). `src/i18n/translations/en.ts` is the master key list; every
-user-visible string must be a translation key, never hardcoded.
+user-visible string must be a translation key, never hardcoded. New/translated
+keys go into `src/i18n/translations/{en,ru,fa,ps,uz,ar,zh}.ts` base
+dictionaries (or the shared `translationCompletion.ts` objects, which spread
+last and win).
 
 The centerpiece is a cinematic, fully custom canvas-based hero section
 (`src/hero/`): a pure-Canvas-2D animation engine that loops through four
@@ -63,31 +70,40 @@ dependencies unless explicitly asked.
 ```
 index.html            Entry HTML (fonts, theme-color, #root)
 public/logo.png       Static asset, referenced as "./logo.png"
-public/posters/       Branded marketing posters (1,3,4,6,7,8,9,12.jpg) used as
+public/posters/       Branded marketing posters (1,3,12,auth_bg.jpg) used as
                       section imagery — referenced as "./posters/N.jpg"
 src/main.tsx          React root: <BrowserRouter> + <I18nProvider> + StrictMode
-src/App.tsx           Route table — 6 routes under the shared <Layout/>
+src/App.tsx           Route table — marketing pages under <Layout/>, guarded
+                      portal dashboards, and auth login pages
 src/index.css         Tailwind, shadcn vars, NSS base + shared section classes
                       (nss-section-tag, nss-h2, nss-card, nss-index,
                       nss-reveal-io, nss-poster, nss-route-line)
-src/App.css           Template leftover; currently unused by App.tsx
-src/pages/            Home, About, Services, Fleet, Network, Contact
+src/pages/            Home, About, Services, Fleet, Network, Contact, Booking,
+                      Tracking, Projects, Marketplace, Portals, auth pages
 src/i18n/
   I18nContext.tsx     <I18nProvider> only (react-refresh rule: no other exports)
-  i18n.ts             useI18n(), LANGS, dictionaries, context object
-  translations/       en.ts (master keys, `as const`) + ru/fa/ps — all must
-                      stay Record<TranslationKey, string> complete
+  i18n.ts             useI18n(), LANGS (7 langs incl. uz/ar/zh), dictionaries
+  translations/       en.ts (master keys, `as const`) + ru/fa/ps/uz/ar/zh — all
+                      must stay Record<TranslationKey, string> complete;
+                      shared extras live in translationCompletion.ts (spread last)
 src/data/content.ts   Structured data (fleet counts, rate card, offices,
                       corridors, clients, contact info) — numbers here,
                       labels via i18n keys
+src/data/portalData.ts localStorage-backed portal store (clients, orders,
+                      invoices, partners, documents, logs)
 src/components/
-  layout/             Navbar, Footer, Layout (fixed nav, scroll-to-top, Toaster)
+  layout/             Navbar, Footer, Layout (fixed nav, scroll-to-top, Toaster),
+                      AuthLayout (split-screen auth shell), DashboardShell
+                      (portal chrome), RequirePortal (role route guard)
+  portals/            Admin/Client/Partner dashboard components
   Reveal.tsx          Scroll-reveal wrapper (useReveal + .nss-reveal-io)
   AnimatedNumber.tsx  Count-up on scroll into view
   PageHeader.tsx      Standard subpage header block
-  LanguageSwitcher.tsx EN · RU · دری · پښتو switcher
-  ui/                 ~50 shadcn/ui components — generated, edit sparingly
-src/hooks/            useReveal.ts (IntersectionObserver), use-mobile.ts
+  LanguageSwitcher.tsx EN · RU · دری · پښتو · O'Z · ع · 中文 switcher
+  ui/                 15 shadcn/ui components in use — generated, edit sparingly
+src/hooks/            useReveal.ts (IntersectionObserver)
+src/lib/              utils.ts (cn), auth.ts (mock session + route guard hook),
+                      seo.ts, request-store.ts
 src/hero/             Custom cinematic hero (the app's core feature)
   Hero.tsx            React wrapper: canvas + copy/chrome (i18n via useI18n)
   engine.ts           HeroEngine class — pure Canvas 2D animation (~1200 lines),
@@ -96,8 +112,7 @@ src/hero/             Custom cinematic hero (the app's core feature)
                       (globally used — hero.css is imported app-wide via Hero)
 src/sections/home/    Home sections: TrustBar, GroupDivisions, ImpactStats,
                       ServicesPreview, CorridorTeaser, ClientsStrip, CtaBand
-src/lib/utils.ts      cn() helper
-src/types/            (empty) reserved for shared type definitions
+src/types/            portal.ts — portal data model types
 ```
 
 ## Conventions
@@ -121,7 +136,7 @@ src/types/            (empty) reserved for shared type definitions
   (`<ThemeProvider>`) persist the choice and set `data-theme` on `<html>`;
   the navbar Sun/Moon button toggles it.
 - **i18n**: every user-visible string is a key in `src/i18n/translations/en.ts`;
-  add keys to **all four** files (en/ru/fa/ps) — tsc enforces completeness via
+  add keys to **all seven** files (en/ru/fa/ps/uz/ar/zh) — tsc enforces completeness via
   `Record<TranslationKey, string>`. FA/PS are RTL: the provider sets
   `document.documentElement.dir`; use Tailwind logical utilities (`ms-`/`me-`,
   `ps-`/`pe-`, `start-`/`end-`, `text-start/end`) for direction-sensitive

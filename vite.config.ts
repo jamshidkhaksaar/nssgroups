@@ -5,9 +5,8 @@ import { inspectAttr } from 'kimi-plugin-inspect-react'
 
 // https://vite.dev/config/
 export default defineConfig({
-  // Vercel rewrites deep links to index.html, so production assets must be root-relative.
-  // Retain relative assets for the existing portable static-build workflow.
-  base: process.env.VERCEL ? '/' : './',
+  // Relative asset paths keep dist/ portable for any static host (cPanel/Namecheap).
+  base: './',
   plugins: [inspectAttr(), react()],
   server: {
     port: 3000,

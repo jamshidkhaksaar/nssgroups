@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useI18n } from '@/i18n/i18n';
 import { usePortalStore } from '@/data/portalData';
+import { getSession } from '@/lib/auth';
 import { PartnerGamification } from '@/components/portals/PartnerGamification';
 import { PartnerMarketplace } from '@/components/portals/PartnerMarketplace';
 import { PartnerBids } from '@/components/portals/PartnerBids';
@@ -18,7 +19,10 @@ export default function PartnerPortal() {
   const { t } = useI18n();
   const store = usePortalStore();
 
-  const [activePartnerId, setActivePartnerId] = useState<string>(store.partners[0]?.id || 'part-201');
+  // Default to the logged-in partner if present, else the first seeded partner.
+  const [activePartnerId, setActivePartnerId] = useState<string>(
+    getSession()?.partnerId || store.partners[0]?.id || 'part-201'
+  );
   const [activeTab, setActiveTab] = useState<string>('gamification');
 
   const currentPartner = store.partners.find((p) => p.id === activePartnerId) || store.partners[0];
@@ -54,6 +58,8 @@ export default function PartnerPortal() {
       accentColor="emerald"
       portalLabel="Partner Portal"
       portalIcon={<Users className="h-3.5 w-3.5" />}
+      userName={getSession()?.name ?? currentPartner?.companyName ?? 'Partner Organization'}
+      userRole={t('auth.partner.badge')}
       navItems={NAV_ITEMS.map((item) => ({
         id: item.id,
         label: t(item.labelKey),

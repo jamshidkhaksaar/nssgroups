@@ -62,8 +62,6 @@ const SHOW_PORTAL_LOGINS = true
 interface PortalOption {
   /** Sign-in route (login page) */
   to: string
-  /** Direct dashboard route (no login) for quick preview */
-  previewTo: string
   labelKey: TranslationKey
   icon: LucideIcon
   accentClass: string
@@ -74,7 +72,6 @@ interface PortalOption {
 const PORTAL_OPTIONS: PortalOption[] = [
   {
     to: '/login/client',
-    previewTo: '/client-portal',
     labelKey: 'nav.clientPortal' as TranslationKey,
     icon: Building2,
     accentClass: 'text-sky-400',
@@ -83,7 +80,6 @@ const PORTAL_OPTIONS: PortalOption[] = [
   },
   {
     to: '/login/partner',
-    previewTo: '/partner-portal',
     labelKey: 'nav.partnerPortal' as TranslationKey,
     icon: Handshake,
     accentClass: 'text-emerald-400',
@@ -92,7 +88,6 @@ const PORTAL_OPTIONS: PortalOption[] = [
   },
   {
     to: '/login/admin',
-    previewTo: '/admin',
     labelKey: 'nav.adminPortal' as TranslationKey,
     icon: ShieldCheck,
     accentClass: 'text-amber-400',
@@ -179,12 +174,6 @@ export default function Navbar() {
   const closeMenu = () => setOpen(false)
 
   const handlePortalNav = (to: string) => {
-    setLoginOpen(false)
-    setOpen(false)
-    navigate(to)
-  }
-
-  const handlePreview = (to: string) => {
     setLoginOpen(false)
     setOpen(false)
     navigate(to)
@@ -576,13 +565,6 @@ export default function Navbar() {
                                 </p>
                               </div>
                             </button>
-                            <button
-                              onClick={() => handlePreview(opt.previewTo)}
-                              title="Open dashboard directly (demo — no login)"
-                              className={`flex flex-none items-center gap-1 rounded-md border px-2 py-1 text-[10px] font-semibold nss-mono transition-colors ${opt.badgeClass} hover:opacity-100`}
-                            >
-                              Open
-                            </button>
                           </div>
                         )
                       })}
@@ -678,13 +660,6 @@ export default function Navbar() {
                                 {t(opt.descKey)}
                               </p>
                             </div>
-                          </button>
-                          <button
-                            onClick={() => handlePreview(opt.previewTo)}
-                            title="Open dashboard directly (demo — no login)"
-                            className={`flex flex-none items-center gap-1 rounded-md border px-2 py-1.5 text-[10px] font-semibold nss-mono ${opt.badgeClass}`}
-                          >
-                            Open
                           </button>
                         </div>
                       )

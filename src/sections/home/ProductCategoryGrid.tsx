@@ -10,16 +10,16 @@ interface CategoryItem {
 }
 
 const CATEGORIES: CategoryItem[] = [
-  { titleKey: 'categories.c1.title', poster: './card_images/categories/construction-materials.jpg',  to: '/marketplace' },
-  { titleKey: 'categories.c2.title', poster: './card_images/categories/industrial-materials.jpg', to: '/marketplace' },
-  { titleKey: 'categories.c3.title', poster: './card_images/categories/food-staples.jpg', to: '/marketplace' },
-  { titleKey: 'categories.c4.title', poster: './card_images/categories/fresh-produce.jpg', to: '/marketplace' },
-  { titleKey: 'categories.c5.title', poster: './card_images/categories/textiles-handicrafts.png', to: '/marketplace' },
-  { titleKey: 'categories.c6.title', poster: './card_images/categories/dried-fruit.jpg', to: '/marketplace' },
-  { titleKey: 'categories.c7.title', poster: './card_images/categories/spices-herbs.png', to: '/marketplace' },
-  { titleKey: 'categories.c8.title', poster: './card_images/categories/agricultural-products.png', to: '/marketplace' },
-  { titleKey: 'categories.c9.title', poster: './card_images/categories/supermarket-goods.png', to: '/marketplace' },
-  { titleKey: 'categories.c10.title',poster: './card_images/categories/packaging.png', to: '/marketplace' },
+  { titleKey: 'categories.c1.title', poster: './marketplace/products/construction-materials/afghan-made-cement.webp', to: '/marketplace' },
+  { titleKey: 'categories.c2.title', poster: './marketplace/products/industrial-materials/afghan-raw-cotton.webp', to: '/marketplace' },
+  { titleKey: 'categories.c3.title', poster: './marketplace/products/food-staples/barley-groats.webp', to: '/marketplace' },
+  { titleKey: 'categories.c4.title', poster: './marketplace/products/fresh-produce/apricot-compote.webp', to: '/marketplace' },
+  { titleKey: 'categories.c5.title', poster: './marketplace/products/textiles-handicrafts/bath-towel.webp', to: '/marketplace' },
+  { titleKey: 'categories.c6.title', poster: './marketplace/products/dried-fruit/almonds.webp', to: '/marketplace' },
+  { titleKey: 'categories.c7.title', poster: './marketplace/products/spices-herbs/asafoetida-resin.webp', to: '/marketplace' },
+  { titleKey: 'categories.c8.title', poster: './marketplace/products/agricultural-products/bamyan-apricots.webp', to: '/marketplace' },
+  { titleKey: 'categories.c9.title', poster: './marketplace/products/supermarket-goods/butter.webp', to: '/marketplace' },
+  { titleKey: 'categories.c10.title', poster: './marketplace/products/packaging/1l-pet-bottle.webp', to: '/marketplace' },
 ]
 
 export default function ProductCategoryGrid() {

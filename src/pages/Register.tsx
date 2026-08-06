@@ -1,15 +1,35 @@
-import { Link } from 'react-router'
+import { Link, useNavigate } from 'react-router'
 import { useI18n } from '@/i18n/i18n'
 import AuthLayout from '@/components/layout/AuthLayout'
 import Reveal from '@/components/Reveal'
+import { toast } from 'sonner'
 import { UserPlus } from 'lucide-react'
+import { useRef } from 'react'
 
 export default function Register() {
   const { t } = useI18n()
+  const navigate = useNavigate()
+  const formRef = useRef<HTMLFormElement>(null)
 
   const handleRegister = (e: React.FormEvent) => {
     e.preventDefault()
-    // No backend yet
+    const form = formRef.current
+    if (!form) return
+    const password = (form.elements.namedItem('password') as HTMLInputElement).value
+    const confirm = (form.elements.namedItem('confirmPassword') as HTMLInputElement).value
+    if (password !== confirm) {
+      toast.error(t('auth.passwordMismatch'))
+      return
+    }
+    // Frontend-only demo: there is no backend, so a successful registration
+    // routes to the generic login page.
+    toast.success(t('auth.registerSuccess'))
+    navigate('/login')
+  }
+
+  const handleSocial = () => {
+    toast.success(t('auth.registerSuccess'))
+    navigate('/login')
   }
 
   return (
@@ -25,13 +45,14 @@ export default function Register() {
             </p>
           </div>
 
-          <form onSubmit={handleRegister} className="space-y-5">
+          <form ref={formRef} onSubmit={handleRegister} className="space-y-5">
             <div>
               <label className="nss-mono mb-2 block text-[11px] tracking-[0.14em] text-[rgba(var(--text-rgb),0.58)] uppercase">
                 {t('auth.fullName')} *
               </label>
               <input 
                 type="text" 
+                name="fullName"
                 required 
                 className="h-12 w-full rounded-sm border border-[rgba(var(--gold-rgb),0.2)] bg-[var(--panel)] px-4 text-sm text-[rgb(var(--text-rgb))] outline-none transition-colors focus:border-[rgb(var(--gold-rgb))] focus:ring-1 focus:ring-[rgba(var(--gold-rgb),0.5)]" 
                 placeholder={t('auth.namePlaceholder')}
@@ -44,6 +65,7 @@ export default function Register() {
               </label>
               <input 
                 type="email" 
+                name="email"
                 required 
                 className="h-12 w-full rounded-sm border border-[rgba(var(--gold-rgb),0.2)] bg-[var(--panel)] px-4 text-sm text-[rgb(var(--text-rgb))] outline-none transition-colors focus:border-[rgb(var(--gold-rgb))] focus:ring-1 focus:ring-[rgba(var(--gold-rgb),0.5)]" 
                 placeholder="name@company.com"
@@ -56,6 +78,7 @@ export default function Register() {
               </label>
               <input 
                 type="password" 
+                name="password"
                 required 
                 className="h-12 w-full rounded-sm border border-[rgba(var(--gold-rgb),0.2)] bg-[var(--panel)] px-4 text-sm text-[rgb(var(--text-rgb))] outline-none transition-colors focus:border-[rgb(var(--gold-rgb))] focus:ring-1 focus:ring-[rgba(var(--gold-rgb),0.5)]" 
                 placeholder="••••••••"
@@ -68,6 +91,7 @@ export default function Register() {
               </label>
               <input 
                 type="password" 
+                name="confirmPassword"
                 required 
                 className="h-12 w-full rounded-sm border border-[rgba(var(--gold-rgb),0.2)] bg-[var(--panel)] px-4 text-sm text-[rgb(var(--text-rgb))] outline-none transition-colors focus:border-[rgb(var(--gold-rgb))] focus:ring-1 focus:ring-[rgba(var(--gold-rgb),0.5)]" 
                 placeholder="••••••••"
@@ -93,7 +117,7 @@ export default function Register() {
 
           <div className="grid grid-cols-3 gap-3">
             {/* Google */}
-            <button type="button" className="flex h-12 items-center justify-center rounded-sm border border-[rgba(var(--text-rgb),0.1)] bg-[var(--panel)] transition-colors hover:bg-[rgba(var(--text-rgb),0.05)]">
+            <button type="button" onClick={handleSocial} className="flex h-12 items-center justify-center rounded-sm border border-[rgba(var(--text-rgb),0.1)] bg-[var(--panel)] transition-colors hover:bg-[rgba(var(--text-rgb),0.05)]">
               <svg width="20" height="20" viewBox="0 0 24 24">
                 <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
                 <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />
@@ -102,13 +126,13 @@ export default function Register() {
               </svg>
             </button>
             {/* Apple */}
-            <button type="button" className="flex h-12 items-center justify-center rounded-sm border border-[rgba(var(--text-rgb),0.1)] bg-[var(--panel)] transition-colors hover:bg-[rgba(var(--text-rgb),0.05)]">
+            <button type="button" onClick={handleSocial} className="flex h-12 items-center justify-center rounded-sm border border-[rgba(var(--text-rgb),0.1)] bg-[var(--panel)] transition-colors hover:bg-[rgba(var(--text-rgb),0.05)]">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.05 2.5.82 3.12.82.65 0 1.98-.92 3.57-.78 1.54.13 2.92.83 3.73 2.05-3.21 1.93-2.68 5.76.43 6.95-1.03 2.82-2.58 4.14-2.85 3.93zm-4.98-13.4c.48-1.49-.33-3.14-1.84-3.69-.47 1.52.49 3.16 1.84 3.69z"/>
               </svg>
             </button>
             {/* Facebook */}
-            <button type="button" className="flex h-12 items-center justify-center rounded-sm border border-[rgba(var(--text-rgb),0.1)] bg-[var(--panel)] transition-colors hover:bg-[rgba(var(--text-rgb),0.05)]">
+            <button type="button" onClick={handleSocial} className="flex h-12 items-center justify-center rounded-sm border border-[rgba(var(--text-rgb),0.1)] bg-[var(--panel)] transition-colors hover:bg-[rgba(var(--text-rgb),0.05)]">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="#1877F2">
                 <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.469h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.469h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
               </svg>

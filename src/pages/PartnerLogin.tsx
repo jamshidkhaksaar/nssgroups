@@ -2,28 +2,41 @@ import { useNavigate, Link } from 'react-router';
 import { useI18n } from '@/i18n/i18n';
 import AuthLayout from '@/components/layout/AuthLayout';
 import Reveal from '@/components/Reveal';
+import { login } from '@/lib/auth';
+import { usePortalStore } from '@/data/portalData';
 import { Handshake, LogIn, Star, TrendingUp, Eye, EyeOff } from 'lucide-react';
 import { useState } from 'react';
 
 export default function PartnerLogin() {
   const { t } = useI18n();
   const navigate = useNavigate();
+  const store = usePortalStore();
   const [showPass, setShowPass] = useState(false);
   const [loading, setLoading] = useState(false);
 
+  const signInAsPartner = (email: string, partnerId?: string) => {
+    const partner = partnerId ? store.partners.find((p) => p.id === partnerId) : undefined;
+    login('partner', {
+      name: partner?.companyName ?? 'Partner Organization',
+      email,
+      partnerId: partner?.id ?? store.partners[0]?.id,
+    });
+    navigate('/partner-portal');
+  };
+
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
+    const form = e.currentTarget as HTMLFormElement;
+    const email = (form.elements.namedItem('email') as HTMLInputElement).value;
     setLoading(true);
     setTimeout(() => {
-      setLoading(false);
-      navigate('/partner-portal');
+      signInAsPartner(email);
     }, 1000);
   };
 
   return (
     <AuthLayout
       accentColor="emerald"
-      badge={t('auth.partner.badge')}
       sideHeadline={t('auth.partner.sideHeadline')}
       sideSub={t('auth.partner.sideSub')}
       sideIcon={<Handshake size={48} className="text-emerald-400 mb-6 opacity-80" />}
@@ -68,6 +81,7 @@ export default function PartnerLogin() {
               </label>
               <input
                 type="email"
+                name="email"
                 required
                 className="h-12 w-full rounded-sm border border-[rgba(var(--text-rgb),0.12)] bg-[var(--panel)] px-4 text-sm text-[rgb(var(--text-rgb))] outline-none transition-colors focus:border-emerald-400 focus:ring-1 focus:ring-emerald-400/30"
                 placeholder="partner@company.com"
@@ -88,6 +102,7 @@ export default function PartnerLogin() {
                 <button
                   type="button"
                   onClick={() => setShowPass((v) => !v)}
+                  aria-label={showPass ? t('auth.hidePassword') : t('auth.showPassword')}
                   className="absolute inset-y-0 end-0 px-4 flex items-center text-[rgba(var(--text-rgb),0.4)] hover:text-[rgba(var(--text-rgb),0.8)] transition-colors"
                 >
                   {showPass ? <EyeOff size={16} /> : <Eye size={16} />}

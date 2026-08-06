@@ -51,6 +51,12 @@ export const CATEGORY_IMAGES: Record<CatalogCategoryId, string> = {
 }
 
 export function getCategoryProductImage(product: CatalogProduct): string {
+  // Per-product photo wins when present; otherwise fall back to the category
+  // artwork. Unmatched products keep the old card_images path, so the check
+  // for /marketplace/products/ lets the nicer category art show instead.
+  if (product.representativeImage?.includes('/marketplace/products/')) {
+    return product.representativeImage
+  }
   return CATEGORY_IMAGES[product.categoryId] || product.representativeImage || './marketplace/categories/food-staples.webp'
 }
 

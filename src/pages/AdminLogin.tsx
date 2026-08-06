@@ -2,6 +2,7 @@ import { useNavigate } from 'react-router';
 import { useI18n } from '@/i18n/i18n';
 import AuthLayout from '@/components/layout/AuthLayout';
 import Reveal from '@/components/Reveal';
+import { login } from '@/lib/auth';
 import { ShieldCheck, LogIn, Lock, Eye, EyeOff } from 'lucide-react';
 import { useState } from 'react';
 
@@ -13,10 +14,12 @@ export default function AdminLogin() {
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
+    const form = e.currentTarget as HTMLFormElement;
+    const email = (form.elements.namedItem('email') as HTMLInputElement).value;
     setLoading(true);
-    // Simulate auth delay then navigate to admin portal
+    // Simulate auth delay then create the demo session and navigate.
     setTimeout(() => {
-      setLoading(false);
+      login('admin', { name: 'Samir Alemyar', email });
       navigate('/admin');
     }, 1000);
   };
@@ -24,7 +27,6 @@ export default function AdminLogin() {
   return (
     <AuthLayout
       accentColor="amber"
-      badge={t('auth.admin.badge')}
       sideHeadline={t('auth.admin.sideHeadline')}
       sideSub={t('auth.admin.sideSub')}
       sideIcon={<ShieldCheck size={48} className="text-amber-400 mb-6 opacity-80" />}
@@ -52,6 +54,7 @@ export default function AdminLogin() {
               </label>
               <input
                 type="email"
+                name="email"
                 required
                 className="h-12 w-full rounded-sm border border-[rgba(var(--gold-rgb),0.2)] bg-[var(--panel)] px-4 text-sm text-[rgb(var(--text-rgb))] outline-none transition-colors focus:border-amber-400 focus:ring-1 focus:ring-amber-400/30"
                 placeholder="admin@nss.af"

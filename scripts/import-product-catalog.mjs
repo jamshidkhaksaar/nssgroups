@@ -1,10 +1,12 @@
 import fs from 'node:fs/promises'
 import path from 'node:path'
 import readXlsxFile from 'read-excel-file/node'
+import { slugify } from './convert-product-images.mjs'
 
 const workbookPath = path.resolve('data/imports/NSS_Global_Marketplace_300_Product_Catalog.xlsx')
 const translationsPath = path.resolve('data/catalog-translations.json')
 const outputPath = path.resolve('src/data/productCatalog.generated.ts')
+const productsImageDir = path.resolve('public/marketplace/products')
 const isCheckOnly = process.argv.includes('--check')
 const languages = ['en', 'fa', 'ps', 'ru', 'uz', 'ar', 'zh']
 
@@ -51,12 +53,42 @@ function categoryFor(sourceCategory, productName) {
   return category
 }
 
+/**
+ * Build a lookup of slugified photo filename → served URL from the
+ * converted webps in public/marketplace/products/{categoryId}/.
+ */
+async function buildPhotoMap() {
+  const map = new Map()
+  let count = 0
+  try {
+    const categories = await fs.readdir(productsImageDir)
+    for (const categoryId of categories) {
+      const dir = path.join(productsImageDir, categoryId)
+      const stat = await fs.stat(dir)
+      if (!stat.isDirectory()) continue
+      const files = await fs.readdir(dir)
+      for (const file of files) {
+        if (!/\.webp$/i.test(file)) continue
+        const slug = file.replace(/\.webp$/i, '')
+        map.set(slug, `/marketplace/products/${categoryId}/${file}`)
+        count++
+      }
+    }
+  } catch {
+    // No converted images yet — fall back to category images everywhere.
+  }
+  console.log(`Photo map: ${count} images indexed`)
+  return map
+}
+
 async function main() {
+  const photoMap = await buildPhotoMap()
   const sheets = await readXlsxFile(workbookPath)
   const translationSeed = JSON.parse(await fs.readFile(translationsPath, 'utf8'))
   const products = []
   const seen = new Set()
   const countryCounts = { AF: 0, UZ: 0 }
+  let matchedCount = 0
 
   for (const sheetName of ['Uzbekistan_150', 'Afghanistan_150']) {
     const sheet = sheets.find((entry) => entry.sheet === sheetName)
@@ -94,6 +126,9 @@ async function main() {
       }
 
       const categoryId = categoryFor(sourceCategory, nameEn)
+      const photoSlug = slugify(nameEn)
+      const matchedImage = photoMap.get(photoSlug)
+      if (matchedImage) matchedCount += 1
       products.push({
         sku,
         originCountry,
@@ -118,7 +153,7 @@ async function main() {
         },
         unit,
         moq,
-        representativeImage: categoryImages[categoryId],
+        representativeImage: matchedImage || categoryImages[categoryId],
         priceStatus: 'RFQ_ONLY',
       })
     }
@@ -151,7 +186,7 @@ async function main() {
     await fs.writeFile(outputPath, output, 'utf8')
   }
 
-  console.log(`Validated ${products.length} RFQ-only products (AF=${countryCounts.AF}, UZ=${countryCounts.UZ})`)
+  console.log(`Validated ${products.length} RFQ-only products (AF=${countryCounts.AF}, UZ=${countryCounts.UZ}, ${matchedCount} matched to photos)`)
 }
 
 main().catch((error) => {

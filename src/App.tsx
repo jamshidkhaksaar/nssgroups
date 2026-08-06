@@ -1,6 +1,7 @@
 import { lazy, Suspense } from 'react'
 import { Navigate, Routes, Route } from 'react-router'
 import Layout from '@/components/layout/Layout'
+import RequirePortal from '@/components/layout/RequirePortal'
 import { Spinner } from '@/components/ui/spinner'
 import Home from './pages/Home'
 import About from './pages/About'
@@ -56,10 +57,10 @@ export default function App() {
           <Route path="/tracking" element={<Tracking />} />
           <Route path="/portal" element={<Portal />} />
         </Route>
-        {/* Dedicated portal dashboards — NO navbar/footer */}
-        <Route path="/admin" element={<AdminPortal />} />
-        <Route path="/client-portal" element={<ClientPortal />} />
-        <Route path="/partner-portal" element={<PartnerPortal />} />
+        {/* Dedicated portal dashboards — NO navbar/footer, role-guarded */}
+        <Route path="/admin" element={<RequirePortal role="admin"><AdminPortal /></RequirePortal>} />
+        <Route path="/client-portal" element={<RequirePortal role="client"><ClientPortal /></RequirePortal>} />
+        <Route path="/partner-portal" element={<RequirePortal role="partner"><PartnerPortal /></RequirePortal>} />
         {/* Auth login pages — NO navbar/footer */}
         <Route path="/login" element={<Login />} />
         <Route path="/login/admin" element={<AdminLogin />} />

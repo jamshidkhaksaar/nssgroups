@@ -25,7 +25,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "MT",
     "moq": "20 MT",
-    "representativeImage": "/card_images/row1/Food Products.png",
+    "representativeImage": "/marketplace/products/food-staples/wheat-grade-3.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -52,7 +52,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "MT",
     "moq": "10 MT",
-    "representativeImage": "/card_images/row1/Food Products.png",
+    "representativeImage": "/marketplace/products/food-staples/premium-wheat-flour.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -79,7 +79,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "MT",
     "moq": "10 MT",
-    "representativeImage": "/card_images/row1/Food Products.png",
+    "representativeImage": "/marketplace/products/food-staples/standard-wheat-flour.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -106,7 +106,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "MT",
     "moq": "5 MT",
-    "representativeImage": "/card_images/row1/Food Products.png",
+    "representativeImage": "/marketplace/products/food-staples/semolina.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -133,7 +133,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "MT",
     "moq": "20 MT",
-    "representativeImage": "/card_images/row1/Food Products.png",
+    "representativeImage": "/marketplace/products/food-staples/barley.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -160,7 +160,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "MT",
     "moq": "20 MT",
-    "representativeImage": "/card_images/row1/Food Products.png",
+    "representativeImage": "/marketplace/products/food-staples/yellow-corn.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -187,7 +187,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "MT",
     "moq": "20 MT",
-    "representativeImage": "/card_images/row1/Food Products.png",
+    "representativeImage": "/marketplace/products/food-staples/white-corn.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -214,7 +214,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "MT",
     "moq": "10 MT",
-    "representativeImage": "/card_images/row1/Food Products.png",
+    "representativeImage": "/marketplace/products/food-staples/long-grain-rice.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -241,7 +241,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "MT",
     "moq": "10 MT",
-    "representativeImage": "/card_images/row1/Food Products.png",
+    "representativeImage": "/marketplace/products/food-staples/medium-grain-rice.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -268,7 +268,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "MT",
     "moq": "10 MT",
-    "representativeImage": "/card_images/row1/Food Products.png",
+    "representativeImage": "/marketplace/products/food-staples/broken-rice.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -295,7 +295,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "MT",
     "moq": "5 MT",
-    "representativeImage": "/card_images/row1/Food Products.png",
+    "representativeImage": "/marketplace/products/food-staples/bulgur-wheat.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -322,7 +322,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "MT",
     "moq": "5 MT",
-    "representativeImage": "/card_images/row1/Food Products.png",
+    "representativeImage": "/marketplace/products/food-staples/barley-groats.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -349,7 +349,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "MT",
     "moq": "10 MT",
-    "representativeImage": "/card_images/row1/Food Products.png",
+    "representativeImage": "/marketplace/products/food-staples/oats.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -376,7 +376,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "MT",
     "moq": "5 MT",
-    "representativeImage": "/card_images/row1/Food Products.png",
+    "representativeImage": "/marketplace/products/food-staples/buckwheat.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -403,7 +403,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "MT",
     "moq": "10 MT",
-    "representativeImage": "/card_images/row1/Food Products.png",
+    "representativeImage": "/marketplace/products/food-staples/millet.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -430,7 +430,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "MT",
     "moq": "5 MT",
-    "representativeImage": "/card_images/row1/Food Products.png",
+    "representativeImage": "/marketplace/products/food-staples/wheat-starch.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -457,7 +457,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "MT",
     "moq": "5 MT",
-    "representativeImage": "/card_images/row1/Food Products.png",
+    "representativeImage": "/marketplace/products/food-staples/corn-starch.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -484,7 +484,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "MT",
     "moq": "20 MT",
-    "representativeImage": "/card_images/row1/Food Products.png",
+    "representativeImage": "/marketplace/products/food-staples/wheat-bran.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -511,7 +511,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "MT",
     "moq": "20 MT",
-    "representativeImage": "/card_images/row1/Food Products.png",
+    "representativeImage": "/marketplace/products/food-staples/poultry-feed.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -538,7 +538,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "MT",
     "moq": "20 MT",
-    "representativeImage": "/card_images/row1/Food Products.png",
+    "representativeImage": "/marketplace/products/food-staples/cattle-feed.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -565,7 +565,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "MT",
     "moq": "20 MT",
-    "representativeImage": "/card_images/row1/Food Products.png",
+    "representativeImage": "/marketplace/products/food-staples/refined-cottonseed-oil.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -592,7 +592,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "MT",
     "moq": "20 MT",
-    "representativeImage": "/card_images/row1/Food Products.png",
+    "representativeImage": "/marketplace/products/food-staples/refined-sunflower-oil.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -619,7 +619,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "MT",
     "moq": "10 MT",
-    "representativeImage": "/card_images/row1/Food Products.png",
+    "representativeImage": "/marketplace/products/food-staples/corn-oil.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -646,7 +646,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "MT",
     "moq": "20 MT",
-    "representativeImage": "/card_images/row1/Food Products.png",
+    "representativeImage": "/marketplace/products/food-staples/soybean-oil.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -754,7 +754,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "MT",
     "moq": "10 MT",
-    "representativeImage": "/card_images/row1/Food Products.png",
+    "representativeImage": "/marketplace/products/food-staples/chickpeas.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -862,7 +862,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "MT",
     "moq": "10 MT",
-    "representativeImage": "/card_images/row1/Food Products.png",
+    "representativeImage": "/marketplace/products/food-staples/red-lentils.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -889,7 +889,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "MT",
     "moq": "10 MT",
-    "representativeImage": "/card_images/row1/Food Products.png",
+    "representativeImage": "/marketplace/products/food-staples/green-lentils.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -1105,7 +1105,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "KG",
     "moq": "500 KG",
-    "representativeImage": "/card_images/row1/Food Products.png",
+    "representativeImage": "/marketplace/products/dried-fruit/golden-raisins.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -1132,7 +1132,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "KG",
     "moq": "500 KG",
-    "representativeImage": "/card_images/row1/Food Products.png",
+    "representativeImage": "/marketplace/products/dried-fruit/black-raisins.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -1159,7 +1159,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "KG",
     "moq": "500 KG",
-    "representativeImage": "/card_images/row1/Food Products.png",
+    "representativeImage": "/marketplace/products/dried-fruit/dried-apricots.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -1186,7 +1186,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "KG",
     "moq": "500 KG",
-    "representativeImage": "/card_images/row1/Food Products.png",
+    "representativeImage": "/marketplace/products/dried-fruit/dried-plums.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -1213,7 +1213,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "KG",
     "moq": "500 KG",
-    "representativeImage": "/card_images/row1/Food Products.png",
+    "representativeImage": "/marketplace/products/dried-fruit/dried-apples.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -1240,7 +1240,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "KG",
     "moq": "200 KG",
-    "representativeImage": "/card_images/row1/Food Products.png",
+    "representativeImage": "/marketplace/products/dried-fruit/dried-cherries.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -1267,7 +1267,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "MT",
     "moq": "5 MT",
-    "representativeImage": "/card_images/row1/Food Products.png",
+    "representativeImage": "/marketplace/products/dried-fruit/peanuts.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -1294,7 +1294,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "KG",
     "moq": "500 KG",
-    "representativeImage": "/card_images/row1/Food Products.png",
+    "representativeImage": "/marketplace/products/dried-fruit/walnuts-in-shell.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -1321,7 +1321,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "KG",
     "moq": "300 KG",
-    "representativeImage": "/card_images/row1/Food Products.png",
+    "representativeImage": "/marketplace/products/dried-fruit/walnut-kernels.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -1348,7 +1348,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "KG",
     "moq": "300 KG",
-    "representativeImage": "/card_images/row1/Food Products.png",
+    "representativeImage": "/marketplace/products/dried-fruit/almonds.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -1375,7 +1375,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "KG",
     "moq": "5 MT",
-    "representativeImage": "/card_images/row1/Food Products.png",
+    "representativeImage": "/marketplace/products/fresh-produce/fresh-apples.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -1402,7 +1402,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "KG",
     "moq": "5 MT",
-    "representativeImage": "/card_images/row1/Food Products.png",
+    "representativeImage": "/marketplace/products/fresh-produce/fresh-grapes.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -1429,7 +1429,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "KG",
     "moq": "1 MT",
-    "representativeImage": "/card_images/row1/Food Products.png",
+    "representativeImage": "/marketplace/products/fresh-produce/fresh-cherries.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -1456,7 +1456,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "KG",
     "moq": "3 MT",
-    "representativeImage": "/card_images/row1/Food Products.png",
+    "representativeImage": "/marketplace/products/fresh-produce/fresh-apricots.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -1483,7 +1483,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "KG",
     "moq": "3 MT",
-    "representativeImage": "/card_images/row1/Food Products.png",
+    "representativeImage": "/marketplace/products/fresh-produce/fresh-peaches.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -1510,7 +1510,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "KG",
     "moq": "5 MT",
-    "representativeImage": "/card_images/row1/Food Products.png",
+    "representativeImage": "/marketplace/products/fresh-produce/fresh-tomatoes.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -1537,7 +1537,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "KG",
     "moq": "10 MT",
-    "representativeImage": "/card_images/row1/Food Products.png",
+    "representativeImage": "/marketplace/products/fresh-produce/yellow-onions.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -1564,7 +1564,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "KG",
     "moq": "10 MT",
-    "representativeImage": "/card_images/row1/Food Products.png",
+    "representativeImage": "/marketplace/products/fresh-produce/potatoes.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -1591,7 +1591,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "KG",
     "moq": "5 MT",
-    "representativeImage": "/card_images/row1/Food Products.png",
+    "representativeImage": "/marketplace/products/fresh-produce/carrots.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -1618,7 +1618,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "KG",
     "moq": "5 MT",
-    "representativeImage": "/card_images/row1/Food Products.png",
+    "representativeImage": "/marketplace/products/fresh-produce/white-cabbage.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -1645,7 +1645,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "MT",
     "moq": "5 MT",
-    "representativeImage": "/card_images/row1/Food Products.png",
+    "representativeImage": "/marketplace/products/fresh-produce/tomato-paste-28-30-brix.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -1672,7 +1672,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "Carton",
     "moq": "100 cartons",
-    "representativeImage": "/card_images/row1/Food Products.png",
+    "representativeImage": "/marketplace/products/fresh-produce/canned-green-peas.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -1699,7 +1699,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "Carton",
     "moq": "100 cartons",
-    "representativeImage": "/card_images/row1/Food Products.png",
+    "representativeImage": "/marketplace/products/fresh-produce/canned-beans.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -1726,7 +1726,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "Carton",
     "moq": "100 cartons",
-    "representativeImage": "/card_images/row1/Food Products.png",
+    "representativeImage": "/marketplace/products/fresh-produce/apricot-compote.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -1753,7 +1753,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "Carton",
     "moq": "200 cartons",
-    "representativeImage": "/card_images/row1/Food Products.png",
+    "representativeImage": "/marketplace/products/fresh-produce/mixed-fruit-juice.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -1780,7 +1780,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "Carton",
     "moq": "200 cartons",
-    "representativeImage": "/card_images/extra/Textiles & Consumer Goods.png",
+    "representativeImage": "/marketplace/products/supermarket-goods/uht-milk-1l.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -1807,7 +1807,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "MT",
     "moq": "5 MT",
-    "representativeImage": "/card_images/extra/Textiles & Consumer Goods.png",
+    "representativeImage": "/marketplace/products/supermarket-goods/whole-milk-powder.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -1834,7 +1834,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "MT",
     "moq": "5 MT",
-    "representativeImage": "/card_images/extra/Textiles & Consumer Goods.png",
+    "representativeImage": "/marketplace/products/supermarket-goods/skim-milk-powder.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -1861,7 +1861,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "KG",
     "moq": "500 KG",
-    "representativeImage": "/card_images/extra/Textiles & Consumer Goods.png",
+    "representativeImage": "/marketplace/products/supermarket-goods/butter.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -1888,7 +1888,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "KG",
     "moq": "300 KG",
-    "representativeImage": "/card_images/extra/Textiles & Consumer Goods.png",
+    "representativeImage": "/marketplace/products/supermarket-goods/hard-cheese.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -1915,7 +1915,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "Carton",
     "moq": "200 cartons",
-    "representativeImage": "/card_images/extra/Textiles & Consumer Goods.png",
+    "representativeImage": "/marketplace/products/supermarket-goods/packaged-yogurt.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -1942,7 +1942,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "Carton",
     "moq": "200 cartons",
-    "representativeImage": "/card_images/extra/Textiles & Consumer Goods.png",
+    "representativeImage": "/marketplace/products/supermarket-goods/plain-biscuits.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -1969,7 +1969,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "Carton",
     "moq": "200 cartons",
-    "representativeImage": "/card_images/extra/Textiles & Consumer Goods.png",
+    "representativeImage": "/marketplace/products/supermarket-goods/cream-biscuits.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -1996,7 +1996,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "Carton",
     "moq": "200 cartons",
-    "representativeImage": "/card_images/extra/Textiles & Consumer Goods.png",
+    "representativeImage": "/marketplace/products/supermarket-goods/wafers.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -2023,7 +2023,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "Carton",
     "moq": "100 cartons",
-    "representativeImage": "/card_images/extra/Textiles & Consumer Goods.png",
+    "representativeImage": "/marketplace/products/supermarket-goods/chocolate-bars.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -2050,7 +2050,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "Carton",
     "moq": "100 cartons",
-    "representativeImage": "/card_images/extra/Textiles & Consumer Goods.png",
+    "representativeImage": "/marketplace/products/supermarket-goods/hard-candy.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -2077,7 +2077,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "KG",
     "moq": "500 KG",
-    "representativeImage": "/card_images/extra/Textiles & Consumer Goods.png",
+    "representativeImage": "/marketplace/products/supermarket-goods/sunflower-halva.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -2104,7 +2104,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "MT",
     "moq": "5 MT",
-    "representativeImage": "/card_images/extra/Textiles & Consumer Goods.png",
+    "representativeImage": "/marketplace/products/supermarket-goods/pasta.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -2131,7 +2131,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "Carton",
     "moq": "200 cartons",
-    "representativeImage": "/card_images/extra/Textiles & Consumer Goods.png",
+    "representativeImage": "/marketplace/products/supermarket-goods/instant-noodles.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -2158,7 +2158,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "MT",
     "moq": "20 MT",
-    "representativeImage": "/card_images/extra/Textiles & Consumer Goods.png",
+    "representativeImage": "/marketplace/products/supermarket-goods/iodized-salt.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -2185,7 +2185,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "KG",
     "moq": "500 KG",
-    "representativeImage": "/card_images/extra/Textiles & Consumer Goods.png",
+    "representativeImage": "/marketplace/products/supermarket-goods/packaged-black-tea.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -2212,7 +2212,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "KG",
     "moq": "200 KG",
-    "representativeImage": "/card_images/extra/Textiles & Consumer Goods.png",
+    "representativeImage": "/marketplace/products/supermarket-goods/instant-coffee.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -2239,7 +2239,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "Carton",
     "moq": "100 cartons",
-    "representativeImage": "/card_images/extra/Textiles & Consumer Goods.png",
+    "representativeImage": "/marketplace/products/supermarket-goods/mayonnaise.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -2266,7 +2266,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "Carton",
     "moq": "100 cartons",
-    "representativeImage": "/card_images/extra/Textiles & Consumer Goods.png",
+    "representativeImage": "/marketplace/products/supermarket-goods/ketchup.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -2293,7 +2293,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "Carton",
     "moq": "100 cartons",
-    "representativeImage": "/card_images/extra/Textiles & Consumer Goods.png",
+    "representativeImage": "/marketplace/products/supermarket-goods/white-vinegar.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -2320,7 +2320,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "Pack",
     "moq": "500 packs",
-    "representativeImage": "/card_images/extra/Textiles & Consumer Goods.png",
+    "representativeImage": "/marketplace/products/supermarket-goods/mineral-water-1-5l.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -2347,7 +2347,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "Carton",
     "moq": "200 cartons",
-    "representativeImage": "/card_images/extra/Textiles & Consumer Goods.png",
+    "representativeImage": "/marketplace/products/supermarket-goods/carbonated-soft-drinks.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -2374,7 +2374,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "Carton",
     "moq": "200 cartons",
-    "representativeImage": "/card_images/extra/Textiles & Consumer Goods.png",
+    "representativeImage": "/marketplace/products/supermarket-goods/laundry-soap.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -2401,7 +2401,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "Carton",
     "moq": "100 cartons",
-    "representativeImage": "/card_images/extra/Textiles & Consumer Goods.png",
+    "representativeImage": "/marketplace/products/supermarket-goods/dishwashing-liquid.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -2455,7 +2455,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "KG",
     "moq": "300 KG",
-    "representativeImage": "/card_images/row1/Food Products.png",
+    "representativeImage": "/marketplace/products/spices-herbs/cumin-seeds.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -2482,7 +2482,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "KG",
     "moq": "500 KG",
-    "representativeImage": "/card_images/row1/Food Products.png",
+    "representativeImage": "/marketplace/products/spices-herbs/coriander-seeds.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -2509,7 +2509,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "KG",
     "moq": "300 KG",
-    "representativeImage": "/card_images/row1/Food Products.png",
+    "representativeImage": "/marketplace/products/spices-herbs/dried-red-chili.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -2536,7 +2536,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "KG",
     "moq": "300 KG",
-    "representativeImage": "/card_images/row1/Food Products.png",
+    "representativeImage": "/marketplace/products/spices-herbs/paprika-powder.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -2563,7 +2563,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "KG",
     "moq": "500 KG",
-    "representativeImage": "/card_images/row1/Food Products.png",
+    "representativeImage": "/marketplace/products/spices-herbs/turmeric-powder.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -2590,7 +2590,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "KG",
     "moq": "300 KG",
-    "representativeImage": "/card_images/row1/Food Products.png",
+    "representativeImage": "/marketplace/products/spices-herbs/black-pepper.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -2617,7 +2617,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "KG",
     "moq": "300 KG",
-    "representativeImage": "/card_images/row1/Food Products.png",
+    "representativeImage": "/marketplace/products/spices-herbs/dried-garlic-granules.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -2644,7 +2644,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "KG",
     "moq": "300 KG",
-    "representativeImage": "/card_images/row1/Food Products.png",
+    "representativeImage": "/marketplace/products/spices-herbs/dried-onion-flakes.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -2671,7 +2671,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "KG",
     "moq": "200 KG",
-    "representativeImage": "/card_images/row1/Food Products.png",
+    "representativeImage": "/marketplace/products/spices-herbs/dried-dill.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -2698,7 +2698,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "KG",
     "moq": "200 KG",
-    "representativeImage": "/card_images/row1/Food Products.png",
+    "representativeImage": "/marketplace/products/spices-herbs/dried-basil.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -2725,7 +2725,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "KG",
     "moq": "200 KG",
-    "representativeImage": "/card_images/row1/Food Products.png",
+    "representativeImage": "/marketplace/products/spices-herbs/dried-mint.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -2752,7 +2752,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "KG",
     "moq": "200 KG",
-    "representativeImage": "/card_images/row1/Food Products.png",
+    "representativeImage": "/marketplace/products/spices-herbs/thyme.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -2779,7 +2779,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "KG",
     "moq": "200 KG",
-    "representativeImage": "/card_images/row1/Food Products.png",
+    "representativeImage": "/marketplace/products/spices-herbs/bay-leaves.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -2806,7 +2806,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "KG",
     "moq": "500 KG",
-    "representativeImage": "/card_images/row1/Food Products.png",
+    "representativeImage": "/marketplace/products/spices-herbs/seasoning-salt.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -2833,7 +2833,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "KG",
     "moq": "300 KG",
-    "representativeImage": "/card_images/row1/Food Products.png",
+    "representativeImage": "/marketplace/products/spices-herbs/pilaf-spice-mix.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -2860,7 +2860,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "MT",
     "moq": "20 MT",
-    "representativeImage": "/card_images/row1/Textile and clothing.png",
+    "representativeImage": "/marketplace/products/textiles-handicrafts/raw-cotton-lint.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -2887,7 +2887,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "MT",
     "moq": "10 MT",
-    "representativeImage": "/card_images/row1/Textile and clothing.png",
+    "representativeImage": "/marketplace/products/textiles-handicrafts/combed-cotton-fiber.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -2995,7 +2995,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "Meter",
     "moq": "10,000 m",
-    "representativeImage": "/card_images/row1/Textile and clothing.png",
+    "representativeImage": "/marketplace/products/textiles-handicrafts/greige-cotton-fabric.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -3022,7 +3022,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "Meter",
     "moq": "5,000 m",
-    "representativeImage": "/card_images/row1/Textile and clothing.png",
+    "representativeImage": "/marketplace/products/textiles-handicrafts/dyed-cotton-fabric.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -3049,7 +3049,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "Meter",
     "moq": "3,000 m",
-    "representativeImage": "/card_images/row1/Textile and clothing.png",
+    "representativeImage": "/marketplace/products/textiles-handicrafts/denim-fabric.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -3076,7 +3076,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "KG",
     "moq": "1 MT",
-    "representativeImage": "/card_images/row1/Textile and clothing.png",
+    "representativeImage": "/marketplace/products/textiles-handicrafts/terry-fabric.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -3103,7 +3103,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "Piece",
     "moq": "500 pcs",
-    "representativeImage": "/card_images/row1/Textile and clothing.png",
+    "representativeImage": "/marketplace/products/textiles-handicrafts/bath-towel.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -3130,7 +3130,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "Piece",
     "moq": "1000 pcs",
-    "representativeImage": "/card_images/row1/Textile and clothing.png",
+    "representativeImage": "/marketplace/products/textiles-handicrafts/hand-towel.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -3157,7 +3157,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "Set",
     "moq": "200 sets",
-    "representativeImage": "/card_images/row1/Textile and clothing.png",
+    "representativeImage": "/marketplace/products/textiles-handicrafts/cotton-bed-sheet-set.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -3184,7 +3184,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "Piece",
     "moq": "200 pcs",
-    "representativeImage": "/card_images/row1/Textile and clothing.png",
+    "representativeImage": "/marketplace/products/textiles-handicrafts/cotton-blanket.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -3211,7 +3211,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "Piece",
     "moq": "1000 pcs",
-    "representativeImage": "/card_images/row1/Textile and clothing.png",
+    "representativeImage": "/marketplace/products/textiles-handicrafts/mens-t-shirt.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -3238,7 +3238,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "Piece",
     "moq": "1000 pcs",
-    "representativeImage": "/card_images/row1/Textile and clothing.png",
+    "representativeImage": "/marketplace/products/textiles-handicrafts/womens-t-shirt.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -3265,7 +3265,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "Piece",
     "moq": "500 pcs",
-    "representativeImage": "/card_images/row1/Textile and clothing.png",
+    "representativeImage": "/marketplace/products/textiles-handicrafts/mens-shirt.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -3292,7 +3292,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "Set",
     "moq": "200 sets",
-    "representativeImage": "/card_images/row1/Textile and clothing.png",
+    "representativeImage": "/marketplace/products/textiles-handicrafts/workwear-set.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -3319,7 +3319,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "Set",
     "moq": "200 sets",
-    "representativeImage": "/card_images/row1/Textile and clothing.png",
+    "representativeImage": "/marketplace/products/textiles-handicrafts/medical-scrubs.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -3346,7 +3346,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "Pair",
     "moq": "3000 pairs",
-    "representativeImage": "/card_images/row1/Textile and clothing.png",
+    "representativeImage": "/marketplace/products/textiles-handicrafts/cotton-socks.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -3373,7 +3373,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "Piece",
     "moq": "2000 pcs",
-    "representativeImage": "/card_images/row1/Textile and clothing.png",
+    "representativeImage": "/marketplace/products/textiles-handicrafts/mens-underwear.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -3400,7 +3400,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "Piece",
     "moq": "2000 pcs",
-    "representativeImage": "/card_images/row1/Textile and clothing.png",
+    "representativeImage": "/marketplace/products/textiles-handicrafts/womens-underwear.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -3427,7 +3427,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "Set",
     "moq": "500 sets",
-    "representativeImage": "/card_images/row1/Textile and clothing.png",
+    "representativeImage": "/marketplace/products/textiles-handicrafts/childrens-clothing-set.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -3454,7 +3454,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "Pair",
     "moq": "5000 pairs",
-    "representativeImage": "/card_images/row1/Textile and clothing.png",
+    "representativeImage": "/marketplace/products/textiles-handicrafts/cotton-work-gloves.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -3481,7 +3481,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "KG",
     "moq": "500 KG",
-    "representativeImage": "/card_images/row1/Textile and clothing.png",
+    "representativeImage": "/marketplace/products/textiles-handicrafts/medical-absorbent-cotton.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -3535,7 +3535,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "MT",
     "moq": "20 MT",
-    "representativeImage": "/card_images/row1/industrial low materials.png",
+    "representativeImage": "/marketplace/products/industrial-materials/soda-ash.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -3562,7 +3562,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "MT",
     "moq": "20 MT",
-    "representativeImage": "/card_images/row1/industrial low materials.png",
+    "representativeImage": "/marketplace/products/industrial-materials/caustic-soda.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -3589,7 +3589,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "MT",
     "moq": "20 MT",
-    "representativeImage": "/card_images/row1/industrial low materials.png",
+    "representativeImage": "/marketplace/products/industrial-materials/urea-46.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -3616,7 +3616,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "MT",
     "moq": "20 MT",
-    "representativeImage": "/card_images/row1/industrial low materials.png",
+    "representativeImage": "/marketplace/products/industrial-materials/ammonium-nitrate.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -3643,7 +3643,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "MT",
     "moq": "20 MT",
-    "representativeImage": "/card_images/row1/industrial low materials.png",
+    "representativeImage": "/marketplace/products/industrial-materials/npk-fertilizer.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -3670,7 +3670,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "MT",
     "moq": "20 MT",
-    "representativeImage": "/card_images/row1/industrial low materials.png",
+    "representativeImage": "/marketplace/products/industrial-materials/ammonium-sulfate.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -3697,7 +3697,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "MT",
     "moq": "20 MT",
-    "representativeImage": "/card_images/row1/industrial low materials.png",
+    "representativeImage": "/marketplace/products/industrial-materials/ldpe-resin.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -3724,7 +3724,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "MT",
     "moq": "20 MT",
-    "representativeImage": "/card_images/row1/industrial low materials.png",
+    "representativeImage": "/marketplace/products/industrial-materials/hdpe-resin.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -3751,7 +3751,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "MT",
     "moq": "20 MT",
-    "representativeImage": "/card_images/row1/industrial low materials.png",
+    "representativeImage": "/marketplace/products/industrial-materials/polypropylene-resin.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -3778,7 +3778,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "MT",
     "moq": "20 MT",
-    "representativeImage": "/card_images/row1/industrial low materials.png",
+    "representativeImage": "/marketplace/products/industrial-materials/pvc-resin.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -3805,7 +3805,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "MT",
     "moq": "20 MT",
-    "representativeImage": "/card_images/extra/Construction Material.png",
+    "representativeImage": "/marketplace/products/construction-materials/portland-cement-42-5.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -3832,7 +3832,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "MT",
     "moq": "20 MT",
-    "representativeImage": "/card_images/extra/Construction Material.png",
+    "representativeImage": "/marketplace/products/construction-materials/construction-gypsum.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -3859,7 +3859,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "M2",
     "moq": "1000 m2",
-    "representativeImage": "/card_images/extra/Construction Material.png",
+    "representativeImage": "/marketplace/products/construction-materials/ceramic-floor-tiles.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -3886,7 +3886,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "M2",
     "moq": "500 m2",
-    "representativeImage": "/card_images/extra/Construction Material.png",
+    "representativeImage": "/marketplace/products/construction-materials/float-glass.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -3913,7 +3913,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "MT",
     "moq": "20 MT",
-    "representativeImage": "/card_images/extra/Construction Material.png",
+    "representativeImage": "/marketplace/products/construction-materials/steel-rebar.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -3940,7 +3940,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "Piece",
     "moq": "50,000 pcs",
-    "representativeImage": "/card_images/row1/packaging and printing.png",
+    "representativeImage": "/marketplace/products/packaging/pp-woven-bag-50kg.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -3967,7 +3967,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "Piece",
     "moq": "5000 pcs",
-    "representativeImage": "/card_images/row1/packaging and printing.png",
+    "representativeImage": "/marketplace/products/packaging/5-ply-corrugated-carton.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -3994,7 +3994,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "Piece",
     "moq": "50,000 pcs",
-    "representativeImage": "/card_images/row1/packaging and printing.png",
+    "representativeImage": "/marketplace/products/packaging/1l-pet-bottle.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -4021,7 +4021,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "KG",
     "moq": "1 MT",
-    "representativeImage": "/card_images/row1/packaging and printing.png",
+    "representativeImage": "/marketplace/products/packaging/shrink-film.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -4048,7 +4048,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "Roll",
     "moq": "5000 rolls",
-    "representativeImage": "/card_images/row1/packaging and printing.png",
+    "representativeImage": "/marketplace/products/packaging/packing-tape.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -4075,7 +4075,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "KG",
     "moq": "300 KG",
-    "representativeImage": "/card_images/row1/Food Products.png",
+    "representativeImage": "/marketplace/products/dried-fruit/green-raisins.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -4102,7 +4102,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "KG",
     "moq": "300 KG",
-    "representativeImage": "/card_images/row1/Food Products.png",
+    "representativeImage": "/marketplace/products/dried-fruit/red-raisins.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -4129,7 +4129,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "KG",
     "moq": "300 KG",
-    "representativeImage": "/card_images/row1/Food Products.png",
+    "representativeImage": "/marketplace/products/dried-fruit/black-raisins.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -4156,7 +4156,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "KG",
     "moq": "300 KG",
-    "representativeImage": "/card_images/row1/Food Products.png",
+    "representativeImage": "/marketplace/products/dried-fruit/shindokhani-raisins.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -4183,7 +4183,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "KG",
     "moq": "200 KG",
-    "representativeImage": "/card_images/row1/Food Products.png",
+    "representativeImage": "/marketplace/products/dried-fruit/dried-figs.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -4210,7 +4210,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "KG",
     "moq": "300 KG",
-    "representativeImage": "/card_images/row1/Food Products.png",
+    "representativeImage": "/marketplace/products/dried-fruit/dried-apricots.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -4237,7 +4237,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "KG",
     "moq": "300 KG",
-    "representativeImage": "/card_images/row1/Food Products.png",
+    "representativeImage": "/marketplace/products/dried-fruit/apricot-slabs.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -4264,7 +4264,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "KG",
     "moq": "300 KG",
-    "representativeImage": "/card_images/row1/Food Products.png",
+    "representativeImage": "/marketplace/products/dried-fruit/dried-plums.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -4291,7 +4291,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "KG",
     "moq": "300 KG",
-    "representativeImage": "/card_images/row1/Food Products.png",
+    "representativeImage": "/marketplace/products/dried-fruit/dried-white-mulberries.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -4318,7 +4318,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "KG",
     "moq": "200 KG",
-    "representativeImage": "/card_images/row1/Food Products.png",
+    "representativeImage": "/marketplace/products/dried-fruit/dried-black-mulberries.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -4345,7 +4345,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "KG",
     "moq": "300 KG",
-    "representativeImage": "/card_images/row1/Food Products.png",
+    "representativeImage": "/marketplace/products/dried-fruit/dried-oleaster.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -4372,7 +4372,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "KG",
     "moq": "300 KG",
-    "representativeImage": "/card_images/row1/Food Products.png",
+    "representativeImage": "/marketplace/products/dried-fruit/paper-shell-almonds.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -4399,7 +4399,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "KG",
     "moq": "200 KG",
-    "representativeImage": "/card_images/row1/Food Products.png",
+    "representativeImage": "/marketplace/products/dried-fruit/sweet-almond-kernels.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -4426,7 +4426,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "KG",
     "moq": "200 KG",
-    "representativeImage": "/card_images/row1/Food Products.png",
+    "representativeImage": "/marketplace/products/dried-fruit/bitter-almond-kernels.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -4507,7 +4507,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "KG",
     "moq": "300 KG",
-    "representativeImage": "/card_images/row1/Food Products.png",
+    "representativeImage": "/marketplace/products/dried-fruit/walnuts-in-shell.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -4723,7 +4723,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "KG",
     "moq": "500 KG",
-    "representativeImage": "/card_images/row1/Food Products.png",
+    "representativeImage": "/marketplace/products/dried-fruit/peanuts.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -4885,7 +4885,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "KG",
     "moq": "1 KG",
-    "representativeImage": "/card_images/row1/Food Products.png",
+    "representativeImage": "/marketplace/products/spices-herbs/herat-saffron-premium.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -4912,7 +4912,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "KG",
     "moq": "1 KG",
-    "representativeImage": "/card_images/row1/Food Products.png",
+    "representativeImage": "/marketplace/products/spices-herbs/saffron-pushal.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -4939,7 +4939,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "KG",
     "moq": "50 KG",
-    "representativeImage": "/card_images/row1/Food Products.png",
+    "representativeImage": "/marketplace/products/spices-herbs/black-cumin.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -4966,7 +4966,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "KG",
     "moq": "100 KG",
-    "representativeImage": "/card_images/row1/Food Products.png",
+    "representativeImage": "/marketplace/products/spices-herbs/green-cumin.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -4993,7 +4993,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "KG",
     "moq": "20 KG",
-    "representativeImage": "/card_images/row1/Food Products.png",
+    "representativeImage": "/marketplace/products/spices-herbs/asafoetida-resin.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -5020,7 +5020,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "KG",
     "moq": "500 KG",
-    "representativeImage": "/card_images/row1/Food Products.png",
+    "representativeImage": "/marketplace/products/spices-herbs/licorice-root.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -5047,7 +5047,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "KG",
     "moq": "100 KG",
-    "representativeImage": "/card_images/row1/Food Products.png",
+    "representativeImage": "/marketplace/products/spices-herbs/frankincense.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -5074,7 +5074,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "KG",
     "moq": "100 KG",
-    "representativeImage": "/card_images/row1/Food Products.png",
+    "representativeImage": "/marketplace/products/spices-herbs/dried-rose-petals.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -5101,7 +5101,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "KG",
     "moq": "100 KG",
-    "representativeImage": "/card_images/row1/Food Products.png",
+    "representativeImage": "/marketplace/products/spices-herbs/dried-mint.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -5209,7 +5209,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "KG",
     "moq": "300 KG",
-    "representativeImage": "/card_images/row1/Food Products.png",
+    "representativeImage": "/marketplace/products/spices-herbs/coriander-seeds.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -5695,7 +5695,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "KG",
     "moq": "5 MT",
-    "representativeImage": "/card_images/row1/Food Products.png",
+    "representativeImage": "/marketplace/products/agricultural-products/kandahar-pomegranates.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -5722,7 +5722,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "KG",
     "moq": "3 MT",
-    "representativeImage": "/card_images/row1/Food Products.png",
+    "representativeImage": "/marketplace/products/agricultural-products/shindokhani-grapes.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -5749,7 +5749,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "KG",
     "moq": "5 MT",
-    "representativeImage": "/card_images/row1/Food Products.png",
+    "representativeImage": "/marketplace/products/agricultural-products/raisin-grapes.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -5776,7 +5776,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "KG",
     "moq": "5 MT",
-    "representativeImage": "/card_images/row1/Food Products.png",
+    "representativeImage": "/marketplace/products/agricultural-products/wardak-apples.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -5803,7 +5803,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "KG",
     "moq": "3 MT",
-    "representativeImage": "/card_images/row1/Food Products.png",
+    "representativeImage": "/marketplace/products/agricultural-products/bamyan-apricots.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -5830,7 +5830,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "KG",
     "moq": "1 MT",
-    "representativeImage": "/card_images/row1/Food Products.png",
+    "representativeImage": "/marketplace/products/fresh-produce/fresh-cherries.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -5857,7 +5857,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "KG",
     "moq": "10 MT",
-    "representativeImage": "/card_images/row1/Food Products.png",
+    "representativeImage": "/marketplace/products/agricultural-products/melons.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -5884,7 +5884,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "KG",
     "moq": "10 MT",
-    "representativeImage": "/card_images/row1/Food Products.png",
+    "representativeImage": "/marketplace/products/agricultural-products/watermelons.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -5911,7 +5911,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "KG",
     "moq": "10 MT",
-    "representativeImage": "/card_images/row1/Food Products.png",
+    "representativeImage": "/marketplace/products/agricultural-products/onions.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -5938,7 +5938,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "KG",
     "moq": "10 MT",
-    "representativeImage": "/card_images/row1/Food Products.png",
+    "representativeImage": "/marketplace/products/agricultural-products/bamyan-potatoes.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -5965,7 +5965,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "KG",
     "moq": "5 MT",
-    "representativeImage": "/card_images/row1/Food Products.png",
+    "representativeImage": "/marketplace/products/agricultural-products/tomatoes.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -5992,7 +5992,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "KG",
     "moq": "3 MT",
-    "representativeImage": "/card_images/row1/Food Products.png",
+    "representativeImage": "/marketplace/products/agricultural-products/cucumbers.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -6019,7 +6019,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "KG",
     "moq": "200 KG",
-    "representativeImage": "/card_images/row1/Food Products.png",
+    "representativeImage": "/marketplace/products/agricultural-products/sun-dried-tomatoes.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -6046,7 +6046,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "MT",
     "moq": "20 MT",
-    "representativeImage": "/card_images/row1/Food Products.png",
+    "representativeImage": "/marketplace/products/food-staples/local-wheat.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -6073,7 +6073,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "MT",
     "moq": "10 MT",
-    "representativeImage": "/card_images/row1/Food Products.png",
+    "representativeImage": "/marketplace/products/food-staples/local-wheat-flour.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -6100,7 +6100,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "MT",
     "moq": "20 MT",
-    "representativeImage": "/card_images/row1/Food Products.png",
+    "representativeImage": "/marketplace/products/food-staples/barley.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -6154,7 +6154,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "MT",
     "moq": "5 MT",
-    "representativeImage": "/card_images/row1/Food Products.png",
+    "representativeImage": "/marketplace/products/food-staples/local-rice.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -6181,7 +6181,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "MT",
     "moq": "5 MT",
-    "representativeImage": "/card_images/row1/Food Products.png",
+    "representativeImage": "/marketplace/products/food-staples/chickpeas.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -6208,7 +6208,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "MT",
     "moq": "5 MT",
-    "representativeImage": "/card_images/row1/Food Products.png",
+    "representativeImage": "/marketplace/products/food-staples/lentils.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -6316,7 +6316,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "MT",
     "moq": "5 MT",
-    "representativeImage": "/card_images/row1/Food Products.png",
+    "representativeImage": "/marketplace/products/food-staples/dried-fava-beans.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -7315,7 +7315,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "MT",
     "moq": "20 MT",
-    "representativeImage": "/card_images/row1/industrial low materials.png",
+    "representativeImage": "/marketplace/products/industrial-materials/afghan-raw-cotton.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -7342,7 +7342,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "KG",
     "moq": "500 KG",
-    "representativeImage": "/card_images/row1/industrial low materials.png",
+    "representativeImage": "/marketplace/products/industrial-materials/sheep-wool.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -7369,7 +7369,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "Piece",
     "moq": "100 pcs",
-    "representativeImage": "/card_images/row1/industrial low materials.png",
+    "representativeImage": "/marketplace/products/industrial-materials/karakul-pelts.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -7396,7 +7396,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "Piece",
     "moq": "500 pcs",
-    "representativeImage": "/card_images/row1/industrial low materials.png",
+    "representativeImage": "/marketplace/products/industrial-materials/goat-hides.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -7423,7 +7423,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "Piece",
     "moq": "200 pcs",
-    "representativeImage": "/card_images/row1/industrial low materials.png",
+    "representativeImage": "/marketplace/products/industrial-materials/cow-hides.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -7450,7 +7450,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "M2",
     "moq": "500 m2",
-    "representativeImage": "/card_images/row1/industrial low materials.png",
+    "representativeImage": "/marketplace/products/industrial-materials/herat-marble.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -7477,7 +7477,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "M2",
     "moq": "500 m2",
-    "representativeImage": "/card_images/row1/industrial low materials.png",
+    "representativeImage": "/marketplace/products/industrial-materials/nangarhar-marble.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -7504,7 +7504,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "M2",
     "moq": "500 m2",
-    "representativeImage": "/card_images/row1/industrial low materials.png",
+    "representativeImage": "/marketplace/products/industrial-materials/travertine-stone.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -7531,7 +7531,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "MT",
     "moq": "20 MT",
-    "representativeImage": "/card_images/row1/industrial low materials.png",
+    "representativeImage": "/marketplace/products/industrial-materials/raw-talc.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -7558,7 +7558,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "MT",
     "moq": "20 MT",
-    "representativeImage": "/card_images/row1/industrial low materials.png",
+    "representativeImage": "/marketplace/products/industrial-materials/talc-powder.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -7585,7 +7585,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "MT",
     "moq": "20 MT",
-    "representativeImage": "/card_images/row1/industrial low materials.png",
+    "representativeImage": "/marketplace/products/industrial-materials/chromite-ore.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -7612,7 +7612,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "MT",
     "moq": "20 MT",
-    "representativeImage": "/card_images/row1/industrial low materials.png",
+    "representativeImage": "/marketplace/products/industrial-materials/coal.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -7639,7 +7639,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "MT",
     "moq": "20 MT",
-    "representativeImage": "/card_images/row1/industrial low materials.png",
+    "representativeImage": "/marketplace/products/industrial-materials/rock-salt.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -7666,7 +7666,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "1000 pcs",
     "moq": "10,000 pcs",
-    "representativeImage": "/card_images/extra/Construction Material.png",
+    "representativeImage": "/marketplace/products/construction-materials/fired-clay-bricks.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -7693,7 +7693,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "MT",
     "moq": "20 MT",
-    "representativeImage": "/card_images/extra/Construction Material.png",
+    "representativeImage": "/marketplace/products/construction-materials/construction-gypsum.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -7720,7 +7720,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "MT",
     "moq": "20 MT",
-    "representativeImage": "/card_images/extra/Construction Material.png",
+    "representativeImage": "/marketplace/products/construction-materials/afghan-made-cement.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -7747,7 +7747,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "M3",
     "moq": "100 m3",
-    "representativeImage": "/card_images/extra/Construction Material.png",
+    "representativeImage": "/marketplace/products/construction-materials/sand-and-gravel.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {
@@ -7774,7 +7774,7 @@ export const PRODUCT_CATALOG = [
     },
     "unit": "M2",
     "moq": "300 m2",
-    "representativeImage": "/card_images/extra/Construction Material.png",
+    "representativeImage": "/marketplace/products/construction-materials/cut-building-stone.webp",
     "priceStatus": "RFQ_ONLY"
   },
   {

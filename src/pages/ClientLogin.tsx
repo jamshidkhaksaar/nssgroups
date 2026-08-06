@@ -2,32 +2,46 @@ import { useNavigate, Link } from 'react-router';
 import { useI18n } from '@/i18n/i18n';
 import AuthLayout from '@/components/layout/AuthLayout';
 import Reveal from '@/components/Reveal';
+import { login } from '@/lib/auth';
+import { usePortalStore } from '@/data/portalData';
 import { Building2, LogIn, Eye, EyeOff } from 'lucide-react';
 import { useState } from 'react';
 
 export default function ClientLogin() {
   const { t } = useI18n();
   const navigate = useNavigate();
+  const store = usePortalStore();
   const [showPass, setShowPass] = useState(false);
   const [loading, setLoading] = useState(false);
 
+  const signInAsClient = (email: string, clientId?: string) => {
+    const client = clientId ? store.clients.find((c) => c.id === clientId) : undefined;
+    login('client', {
+      name: client?.fullName ?? 'Portal Client',
+      email,
+      clientId: client?.id ?? store.clients[0]?.id,
+    });
+    navigate('/client-portal');
+  };
+
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
+    const form = e.currentTarget as HTMLFormElement;
+    const email = (form.elements.namedItem('email') as HTMLInputElement).value;
     setLoading(true);
     setTimeout(() => {
-      setLoading(false);
-      navigate('/client-portal');
+      signInAsClient(email);
     }, 1000);
   };
 
   const handleSocial = () => {
-    navigate('/client-portal');
+    const demo = store.clients[0];
+    signInAsClient(demo?.email ?? 'demo@client.org', demo?.id);
   };
 
   return (
     <AuthLayout
       accentColor="blue"
-      badge={t('auth.client.badge')}
       sideHeadline={t('auth.client.sideHeadline')}
       sideSub={t('auth.client.sideSub')}
       sideIcon={<Building2 size={48} className="text-sky-400 mb-6 opacity-80" />}
@@ -111,6 +125,7 @@ export default function ClientLogin() {
               </label>
               <input
                 type="email"
+                name="email"
                 required
                 className="h-12 w-full rounded-sm border border-[rgba(var(--text-rgb),0.12)] bg-[var(--panel)] px-4 text-sm text-[rgb(var(--text-rgb))] outline-none transition-colors focus:border-sky-400 focus:ring-1 focus:ring-sky-400/30"
                 placeholder="procurement@organization.org"
@@ -131,6 +146,7 @@ export default function ClientLogin() {
                 <button
                   type="button"
                   onClick={() => setShowPass((v) => !v)}
+                  aria-label={showPass ? t('auth.hidePassword') : t('auth.showPassword')}
                   className="absolute inset-y-0 end-0 px-4 flex items-center text-[rgba(var(--text-rgb),0.4)] hover:text-[rgba(var(--text-rgb),0.8)] transition-colors"
                 >
                   {showPass ? <EyeOff size={16} /> : <Eye size={16} />}

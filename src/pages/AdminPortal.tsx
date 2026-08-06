@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useI18n } from '@/i18n/i18n';
 import { usePortalStore } from '@/data/portalData';
+import { getSession } from '@/lib/auth';
 import { AdminDashboard } from '@/components/portals/AdminDashboard';
 import { DocumentModeration } from '@/components/portals/DocumentModeration';
 import { ClientsList } from '@/components/portals/ClientsList';
@@ -29,6 +30,7 @@ const NAV_ITEMS: NavItem[] = [
 export default function AdminPortal() {
   const { t } = useI18n();
   const store = usePortalStore();
+  const session = getSession();
   const [activeSection, setActiveSection] = useState<AdminSection>('overview');
 
   const pendingDocsCount = store.documents.filter((d) => d.status === 'pending').length;
@@ -37,16 +39,16 @@ export default function AdminPortal() {
 
   const notifications = [
     ...(delayedOrdersCount > 0
-      ? [{ id: 'n-delayed', title: `${delayedOrdersCount} delayed shipment${delayedOrdersCount > 1 ? 's' : ''}`, description: 'Convoy behind schedule — review in Orders.', tone: 'rose' as const }]
+      ? [{ id: 'n-delayed', title: t('portal.admin.notif.delayedTitle'), description: t('portal.admin.notif.delayedDesc'), tone: 'rose' as const }]
       : []),
     ...(pendingDocsCount > 0
-      ? [{ id: 'n-kyc', title: `${pendingDocsCount} document${pendingDocsCount > 1 ? 's' : ''} awaiting review`, description: 'Verification queue requires attention.', tone: 'amber' as const }]
+      ? [{ id: 'n-kyc', title: t('portal.admin.notif.kycTitle'), description: t('portal.admin.notif.kycDesc'), tone: 'amber' as const }]
       : []),
     ...(pendingClientsCount > 0
-      ? [{ id: 'n-clients', title: `${pendingClientsCount} client${pendingClientsCount > 1 ? 's' : ''} pending approval`, description: 'New registrations to verify.', tone: 'gold' as const }]
+      ? [{ id: 'n-clients', title: t('portal.admin.notif.clientsTitle'), description: t('portal.admin.notif.clientsDesc'), tone: 'gold' as const }]
       : []),
     ...(store.partners.filter((p) => p.status === 'suspended').length > 0
-      ? [{ id: 'n-susp', title: `${store.partners.filter((p) => p.status === 'suspended').length} partner(s) suspended`, description: 'Operational status requires attention.', tone: 'rose' as const }]
+      ? [{ id: 'n-susp', title: t('portal.admin.notif.suspendedTitle'), description: t('portal.admin.notif.suspendedDesc'), tone: 'rose' as const }]
       : []),
   ];
 
@@ -126,6 +128,8 @@ export default function AdminPortal() {
       accentColor="amber"
       portalLabel="Admin Control Room"
       portalIcon={<ShieldCheck className="h-3.5 w-3.5" />}
+      userName={session?.name ?? 'Administrator'}
+      userRole={t('auth.admin.badge')}
       navItems={NAV_ITEMS.map((item) => ({
         id: item.id,
         label: t(item.labelKey),
