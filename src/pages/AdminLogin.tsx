@@ -9,19 +9,23 @@ import { useState } from 'react';
 export default function AdminLogin() {
   const { t } = useI18n();
   const navigate = useNavigate();
+  const [email, setEmail] = useState('admin@nssgroupint.com');
+  const [password, setPassword] = useState('admin2026');
   const [showPass, setShowPass] = useState(false);
   const [loading, setLoading] = useState(false);
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
-    const form = e.currentTarget as HTMLFormElement;
-    const email = (form.elements.namedItem('email') as HTMLInputElement).value;
     setLoading(true);
-    // Simulate auth delay then create the demo session and navigate.
     setTimeout(() => {
-      login('admin', { name: 'Samir Alemyar', email });
+      login('admin', { name: 'Samir Alemyar', email: email || 'admin@nssgroupint.com' });
       navigate('/admin');
-    }, 1000);
+    }, 600);
+  };
+
+  const handleInstantAdmin = () => {
+    login('admin', { name: 'Samir Alemyar', email: 'admin@nssgroupint.com' });
+    navigate('/admin');
   };
 
   return (
@@ -56,8 +60,10 @@ export default function AdminLogin() {
                 type="email"
                 name="email"
                 required
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 className="h-12 w-full rounded-sm border border-[rgba(var(--gold-rgb),0.2)] bg-[var(--panel)] px-4 text-sm text-[rgb(var(--text-rgb))] outline-none transition-colors focus:border-amber-400 focus:ring-1 focus:ring-amber-400/30"
-                placeholder="admin@nss.af"
+                placeholder="admin@nssgroupint.com"
               />
             </div>
 
@@ -69,6 +75,8 @@ export default function AdminLogin() {
                 <input
                   type={showPass ? 'text' : 'password'}
                   required
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                   className="h-12 w-full rounded-sm border border-[rgba(var(--gold-rgb),0.2)] bg-[var(--panel)] px-4 pe-12 text-sm text-[rgb(var(--text-rgb))] outline-none transition-colors focus:border-amber-400 focus:ring-1 focus:ring-amber-400/30"
                   placeholder="••••••••"
                 />
@@ -87,7 +95,7 @@ export default function AdminLogin() {
             <div className="flex items-start gap-3 p-3 rounded-lg bg-amber-500/5 border border-amber-500/15">
               <Lock size={14} className="text-amber-400 mt-0.5 flex-shrink-0" />
               <p className="text-xs text-[rgba(var(--text-rgb),0.55)] leading-relaxed">
-                {t('auth.admin.restricted')}
+                NSS Group Executive Admin Portal Access for Samir Alemyar (System Administrator).
               </p>
             </div>
 
@@ -105,10 +113,18 @@ export default function AdminLogin() {
                 </>
               )}
             </button>
+
+            <button
+              type="button"
+              onClick={handleInstantAdmin}
+              className="w-full rounded-sm border border-amber-500/40 bg-amber-500/10 py-3 text-xs font-bold text-amber-400 hover:bg-amber-500/20 transition-all uppercase tracking-wider"
+            >
+              ⚡ Instant 1-Click Admin Access
+            </button>
           </form>
 
           <p className="mt-8 text-center text-xs text-[rgba(var(--text-rgb),0.4)]">
-            {t('auth.admin.accessHelp')}
+            Admin Account: <strong className="text-amber-400">admin@nssgroupint.com</strong> / Pass: <strong className="text-amber-400">admin2026</strong>
           </p>
         </Reveal>
       </div>
